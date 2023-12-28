@@ -1,7 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:team5/screen/passwordpage_1.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    // const MyApp()
+    MaterialApp(
+      home: Passwordpage_1(),
+      theme: ThemeData(
+        textTheme: TextTheme(
+          bodyText2: TextStyle(
+            fontFamily: 'PretendardVariable',
+          ),
+        ),
+      ),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
