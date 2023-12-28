@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:getwidget/getwidget.dart';
-import 'package:project/screen/welcome_screen.dart';
+import '/screen/welcome_screen.dart';
 
 class JoinPage extends StatefulWidget {
   const JoinPage({super.key});

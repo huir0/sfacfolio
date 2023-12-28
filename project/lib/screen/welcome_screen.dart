@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:project/screen/onboarding_first_screen.dart';
+import '/screen/onboarding_first_screen.dart';
 
 const partypopper = 'assets/images/Party_popper.png';
 
