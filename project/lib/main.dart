@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:project/screen/passwordpage_1.dart';
-import 'package:project/screen/passwordpage_2.dart';
+import 'package:team5/screen/passwordpage_1.dart';
 
 void main() {
   runApp(

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:project/screen/passwordpage_2.dart';
+import 'package:team5/screen/passwordpage_2.dart';
 
 class Passwordpage_1 extends StatefulWidget {
   const Passwordpage_1({super.key});
