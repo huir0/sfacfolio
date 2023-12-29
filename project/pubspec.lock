@@ -75,7 +75,6 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
-
   get:
     dependency: "direct main"
     description:
