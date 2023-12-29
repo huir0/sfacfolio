@@ -147,13 +147,12 @@ class _LoginPage2State extends State<LoginPage2> {
                                       color: Color(0xFF030303), fontSize: 14),
                                 ),
                                 if (_errortext2 != null)
-                                  Text(
-                                    _errortext2!,
-                                    style: TextStyle(
-                                      color: Colors.red,
-                                      fontSize: 12,
-                                    ),
-                                  ),
+                                  Text(_errortext2!,
+                                      // ignore: prefer_const_constructors
+                                      style: TextStyle(
+                                        color: Colors.red,
+                                        fontSize: 12,
+                                      )),
                               ],
                             ),
                             SizedBox(
