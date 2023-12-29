@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:getwidget/getwidget.dart';
+import 'package:team5/screen/user_controller.dart';
 import '/screen/welcome_screen.dart';
 
 class JoinPage extends StatefulWidget {
@@ -12,14 +14,8 @@ class JoinPage extends StatefulWidget {
 class _JoinPageMainState extends State<JoinPage> {
   String selectedText = '';
 
-  // FIXME: GetX 컨트롤러로 빼고, 수정해주기
-  final nameController = TextEditingController();
-  final nicknameController = TextEditingController();
-  final emailController = TextEditingController();
-  final passwordController = TextEditingController();
-  final confirmPasswordController = TextEditingController();
-  final mobileController = TextEditingController();
-
+  UserController userController = Get.find();
+  
   // TODO: 만들어두고 아직 제대로 활용 안했음
   final nameFocusnode = FocusNode();
   final nicknameFocusnode = FocusNode();
@@ -42,13 +38,6 @@ class _JoinPageMainState extends State<JoinPage> {
 
   @override
   void dispose() {
-    nameController.dispose();
-    nicknameController.dispose();
-    emailController.dispose();
-    passwordController.dispose();
-    confirmPasswordController.dispose();
-    mobileController.dispose();
-
     nameFocusnode.dispose();
     nicknameFocusnode.dispose();
     emailFocusnode.dispose();
@@ -63,11 +52,11 @@ class _JoinPageMainState extends State<JoinPage> {
   void initState() {
     super.initState();
 
-    mobileController.addListener(() {
+    userController.mobileController.addListener(() {
       setState(() {
         // 입력이 숫자로만 이루어진 11자리인 경우에만 버튼 활성화
-        isMobileButtonEnabled = mobileController.text.length == 11 &&
-            int.tryParse(mobileController.text) != null;
+        isMobileButtonEnabled = userController.mobileController.text.length == 11 &&
+            int.tryParse(userController.mobileController.text) != null;
       });
     });
   }
@@ -117,7 +106,7 @@ class _JoinPageMainState extends State<JoinPage> {
                   margin: const EdgeInsets.only(top: 10, bottom: 24),
                   width: double.infinity,
                   child: TextFormField(
-                    controller: nameController,
+                    controller: userController.nameController,
                     focusNode: nameFocusnode,
                     autovalidateMode: AutovalidateMode.onUserInteraction,
                     validator: (value) {
@@ -162,7 +151,7 @@ class _JoinPageMainState extends State<JoinPage> {
                   margin: const EdgeInsets.only(top: 10, bottom: 24),
                   width: double.infinity,
                   child: TextFormField(
-                    controller: nicknameController,
+                    controller: userController.nicknameController,
                     focusNode: nicknameFocusnode,
                     autovalidateMode: AutovalidateMode.onUserInteraction,
                     validator: (value) {
@@ -206,7 +195,7 @@ class _JoinPageMainState extends State<JoinPage> {
                   margin: const EdgeInsets.only(top: 10, bottom: 24),
                   width: double.infinity,
                   child: TextFormField(
-                    controller: emailController,
+                    controller: userController.emailController,
                     focusNode: emailFocusnode,
                     autovalidateMode: AutovalidateMode.onUserInteraction,
                     validator: (value) {
@@ -249,7 +238,7 @@ class _JoinPageMainState extends State<JoinPage> {
                   margin: const EdgeInsets.only(top: 10, bottom: 24),
                   width: double.infinity,
                   child: TextFormField(
-                    controller: passwordController,
+                    controller: userController.passwordController,
                     focusNode: passwordFocusnode,
                     autovalidateMode: AutovalidateMode.onUserInteraction,
                     validator: (value) {
@@ -292,7 +281,7 @@ class _JoinPageMainState extends State<JoinPage> {
                   margin: const EdgeInsets.only(top: 10, bottom: 24),
                   width: double.infinity,
                   child: TextFormField(
-                    controller: confirmPasswordController,
+                    controller: userController.confirmPasswordController,
                     focusNode: confirmPasswordFocusnode,
                     autovalidateMode: AutovalidateMode.onUserInteraction,
                     validator: (value) {
@@ -323,7 +312,7 @@ class _JoinPageMainState extends State<JoinPage> {
                         errorText: errorMessage.isEmpty ? null : errorMessage),
                     onChanged: (value) {
                       setState(() {
-                        if (value != passwordController.text) {
+                        if (value != userController.passwordController.text) {
                           errorMessage = '비밀번호가 일치하지 않습니다.';
                         } else {
                           errorMessage = '';
@@ -360,7 +349,7 @@ class _JoinPageMainState extends State<JoinPage> {
                   children: [
                     Expanded(
                       child: TextFormField(
-                        controller: mobileController,
+                        controller: userController.mobileController,
                         focusNode: mobileFocusnode,
                         cursorColor: textFormFieldFontColor,
                         keyboardType: TextInputType.number,
@@ -514,17 +503,14 @@ class _JoinPageMainState extends State<JoinPage> {
                 // 다음 버튼
                 ElevatedButton(
                   onPressed: (_selected.every((bool val) => val) &&
-                          !nameController.text.isEmpty &&
-                          !emailController.text.isEmpty &&
-                          !nicknameController.text.isEmpty &&
-                          !passwordController.text.isEmpty &&
-                          !confirmPasswordController.text.isEmpty &&
-                          !mobileController.text.isEmpty)
+                          userController.nameController.text.isNotEmpty &&
+                          userController.emailController.text.isNotEmpty &&
+                          userController.nicknameController.text.isNotEmpty &&
+                          userController.passwordController.text.isNotEmpty &&
+                          userController.confirmPasswordController.text.isNotEmpty &&
+                          userController.mobileController.text.isNotEmpty)
                       ? () {
-                          Navigator.pushReplacement(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => const WelcomePage()));
+                          Get.to(const WelcomePage());
                         }
                       : null,
                   style: ButtonStyle(
