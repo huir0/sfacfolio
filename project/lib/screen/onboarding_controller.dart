@@ -3,7 +3,11 @@ import 'package:get/get.dart';
 
 class OnBoardingController extends GetxController {
   RxString sex = ''.obs;
-  
+
+  Rx<Color> inputColor = Color(0xfff8f8f9).obs;
+  Rx<Color> textColor = Color(0xff999999).obs;
+  Rx<Color> borderColor = Color(0xfff8f8f9).obs;
+
   TextEditingController birthdayController = TextEditingController();
 
   String get formattedBirthday {
@@ -19,5 +23,11 @@ class OnBoardingController extends GetxController {
 
   void saveSex(String value) {
     sex.value = value;
+  }
+
+  void updateColor(Color newInputColor, Color newTextColor) {
+    inputColor.value = newInputColor;
+    textColor.value = newTextColor;
+    borderColor.value = newTextColor;
   }
 }

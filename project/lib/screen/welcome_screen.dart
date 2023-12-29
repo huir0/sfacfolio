@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import '/screen/onboarding_first_screen.dart';
 
 const partypopper = 'assets/images/Party_popper.png';
@@ -68,10 +69,7 @@ class WelcomePage extends StatelessWidget {
               ),
               ElevatedButton(
                 onPressed: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => OnBoardingFirstPage()));
+                  Get.to(() => OnBoardingFirstPage());
                 },
                 child: LayoutBuilder(
                   builder: (BuildContext context, BoxConstraints constraints) {
