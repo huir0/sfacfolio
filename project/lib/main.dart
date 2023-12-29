@@ -5,6 +5,7 @@ void main() {
   runApp(
     // const MyApp()
     MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Passwordpage_1(),
       theme: ThemeData(
         textTheme: TextTheme(
