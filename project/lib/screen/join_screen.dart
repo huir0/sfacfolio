@@ -11,6 +11,8 @@ class JoinPage extends StatefulWidget {
 
 class _JoinPageMainState extends State<JoinPage> {
   String selectedText = '';
+
+  // FIXME: GetX 컨트롤러로 빼고, 수정해주기
   final nameController = TextEditingController();
   final nicknameController = TextEditingController();
   final emailController = TextEditingController();
@@ -107,10 +109,8 @@ class _JoinPageMainState extends State<JoinPage> {
                   alignment: Alignment.centerLeft,
                   child: Text(
                     '이름',
-                    style: TextStyle(
-                        fontFamily: 'Pretendard',
-                        fontSize: 14,
-                        fontWeight: FontWeight.normal),
+                    style:
+                        TextStyle(fontSize: 14, fontWeight: FontWeight.normal),
                   ),
                 ),
                 Container(
@@ -119,6 +119,7 @@ class _JoinPageMainState extends State<JoinPage> {
                   child: TextFormField(
                     controller: nameController,
                     focusNode: nameFocusnode,
+                    autovalidateMode: AutovalidateMode.onUserInteraction,
                     validator: (value) {
                       if (value!.isEmpty) {
                         return '필수 입력 칸입니다.';
@@ -151,7 +152,11 @@ class _JoinPageMainState extends State<JoinPage> {
                 // 닉네임 입력 인풋창
                 const Align(
                   alignment: Alignment.centerLeft,
-                  child: Text('닉네임'),
+                  child: Text(
+                    '닉네임',
+                    style:
+                        TextStyle(fontSize: 14, fontWeight: FontWeight.normal),
+                  ),
                 ),
                 Container(
                   margin: const EdgeInsets.only(top: 10, bottom: 24),
@@ -159,6 +164,7 @@ class _JoinPageMainState extends State<JoinPage> {
                   child: TextFormField(
                     controller: nicknameController,
                     focusNode: nicknameFocusnode,
+                    autovalidateMode: AutovalidateMode.onUserInteraction,
                     validator: (value) {
                       if (value!.isEmpty) {
                         return '필수 입력 칸입니다.';
@@ -189,7 +195,11 @@ class _JoinPageMainState extends State<JoinPage> {
                 // 이메일 입력 인풋창
                 const Align(
                   alignment: Alignment.centerLeft,
-                  child: Text('이메일'),
+                  child: Text(
+                    '이메일',
+                    style:
+                        TextStyle(fontSize: 14, fontWeight: FontWeight.normal),
+                  ),
                 ),
 
                 Container(
@@ -198,6 +208,7 @@ class _JoinPageMainState extends State<JoinPage> {
                   child: TextFormField(
                     controller: emailController,
                     focusNode: emailFocusnode,
+                    autovalidateMode: AutovalidateMode.onUserInteraction,
                     validator: (value) {
                       if (value!.isEmpty) {
                         return '필수 입력 칸입니다.';
@@ -228,7 +239,11 @@ class _JoinPageMainState extends State<JoinPage> {
                 // 비밀번호 입력 인풋창
                 const Align(
                   alignment: Alignment.centerLeft,
-                  child: Text('비밀번호'),
+                  child: Text(
+                    '비밀번호',
+                    style:
+                        TextStyle(fontSize: 14, fontWeight: FontWeight.normal),
+                  ),
                 ),
                 Container(
                   margin: const EdgeInsets.only(top: 10, bottom: 24),
@@ -236,6 +251,7 @@ class _JoinPageMainState extends State<JoinPage> {
                   child: TextFormField(
                     controller: passwordController,
                     focusNode: passwordFocusnode,
+                    autovalidateMode: AutovalidateMode.onUserInteraction,
                     validator: (value) {
                       if (value!.isEmpty) {
                         return '필수 입력 칸입니다.';
@@ -266,7 +282,11 @@ class _JoinPageMainState extends State<JoinPage> {
                 // 비밀번호 확인 입력 인풋창
                 const Align(
                   alignment: Alignment.centerLeft,
-                  child: Text('비밀번호 확인'),
+                  child: Text(
+                    '비밀번호 확인',
+                    style:
+                        TextStyle(fontSize: 14, fontWeight: FontWeight.normal),
+                  ),
                 ),
                 Container(
                   margin: const EdgeInsets.only(top: 10, bottom: 24),
@@ -274,6 +294,7 @@ class _JoinPageMainState extends State<JoinPage> {
                   child: TextFormField(
                     controller: confirmPasswordController,
                     focusNode: confirmPasswordFocusnode,
+                    autovalidateMode: AutovalidateMode.onUserInteraction,
                     validator: (value) {
                       if (value!.isEmpty) {
                         return '필수 입력 칸입니다.';
@@ -315,7 +336,11 @@ class _JoinPageMainState extends State<JoinPage> {
                 // 휴대폰 인증 - 통신사 선택
                 const Align(
                   alignment: Alignment.centerLeft,
-                  child: Text('휴대폰 인증'),
+                  child: Text(
+                    '휴대폰 인증',
+                    style:
+                        TextStyle(fontSize: 14, fontWeight: FontWeight.normal),
+                  ),
                 ),
                 const SizedBox(
                   height: 10,
@@ -337,12 +362,6 @@ class _JoinPageMainState extends State<JoinPage> {
                       child: TextFormField(
                         controller: mobileController,
                         focusNode: mobileFocusnode,
-                        validator: (value) {
-                          if (value!.isEmpty) {
-                            return '필수 입력 칸입니다.';
-                          }
-                          return null;
-                        },
                         cursorColor: textFormFieldFontColor,
                         keyboardType: TextInputType.number,
                         decoration: InputDecoration(
@@ -395,6 +414,13 @@ class _JoinPageMainState extends State<JoinPage> {
                   width: double.infinity,
                   child: TextFormField(
                     cursorColor: textFormFieldFontColor,
+                    autovalidateMode: AutovalidateMode.onUserInteraction,
+                    validator: (value) {
+                      if (value!.isEmpty) {
+                        return '필수 입력 칸입니다.';
+                      }
+                      return null;
+                    },
                     decoration: InputDecoration(
                       filled: true,
                       fillColor: textFormFieldColor,
