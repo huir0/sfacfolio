@@ -13,6 +13,7 @@ TextEditingController _passwordController = TextEditingController();
 class _LoginPage2State extends State<LoginPage2> {
   String? _errortext;
   String? _errortext2;
+  bool _obscureText = true;
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -56,7 +57,7 @@ class _LoginPage2State extends State<LoginPage2> {
                           ),
                           Container(
                             width: 328,
-                            height: 48,
+                            height: 54,
                             child: TextField(
                               keyboardType: TextInputType.emailAddress,
                               controller: _emailController,
@@ -73,7 +74,6 @@ class _LoginPage2State extends State<LoginPage2> {
                                   }
                                 });
                               },
-                              maxLines: 1,
                               onSubmitted: (value) {
                                 // 이메일 필드로 포커스 이동
                                 FocusScope.of(context).nextFocus();
@@ -88,13 +88,8 @@ class _LoginPage2State extends State<LoginPage2> {
                                 hintStyle: const TextStyle(
                                     fontSize: 16, color: Color(0xFF999999)),
                                 border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(10.0),
-                                  borderSide: BorderSide(
-                                    color: _errortext2 != null
-                                        ? Colors.red
-                                        : Colors.transparent,
-                                  ),
-                                ),
+                                    borderRadius: BorderRadius.circular(5.0),
+                                    borderSide: BorderSide.none),
                               ),
                             ),
                           ),
@@ -118,7 +113,7 @@ class _LoginPage2State extends State<LoginPage2> {
                           ),
                           Container(
                             width: 328,
-                            height: 48,
+                            height: 54,
                             child: TextField(
                               enabled: _errortext != null,
                               controller: _passwordController,
@@ -132,7 +127,20 @@ class _LoginPage2State extends State<LoginPage2> {
                                 });
                               },
                               maxLines: 1,
+                              obscureText: _obscureText,
                               decoration: InputDecoration(
+                                suffixIcon: GestureDetector(
+                                  onTap: () {
+                                    setState(() {
+                                      _obscureText = !_obscureText; // 상태 토글
+                                    });
+                                  },
+                                  child: Icon(
+                                    _obscureText
+                                        ? Icons.visibility
+                                        : Icons.visibility_off,
+                                  ),
+                                ),
                                 errorText: _errortext2,
                                 hintText: '6자 이상의 비밀번호',
                                 filled: true,
@@ -142,12 +150,8 @@ class _LoginPage2State extends State<LoginPage2> {
                                 hintStyle: const TextStyle(
                                     fontSize: 16, color: Color(0xFF999999)),
                                 border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(10.0),
-                                  borderSide: BorderSide(
-                                    color: _errortext2 != null
-                                        ? Colors.red
-                                        : Colors.transparent,
-                                  ),
+                                  borderRadius: BorderRadius.circular(5.0),
+                                  borderSide: BorderSide.none,
                                 ),
                               ),
                             ),
