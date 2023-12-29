@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:get/get.dart';
 
 class Passwordpage_2 extends StatefulWidget {
   const Passwordpage_2({super.key});
@@ -270,7 +271,7 @@ class PasswordPage_2 extends State<Passwordpage_2> {
                   ),
                   onPressed: () {
                     if (input_1 && input_2) {
-                      // Navigator.of(context).push(MaterialPageRoute(builder: (context) => Passwordpage_2()));
+                      // Get.to();
                     }
                   },
                   child: Center(
@@ -280,7 +281,7 @@ class PasswordPage_2 extends State<Passwordpage_2> {
                     ),
                   ),
                 ),
-              )
+              ),
             ],
           ),
         ),
