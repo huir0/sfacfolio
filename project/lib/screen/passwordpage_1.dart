@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:get/get.dart';
 import 'package:team5/screen/passwordpage_2.dart';
+// import 'package:get/get.dart';
 
 class Passwordpage_1 extends StatefulWidget {
   const Passwordpage_1({super.key});
@@ -28,11 +30,6 @@ class PasswordPage_1 extends State<Passwordpage_1> {
   }
 
   bool Next_Check(List<bool> boollist) {
-    print('----------------------------------');
-    for (bool elem in boollist) {
-      print(elem);
-    }
-    print('----------------------------------');
     return boollist.every((element) => element == true);
   }
 
@@ -418,8 +415,7 @@ class PasswordPage_1 extends State<Passwordpage_1> {
                   ),
                   onPressed: () {
                     if (next_result) {
-                      Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => Passwordpage_2()));
+                      Get.to(Passwordpage_2());
                     }
                   },
                   child: Center(
