@@ -4,4 +4,5 @@ import 'package:project/loginscreen/SplashPage.dart';
 
 void main() {
   runApp(LoginPage2());
+
 }
