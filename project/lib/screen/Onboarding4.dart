@@ -10,6 +10,12 @@ class Onboarding4 extends StatefulWidget {
 }
 
 class _Onboarding4State extends State<Onboarding4> {
+  bool _isPressed1 = false;
+  bool _isPressed2 = false;
+  bool _isPressed3 = false;
+  bool _isPressed4 = false;
+  bool _isPressed5 = false;
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -73,9 +79,9 @@ class _Onboarding4State extends State<Onboarding4> {
                       child: Text(
                         '스팩폴리오를 통해 무엇을',
                         style: TextStyle(
-                            color: Color(0xFF000000),
+                            color: Colors.black,
                             fontSize: 20,
-                            fontWeight: FontWeight.bold),
+                            fontWeight: FontWeight.w700),
                       ),
                     ),
                     Container(
@@ -85,9 +91,9 @@ class _Onboarding4State extends State<Onboarding4> {
                       child: Text(
                         '얻고 싶으신가요?',
                         style: TextStyle(
-                            color: Color(0xFF000000),
+                            color: Colors.black,
                             fontSize: 20,
-                            fontWeight: FontWeight.bold),
+                            fontWeight: FontWeight.w700),
                       ),
                     ),
                     Container(
@@ -98,124 +104,280 @@ class _Onboarding4State extends State<Onboarding4> {
                         '가장 원하는 세 가지를 선택해주세요',
                         textAlign: TextAlign.center,
                         style: TextStyle(
-                            fontSize: 12,
-                            fontWeight: FontWeight.normal,
-                            color: Color(0xFF000000)),
+                          fontSize: 12,
+                          fontWeight: FontWeight.w400,
+                          color: Colors.black,
+                        ),
                       ),
+                    ),
+                    SizedBox(
+                      height: 10,
                     ),
                     Container(
                       width: 328,
-                      height: 64,
-                      margin: EdgeInsets.only(top: 16, left: 30),
-                      child: ElevatedButton(
-                        onPressed: () {},
-                        style: ElevatedButton.styleFrom(
-                          padding: EdgeInsets.zero,
-                          backgroundColor: Color(0xFFF5F8FF),
-                          shape: RoundedRectangleBorder(
-                              side: BorderSide(
-                                  width: 1, color: Color(0xFF0059FF)),
-                              borderRadius: BorderRadius.circular(10)),
-                        ),
-                        child: Container(
-                          margin: EdgeInsets.only(right: 150),
-                          child: Text(
-                            '포트폴리오 공유하기',
-                            style: TextStyle(
-                                color: Color(0xFF020202),
-                                fontSize: 16,
-                                fontWeight: FontWeight.w600),
-                          ),
-                        ),
+                      height: 368,
+                      child: SingleChildScrollView(
+                        child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Container(
+                                width: 328,
+                                height: 64,
+                                child: ElevatedButton(
+                                  onPressed: () {
+                                    setState(() {
+                                      _isPressed1 = !_isPressed1;
+                                    });
+                                  },
+                                  style: ElevatedButton.styleFrom(
+                                    padding: EdgeInsets.zero,
+                                    primary: _isPressed1
+                                        ? Color(0xFFF5F8FF)
+                                        : Color(0xFFF8F8F9),
+                                    shape: RoundedRectangleBorder(
+                                      side: BorderSide(
+                                        width: 1,
+                                        color: _isPressed1
+                                            ? Color(0xFF0059FF)
+                                            : Colors.transparent,
+                                      ),
+                                      borderRadius: BorderRadius.circular(10),
+                                    ),
+                                  ),
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Padding(
+                                        padding: EdgeInsets.only(left: 20),
+                                        child: Text(
+                                          '포트폴리오 공유하기',
+                                          style: TextStyle(
+                                              color: _isPressed1
+                                                  ? Color(0xFF0059FF)
+                                                  : Color(0xFF999999),
+                                              fontSize: 16,
+                                              fontWeight: FontWeight.w600),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                              SizedBox(
+                                height: 10,
+                              ),
+                              Container(
+                                width: 328,
+                                height: 64,
+                                child: ElevatedButton(
+                                  onPressed: () {
+                                    setState(() {
+                                      _isPressed2 = !_isPressed2;
+                                    });
+                                  },
+                                  style: ElevatedButton.styleFrom(
+                                    padding: EdgeInsets.zero,
+                                    primary: _isPressed2
+                                        ? Color(0xFFF5F8FF)
+                                        : Color(0xFFF8F8F9),
+                                    shape: RoundedRectangleBorder(
+                                      side: BorderSide(
+                                        width: 1,
+                                        color: _isPressed2
+                                            ? Color(0xFF0059FF)
+                                            : Colors.transparent,
+                                      ),
+                                      borderRadius: BorderRadius.circular(10),
+                                    ),
+                                  ),
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Padding(
+                                        padding: EdgeInsets.only(left: 20),
+                                        child: Text(
+                                          '포트폴리오 탐색하기',
+                                          style: TextStyle(
+                                              color: _isPressed2
+                                                  ? Color(0xFF0059FF)
+                                                  : Color(0xFF999999),
+                                              fontSize: 16,
+                                              fontWeight: FontWeight.w600),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                              SizedBox(
+                                height: 10,
+                              ),
+                              Container(
+                                width: 328,
+                                height: 64,
+                                child: ElevatedButton(
+                                  onPressed: () {
+                                    setState(() {
+                                      _isPressed3 = !_isPressed3;
+                                    });
+                                  },
+                                  style: ElevatedButton.styleFrom(
+                                    padding: EdgeInsets.zero,
+                                    primary: _isPressed3
+                                        ? Color(0xFFF5F8FF)
+                                        : Color(0xFFF8F8F9),
+                                    shape: RoundedRectangleBorder(
+                                      side: BorderSide(
+                                        width: 1,
+                                        color: _isPressed3
+                                            ? Color(0xFF0059FF)
+                                            : Colors.transparent,
+                                      ),
+                                      borderRadius: BorderRadius.circular(10),
+                                    ),
+                                  ),
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Padding(
+                                        padding: EdgeInsets.only(left: 20),
+                                        child: Text(
+                                          '프로젝트나 스터디 탐색 및 팀원 구하기',
+                                          style: TextStyle(
+                                              color: _isPressed3
+                                                  ? Color(0xFF0059FF)
+                                                  : Color(0xFF999999),
+                                              fontSize: 16,
+                                              fontWeight: FontWeight.w600),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                              SizedBox(
+                                height: 10,
+                              ),
+                              Container(
+                                width: 328,
+                                height: 64,
+                                child: ElevatedButton(
+                                  onPressed: () {
+                                    setState(() {
+                                      _isPressed4 = !_isPressed4;
+                                    });
+                                  },
+                                  style: ElevatedButton.styleFrom(
+                                    padding: EdgeInsets.zero,
+                                    primary: _isPressed4
+                                        ? Color(0xFFF5F8FF)
+                                        : Color(0xFFF8F8F9),
+                                    shape: RoundedRectangleBorder(
+                                      side: BorderSide(
+                                        width: 1,
+                                        color: _isPressed4
+                                            ? Color(0xFF0059FF)
+                                            : Colors.transparent,
+                                      ),
+                                      borderRadius: BorderRadius.circular(10),
+                                    ),
+                                  ),
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Padding(
+                                        padding: EdgeInsets.only(left: 20),
+                                        child: Text(
+                                          '커뮤니티 활동으로 정보 공유하기',
+                                          style: TextStyle(
+                                              color: _isPressed4
+                                                  ? Color(0xFF0059FF)
+                                                  : Color(0xFF999999),
+                                              fontSize: 16,
+                                              fontWeight: FontWeight.w600),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                              SizedBox(
+                                height: 10,
+                              ),
+                              Container(
+                                width: 328,
+                                height: 64,
+                                child: ElevatedButton(
+                                  onPressed: () {
+                                    setState(() {
+                                      _isPressed5 = !_isPressed5;
+                                    });
+                                  },
+                                  style: ElevatedButton.styleFrom(
+                                    padding: EdgeInsets.zero,
+                                    primary: _isPressed5
+                                        ? Color(0xFFF5F8FF)
+                                        : Color(0xFFF8F8F9),
+                                    shape: RoundedRectangleBorder(
+                                      side: BorderSide(
+                                        width: 1,
+                                        color: _isPressed5
+                                            ? Color(0xFF0059FF)
+                                            : Colors.transparent,
+                                      ),
+                                      borderRadius: BorderRadius.circular(10),
+                                    ),
+                                  ),
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Padding(
+                                        padding: EdgeInsets.only(left: 20),
+                                        child: Text(
+                                          '채용 정보 탐색하기',
+                                          style: TextStyle(
+                                              color: _isPressed5
+                                                  ? Color(0xFF0059FF)
+                                                  : Color(0xFF999999),
+                                              fontSize: 16,
+                                              fontWeight: FontWeight.w600),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                              SizedBox(
+                                height: 10,
+                              ),
+                            ]),
                       ),
                     ),
-                    Container(
-                      width: 328,
-                      height: 64,
-                      margin: EdgeInsets.only(top: 16, left: 30),
-                      child: ElevatedButton(
-                        onPressed: () {},
-                        style: ElevatedButton.styleFrom(
-                          padding: EdgeInsets.zero,
-                          backgroundColor: Color(0xFFF8F8F9),
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(10)),
-                        ),
-                        child: Container(
-                          margin: EdgeInsets.only(right: 30),
-                          child: Text(
-                            '프로젝트나 스터디 탐색 및 팀원 구하기',
-                            style: TextStyle(
-                                color: Color(0xFF999999),
-                                fontSize: 16,
-                                fontWeight: FontWeight.w600),
-                          ),
-                        ),
-                      ),
+                    SizedBox(
+                      height: 30,
                     ),
                     Container(
-                      width: 328,
-                      height: 64,
-                      margin: EdgeInsets.only(top: 16, left: 30),
-                      child: ElevatedButton(
-                        onPressed: () {},
-                        style: ElevatedButton.styleFrom(
-                          padding: EdgeInsets.zero,
-                          backgroundColor: Color(0xFFF8F8F9),
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(10)),
-                        ),
-                        child: Container(
-                          margin: EdgeInsets.only(right: 60),
-                          child: Text(
-                            '커뮤니티 활동으로 정보 공유하기',
-                            style: TextStyle(
-                                color: Color(0xFF999999),
-                                fontSize: 16,
-                                fontWeight: FontWeight.w600),
-                          ),
-                        ),
-                      ),
-                    ),
-                    Container(
-                      width: 328,
-                      height: 64,
-                      margin: EdgeInsets.only(top: 16, left: 30),
-                      child: ElevatedButton(
-                        onPressed: () {},
-                        style: ElevatedButton.styleFrom(
-                          padding: EdgeInsets.zero,
-                          backgroundColor: Color(0xFFF8F8F9),
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(10)),
-                        ),
-                        child: Container(
-                          margin: EdgeInsets.only(right: 140),
-                          child: Text(
-                            '채용 정보 탐색하기',
-                            style: TextStyle(
-                                color: Color(0xFF999999),
-                                fontSize: 16,
-                                fontWeight: FontWeight.w600),
-                          ),
-                        ),
-                      ),
-                    ),
-                    SizedBox(height: 60),
-                    Container(
-                      margin: EdgeInsets.only(top: 16, left: 30),
-                      height: 14,
                       child: Text(
                         '나중에 변경할 수 있어요 편하게 입력해 주세요',
-                        style:
-                            TextStyle(color: Color(0xFF666666), fontSize: 12),
+                        style: TextStyle(
+                            color: Color(0xFF666666),
+                            fontSize: 12,
+                            fontWeight: FontWeight.w400),
                       ),
                     ),
-
+                    SizedBox(
+                      height: 10,
+                    ),
                     Container(
                       width: 328,
                       height: 48,
-                      margin: EdgeInsets.only(top: 16, left: 30),
                       child: ElevatedButton(
                         style: ElevatedButton.styleFrom(
                           padding: EdgeInsets.zero,
@@ -233,29 +395,6 @@ class _Onboarding4State extends State<Onboarding4> {
                         ),
                       ),
                     ),
-                    // Container(
-                    //   width: 328,
-                    //   height: 48,
-                    //   child: ElevatedButton(
-                    //     onPressed: () {},
-                    //     style: ElevatedButton.styleFrom(
-                    //       padding: EdgeInsets.zero,
-                    //       backgroundColor: Color(0xFFF8F8F9),
-                    //       shape: RoundedRectangleBorder(
-                    //           borderRadius: BorderRadius.circular(10)),
-                    //     ),
-                    //     child: Container(
-                    //       margin: EdgeInsets.only(right: 140),
-                    //       child: Text(
-                    //         '완료',
-                    //         style: TextStyle(
-                    //             color: Color(0xFF999999),
-                    //             fontSize: 16,
-                    //             fontWeight: FontWeight.w600),
-                    //       ),
-                    //     ),
-                    //   ),
-                    // ),
                   ],
                 ),
               ),
