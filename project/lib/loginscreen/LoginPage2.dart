@@ -9,6 +9,7 @@ class LoginPage2 extends StatefulWidget {
 
 TextEditingController _emailController = TextEditingController();
 TextEditingController _passwordController = TextEditingController();
+FocusNode _passwordFocusNode = FocusNode(); // 새로운 FocusNode 생성
 
 class _LoginPage2State extends State<LoginPage2> {
   String? _errortext;
@@ -23,12 +24,10 @@ class _LoginPage2State extends State<LoginPage2> {
           child: SafeArea(
             child: Column(children: [
               Container(
-                width: 360,
-                height: 740,
                 padding: EdgeInsets.fromLTRB(
-                  40,
-                  60,
-                  10,
+                  16,
+                  100,
+                  16,
                   10,
                 ),
                 child: Column(
@@ -41,11 +40,11 @@ class _LoginPage2State extends State<LoginPage2> {
                       ),
                     ),
                     SizedBox(
-                      height: 40,
+                      height: 60,
                     ),
                     Container(
                       width: 328,
-                      height: 90,
+                      height: 74,
                       child: SingleChildScrollView(
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -59,6 +58,7 @@ class _LoginPage2State extends State<LoginPage2> {
                                   style: TextStyle(
                                     color: Color(0xFF030303),
                                     fontSize: 14,
+                                    fontFamily: 'Pretendard',
                                   ),
                                 ),
                                 if (_errortext != null)
@@ -75,12 +75,10 @@ class _LoginPage2State extends State<LoginPage2> {
 
                             Container(
                               width: 328,
-                              height: 54, // 높이를 40으로 변경
+                              height: 48, // 높이를 40으로 변경
                               child: Stack(
                                 children: [
                                   TextField(
-                                    keyboardType: TextInputType.emailAddress,
-                                    controller: _emailController,
                                     onChanged: (value) {
                                       setState(() {
                                         final emailPattern = RegExp(
@@ -93,9 +91,11 @@ class _LoginPage2State extends State<LoginPage2> {
                                         }
                                       });
                                     },
-                                    onSubmitted: (value) {
-                                      // 이메일 필드로 포커스 이동
-                                      FocusScope.of(context).nextFocus();
+                                    onEditingComplete: () {
+                                      if (_errortext == null) {
+                                        FocusScope.of(context)
+                                            .requestFocus(_passwordFocusNode);
+                                      }
                                     },
                                     style: TextStyle(
                                       color: _errortext != null
@@ -132,7 +132,7 @@ class _LoginPage2State extends State<LoginPage2> {
                     ),
                     Container(
                       width: 328,
-                      height: 90,
+                      height: 74,
                       child: SingleChildScrollView(
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -147,13 +147,12 @@ class _LoginPage2State extends State<LoginPage2> {
                                       color: Color(0xFF030303), fontSize: 14),
                                 ),
                                 if (_errortext2 != null)
-                                  Text(
-                                    _errortext2!,
-                                    style: TextStyle(
-                                      color: Colors.red,
-                                      fontSize: 12,
-                                    ),
-                                  ),
+                                  Text(_errortext2!,
+                                      // ignore: prefer_const_constructors
+                                      style: TextStyle(
+                                        color: Colors.red,
+                                        fontSize: 12,
+                                      )),
                               ],
                             ),
                             SizedBox(
@@ -161,12 +160,14 @@ class _LoginPage2State extends State<LoginPage2> {
                             ),
                             Container(
                               width: 328,
-                              height: 80,
+                              height: 48,
                               child: Stack(
                                 children: [
                                   TextField(
-                                    enabled: _errortext != null,
+                                    enabled: _errortext = null,
                                     controller: _passwordController,
+                                    focusNode:
+                                        _passwordFocusNode, // FocusNode 연결
                                     onChanged: (value) {
                                       setState(() {
                                         if (value.length < 6) {
@@ -235,10 +236,8 @@ class _LoginPage2State extends State<LoginPage2> {
                         ),
                       ),
                       child: Container(
-                        padding: EdgeInsets.only(
-                            top: 10.0, right: 50.0, bottom: 10.0, left: 50.0),
-                        width: 370.0,
-                        height: 56.0,
+                        width: 328.0,
+                        height: 48.0,
                         alignment: Alignment.center,
                         child: Text('로그인',
                             style: TextStyle(
@@ -251,7 +250,7 @@ class _LoginPage2State extends State<LoginPage2> {
                       ),
                     ),
                     SizedBox(
-                      height: 30,
+                      height: 20,
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -259,21 +258,40 @@ class _LoginPage2State extends State<LoginPage2> {
                         TextButton(
                           child: Text(
                             '회원가입',
-                            style: TextStyle(fontSize: 15, color: Colors.grey),
+                            style: TextStyle(
+                                fontSize: 14,
+                                color: Color(0xFF666666),
+                                fontWeight: FontWeight.w700),
                           ),
                           onPressed: () {},
+                        ),
+                        Container(
+                          width: 1,
+                          height: 20, // 원하는 높이로 조정하세요
+                          color: Color(0xFFE6E6E6),
                         ),
                         TextButton(
                           child: Text(
                             '아이디찾기',
-                            style: TextStyle(fontSize: 15, color: Colors.grey),
+                            style: TextStyle(
+                                fontSize: 14,
+                                color: Color(0xFF666666),
+                                fontWeight: FontWeight.w700),
                           ),
                           onPressed: () {},
+                        ),
+                        Container(
+                          width: 1,
+                          height: 20, // 원하는 높이로 조정하세요
+                          color: Color(0xFFE6E6E6),
                         ),
                         TextButton(
                           child: Text(
                             '비밀번호찾기',
-                            style: TextStyle(fontSize: 15, color: Colors.grey),
+                            style: TextStyle(
+                                fontSize: 14,
+                                color: Color(0xFF666666),
+                                fontWeight: FontWeight.w700),
                           ),
                           onPressed: () {},
                         )
@@ -283,15 +301,17 @@ class _LoginPage2State extends State<LoginPage2> {
                       height: 30,
                     ),
                     Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Container(
                           width: 120,
                           decoration: ShapeDecoration(
                             shape: RoundedRectangleBorder(
                                 side: BorderSide(
-                                    width: 1,
-                                    strokeAlign: BorderSide.strokeAlignCenter,
-                                    color: Colors.grey)),
+                              width: 1,
+                              strokeAlign: BorderSide.strokeAlignCenter,
+                              color: Color(0xFFE6E6E6),
+                            )),
                           ),
                         ),
                         SizedBox(
@@ -301,7 +321,8 @@ class _LoginPage2State extends State<LoginPage2> {
                           child: Text(
                             '또는',
                             style: TextStyle(
-                              color: Color(0xFF6E6E6E),
+                              color: Color(0xFFB3B3B3),
+                              fontSize: 10,
                             ),
                           ),
                         ),
@@ -313,9 +334,10 @@ class _LoginPage2State extends State<LoginPage2> {
                           decoration: ShapeDecoration(
                             shape: RoundedRectangleBorder(
                                 side: BorderSide(
-                                    width: 1,
-                                    strokeAlign: BorderSide.strokeAlignCenter,
-                                    color: Colors.grey)),
+                              width: 1,
+                              strokeAlign: BorderSide.strokeAlignCenter,
+                              color: Color(0xFFE6E6E6),
+                            )),
                           ),
                         ),
                       ],
