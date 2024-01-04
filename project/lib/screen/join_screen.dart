@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:getwidget/getwidget.dart';
-import 'package:team5/screen/user_controller.dart';
+import '../database/data_controller.dart';
+import '../screen/user_controller.dart';
 import '/screen/welcome_screen.dart';
 
 class JoinPage extends StatefulWidget {
@@ -13,9 +14,10 @@ class JoinPage extends StatefulWidget {
 
 class _JoinPageMainState extends State<JoinPage> {
   String selectedText = '';
+  Data_Control data_control = Data_Control(); // HJ
 
   UserController userController = Get.find();
-  
+
   // TODO: 만들어두고 아직 제대로 활용 안했음
   final nameFocusnode = FocusNode();
   final nicknameFocusnode = FocusNode();
@@ -55,8 +57,9 @@ class _JoinPageMainState extends State<JoinPage> {
     userController.mobileController.addListener(() {
       setState(() {
         // 입력이 숫자로만 이루어진 11자리인 경우에만 버튼 활성화
-        isMobileButtonEnabled = userController.mobileController.text.length == 11 &&
-            int.tryParse(userController.mobileController.text) != null;
+        isMobileButtonEnabled =
+            userController.mobileController.text.length == 11 &&
+                int.tryParse(userController.mobileController.text) != null;
       });
     });
   }
@@ -507,10 +510,25 @@ class _JoinPageMainState extends State<JoinPage> {
                           userController.emailController.text.isNotEmpty &&
                           userController.nicknameController.text.isNotEmpty &&
                           userController.passwordController.text.isNotEmpty &&
-                          userController.confirmPasswordController.text.isNotEmpty &&
+                          userController
+                              .confirmPasswordController.text.isNotEmpty &&
                           userController.mobileController.text.isNotEmpty)
-                      ? () {
-                          Get.to(const WelcomePage());
+
+                      // 기존 코드
+                      // ? () {
+                      // Get.to(const WelcomePage());
+                      // HJ 코드 ------------->
+                      ? () async {
+                          Future<bool> join_success = data_control.join_input(
+                              userController.nameController.text,
+                              userController.nicknameController.text,
+                              userController.emailController.text,
+                              userController.passwordController.text,
+                              userController.mobileController.text);
+                          if (await join_success) {
+                            Get.to(const WelcomePage());
+                          }
+                          // <------------
                         }
                       : null,
                   style: ButtonStyle(

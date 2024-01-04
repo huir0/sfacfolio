@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import '/database/data_controller.dart';
 
 class Passwordpage_2 extends StatefulWidget {
-  const Passwordpage_2({super.key});
+  final String document_id;
+  const Passwordpage_2(this.document_id);
 
   @override
   PasswordPage_2 createState() => PasswordPage_2();
 }
 
 class PasswordPage_2 extends State<Passwordpage_2> {
+  Data_Control data_control = Data_Control();
   late String new_pass;
   String message_1 = '';
   String message_2 = '';
@@ -17,11 +20,12 @@ class PasswordPage_2 extends State<Passwordpage_2> {
   Color back_color_2 = Colors.white;
   Color message_color_1 = Colors.white;
   Color message_color_2 = Colors.white;
-  Color next_button_back = Colors.white;
-  Color next_button_text = Colors.white;
+  Color next_button_back = Color(0xFFF3F3F3);
+  Color next_button_text = Color(0xFF999999);
   bool input_1 = false;
   bool input_2 = false;
   TextEditingController input_check = TextEditingController();
+  TextEditingController input_pass = TextEditingController();
 
   @override
   void initState() {
@@ -157,6 +161,7 @@ class PasswordPage_2 extends State<Passwordpage_2> {
                           });
                         },
                         maxLines: 1,
+                        controller: input_pass,
                         style: TextStyle(color: message_color_1),
                         decoration: InputDecoration(
                           hintText: '새 비밀번호',
@@ -196,7 +201,7 @@ class PasswordPage_2 extends State<Passwordpage_2> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          '새 비밀번호',
+                          '새 비밀번호 확인',
                           style:
                               TextStyle(color: Color(0xFF030303), fontSize: 14),
                         ),
@@ -269,8 +274,13 @@ class PasswordPage_2 extends State<Passwordpage_2> {
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(8)),
                   ),
-                  onPressed: () {
+                  onPressed: () async {
                     if (input_1 && input_2) {
+                      bool result = await data_control.change_password(
+                          widget.document_id, input_pass.text);
+                      if (result) {
+                        print('성공');
+                      }
                       // Get.to();
                     }
                   },

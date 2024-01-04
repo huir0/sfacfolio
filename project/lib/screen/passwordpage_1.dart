@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:team5/screen/passwordpage_2.dart';
+import '/database/data_controller.dart';
+import '/screen/passwordpage_2.dart';
 // import 'package:get/get.dart';
 
 class Passwordpage_1 extends StatefulWidget {
@@ -12,8 +13,13 @@ class Passwordpage_1 extends StatefulWidget {
 }
 
 class PasswordPage_1 extends State<Passwordpage_1> {
+  Data_Control data_control = Data_Control(); // HJ
   Map<String, Color> button_back_colors = {};
   Map<String, Color?> button_side_colors = {};
+  TextEditingController input_name = TextEditingController();
+  TextEditingController input_email = TextEditingController();
+  TextEditingController input_phone = TextEditingController();
+
   bool next_state_1 = false;
   bool next_state_2 = false;
   bool next_state_3 = false;
@@ -100,6 +106,7 @@ class PasswordPage_1 extends State<Passwordpage_1> {
                       width: 328,
                       height: 48,
                       child: TextField(
+                        controller: input_name,
                         maxLines: 1,
                         decoration: InputDecoration(
                           hintText: '이름',
@@ -135,6 +142,7 @@ class PasswordPage_1 extends State<Passwordpage_1> {
                       height: 48,
                       child: TextField(
                         maxLines: 1,
+                        controller: input_email,
                         decoration: InputDecoration(
                           hintText: '이메일 (아이디)',
                           filled: true,
@@ -302,6 +310,7 @@ class PasswordPage_1 extends State<Passwordpage_1> {
                         margin: EdgeInsets.only(right: 5),
                         child: TextField(
                           maxLines: 1,
+                          controller: input_phone,
                           onChanged: (text) {
                             setState(() {
                               if (text.length == 10 || text.length == 11) {
@@ -381,9 +390,6 @@ class PasswordPage_1 extends State<Passwordpage_1> {
                           next_state_3,
                           next_state_4
                         ]);
-                        print('---------------------------------');
-                        print(next_result);
-                        print('---------------------------------');
                       });
                     },
                     decoration: InputDecoration(
@@ -413,9 +419,14 @@ class PasswordPage_1 extends State<Passwordpage_1> {
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(8)),
                   ),
-                  onPressed: () {
+                  onPressed: () async {
                     if (next_result) {
-                      Get.to(Passwordpage_2());
+                      String document_id = await data_control.find_password(
+                          input_name.text, input_email.text, input_phone.text);
+                      print(document_id);
+                      if (document_id != '') {
+                        Get.to(Passwordpage_2(document_id));
+                      }
                     }
                   },
                   child: Center(
