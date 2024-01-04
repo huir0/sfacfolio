@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
 
-class AppBar extends StatelessWidget {
-  const AppBar({super.key});
+class CustomAppBarWidget extends StatefulWidget {
+  const CustomAppBarWidget({super.key});
 
+  @override
+  State<CustomAppBarWidget> createState() => _CustomAppBarWidgetState();
+}
+
+class _CustomAppBarWidgetState extends State<CustomAppBarWidget> {
   @override
   Widget build(BuildContext context) {
     return Container(
