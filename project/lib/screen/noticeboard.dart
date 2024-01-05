@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:team5/community/view/pagenumber/page_division.dart';
 import 'package:team5/database/data_controller.dart';
 import '../community/view/banner/community_banner.dart';
 // import '../community/view/appbar/AppBar.dart';
@@ -13,19 +14,24 @@ class Notice_board extends StatefulWidget {
 }
 
 class Notice_Board extends State<Notice_board> {
-  String drop_down_initial = '최신순';
   Data_Control data_control = Data_Control();
   Map<String, dynamic> docs = {};
   Map<String, dynamic> pop_docs = {};
   Map<String, Widget> pop_docs_panel = {};
   Map<String, Widget> docs_panel = {};
-  Map<String, Map<String, Widget>> sub_category = {};
+  Map<String, Widget> num_but = {};
   Map<int, Map<String, Widget>> division_panel = {};
+  Map<String, Map<String, Widget>> sub_category = {};
   List<String> big_image_urls = [];
   List<String> small_image_urls = [];
   int increase_num = 0;
   int page_num = 1;
   bool page_load = false;
+  Map<String, Color> num_active = {};
+  String drop_down_initial = '최신순';
+  // final drop_down_list = ['최신순', '저장순', '댓글순'];
+  Map<String, bool> drop_down_list = {'최신순': true, '저장순': false, '댓글순': false};
+  Map<String, PopupMenuItem<String>> drop_down_item = {};
 
   @override
   void initState() {
@@ -36,7 +42,7 @@ class Notice_Board extends State<Notice_board> {
   void init_page() async {
     await get_data();
     bulid_post_panel();
-    page_division();
+    popup_items();
     setState(() {
       page_load = true;
     });
@@ -44,8 +50,7 @@ class Notice_Board extends State<Notice_board> {
 
   Future<void> get_data() async {
     pop_docs = {};
-    docs = await data_control.get_post();
-    print('데이터 획득 : $docs');
+    docs = await data_control.get_post('Notice');
     docs.forEach((key, value) {
       if (value['like'] >= 1) {
         pop_docs[key] = value;
@@ -57,9 +62,7 @@ class Notice_Board extends State<Notice_board> {
       String url_2 =
           await data_control.get_image('Notice/Profile_Small ($i).png');
       big_image_urls.add(url_1);
-      print('이미지 획득 : $big_image_urls');
       small_image_urls.add(url_2);
-      print('이미지 획득 : $small_image_urls');
     }
   }
 
@@ -90,7 +93,6 @@ class Notice_Board extends State<Notice_board> {
         )),
       );
     }
-    print('서브 카테고리 ${sub_category}');
   }
 
   void bulid_post_panel() {
@@ -100,7 +102,6 @@ class Notice_Board extends State<Notice_board> {
       } else {
         increase_num = 0;
       }
-      print('아이디 $pop_id');
       sub_cate_panel(pop_id, pop_docs[pop_id]['sub_category']);
       pop_docs_panel[pop_id] = Container(
         width: 152,
@@ -112,7 +113,6 @@ class Notice_Board extends State<Notice_board> {
               left: 0,
               top: 12,
               child: Container(
-                alignment: Alignment.bottomCenter,
                 width: 152,
                 height: 156,
                 decoration: BoxDecoration(
@@ -121,93 +121,97 @@ class Notice_Board extends State<Notice_board> {
                 ),
               ),
             ),
-            Container(
-              padding: EdgeInsets.only(left: 12, bottom: 13),
-              child: Column(
-                children: [
-                  Container(
-                    width: 132,
-                    height: 40,
-                    padding: EdgeInsets.only(right: 8),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      crossAxisAlignment: CrossAxisAlignment.end,
-                      children: [
-                        Container(
-                          width: 40,
-                          height: 40,
-                          child: Image.network(big_image_urls[increase_num]),
-                        ),
-                        Container(
-                          width:
-                              pop_docs[pop_id]['main_category'].length * 6.0 +
-                                  16.0,
-                          height: 20,
-                          decoration: BoxDecoration(
-                            color: Color(0xFFE5EEFF),
-                            borderRadius: BorderRadius.circular(100),
-                          ),
-                          child: Center(
-                            child: Text(
-                              pop_docs[pop_id]['main_category'],
-                              style: TextStyle(
-                                color: Color(0xFF0059FF),
-                                fontSize: 10,
-                                fontWeight: FontWeight.w400,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
+            Positioned(
+              left: 12,
+              top: 0,
+              child: Container(
+                width: 40,
+                height: 40,
+                child: Image.network(big_image_urls[increase_num]),
+              ),
+            ),
+            Positioned(
+              left: 12,
+              top: 46,
+              child: GestureDetector(
+                onTap: () {},
+                child: Container(
+                  width: 128,
+                  height: 42,
+                  margin: EdgeInsets.only(top: 8.0),
+                  padding: EdgeInsets.zero,
+                  child: Text(
+                    pop_docs[pop_id]['title'],
+                    textAlign: TextAlign.start,
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 14,
+                      fontWeight: FontWeight.w700,
+                      height: 0.11,
                     ),
                   ),
-                  Container(
-                    width: 128,
-                    height: 42,
-                    margin: EdgeInsets.only(top: 8),
-                    padding: EdgeInsets.zero,
-                    child: Text(
-                      pop_docs[pop_id]['title'],
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 14,
-                        fontWeight: FontWeight.w700,
-                        height: 0.11,
-                      ),
+                ),
+              ),
+            ),
+            Positioned(
+              left: 12,
+              top: 94,
+              child: Container(
+                width: 128,
+                height: 30,
+                margin: EdgeInsets.only(top: 4),
+                padding: EdgeInsets.zero,
+                child: Text(
+                  pop_docs[pop_id]['detail'],
+                  textAlign: TextAlign.start,
+                  style: TextStyle(
+                    color: Color(0xFF999999),
+                    fontSize: 10,
+                    fontWeight: FontWeight.w400,
+                    height: 0.15,
+                  ),
+                ),
+              ),
+            ),
+            Positioned(
+              left: 12,
+              top: 132,
+              child: Container(
+                height: 23,
+                margin: EdgeInsets.only(top: 8),
+                padding: EdgeInsets.zero,
+                child: SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: Row(children: sub_category[pop_id]!.values.toList()),
+                ),
+              ),
+            ),
+            Positioned(
+              left: 90,
+              top: 20,
+              child: Container(
+                width: pop_docs[pop_id]['main_category'].length * 6.0 + 16.0,
+                height: 20,
+                decoration: BoxDecoration(
+                  color: Color(0xFFE5EEFF),
+                  borderRadius: BorderRadius.circular(100),
+                ),
+                child: Center(
+                  child: Text(
+                    pop_docs[pop_id]['main_category'],
+                    style: TextStyle(
+                      color: Color(0xFF0059FF),
+                      fontSize: 10,
+                      fontWeight: FontWeight.w400,
                     ),
                   ),
-                  Container(
-                    width: 128,
-                    height: 30,
-                    margin: EdgeInsets.only(top: 4),
-                    padding: EdgeInsets.zero,
-                    child: Text(
-                      pop_docs[pop_id]['detail'],
-                      style: TextStyle(
-                        color: Color(0xFF999999),
-                        fontSize: 10,
-                        fontWeight: FontWeight.w400,
-                        height: 0.15,
-                      ),
-                    ),
-                  ),
-                  Container(
-                    height: 23,
-                    margin: EdgeInsets.only(top: 8),
-                    padding: EdgeInsets.zero,
-                    child: SingleChildScrollView(
-                      child:
-                          Row(children: sub_category[pop_id]!.values.toList()),
-                    ),
-                  )
-                ],
+                ),
               ),
             ),
           ],
         ),
       );
     }
-    print('인기 패널 생성 : ${pop_docs_panel}');
     for (String doc_id in docs.keys) {
       if (increase_num != 4) {
         increase_num++;
@@ -228,169 +232,184 @@ class Notice_Board extends State<Notice_board> {
             color: Color(0xFFF5F8FF),
           ),
         ),
-        child: Column(
-          children: [
-            Container(
-              width: 304,
-              height: 20,
-              child: Row(
+        child: Container(
+          width: 304,
+          height: 90,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Container(
+                width: 304,
+                height: 20,
+                child: Row(
+                  children: [
+                    Container(
+                      width: 20,
+                      height: 20,
+                      margin: EdgeInsets.only(right: 8),
+                      child: Image.network(
+                        small_image_urls[increase_num],
+                        fit: BoxFit.fill,
+                      ),
+                    ),
+                    Container(
+                      padding: EdgeInsets.zero,
+                      width: 40,
+                      height: 12,
+                      child: Center(
+                        child: Text(
+                          docs[doc_id]['writer'],
+                          style: TextStyle(
+                            color: Color(0xFF666666),
+                            fontSize: 12,
+                            fontWeight: FontWeight.w400,
+                            height: 0.12,
+                          ),
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      width: 184,
+                    ),
+                    Container(
+                      width: docs[doc_id]['main_category'].length * 6.0 + 16.0,
+                      height: 20,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(75),
+                          color: Color(0xFFE5EEFF)),
+                      child: Center(
+                          child: Text(
+                        docs[doc_id]['main_category'],
+                        style: TextStyle(
+                          color: Color(0xFF0059FF),
+                          fontSize: 10,
+                          fontWeight: FontWeight.w400,
+                          height: 0.15,
+                        ),
+                      )),
+                    )
+                  ],
+                ),
+              ),
+              Container(
+                alignment: Alignment.centerLeft,
+                height: 20,
+                margin: EdgeInsets.only(top: 8),
+                child: Text(
+                  docs[doc_id]['title'],
+                  textAlign: TextAlign.start,
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 14,
+                    fontWeight: FontWeight.w600,
+                    height: 0.11,
+                  ),
+                ),
+              ),
+              Container(
+                alignment: Alignment.centerLeft,
+                height: 14,
+                margin: EdgeInsets.only(top: 4),
+                child: Text(
+                  docs[doc_id]['detail'],
+                  textAlign: TextAlign.start,
+                  style: TextStyle(
+                    color: Color(0xFF999999),
+                    fontSize: 10,
+                    fontWeight: FontWeight.w400,
+                    height: 0.15,
+                  ),
+                ),
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Container(
-                    width: 20,
-                    height: 20,
-                    margin: EdgeInsets.only(right: 8),
-                    child: Image.network(
-                      small_image_urls[increase_num],
-                      fit: BoxFit.fill,
+                    width: 200,
+                    height: 16,
+                    child: SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child:
+                          Row(children: sub_category[doc_id]!.values.toList()),
                     ),
                   ),
                   Container(
                     padding: EdgeInsets.zero,
-                    width: 40,
                     height: 12,
-                    child: Center(
-                      child: Text(
-                        docs[doc_id]['writer'],
-                        style: TextStyle(
-                          color: Color(0xFF666666),
-                          fontSize: 12,
-                          fontWeight: FontWeight.w400,
-                          height: 0.12,
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        SvgPicture.asset(
+                          'assets/icons/Eye.svg',
+                          width: 12,
+                          height: 14,
                         ),
-                      ),
+                        Text(
+                          '${docs[doc_id]['views']}',
+                          style: TextStyle(
+                            color: Color(0xFF4C4C4C),
+                            fontSize: 10,
+                            fontWeight: FontWeight.w400,
+                            height: 0.15,
+                          ),
+                        ),
+                        SvgPicture.asset(
+                          'assets/icons/Bubble.svg',
+                          width: 12,
+                          height: 14,
+                        ),
+                        Text(
+                          '${docs[doc_id]['commentnum']}',
+                          style: TextStyle(
+                            color: Color(0xFF4C4C4C),
+                            fontSize: 10,
+                            fontWeight: FontWeight.w400,
+                            height: 0.15,
+                          ),
+                        ),
+                        SvgPicture.asset(
+                          'assets/icons/Heart.svg',
+                          width: 12,
+                          height: 14,
+                        ),
+                        Text(
+                          '${docs[doc_id]['like']}',
+                          style: TextStyle(
+                            color: Color(0xFF4C4C4C),
+                            fontSize: 10,
+                            fontWeight: FontWeight.w400,
+                            height: 0.15,
+                          ),
+                        )
+                      ],
                     ),
-                  ),
-                  SizedBox(
-                    width: 184,
-                  ),
-                  Container(
-                    width: docs[doc_id]['main_category'].length * 6.0 + 16.0,
-                    height: 20,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(75),
-                        color: Color(0xFFE5EEFF)),
-                    child: Center(
-                        child: Text(
-                      docs[doc_id]['main_category'],
-                      style: TextStyle(
-                        color: Color(0xFF0059FF),
-                        fontSize: 10,
-                        fontWeight: FontWeight.w400,
-                        height: 0.15,
-                      ),
-                    )),
                   )
                 ],
-              ),
-            ),
-            Container(
-              height: 28,
-              margin: EdgeInsets.only(top: 8),
-              child: Text(
-                docs[doc_id]['title'],
-                textAlign: TextAlign.start,
-                style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 14,
-                  fontWeight: FontWeight.w600,
-                  height: 0.11,
-                ),
-              ),
-            ),
-            Container(
-              height: 14,
-              margin: EdgeInsets.only(top: 4),
-              child: Text(
-                docs[doc_id]['detail'],
-                textAlign: TextAlign.start,
-                style: TextStyle(
-                  color: Color(0xFF999999),
-                  fontSize: 10,
-                  fontWeight: FontWeight.w400,
-                  height: 0.15,
-                ),
-              ),
-            ),
-            Row(
-              children: [
-                Container(
-                  width: 200,
-                  height: 16,
-                  child: SingleChildScrollView(
-                    child: Row(children: sub_category[doc_id]!.values.toList()),
-                  ),
-                ),
-                Container(
-                  padding: EdgeInsets.zero,
-                  height: 12,
-                  child: Row(
-                    children: [
-                      SvgPicture.asset(
-                        'assets/icons/Eye.svg',
-                        // width: 10,
-                        // height: 12,
-                      ),
-                      Text(
-                        '${docs[doc_id]['views']}',
-                        style: TextStyle(
-                          color: Color(0xFF4C4C4C),
-                          fontSize: 10,
-                          fontWeight: FontWeight.w400,
-                          height: 0.15,
-                        ),
-                      ),
-                      SvgPicture.asset(
-                        'assets/icons/Bubble.svg',
-                        // width: 10,
-                        // height: 12,
-                      ),
-                      Text(
-                        '${docs[doc_id]['commentnum']}',
-                        style: TextStyle(
-                          color: Color(0xFF4C4C4C),
-                          fontSize: 10,
-                          fontWeight: FontWeight.w400,
-                          height: 0.15,
-                        ),
-                      ),
-                      SvgPicture.asset(
-                        'assets/icons/Like.svg',
-                        // width: 10,
-                        // height: 12,
-                      ),
-                      Text(
-                        '${docs[doc_id]['like']}',
-                        style: TextStyle(
-                          color: Color(0xFF4C4C4C),
-                          fontSize: 10,
-                          fontWeight: FontWeight.w400,
-                          height: 0.15,
-                        ),
-                      )
-                    ],
-                  ),
-                )
-              ],
-            )
-          ],
+              )
+            ],
+          ),
         ),
       );
     }
-    print('일반 패널 생성 : ${docs_panel}');
   }
 
-  void page_division() {
-    division_panel = {};
-    int page = 1;
-    division_panel[page] = {};
-
-    docs_panel.forEach((key, value) {
-      division_panel[page]![key] = value;
-      if (division_panel[page]!.length == 5) {
-        page++;
-        division_panel[page] = {};
-      }
-    });
+  void popup_items() {
+    for (String text in drop_down_list.keys.toList()) {
+      drop_down_item[text] = PopupMenuItem<String>(
+        value: text,
+        child: Center(
+          child: Text(
+            text,
+            style: TextStyle(
+              color: Color(0xFF020202),
+              fontSize: 12,
+              fontWeight: FontWeight.w400,
+              height: 0.12,
+            ),
+          ),
+        ),
+      );
+    }
   }
 
   @override
@@ -402,152 +421,208 @@ class Notice_Board extends State<Notice_board> {
     return Scaffold(
         body: page_load
             ? Container(
-                margin:
-                    EdgeInsets.only(top: MediaQuery.of(context).padding.top),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                child: Stack(
                   children: [
-                    SizedBox(
-                      height: 28,
+                    Positioned(
+                      top: 28,
+                      left: 0,
+                      child: Container(
+                        height: 48,
+                        width: 360,
+                        decoration: BoxDecoration(
+                            border: Border.all(width: 1, color: Colors.red)),
+                      ),
                     ),
-                    SizedBox(
-                      height: 8,
+                    Positioned(
+                      top: 76,
+                      left: 0,
+                      child: Container(
+                        width: 360,
+                        height: 40,
+                        decoration: BoxDecoration(
+                            border: Border.all(width: 1, color: Colors.black)),
+                      ),
                     ),
-                    Container(
-                      height: 40,
-                    ),
-                    Container(
-                      height: 564,
-                      child: SingleChildScrollView(
-                        child: Column(
-                          children: [
-                            Custom_Banner(), // 배너 클래스
-                            Container(
-                              margin: EdgeInsets.all(16),
-                              child: Column(
-                                children: [
-                                  Container(
-                                    alignment: Alignment.topLeft,
-                                    height: 24,
-                                    margin: EdgeInsets.only(top: 4, bottom: 14),
-                                    child: Text(
-                                      '인기 게시글',
-                                      style: TextStyle(
-                                          color: Color(0xFF000000),
-                                          fontSize: 16,
-                                          fontWeight: FontWeight.w600),
-                                    ),
-                                  ),
-                                  Container(
-                                    height: 168,
-                                    width: 316,
-                                    child: SingleChildScrollView(
-                                      scrollDirection: Axis.horizontal,
-                                      child: Row(
-                                        children:
-                                            pop_docs_panel.values.toList(),
-                                      ),
-                                    ),
-                                  ),
-                                  Container(
-                                    alignment: Alignment.topLeft,
-                                    height: 40,
-                                    margin: EdgeInsets.only(top: 4),
-                                    child: Text(
-                                      '실시간 게시글',
-                                      style: TextStyle(
-                                          color: Color(0xFF000000),
-                                          fontSize: 16,
-                                          fontWeight: FontWeight.w600),
-                                    ),
-                                  ),
-                                  Container(
-                                    width: 328,
-                                    height: 38,
-                                    child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
+                    Positioned(
+                      top: 116,
+                      left: 0,
+                      child: Container(
+                        width: 360,
+                        height: 564,
+                        child: SingleChildScrollView(
+                          child: Column(
+                            children: [
+                              Custom_Banner(), // 배너 클래스
+                              Container(
+                                margin: EdgeInsets.all(16),
+                                child: Column(
+                                  children: [
+                                    Row(
                                       children: [
+                                        Text(
+                                          '인기 게시글',
+                                          style: TextStyle(
+                                              color: Color(0xFF000000),
+                                              fontSize: 16,
+                                              fontWeight: FontWeight.w600),
+                                        ),
+                                        SizedBox(width: 4),
                                         Container(
-                                          width: 32,
-                                          height: 32,
-                                          decoration: BoxDecoration(
-                                              color: Color(0xFFFEFEFE),
-                                              borderRadius:
-                                                  BorderRadius.circular(20),
-                                              border: Border.all(
-                                                  color: Color(0xFFF3F3F3),
-                                                  width: 1)),
-                                          child: SvgPicture.asset(
-                                            'assets/icons/Filter.svg',
-                                            // width: 12,
-                                            // height: 12,
+                                          width: 24,
+                                          height: 24,
+                                          child: Image.asset(
+                                            'assets/images/fire.png',
                                             fit: BoxFit.fill,
                                           ),
-                                        ),
-                                        Container(
-                                          height: 38,
-                                          padding: EdgeInsets.all(10),
-                                          decoration: BoxDecoration(
-                                            borderRadius:
-                                                BorderRadius.circular(20),
-                                            border: Border.all(
-                                                color: Color(0xFFF3F3F3),
-                                                width: 1),
-                                          ),
-                                          child: Center(
-                                            child: Row(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment
-                                                      .spaceBetween,
-                                              children: [
-                                                Text(
-                                                  drop_down_initial,
-                                                  style: TextStyle(
-                                                      fontSize: 12,
-                                                      fontWeight:
-                                                          FontWeight.normal),
-                                                ),
-                                                Container(
-                                                  margin:
-                                                      EdgeInsets.only(left: 4),
-                                                  child: ElevatedButton(
-                                                    onPressed: () {
-                                                      //문서 증식용 필요시 주석 해제
-                                                      // await data_control.increase_date();
-                                                    },
-                                                    child: SvgPicture.asset(
-                                                      'assets/icons/Dropdown.svg',
-                                                      // width: 12,
-                                                      // height: 12,
-                                                      fit: BoxFit.fill,
-                                                    ),
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                        ),
+                                        )
                                       ],
                                     ),
-                                  ),
-                                  Container(
-                                    width: 328,
-                                    child: Column(
-                                        children: docs_panel.values.toList()),
-                                  )
-                                ],
+                                    Container(
+                                      height: 168,
+                                      width: 316,
+                                      margin: EdgeInsets.only(top: 14),
+                                      child: SingleChildScrollView(
+                                        scrollDirection: Axis.horizontal,
+                                        child: Row(
+                                          children:
+                                              pop_docs_panel.values.toList(),
+                                        ),
+                                      ),
+                                    ),
+                                    Container(
+                                      alignment: Alignment.topLeft,
+                                      height: 40,
+                                      margin: EdgeInsets.only(top: 40),
+                                      child: Text(
+                                        '실시간 게시글',
+                                        style: TextStyle(
+                                            color: Color(0xFF000000),
+                                            fontSize: 16,
+                                            fontWeight: FontWeight.w600),
+                                      ),
+                                    ),
+                                    Container(
+                                      width: 328,
+                                      height: 38,
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Container(
+                                            width: 32,
+                                            height: 32,
+                                            decoration: BoxDecoration(
+                                                color: Color(0xFFFEFEFE),
+                                                borderRadius:
+                                                    BorderRadius.circular(20),
+                                                border: Border.all(
+                                                    color: Color(0xFFF3F3F3),
+                                                    width: 1)),
+                                            child: SvgPicture.asset(
+                                              'assets/icons/Filter.svg',
+                                              // width: 12,
+                                              // height: 12,
+                                              fit: BoxFit.fill,
+                                            ),
+                                          ),
+                                          PopupMenuButton<String>(
+                                            onSelected: (value) {
+                                              setState(() {
+                                                drop_down_initial = value;
+                                              });
+                                              drop_down_list
+                                                  .forEach((key, value) {
+                                                drop_down_list[key] = false;
+                                              });
+                                              drop_down_list[value] = true;
+                                            },
+                                            itemBuilder:
+                                                (BuildContext context) {
+                                              return drop_down_item.values
+                                                  .toList();
+                                            },
+                                            shape: RoundedRectangleBorder(
+                                                borderRadius:
+                                                    BorderRadius.circular(8)),
+                                            elevation: 5,
+                                            child: Container(
+                                              height: 38,
+                                              padding: EdgeInsets.all(10),
+                                              decoration: BoxDecoration(
+                                                borderRadius:
+                                                    BorderRadius.circular(20),
+                                                border: Border.all(
+                                                    color: Color(0xFFF3F3F3),
+                                                    width: 1),
+                                              ),
+                                              child: Center(
+                                                child: Row(
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment
+                                                          .spaceBetween,
+                                                  children: [
+                                                    Text(
+                                                      drop_down_initial,
+                                                      style: TextStyle(
+                                                          fontSize: 12,
+                                                          fontWeight: FontWeight
+                                                              .normal),
+                                                    ),
+                                                    Container(
+                                                      margin: EdgeInsets.only(
+                                                          left: 4),
+                                                      child: SvgPicture.asset(
+                                                        'assets/icons/Dropdown.svg',
+                                                        fit: BoxFit.fill,
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                    Page_Division(docs_panel),
+                                  ],
+                                ),
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
                       ),
                     ),
-                    Container(
-                      height: 64,
-                      alignment: Alignment.bottomCenter,
-                      color: Color(0xFFB3B3B3),
-                    )
+                    Positioned(
+                      bottom: 78,
+                      right: 16,
+                      child: Container(
+                        width: 48,
+                        height: 48,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: Color(0xFF0059FF),
+                        ),
+                        child: Center(
+                          child: Container(
+                            width: 15,
+                            height: 17,
+                            child: SvgPicture.asset(
+                              'assets/icons/Pencil.svg',
+                              fit: BoxFit.fill,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    Positioned(
+                        bottom: 0,
+                        left: 0,
+                        child: Container(
+                          height: 64,
+                          decoration: BoxDecoration(
+                              border: Border.all(width: 1, color: Colors.blue)),
+                        ))
                   ],
                 ),
               )
