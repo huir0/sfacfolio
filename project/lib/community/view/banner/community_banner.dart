@@ -23,10 +23,12 @@ class Custom_banner extends State<Custom_Banner> {
   }
 
   void Image_slot() {
-    for (int i = 1; i < 6; i++) {
-      // 이미지 담는 map
-      image_slot['image_$i'] =
-          Image.asset('assets/images/community/noticeboard/banner_$i.png');
+    for (int i = 1; i < 7; i++) {
+      // 이미지 담는 map/dyrldyrl
+      image_slot['image_$i'] = Image.asset(
+        'assets/images/community/noticeboard/banner_$i.png',
+        fit: BoxFit.fill,
+      );
       // 이미지 선택시 하단 아이콘 활성화 map
       slot_active['image_$i'] = false;
       // 하단 아이콘 map
@@ -36,11 +38,11 @@ class Custom_banner extends State<Custom_Banner> {
   }
 
   void Slot_Active() {
-    for (int i = 1; i < 6; i++) {
+    for (int i = 1; i < 7; i++) {
       slot_icon['slot_$i'] = Container(
         width: 4,
         height: 4,
-        margin: EdgeInsets.only(right: i != 5 ? 4 : 0),
+        margin: EdgeInsets.only(right: i != 6 ? 4 : 0),
         child: CircleAvatar(
           backgroundColor:
               Color(slot_active['image_$i'] ?? false ? 0xFFFFFFFF : 0xFF808080),
@@ -62,6 +64,7 @@ class Custom_banner extends State<Custom_Banner> {
             now_page = 0;
           });
         }
+        // page_control.jumpToPage(now_page);
         page_control.animateToPage(
           now_page,
           duration: Duration(milliseconds: 350),
@@ -105,6 +108,7 @@ class Custom_banner extends State<Custom_Banner> {
           ),
           Container(
             width: 360,
+            margin: EdgeInsets.only(bottom: 4),
             alignment: Alignment.bottomCenter,
             child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,

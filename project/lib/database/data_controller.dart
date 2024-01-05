@@ -127,10 +127,10 @@ class Data_Control {
     }
   }
 
-  // 게시글 가져오기 (게시판)
-  Future<Map<String, dynamic>> get_post() async {
+  // 게시글 가져오기 (컬렉션 이름 널어서)/
+  Future<Map<String, dynamic>> get_post(String collection) async {
     try {
-      QuerySnapshot querySnapshot = await store.collection('Notice').get();
+      QuerySnapshot querySnapshot = await store.collection(collection).get();
       Map<String, dynamic> result = {};
       for (QueryDocumentSnapshot doc in querySnapshot.docs) {
         result[doc.id] = doc.data();
