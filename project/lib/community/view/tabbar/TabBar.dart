@@ -2,19 +2,19 @@ import 'package:flutter/material.dart';
 
 import 'package:team5/utill/color.dart';
 
-class CustomTabBar extends StatelessWidget {
+class CustomTabBar extends StatelessWidget implements PreferredSizeWidget{
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20),
+      padding: const EdgeInsets.symmetric(horizontal: 8),
       child: TabBar(
         indicatorColor: AppColor.Primary100,
-        labelPadding: EdgeInsets.symmetric(horizontal: 5),
+        labelPadding: EdgeInsets.symmetric(horizontal: 1),
         labelStyle: TextStyle(
           color: AppColor.Primary100,
           fontFamily: 'Pretendard',
-          fontWeight: FontWeight.w400,
-          fontSize: 14,
+          fontWeight: FontWeight.w600,
+          fontSize: 16,
         ),
         tabs: [
           Tab(
@@ -57,4 +57,6 @@ class CustomTabBar extends StatelessWidget {
       ),
     );
   }
+  @override
+  Size get preferredSize => Size.fromHeight(kTextTabBarHeight);
 }
