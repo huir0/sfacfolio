@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:project/community/view/button/bluebutton.dart';
-import 'package:project/community/view/button/detailbutton.dart';
-import 'package:project/community/view/button/joinbutton.dart';
-import 'package:project/community/view/frame/comment.dart';
-import 'package:project/community/view/frame/detail.dart';
-import 'package:project/community/view/frame/frame3.dart';
-import 'package:project/community/view/frame/line.dart';
-import 'package:project/community/view/frame/peplejoin.dart';
+import '../button/bluebutton.dart';
+import '../button/detailbutton.dart';
+import '../button/joinbutton.dart';
+import '../frame/comment.dart';
+import '../frame/detail.dart';
+import '../frame/frame3.dart';
+import '../frame/line.dart';
+import '../frame/peplejoin.dart';
 
 class SubScreen extends StatelessWidget {
   const SubScreen({super.key});

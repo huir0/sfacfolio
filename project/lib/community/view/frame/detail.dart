@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:project/community/view/button/detailbutton.dart';
+import '../button/detailbutton.dart';
 
 class Detail extends StatefulWidget {
   const Detail({super.key});
