@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:project/community/view/appbar/AppBar.dart';
-import 'package:project/community/view/button/filtericon.dart';
-import 'package:project/community/view/frame/backendframe.dart';
-import 'package:project/community/view/frame/frame2.dart';
-import 'package:project/community/view/frame/frame2_2.dart';
-import 'package:project/community/view/frame/framedesigner.dart';
-import 'package:project/community/view/frame/framefont.dart';
-import 'package:project/community/view/frame/graphicfont.dart';
-import 'package:project/community/view/frame/serviceframe.dart';
+import '../appbar/AppBar.dart';
+import '../button/filtericon.dart';
+import '../frame/backendframe.dart';
+import '../frame/frame2.dart';
+import '../frame/frame2_2.dart';
+import '../frame/framedesigner.dart';
+import '../frame/framefont.dart';
+import '../frame/graphicfont.dart';
+import '../frame/serviceframe.dart';
 
 class Mainscreen extends StatefulWidget {
   const Mainscreen({super.key});
