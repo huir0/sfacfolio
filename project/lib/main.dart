@@ -5,11 +5,12 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+
   Get.put(UserController());
   runApp(
     GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Notice_board(),
+      home: Passwordpage_1(),
       theme: ThemeData(
         textTheme: TextTheme(
           bodyText2: TextStyle(

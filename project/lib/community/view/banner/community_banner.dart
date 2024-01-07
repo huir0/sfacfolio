@@ -64,7 +64,6 @@ class Custom_banner extends State<Custom_Banner> {
             now_page = 0;
           });
         }
-        // page_control.jumpToPage(now_page);
         page_control.animateToPage(
           now_page,
           duration: Duration(milliseconds: 350),
@@ -79,7 +78,7 @@ class Custom_banner extends State<Custom_Banner> {
   Widget build(BuildContext context) {
     return Container(
       width: 360,
-      height: 172,
+      height: 200,
       child: Stack(
         children: [
           PageView.builder(
