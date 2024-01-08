@@ -90,7 +90,7 @@ flutter:
   # list giving the asset and other descriptors for the font. For
   # example:
   fonts:
-     - family: PretendardVariable
+     - family: Pretendard
        fonts:
          - asset: assets/fonts/PretendardVariable.ttf
   #       - asset: fonts/Schyler-Italic.ttf

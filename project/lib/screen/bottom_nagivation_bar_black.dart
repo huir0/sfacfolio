@@ -7,16 +7,16 @@ const portfolioIcon = 'assets/icons/Portfolio.svg';
 const collectionIcon = 'assets/icons/Collection.svg';
 const mypageIcon = 'assets/icons/Mypage.svg';
 
-class BottomNavigationBarComponent extends StatefulWidget {
-  const BottomNavigationBarComponent({super.key});
+class BottomNavigationBarComponentBlack extends StatefulWidget {
+  const BottomNavigationBarComponentBlack({super.key});
 
   @override
-  State<BottomNavigationBarComponent> createState() =>
-      _BottomNavigationBarComponentState();
+  State<BottomNavigationBarComponentBlack> createState() =>
+      _BottomNavigationBarComponentStateBlack();
 }
 
-class _BottomNavigationBarComponentState
-    extends State<BottomNavigationBarComponent> {
+class _BottomNavigationBarComponentStateBlack
+    extends State<BottomNavigationBarComponentBlack> {
   int _selectedIndex = 0;
 
   final _pageOptions = [
@@ -42,7 +42,7 @@ class _BottomNavigationBarComponentState
         SizedBox(
       height: 64,
       child: BottomNavigationBar(
-        backgroundColor: Color(0xFFFFFFFF),
+        backgroundColor: Color(0xFF000000),
         type: BottomNavigationBarType.fixed,
         selectedLabelStyle: const TextStyle(
           fontSize: 10,

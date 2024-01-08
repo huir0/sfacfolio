@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:team5/screen/noticeboard.dart';
-import 'package:team5/screen/passwordpage_1.dart';
+import '/community/Community.dart';
+import 'screen/noticeboard.dart';
+import 'screen/passwordpage_1.dart';
 import 'screen/join_screen.dart';
 import 'screen/onboarding_3.dart';
 import 'screen/shortpec.dart';
@@ -17,7 +18,6 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-
   Get.put(UserController());
   runApp(
     GetMaterialApp(
@@ -26,7 +26,7 @@ void main() async {
       theme: ThemeData(
         textTheme: TextTheme(
           bodyText2: TextStyle(
-            fontFamily: 'PretendardVariable',
+            fontFamily: 'Pretendard',
           ),
         ),
       ),
