@@ -38,7 +38,8 @@ class _MainscreenState extends State<Mainscreen> {
               child: CustomTabBar(),
             ),
             Container(
-              height: 540,
+              color: Colors.white,
+              height: 564,
               child: SingleChildScrollView(
                 child: Column(
                   children: [

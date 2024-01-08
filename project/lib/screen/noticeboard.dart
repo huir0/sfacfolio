@@ -713,8 +713,9 @@ class Notice_Board extends State<Notice_board> {
                     child: CustomTabBar(),
                   ),
                   Container(
+                    color: Colors.white,
                     width: 360,
-                    height: 540,
+                    height: 564,
                     child: Stack(
                       children: [
                         Container(
