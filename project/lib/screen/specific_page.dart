@@ -2,9 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:team5/community/view/frame/comment.dart';
-import '/screen/google_map.dart';
+// import 'package:google_maps_flutter/google_maps_flutter.dart';
+// import '/screen/google_map.dart';
 import '/screen/bottom_nagivation_bar.dart';
 import '/screen/employment_dummy_data.dart';
 
@@ -51,7 +50,9 @@ class SpecificPage extends StatelessWidget {
                           : SvgPicture.asset('assets/icons/Bookmark.svg'),
                     ),
                     Text(
-                      '10',
+                      Get.find<BookmarkController>()
+                          .bookmarkCounter[index]
+                          .toString(),
                       style: TextStyle(
                         fontSize: 10,
                         fontWeight: FontWeight.w400,
@@ -177,51 +178,15 @@ class SpecificPage extends StatelessWidget {
                                         fontWeight: FontWeight.w400,
                                         fontFamily: 'Pretendard',
                                         color: Colors.black),
-                                    child: Row(
-                                      mainAxisSize: MainAxisSize.min,
-                                      children: [
-                                        SizedBox(
-                                          height: 12,
-                                          child: Text(
-                                            pageData['date'],
-                                            style: const TextStyle(
-                                              fontSize: 10,
-                                              fontWeight: FontWeight.w400,
-                                            ),
-                                          ),
+                                    child: SizedBox(
+                                      height: 12,
+                                      child: Text(
+                                        pageData['date'],
+                                        style: const TextStyle(
+                                          fontSize: 10,
+                                          fontWeight: FontWeight.w400,
                                         ),
-                                        const Spacer(),
-                                        Align(
-                                          alignment: Alignment.topLeft,
-                                          child: SizedBox(
-                                              width: 10,
-                                              height: 12,
-                                              child: SvgPicture.asset(
-                                                  'assets/images/noticeofemployment/Icon_view.svg')),
-                                        ),
-                                        const SizedBox(
-                                          width: 3,
-                                        ),
-                                        Text(clickController.clickCounts[index]
-                                            .toString()),
-                                        const SizedBox(
-                                          width: 8,
-                                        ),
-                                        Align(
-                                          alignment: Alignment.topCenter,
-                                          child: Container(
-                                              width: 10,
-                                              height: 12,
-                                              padding:
-                                                  const EdgeInsets.all(1.3),
-                                              child: SvgPicture.asset(
-                                                  'assets/images/noticeofemployment/Icon_chat.svg')),
-                                        ),
-                                        const SizedBox(
-                                          width: 3,
-                                        ),
-                                        const Text('4'),
-                                      ],
+                                      ),
                                     ),
                                   ),
                                 ),
@@ -748,7 +713,22 @@ class SpecificPage extends StatelessWidget {
                           Container(
                             width: 328,
                             height: 124,
-                            child: GoogleMapComponent(address: pageData['map']),
+                            // child: GoogleMapComponent(address: pageData['map']),
+                            child: Stack(
+                              children: [
+                                SizedBox(
+                                  height: 124,
+                                  width: 328,
+                                  child: Image.asset(
+                                    'assets/images/noticeofemployment/Map.png',
+                                    fit: BoxFit.fill,
+                                  ),
+                                ),
+                                Center(
+                                    child: Image.asset(
+                                        'assets/images/noticeofemployment/Icon_onMap.png')),
+                              ],
+                            ),
                           ),
                           SizedBox(
                             height: 13,
@@ -784,45 +764,8 @@ class SpecificPage extends StatelessWidget {
                               ),
                             ),
                           ),
-                          Container(
-                            margin: EdgeInsets.symmetric(vertical: 16),
-                            width: 328,
-                            decoration: ShapeDecoration(
-                              shape: RoundedRectangleBorder(
-                                side: BorderSide(
-                                  width: 1,
-                                  strokeAlign: BorderSide.strokeAlignCenter,
-                                  color: Color(0xFFF3F3F3),
-                                ),
-                              ),
-                            ),
-                          ),
-                          Container(
-                            alignment: Alignment.centerLeft,
-                            height: 16,
-                            child: Text(
-                              '댓글 4',
-                              style: TextStyle(
-                                fontSize: 14,
-                                fontWeight: FontWeight.w600,
-                              ),
-                            ),
-                          ),
                           SizedBox(
-                            height: 12,
-                          ),
-                          Container(
-                            height: 32,
-                            width: 328,
-                            // child: Row(
-                            //   children: [
-                            //     TextField(
-                            //       decoration: InputDecoration(
-                            //         fillColor: Color(0xfff0f0f0),
-                            //       ),
-                            //     )
-                            //   ],
-                            // ),
+                            height: 40,
                           ),
                         ],
                       ),

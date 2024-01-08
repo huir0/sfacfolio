@@ -48,7 +48,6 @@ class _CommunityState extends State<Community> {
         // resizeToAvoidBottomInset: false,
         appBar: AppBar(
           toolbarHeight: 48,
-          title: AppBarComponent(),
           bottom: CustomTabBar(),
         ),
         // FIXME: body 설정해주기
@@ -58,26 +57,9 @@ class _CommunityState extends State<Community> {
             Center(child: Text('게시판')),
             Center(child: Text('프로젝트')),
             Center(child: Text('스터디')),
-            Center(child: Obx(() {
-              if (Get.find<UserController>().showSheet.value) {
-                WidgetsBinding.instance.addPostFrameCallback((_) {
-                  showModalBottomSheet(
-                    useRootNavigator: false,
-                    scrollControlDisabledMaxHeightRatio: 80,
-                    isScrollControlled: true,
-                    context: context,
-                    builder: (context) => SingleChildScrollView(
-                      padding: EdgeInsets.only(
-                          bottom: MediaQuery.of(context).viewInsets.bottom),
-                      child: EmploymentFilter(),
-                    ),
-                  ).then((value) {
-                    Get.find<UserController>().toggleShowSheet();
-                  });
-                });
-              }
-              return NoticeOfEmployment();
-            })),
+            Center(
+              child: NoticeOfEmployment(),
+            ),
           ],
         ),
         bottomNavigationBar: BottomNavigationBarComponent(),

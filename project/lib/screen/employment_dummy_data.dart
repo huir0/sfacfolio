@@ -1,7 +1,10 @@
+import 'dart:math';
+
 import 'package:get/get.dart';
 
 final List<Map<String, dynamic>> dummyData = [
   {
+    'deadline': '상시',
     'tag': '디자인',
     'title': 'UX/UI 디자이너 채용',
     'company': '에이컴퍼니',
@@ -9,7 +12,7 @@ final List<Map<String, dynamic>> dummyData = [
     'date': '24.01.01',
     'thumbnail': 'assets/images/noticeofemployment/Thumbnail_Small (5).png',
     'image': 'assets/images/noticeofemployment/Thumbnail_Big.png',
-    'longimage' : 'assets/images/noticeofemployment/Thumbnail_Long (5).png',
+    'longimage': 'assets/images/noticeofemployment/Thumbnail_Long (5).png',
     'jobdescription': '''
 모바일, 웹서비스 UX/UI 기획
 프로덕트 방향성 제시 및 구체화
@@ -29,9 +32,10 @@ Prototype tool 사용 유경험자 (XD, ProtoPie, Figma)
 설, 추석 명절 선물 지급
 생일 축하 지원
 야근 시 식대, 교통비 지원''',
-'map': '서울 강남구 강남대로',
+    'map': '서울 강남구 강남대로',
   },
   {
+    'deadline': '20',
     'tag': '디자인',
     'title': 'GUI 디자이너 채용',
     'company': '씨컴퍼니',
@@ -39,7 +43,7 @@ Prototype tool 사용 유경험자 (XD, ProtoPie, Figma)
     'date': '24.01.03',
     'thumbnail': 'assets/images/noticeofemployment/Thumbnail_Small (4).png',
     'image': 'assets/images/noticeofemployment/Thumbnail_Big.png',
-    'longimage' : 'assets/images/noticeofemployment/Thumbnail_Long (4).png',
+    'longimage': 'assets/images/noticeofemployment/Thumbnail_Long (4).png',
     'jobdescription': '''
 모바일, 웹서비스 UX/UI 기획
 프로덕트 방향성 제시 및 구체화
@@ -59,9 +63,10 @@ Prototype tool 사용 유경험자 (XD, ProtoPie, Figma)
 설, 추석 명절 선물 지급
 생일 축하 지원
 야근 시 식대, 교통비 지원''',
-'map': '서울 강남구 강남대로',
+    'map': '서울 강남구 강남대로',
   },
   {
+    'deadline': '5',
     'tag': '개발',
     'title': '백엔드 개발자 채용',
     'company': '이컴퍼니',
@@ -69,7 +74,7 @@ Prototype tool 사용 유경험자 (XD, ProtoPie, Figma)
     'date': '24.01.05',
     'thumbnail': 'assets/images/noticeofemployment/Thumbnail_Small (2).png',
     'image': 'assets/images/noticeofemployment/Thumbnail_Big.png',
-    'longimage' : 'assets/images/noticeofemployment/Thumbnail_Long (2).png',
+    'longimage': 'assets/images/noticeofemployment/Thumbnail_Long (2).png',
     'jobdescription': '''
 모바일, 웹서비스 UX/UI 기획
 프로덕트 방향성 제시 및 구체화
@@ -89,9 +94,10 @@ Prototype tool 사용 유경험자 (XD, ProtoPie, Figma)
 설, 추석 명절 선물 지급
 생일 축하 지원
 야근 시 식대, 교통비 지원''',
-'map': '서울 강남구 강남대로',
+    'map': '서울 강남구 강남대로',
   },
   {
+    'deadline': '30',
     'tag': '개발',
     'title': '프론트엔드 개발자 채용',
     'company': '비컴퍼니',
@@ -99,7 +105,7 @@ Prototype tool 사용 유경험자 (XD, ProtoPie, Figma)
     'date': '24.01.04',
     'thumbnail': 'assets/images/noticeofemployment/Thumbnail_Small (3).png',
     'image': 'assets/images/noticeofemployment/Thumbnail_Big.png',
-    'longimage' : 'assets/images/noticeofemployment/Thumbnail_Long (3).png',
+    'longimage': 'assets/images/noticeofemployment/Thumbnail_Long (3).png',
     'jobdescription': '''
 모바일, 웹서비스 UX/UI 기획
 프로덕트 방향성 제시 및 구체화
@@ -119,9 +125,10 @@ Prototype tool 사용 유경험자 (XD, ProtoPie, Figma)
 설, 추석 명절 선물 지급
 생일 축하 지원
 야근 시 식대, 교통비 지원''',
-'map': '서울 강남구 강남대로',
+    'map': '서울 강남구 강남대로',
   },
   {
+    'deadline': '9',
     'tag': '디자인',
     'title': 'UX/UI 디자이너 채용',
     'company': '에이컴퍼니',
@@ -129,7 +136,7 @@ Prototype tool 사용 유경험자 (XD, ProtoPie, Figma)
     'date': '24.01.05',
     'thumbnail': 'assets/images/noticeofemployment/Thumbnail_Small (1).png',
     'image': 'assets/images/noticeofemployment/Thumbnail_Big.png',
-    'longimage' : 'assets/images/noticeofemployment/Thumbnail_Long (1).png',
+    'longimage': 'assets/images/noticeofemployment/Thumbnail_Long (1).png',
     'jobdescription': '''
 모바일, 웹서비스 UX/UI 기획
 프로덕트 방향성 제시 및 구체화
@@ -149,9 +156,10 @@ Prototype tool 사용 유경험자 (XD, ProtoPie, Figma)
 설, 추석 명절 선물 지급
 생일 축하 지원
 야근 시 식대, 교통비 지원''',
-'map': '서울 강남구 강남대로',
+    'map': '서울 강남구 강남대로',
   },
   {
+    'deadline': '16',
     'tag': '디자인',
     'title': 'UX/UI 디자이너 채용',
     'company': '에이컴퍼니',
@@ -159,7 +167,7 @@ Prototype tool 사용 유경험자 (XD, ProtoPie, Figma)
     'date': '24.01.06',
     'thumbnail': 'assets/images/noticeofemployment/Thumbnail_Small (5).png',
     'image': 'assets/images/noticeofemployment/Thumbnail_Big.png',
-    'longimage' : 'assets/images/noticeofemployment/Thumbnail_Long (5).png',
+    'longimage': 'assets/images/noticeofemployment/Thumbnail_Long (5).png',
     'jobdescription': '''
 모바일, 웹서비스 UX/UI 기획
 프로덕트 방향성 제시 및 구체화
@@ -179,9 +187,10 @@ Prototype tool 사용 유경험자 (XD, ProtoPie, Figma)
 설, 추석 명절 선물 지급
 생일 축하 지원
 야근 시 식대, 교통비 지원''',
-'map': '서울 강남구 강남대로',
+    'map': '서울 강남구 강남대로',
   },
   {
+    'deadline': '10',
     'tag': '개발',
     'title': '백엔드 개발자 채용',
     'company': '이컴퍼니',
@@ -189,7 +198,7 @@ Prototype tool 사용 유경험자 (XD, ProtoPie, Figma)
     'date': '24.01.09',
     'thumbnail': 'assets/images/noticeofemployment/Thumbnail_Small (4).png',
     'image': 'assets/images/noticeofemployment/Thumbnail_Big.png',
-    'longimage' : 'assets/images/noticeofemployment/Thumbnail_Long (4).png',
+    'longimage': 'assets/images/noticeofemployment/Thumbnail_Long (4).png',
     'jobdescription': '''
 모바일, 웹서비스 UX/UI 기획
 프로덕트 방향성 제시 및 구체화
@@ -209,9 +218,10 @@ Prototype tool 사용 유경험자 (XD, ProtoPie, Figma)
 설, 추석 명절 선물 지급
 생일 축하 지원
 야근 시 식대, 교통비 지원''',
-'map': '서울 강남구 강남대로',
+    'map': '서울 강남구 강남대로',
   },
   {
+    'deadline': '3',
     'tag': '디자인',
     'title': 'UX/UI 디자이너 채용',
     'company': '에이컴퍼니',
@@ -219,7 +229,7 @@ Prototype tool 사용 유경험자 (XD, ProtoPie, Figma)
     'date': '24.01.11',
     'thumbnail': 'assets/images/noticeofemployment/Thumbnail_Small (3).png',
     'image': 'assets/images/noticeofemployment/Thumbnail_Big.png',
-    'longimage' : 'assets/images/noticeofemployment/Thumbnail_Long (3).png',
+    'longimage': 'assets/images/noticeofemployment/Thumbnail_Long (3).png',
     'jobdescription': '''
 모바일, 웹서비스 UX/UI 기획
 프로덕트 방향성 제시 및 구체화
@@ -239,9 +249,10 @@ Prototype tool 사용 유경험자 (XD, ProtoPie, Figma)
 설, 추석 명절 선물 지급
 생일 축하 지원
 야근 시 식대, 교통비 지원''',
-'map': '서울 강남구 강남대로',
+    'map': '서울 강남구 강남대로',
   },
   {
+    'deadline': '10',
     'tag': '디자인',
     'title': 'UX/UI 디자이너 채용',
     'company': '에이컴퍼니',
@@ -249,7 +260,7 @@ Prototype tool 사용 유경험자 (XD, ProtoPie, Figma)
     'date': '24.01.10',
     'thumbnail': 'assets/images/noticeofemployment/Thumbnail_Small (2).png',
     'image': 'assets/images/noticeofemployment/Thumbnail_Big.png',
-    'longimage' : 'assets/images/noticeofemployment/Thumbnail_Long (2).png',
+    'longimage': 'assets/images/noticeofemployment/Thumbnail_Long (2).png',
     'jobdescription': '''
 모바일, 웹서비스 UX/UI 기획
 프로덕트 방향성 제시 및 구체화
@@ -269,9 +280,10 @@ Prototype tool 사용 유경험자 (XD, ProtoPie, Figma)
 설, 추석 명절 선물 지급
 생일 축하 지원
 야근 시 식대, 교통비 지원''',
-'map': '서울 강남구 강남대로',
+    'map': '서울 강남구 강남대로',
   },
   {
+    'deadline': '10',
     'tag': '디자인',
     'title': 'UX/UI 디자이너 채용',
     'company': '에이컴퍼니',
@@ -279,7 +291,7 @@ Prototype tool 사용 유경험자 (XD, ProtoPie, Figma)
     'date': '24.01.01',
     'thumbnail': 'assets/images/noticeofemployment/Thumbnail_Small (1).png',
     'image': 'assets/images/noticeofemployment/Thumbnail_Big.png',
-    'longimage' : 'assets/images/noticeofemployment/Thumbnail_Long (1).png',
+    'longimage': 'assets/images/noticeofemployment/Thumbnail_Long (1).png',
     'jobdescription': '''
 모바일, 웹서비스 UX/UI 기획
 프로덕트 방향성 제시 및 구체화
@@ -299,9 +311,8 @@ Prototype tool 사용 유경험자 (XD, ProtoPie, Figma)
 설, 추석 명절 선물 지급
 생일 축하 지원
 야근 시 식대, 교통비 지원''',
-'map': '서울 강남구 강남대로',
+    'map': '서울 강남구 강남대로',
   },
-  
 ];
 
 class ClickController extends GetxController {
@@ -310,9 +321,16 @@ class ClickController extends GetxController {
 
 class BookmarkController extends GetxController {
   List<bool> bookmarked = List<bool>.filled(dummyData.length, false);
+  // List<int> bookmarkCounter = List<int>.filled(dummyData.length, 4);
+  List<int> bookmarkCounter = List<int>.generate(dummyData.length, (i) => Random().nextInt(11));
 
   void toggleBookmark(int index) {
     bookmarked[index] = !bookmarked[index];
+    if (bookmarked[index]) {
+      bookmarkCounter[index]++;
+    } else {
+      bookmarkCounter[index]--;
+    }
     update();
   }
 }
