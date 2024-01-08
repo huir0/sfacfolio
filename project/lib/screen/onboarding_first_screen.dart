@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import '/screen/community_screen.dart';
 import '/database/data_controller.dart';
 import '/screen/user_controller.dart';
 import '/screen/onboarding_controller.dart';
@@ -32,16 +33,18 @@ class _OnBoardingFirstPageState extends State<OnBoardingFirstPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
         leadingWidth: 30,
         leading: Container(
           // FIXME: 뭔가 이상하긴한데.. 나중에 고쳐야할 것
           margin: EdgeInsets.only(
             left: 16,
-            right: 8,
+            // right: 8,
           ),
           height: 24,
           width: 24,
+          alignment: Alignment.center,
           child: IconButton(
             onPressed: () {
               Get.back();

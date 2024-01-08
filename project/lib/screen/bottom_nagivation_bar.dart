@@ -42,7 +42,7 @@ class _BottomNavigationBarComponentState
         SizedBox(
       height: 64,
       child: BottomNavigationBar(
-        backgroundColor: Colors.white,
+        backgroundColor: Color(0xFFFFFFFF),
         type: BottomNavigationBarType.fixed,
         selectedLabelStyle: const TextStyle(
           fontSize: 10,
