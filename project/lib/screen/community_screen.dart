@@ -3,10 +3,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:team5/community/view/appbar/AppBar.dart';
 import 'package:team5/community/view/tabbar/TabBar.dart';
-import 'package:team5/screen/StudyPage.dart';
 import 'package:team5/screen/bottom_nagivation_bar.dart';
-import '../screen/employment_filter.dart';
-import '../screen/noticeboard.dart';
+import 'package:team5/screen/employment_filter.dart';
 import 'package:team5/screen/user_controller.dart';
 import '/screen/notice_employment.dart';
 import '/screen/join_screen.dart';
@@ -56,9 +54,9 @@ class _CommunityState extends State<Community> {
         // body: _pageOptions.elementAt(_selectedIndex),
         body: TabBarView(
           children: [
-            Center(child: Notice_board()),
+            Center(child: Text('게시판')),
             Center(child: Text('프로젝트')),
-            Center(child: StudyPage()),
+            Center(child: Text('스터디')),
             Center(
               child: NoticeOfEmployment(),
             ),
