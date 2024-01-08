@@ -25,6 +25,13 @@ class OnBoardingController extends GetxController {
     sex.value = value;
   }
 
+// HJ 코드 ------------->
+  String getSex() {
+    return sex.toString();
+  }
+
+  //<-------------------------
+
   void updateColor(Color newInputColor, Color newTextColor) {
     inputColor.value = newInputColor;
     textColor.value = newTextColor;

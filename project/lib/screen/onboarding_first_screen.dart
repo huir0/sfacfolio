@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:team5/screen/community_screen.dart';
+import '/screen/community_screen.dart';
+import '/database/data_controller.dart';
 import '/screen/user_controller.dart';
 import '/screen/onboarding_controller.dart';
 
@@ -12,6 +13,8 @@ class OnBoardingFirstPage extends StatefulWidget {
 }
 
 class _OnBoardingFirstPageState extends State<OnBoardingFirstPage> {
+  Data_Control data_control = Data_Control(); // HJ
+
   int progressPage = 1;
   bool validate = false;
   String userName = '';
@@ -254,11 +257,26 @@ class _OnBoardingFirstPageState extends State<OnBoardingFirstPage> {
                     width: 328,
                     height: 48,
                     child: ElevatedButton(
-                      onPressed: () {
-                        Get.to(
-                          Community(), // FIXME: 다음 페이지로 연결
-                          arguments: OnBoardingController(),
-                        );
+                      // onPressed: () { // 기존 코드
+                      //  Get.to(
+                      //     OnBoardingFirstPage(), // FIXME: 다음 페이지로 연결
+                      //     arguments: OnBoardingController(),
+                      //   );
+                      // HJ 코드 --------------->
+                      onPressed: () async {
+                        String input_sex = _onBoardingController.getSex();
+                        bool input_state = await data_control.input_information(
+                            'page_1', [
+                          input_sex,
+                          _onBoardingController.birthdayController.text
+                        ]);
+                        if (input_state) {
+                          Get.to(
+                            OnBoardingFirstPage(), // FIXME: 다음 페이지로 연결
+                            arguments: OnBoardingController(),
+                          );
+                        }
+                        // <-------------
                       },
                       child: LayoutBuilder(
                         builder:

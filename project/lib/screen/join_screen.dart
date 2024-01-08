@@ -35,6 +35,7 @@ class _JoinPageMainState extends State<JoinPage> {
   }
 
   UserController userController = Get.find();
+  Data_Control data_control = Data_Control(); // HJ
 
   String errorMessage = '';
   bool _allSelected = false;
@@ -838,8 +839,173 @@ class _JoinPageMainState extends State<JoinPage> {
                                   height: 22 / 18,
                                   letterSpacing: -0.03),
                             ),
-                          );
-                        },
+                            elevation: 0,
+                            minimumSize: const Size(76, 48)),
+                        child: Text(
+                          '인증요청',
+                          style: TextStyle(
+                              fontSize: 16,
+                              color: buttonFontColor,
+                              letterSpacing: -0.48),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                // 인증번호 입력
+                Container(
+                  margin: const EdgeInsets.only(top: 10, bottom: 24),
+                  width: double.infinity,
+                  child: TextFormField(
+                    cursorColor: textFormFieldFontColor,
+                    autovalidateMode: AutovalidateMode.onUserInteraction,
+                    validator: (value) {
+                      if (value!.isEmpty) {
+                        return '필수 입력 칸입니다.';
+                      }
+                      return null;
+                    },
+                    decoration: InputDecoration(
+                      filled: true,
+                      fillColor: textFormFieldColor,
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(4),
+                        borderSide: BorderSide.none,
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(4),
+                        borderSide: BorderSide.none,
+                      ),
+                      focusColor: textFormFieldFontColor,
+                      contentPadding: const EdgeInsets.symmetric(
+                          horizontal: 16, vertical: 12),
+                      hintStyle: const TextStyle(
+                          fontSize: 16, fontWeight: FontWeight.normal),
+                      hintText: '인증번호 입력',
+                    ),
+                  ),
+                ),
+                // 약관동의 라디오버튼
+                GFCheckboxListTile(
+                  padding: const EdgeInsets.all(0.6),
+                  title: const Text('본인인증 약관 전체동의(필수)'),
+                  value: _allSelected,
+                  onChanged: (value) {
+                    setState(() {
+                      _allSelected = value;
+                      _selected = List.generate(4, (_) => _allSelected);
+                    });
+                  },
+                  position: GFPosition.start,
+                  size: 20,
+                  type: GFCheckboxType.circle,
+                ),
+                GFCheckboxListTile(
+                  padding: const EdgeInsets.all(0.6),
+                  title: const Text('개인정보 수집 이용 동의'),
+                  value: _selected[0],
+                  onChanged: (value) {
+                    setState(() {
+                      _selected[0] = value;
+                    });
+                  },
+                  position: GFPosition.start,
+                  size: 20,
+                  type: GFCheckboxType.circle,
+                ),
+                GFCheckboxListTile(
+                  padding: const EdgeInsets.all(0.6),
+                  title: const Text('고유식별 정보처리 동의'),
+                  value: _selected[1],
+                  onChanged: (value) {
+                    setState(() {
+                      _selected[1] = value;
+                    });
+                  },
+                  position: GFPosition.start,
+                  size: 20,
+                  type: GFCheckboxType.circle,
+                ),
+                GFCheckboxListTile(
+                  padding: const EdgeInsets.all(0.6),
+                  title: const Text('통신사 이용약관 동의'),
+                  value: _selected[2],
+                  onChanged: (value) {
+                    setState(() {
+                      _selected[2] = value;
+                    });
+                  },
+                  position: GFPosition.start,
+                  size: 20,
+                  type: GFCheckboxType.circle,
+                ),
+                GFCheckboxListTile(
+                  padding: const EdgeInsets.all(0.6),
+                  title: const Text('서비스 이용약관 동의'),
+                  value: _selected[3],
+                  onChanged: (value) {
+                    setState(() {
+                      _selected[3] = value;
+                    });
+                  },
+                  position: GFPosition.start,
+                  size: 20,
+                  type: GFCheckboxType.circle,
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                // 다음 버튼
+                ElevatedButton(
+                  onPressed: (_selected.every((bool val) => val) &&
+                          userController.nameController.text.isNotEmpty &&
+                          userController.emailController.text.isNotEmpty &&
+                          userController.nicknameController.text.isNotEmpty &&
+                          userController.passwordController.text.isNotEmpty &&
+                          userController
+                              .confirmPasswordController.text.isNotEmpty &&
+                          userController.mobileController.text.isNotEmpty)
+
+                      // 기존 코드
+                      // ? () {
+                      // Get.to(const WelcomePage());
+                      // HJ 코드 ------------->
+                      ? () async {
+                          Future<bool> join_success = data_control.join_input(
+                              userController.nameController.text,
+                              userController.nicknameController.text,
+                              userController.emailController.text,
+                              userController.passwordController.text,
+                              userController.mobileController.text);
+                          if (await join_success) {
+                            Get.to(const WelcomePage());
+                          }
+                          // <------------
+                        }
+                      : null,
+                  style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.resolveWith<Color>(
+                      (Set<MaterialState> states) {
+                        if (states.contains(MaterialState.disabled)) {
+                          return Colors.grey;
+                        }
+                        return buttonColor;
+                      },
+                    ),
+                    side: MaterialStateProperty.resolveWith<BorderSide>(
+                      (Set<MaterialState> states) {
+                        if (states.contains(MaterialState.disabled)) {
+                          return const BorderSide(color: Colors.grey);
+                        }
+                        return BorderSide(color: buttonColor);
+                      },
+                    ),
+                    foregroundColor:
+                        MaterialStateProperty.all<Color>(Colors.white),
+                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                      RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8),
+                        side: BorderSide(color: buttonColor),
                       ),
                     ),
                   ),

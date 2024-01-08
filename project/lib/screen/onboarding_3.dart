@@ -44,6 +44,7 @@ class ONboarding_3 extends State<Onboarding_3> {
     }
   }
 
+// 각 버튼 생성
   void Click_Slot() {
     for (int i = 1; i < 10; i++) {
       click_slot['slot_$i'] = Container(

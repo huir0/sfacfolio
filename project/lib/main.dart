@@ -28,6 +28,7 @@ void main() async {
       theme: ThemeData(
         textTheme: TextTheme(
           bodyText2: TextStyle(
+            // fontFamily: 'PretendardVariable',
             fontFamily: 'Pretendard',
           ),
         ),
