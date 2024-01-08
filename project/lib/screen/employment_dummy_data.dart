@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 
 final List<Map<String, dynamic>> dummyData = [
   {
-    'deadline': '상시',
+    'deadline': '5',
     'tag': '디자인',
     'title': 'UX/UI 디자이너 채용',
     'company': '에이컴퍼니',
