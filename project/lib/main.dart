@@ -28,7 +28,7 @@ void main() async {
   runApp(
     GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Community(),
+      home: Shortpec(),
       theme: ThemeData(
         textTheme: TextTheme(
           bodyText2: TextStyle(

@@ -87,11 +87,16 @@ class ShortPec extends State<Shortpec> {
       reaction_button['button_$i'] = GestureDetector(
         onTap: () {
           setState(() {
-            heart = true;
-            reaction_color.forEach((key, value) => reaction_color[key] =
-                Colors.black.withOpacity(0.30000001192092896));
-            reaction_color['button_$i'] = Color(0xFFE5EEFF);
-            // reaction_active = false;
+            if (reaction_color['button_$i'] == Color(0xFFE5EEFF)) {
+              reaction_color.forEach((key, value) => reaction_color[key] =
+                  Colors.black.withOpacity(0.30000001192092896));
+              heart = false;
+            } else {
+              reaction_color.forEach((key, value) => reaction_color[key] =
+                  Colors.black.withOpacity(0.30000001192092896));
+              reaction_color['button_$i'] = Color(0xFFE5EEFF);
+              heart = true;
+            }
             build_reaction();
             build_container();
           });
@@ -159,15 +164,8 @@ class ShortPec extends State<Shortpec> {
               onDoubleTap: () {
                 print('화면 더블 클릭');
                 setState(() {
-                  heart = !heart;
-                  if (!heart) {
-                    reaction_color.forEach((key, value) {
-                      reaction_color[key] =
-                          Colors.black.withOpacity(0.30000001192092896);
-                    });
-                    build_reaction();
-                  }
-                  print(heart);
+                  // build_reaction();
+                  reaction_active = !reaction_active;
                   build_container();
                 });
               },
@@ -214,7 +212,7 @@ class ShortPec extends State<Shortpec> {
                             crossAxisAlignment: CrossAxisAlignment.end,
                             children: [
                               Container(
-                                width: 200,
+                                width: 210,
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
@@ -286,9 +284,7 @@ class ShortPec extends State<Shortpec> {
                                                   width: 24,
                                                   height: 24,
                                                   child: SvgPicture.asset(
-                                                    'assets/icons/Shortfac_view.svg',
-                                                    width: 24,
-                                                    height: 24,
+                                                    'assets/icons/Shortpec_eye.svg',
                                                     alignment: Alignment.center,
                                                   ),
                                                 ),
@@ -326,18 +322,12 @@ class ShortPec extends State<Shortpec> {
                                                   child: Container(
                                                     width: 24,
                                                     height: 24,
-                                                    child: Center(
-                                                      child: Container(
-                                                        width: 15,
-                                                        height: 15,
-                                                        child: SvgPicture.asset(
-                                                          heart
-                                                              ? 'assets/icons/Blue_heart.svg'
-                                                              : 'assets/icons/Empty_heart.svg',
-                                                          alignment:
-                                                              Alignment.center,
-                                                        ),
-                                                      ),
+                                                    child: SvgPicture.asset(
+                                                      heart
+                                                          ? 'assets/icons/Shortpec_heart_blue.svg'
+                                                          : 'assets/icons/Shortpec_heart.svg',
+                                                      alignment:
+                                                          Alignment.center,
                                                     ),
                                                   ),
                                                 ),
