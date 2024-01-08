@@ -12,11 +12,12 @@ import 'employment_dummy_data.dart';
 import 'specific_page.dart';
 
 final List<String> carouselItems = [
-  'assets/images/noticeofemployment/banner.png',
-  'assets/images/noticeofemployment/banner.png',
-  'assets/images/noticeofemployment/banner.png',
-  'assets/images/noticeofemployment/banner.png',
-  'assets/images/noticeofemployment/banner.png',
+  'assets/images/community/noticeboard/banner_1.png',
+  'assets/images/community/noticeboard/banner_2.png',
+  'assets/images/community/noticeboard/banner_3.png',
+  'assets/images/community/noticeboard/banner_4.png',
+  'assets/images/community/noticeboard/banner_5.png',
+  'assets/images/community/noticeboard/banner_6.png',
 ];
 
 class NoticeOfEmployment extends StatefulWidget {
@@ -45,7 +46,7 @@ class _NoticeOfEmploymentState extends State<NoticeOfEmployment> {
             child: Column(
               children: [
                 Container(
-                  height: 172,
+                  height: 200,
                   child: Stack(
                     children: [
                       CarouselSlider(
@@ -53,7 +54,7 @@ class _NoticeOfEmploymentState extends State<NoticeOfEmployment> {
                             .map((image) => Image.asset(image))
                             .toList(),
                         options: CarouselOptions(
-                          height: 172,
+                          height: 200,
                           autoPlay: true,
                           viewportFraction: 1,
                           onPageChanged: (index, reason) {
@@ -63,9 +64,9 @@ class _NoticeOfEmploymentState extends State<NoticeOfEmployment> {
                           },
                         ),
                       ),
-                      Positioned(
-                        top: 162,
-                        left: 162,
+                      Container(
+                        margin: EdgeInsets.only(bottom: 4),
+                        alignment: Alignment.bottomCenter,
                         child: DotsIndicator(
                           dotsCount: carouselItems.length,
                           position: currentIndex,
