@@ -232,29 +232,13 @@ class SpecificPage extends StatelessWidget {
                             padding: const EdgeInsets.only(
                                 top: 8, bottom: 8, left: 8, right: 0),
                             alignment: Alignment.topLeft,
-                            child: RichText(
-                              text: TextSpan(
-                                style: const TextStyle(
-                                  fontWeight: FontWeight.w400,
-                                  height: 1.5,
-                                  color: Color(0xff666666),
-                                  fontSize: 14,
-                                ),
-                                children: bulletAddedJobDescription
-                                    .split('\n')
-                                    .map((line) {
-                                  if (line.startsWith('•')) {
-                                    return WidgetSpan(
-                                      child: Padding(
-                                        padding:
-                                            const EdgeInsets.only(right: 10.0),
-                                        child: Text(line),
-                                      ),
-                                    );
-                                  } else {
-                                    return TextSpan(text: line);
-                                  }
-                                }).toList(),
+                            child: Text(
+                              bulletAddedJobDescription,
+                              style: const TextStyle(
+                                color: Color(0xff666666),
+                                fontSize: 14,
+                                fontWeight: FontWeight.w400,
+                                height: 1.5,
                               ),
                             ),
                           ),
