@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '/community/Community.dart';
+import '/screen/community_screen.dart';
 
 import 'screen/employment_dummy_data.dart';
 
@@ -28,7 +28,7 @@ void main() async {
   runApp(
     GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Passwordpage_1(),
+      home: Community(),
       theme: ThemeData(
         textTheme: TextTheme(
           bodyText2: TextStyle(
