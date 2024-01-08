@@ -1,11 +1,11 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:getwidget/getwidget.dart';
-import 'package:team5/screen/user_controller.dart';
+import '../database/data_controller.dart';
+import '../screen/user_controller.dart';
 import '../utill/color.dart';
 import '/screen/welcome_screen.dart';
+import 'dart:async';
 
 class JoinPage extends StatefulWidget {
   const JoinPage({super.key});
@@ -617,8 +617,9 @@ class _JoinPageMainState extends State<JoinPage> {
                                         borderSide: BorderSide.none,
                                       ),
                                       focusColor: AppColor.Neutral40,
-                                      contentPadding: const EdgeInsets.symmetric(
-                                          horizontal: 16, vertical: 12),
+                                      contentPadding:
+                                          const EdgeInsets.symmetric(
+                                              horizontal: 16, vertical: 12),
                                       hintStyle: const TextStyle(
                                           fontFamily: 'Pretendard',
                                           fontSize: 16,
@@ -668,7 +669,6 @@ class _JoinPageMainState extends State<JoinPage> {
                     ],
                   ),
                 ),
-
               ),
               // 약관동의 라디오버튼
               Column(
@@ -776,8 +776,22 @@ class _JoinPageMainState extends State<JoinPage> {
                               userController
                                   .confirmPasswordController.text.isNotEmpty &&
                               userController.mobileController.text.isNotEmpty)
-                          ? () {
-                              Get.to(const WelcomePage());
+                          // 기존 코드
+                          // ? () {
+                          // Get.to(const WelcomePage());
+                          // HJ 코드 ------------->
+                          ? () async {
+                              Future<bool> join_success =
+                                  data_control.join_input(
+                                      userController.nameController.text,
+                                      userController.nicknameController.text,
+                                      userController.emailController.text,
+                                      userController.passwordController.text,
+                                      userController.mobileController.text);
+                              if (await join_success) {
+                                Get.to(const WelcomePage());
+                              }
+                              // <------------
                             }
                           : null,
                       style: ButtonStyle(
