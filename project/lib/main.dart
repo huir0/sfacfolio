@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:team5/screen/noticeboard.dart';
-import 'package:team5/screen/passwordpage_1.dart';
+import 'screen/noticeboard.dart';
+import 'screen/passwordpage_1.dart';
 import 'screen/join_screen.dart';
 import 'screen/onboarding_3.dart';
 import 'screen/shortpec.dart';
@@ -19,6 +19,8 @@ void main() async {
   );
 
   Get.put(UserController());
+  Get.put(ClickController());
+  Get.put(BookmarkController());
   runApp(
     GetMaterialApp(
       debugShowCheckedModeBanner: false,
@@ -26,7 +28,8 @@ void main() async {
       theme: ThemeData(
         textTheme: TextTheme(
           bodyText2: TextStyle(
-            fontFamily: 'PretendardVariable',
+            // fontFamily: 'PretendardVariable',
+            fontFamily: 'Pretendard',
           ),
         ),
       ),

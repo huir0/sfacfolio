@@ -30,4 +30,9 @@ class AppColor {
 
   static const Color meaningfulRed = Color.fromARGB(225, 255, 0, 0);
   static const Color meaningfulGreen = Color.fromARGB(225, 8, 162, 32);
+
+  static const Color BackgroundBiue = Color(0xfff5f8ff);
+  static const Color Background5 = Color(0xfff8f8f9);
+
+  static const Color Warning = Color(0xffff0000);
 }

@@ -43,11 +43,12 @@ dependencies:
   flutter_svg: ^2.0.9 
   firebase_storage: ^11.5.6
   intl: ^0.19.0
-
-
-
-
-
+  carousel_slider: ^4.2.1
+  google_maps_flutter: ^2.5.0
+  geocoding: ^2.1.1
+  dots_indicator: ^3.0.0
+  page_view_indicators: ^2.0.0
+  
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -76,6 +77,9 @@ flutter:
     - assets/images/
     - assets/images/onboarding_3/
     - assets/images/community/noticeboard/
+    - assets/icons/interaction/
+    - assets/icons/filter/
+    - assets/images/noticeofemployment/
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
@@ -90,9 +94,29 @@ flutter:
   # list giving the asset and other descriptors for the font. For
   # example:
   fonts:
-     - family: PretendardVariable
-       fonts:
-         - asset: assets/fonts/PretendardVariable.ttf
+    - family: PretendardVariable
+      fonts:
+        - asset: assets/fonts/PretendardVariable.ttf
+    - family: Pretendard
+      fonts:
+        - asset: assets/fonts/Pretendard-Black.otf
+          weight: 900
+        - asset: assets/fonts/Pretendard-ExtraBold.otf
+          weight: 800
+        - asset: assets/fonts/Pretendard-Bold.otf
+          weight: 700
+        - asset: assets/fonts/Pretendard-SemiBold.otf
+          weight: 600
+        - asset: assets/fonts/Pretendard-Medium.otf
+          weight: 500
+        - asset: assets/fonts/Pretendard-Regular.otf
+          weight: 400
+        - asset: assets/fonts/Pretendard-Light.otf
+          weight: 300
+        - asset: assets/fonts/Pretendard-ExtraLight.otf
+          weight: 200
+        - asset: assets/fonts/Pretendard-Thin.otf
+          weight: 100     
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro
