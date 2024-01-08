@@ -700,21 +700,21 @@ class Notice_Board extends State<Notice_board> {
           ? Container(
               child: Column(
                 children: [
-                  // Container(
-                  //   margin: EdgeInsets.only(
-                  //       top: MediaQuery.of(context).padding.top),
-                  //   height: 48,
-                  //   width: 360,
-                  //   child: CustomAppBarWidget(),
-                  // ),
-                  // Container(
-                  //   width: 360,
-                  //   height: 40,
-                  //   child: CustomTabBar(),
-                  // ),
+                  Container(
+                    margin: EdgeInsets.only(
+                        top: MediaQuery.of(context).padding.top),
+                    height: 48,
+                    width: 360,
+                    child: CustomAppBarWidget(),
+                  ),
                   Container(
                     width: 360,
-                    height: 556,
+                    height: 40,
+                    child: CustomTabBar(),
+                  ),
+                  Container(
+                    width: 360,
+                    height: 540,
                     child: Stack(
                       children: [
                         Container(
@@ -912,13 +912,13 @@ class Notice_Board extends State<Notice_board> {
                       ],
                     ),
                   ),
-                  // Container(
-                  //   height: 64,
-                  //   decoration: BoxDecoration(
-                  //     color: Color(0xFFFFFFFF),
-                  //   ),
-                  //   child: BottomNavigationBarComponent(),
-                  // ),
+                  Container(
+                    height: 64,
+                    decoration: BoxDecoration(
+                      color: Color(0xFFFFFFFF),
+                    ),
+                    child: BottomNavigationBarComponent(),
+                  ),
                 ],
               ),
             )
