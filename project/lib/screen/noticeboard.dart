@@ -1,3 +1,5 @@
+import 'package:carousel_slider/carousel_slider.dart';
+import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -40,6 +42,16 @@ class Notice_Board extends State<Notice_board> {
   Map<String, Widget> category_button = {};
   List<String> category_text = ['전체', '자유', '취업/이직', '수강후기', '포트폴리오 '];
   Map<String, bool> category_button_activate = {};
+
+  final List<String> carouselItems = [
+    'assets/images/community/noticeboard/banner_1.png',
+    'assets/images/community/noticeboard/banner_2.png',
+    'assets/images/community/noticeboard/banner_3.png',
+    'assets/images/community/noticeboard/banner_4.png',
+    'assets/images/community/noticeboard/banner_5.png',
+    'assets/images/community/noticeboard/banner_6.png'
+  ];
+  int currentIndex = 0;
 
   @override
   void initState() {
@@ -679,208 +691,239 @@ class Notice_Board extends State<Notice_board> {
       statusBarColor: Colors.white,
       statusBarIconBrightness: Brightness.dark,
     ));
-    return DefaultTabController(
-      length: 4,
-      child: Scaffold(
-        body: page_load
-            ? Container(
-                child: Column(
-                  children: [
-                    Container(
-                      margin: EdgeInsets.only(
-                          top: MediaQuery.of(context).padding.top),
-                      height: 48,
-                      width: 360,
-                      child: CustomAppBarWidget(),
-                    ),
-                    Container(
-                      width: 360,
-                      height: 40,
-                      child: CustomTabBar(),
-                    ),
-                    Container(
-                      width: 360,
-                      height: 564,
-                      child: Stack(
-                        children: [
-                          Container(
-                            child: SingleChildScrollView(
-                              child: Column(
-                                children: [
-                                  Custom_Banner(), // 배너 클래스
-                                  Container(
-                                    margin: EdgeInsets.all(16),
-                                    child: Column(
-                                      children: [
-                                        Row(
-                                          children: [
-                                            Text(
-                                              '인기 게시글',
-                                              style: TextStyle(
-                                                  fontFamily: 'Pretendard',
-                                                  color: Color(0xFF000000),
-                                                  fontSize: 16,
-                                                  fontWeight: FontWeight.w600),
-                                            ),
-                                            SizedBox(width: 4),
-                                            Container(
-                                              width: 24,
-                                              height: 24,
-                                              child: Image.asset(
-                                                'assets/images/fire.png',
-                                                fit: BoxFit.fill,
-                                              ),
-                                            )
-                                          ],
+    return
+        // DefaultTabController(
+        //   length: 4,
+        //   child:
+        Scaffold(
+      body: page_load
+          ? Container(
+              child: Column(
+                children: [
+                  // Container(
+                  //   margin: EdgeInsets.only(
+                  //       top: MediaQuery.of(context).padding.top),
+                  //   height: 48,
+                  //   width: 360,
+                  //   child: CustomAppBarWidget(),
+                  // ),
+                  // Container(
+                  //   width: 360,
+                  //   height: 40,
+                  //   child: CustomTabBar(),
+                  // ),
+                  Container(
+                    width: 360,
+                    height: 556,
+                    child: Stack(
+                      children: [
+                        Container(
+                          child: SingleChildScrollView(
+                            child: Column(
+                              children: [
+                                Container(
+                                  height: 200,
+                                  child: Stack(
+                                    children: [
+                                      CarouselSlider(
+                                        items: carouselItems
+                                            .map((image) => Image.asset(image))
+                                            .toList(),
+                                        options: CarouselOptions(
+                                          height: 200,
+                                          autoPlay: true,
+                                          viewportFraction: 1,
+                                          onPageChanged: (index, reason) {
+                                            setState(() {
+                                              currentIndex = index;
+                                            });
+                                          },
                                         ),
-                                        Container(
-                                          height: 168,
-                                          width: 316,
-                                          margin: EdgeInsets.only(top: 14),
-                                          child: SingleChildScrollView(
-                                            scrollDirection: Axis.horizontal,
-                                            child: Row(
-                                              children: pop_docs_panel.values
-                                                  .toList(),
-                                            ),
-                                          ),
+                                      ),
+                                      Container(
+                                        margin: EdgeInsets.only(bottom: 4),
+                                        alignment: Alignment.bottomCenter,
+                                        child: DotsIndicator(
+                                          dotsCount: carouselItems.length,
+                                          position: currentIndex,
+                                          decorator: const DotsDecorator(
+                                              size: Size.square(4),
+                                              activeSize: Size.square(4),
+                                              activeColor: Colors.white,
+                                              spacing: EdgeInsets.all(2)),
                                         ),
-                                        Container(
-                                          alignment: Alignment.topLeft,
-                                          height: 40,
-                                          margin: EdgeInsets.only(top: 40),
-                                          child: Text(
-                                            '실시간 게시글',
+                                      )
+                                    ],
+                                  ),
+                                ), // 배너 클래스
+                                Container(
+                                  margin: EdgeInsets.all(16),
+                                  child: Column(
+                                    children: [
+                                      Row(
+                                        children: [
+                                          Text(
+                                            '인기 게시글',
                                             style: TextStyle(
                                                 fontFamily: 'Pretendard',
                                                 color: Color(0xFF000000),
                                                 fontSize: 16,
                                                 fontWeight: FontWeight.w600),
                                           ),
-                                        ),
-                                        Container(
-                                          width: 328,
-                                          height: 38,
+                                          SizedBox(width: 4),
+                                          Container(
+                                            width: 24,
+                                            height: 24,
+                                            child: Image.asset(
+                                              'assets/images/fire.png',
+                                              fit: BoxFit.fill,
+                                            ),
+                                          )
+                                        ],
+                                      ),
+                                      Container(
+                                        height: 168,
+                                        width: 316,
+                                        margin: EdgeInsets.only(top: 14),
+                                        child: SingleChildScrollView(
+                                          scrollDirection: Axis.horizontal,
                                           child: Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.spaceBetween,
-                                            children: [
-                                              bottom_sheet,
-                                              PopupMenuButton<String>(
-                                                onSelected: (value) {
-                                                  setState(() {
-                                                    drop_down_initial = value;
-                                                  });
-                                                  drop_down_list
-                                                      .forEach((key, value) {
-                                                    drop_down_list[key] = false;
-                                                  });
-                                                  drop_down_list[value] = true;
-                                                },
-                                                itemBuilder:
-                                                    (BuildContext context) {
-                                                  return drop_down_item.values
-                                                      .toList();
-                                                },
-                                                shape: RoundedRectangleBorder(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            8)),
-                                                elevation: 5,
-                                                child: Container(
-                                                  height: 38,
-                                                  padding: EdgeInsets.all(10),
-                                                  decoration: BoxDecoration(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            20),
-                                                    border: Border.all(
-                                                        color:
-                                                            Color(0xFFF3F3F3),
-                                                        width: 1),
-                                                  ),
-                                                  child: Center(
-                                                    child: Row(
-                                                      mainAxisAlignment:
-                                                          MainAxisAlignment
-                                                              .spaceBetween,
-                                                      children: [
-                                                        Text(
-                                                          drop_down_initial,
-                                                          style: TextStyle(
-                                                              fontFamily:
-                                                                  'Pretendard',
-                                                              fontSize: 12,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .normal),
+                                            children:
+                                                pop_docs_panel.values.toList(),
+                                          ),
+                                        ),
+                                      ),
+                                      Container(
+                                        alignment: Alignment.topLeft,
+                                        height: 40,
+                                        margin: EdgeInsets.only(top: 40),
+                                        child: Text(
+                                          '실시간 게시글',
+                                          style: TextStyle(
+                                              fontFamily: 'Pretendard',
+                                              color: Color(0xFF000000),
+                                              fontSize: 16,
+                                              fontWeight: FontWeight.w600),
+                                        ),
+                                      ),
+                                      Container(
+                                        width: 328,
+                                        height: 38,
+                                        child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            bottom_sheet,
+                                            PopupMenuButton<String>(
+                                              onSelected: (value) {
+                                                setState(() {
+                                                  drop_down_initial = value;
+                                                });
+                                                drop_down_list
+                                                    .forEach((key, value) {
+                                                  drop_down_list[key] = false;
+                                                });
+                                                drop_down_list[value] = true;
+                                              },
+                                              itemBuilder:
+                                                  (BuildContext context) {
+                                                return drop_down_item.values
+                                                    .toList();
+                                              },
+                                              shape: RoundedRectangleBorder(
+                                                  borderRadius:
+                                                      BorderRadius.circular(8)),
+                                              elevation: 5,
+                                              child: Container(
+                                                height: 38,
+                                                padding: EdgeInsets.all(10),
+                                                decoration: BoxDecoration(
+                                                  borderRadius:
+                                                      BorderRadius.circular(20),
+                                                  border: Border.all(
+                                                      color: Color(0xFFF3F3F3),
+                                                      width: 1),
+                                                ),
+                                                child: Center(
+                                                  child: Row(
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .spaceBetween,
+                                                    children: [
+                                                      Text(
+                                                        drop_down_initial,
+                                                        style: TextStyle(
+                                                            fontFamily:
+                                                                'Pretendard',
+                                                            fontSize: 12,
+                                                            fontWeight:
+                                                                FontWeight
+                                                                    .normal),
+                                                      ),
+                                                      Container(
+                                                        margin: EdgeInsets.only(
+                                                            left: 4),
+                                                        child: SvgPicture.asset(
+                                                          'assets/icons/Dropdown.svg',
+                                                          fit: BoxFit.fill,
                                                         ),
-                                                        Container(
-                                                          margin:
-                                                              EdgeInsets.only(
-                                                                  left: 4),
-                                                          child:
-                                                              SvgPicture.asset(
-                                                            'assets/icons/Dropdown.svg',
-                                                            fit: BoxFit.fill,
-                                                          ),
-                                                        ),
-                                                      ],
-                                                    ),
+                                                      ),
+                                                    ],
                                                   ),
                                                 ),
                                               ),
-                                            ],
-                                          ),
+                                            ),
+                                          ],
                                         ),
-                                        Page_Division(docs_panel),
-                                      ],
-                                    ),
+                                      ),
+                                      Page_Division(docs_panel),
+                                    ],
                                   ),
-                                ],
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                        Positioned(
+                          bottom: 14,
+                          right: 16,
+                          child: GestureDetector(
+                            onTap: () {},
+                            child: Container(
+                              width: 48,
+                              height: 48,
+                              decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                color: Color(0xFF0059FF),
+                              ),
+                              child: Center(
+                                child: Container(
+                                  width: 15,
+                                  height: 17,
+                                  child: SvgPicture.asset(
+                                    'assets/icons/Pencil.svg',
+                                    fit: BoxFit.fill,
+                                  ),
+                                ),
                               ),
                             ),
                           ),
-                          Positioned(
-                            bottom: 14,
-                            right: 16,
-                            child: GestureDetector(
-                              onTap: () {},
-                              child: Container(
-                                width: 48,
-                                height: 48,
-                                decoration: BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  color: Color(0xFF0059FF),
-                                ),
-                                child: Center(
-                                  child: Container(
-                                    width: 15,
-                                    height: 17,
-                                    child: SvgPicture.asset(
-                                      'assets/icons/Pencil.svg',
-                                      fit: BoxFit.fill,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
+                        ),
+                      ],
                     ),
-                    Container(
-                      height: 64,
-                      decoration: BoxDecoration(
-                        color: Color(0xFFFFFFFF),
-                      ),
-                      child: BottomNavigationBarComponent(),
-                    ),
-                  ],
-                ),
-              )
-            : Container(),
-      ),
+                  ),
+                  // Container(
+                  //   height: 64,
+                  //   decoration: BoxDecoration(
+                  //     color: Color(0xFFFFFFFF),
+                  //   ),
+                  //   child: BottomNavigationBarComponent(),
+                  // ),
+                ],
+              ),
+            )
+          : Container(),
+      // ),
     );
   }
 }
