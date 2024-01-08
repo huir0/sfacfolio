@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:team5/utill/color.dart';
+import '../screen/community_screen.dart';
+import '../utill/color.dart';
 import '/screen/onboarding_first_screen.dart';
 
 const partypopper = 'assets/images/Party_popper.png';
@@ -61,7 +62,7 @@ class WelcomePage extends StatelessWidget {
                       context,
                       MaterialPageRoute(
                           builder: (context) =>
-                              WelcomePage()), // 다른 웰컴 페이지로 이동시켜줘야 함
+                             Community()), // 다른 웰컴 페이지로 이동시켜줘야 함
                     );
                   },
                   child: Text(

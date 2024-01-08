@@ -3,10 +3,10 @@ import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import 'package:team5/community/view/tabbar/TabBar.dart';
-import 'package:team5/screen/employment_filter.dart';
-import 'package:team5/screen/user_controller.dart';
-import 'package:team5/utill/color.dart';
+import '../community/view/tabbar/TabBar.dart';
+import '../screen/employment_filter.dart';
+// import 'package:team5/screen/user_controller.dart';
+import '../utill/color.dart';
 
 import 'employment_dummy_data.dart';
 import 'specific_page.dart';
@@ -32,14 +32,6 @@ class _NoticeOfEmploymentState extends State<NoticeOfEmployment> {
   int currentIndex = 0;
   int numPages = (dummyData.length / 5).ceil();
   int currentPage = 0;
-
-  // 필터 바텀시트
-  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
-
-  void _showBottomSheet() {
-    _scaffoldKey.currentState
-        ?.showBottomSheet((context) => const EmploymentFilter());
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -325,16 +317,19 @@ class _NoticeOfEmploymentState extends State<NoticeOfEmployment> {
                                   )),
                               onPressed: () {
                                 // TODO: bottomsheet 추가
-                                // _showBottomSheet();
-                                // showModalBottomSheet(
-                                //   useRootNavigator: true,
-                                //   scrollControlDisabledMaxHeightRatio: 80,
-                                //   context: context,
-                                //   builder: (BuildContext context) {
-                                //     return EmploymentFilter();
-                                //   },
-                                // );
-                                Get.find<UserController>().toggleShowSheet();
+                                showModalBottomSheet(
+                                  useRootNavigator: false,
+                                  scrollControlDisabledMaxHeightRatio: 85,
+                                  isScrollControlled: true,
+                                  context: context,
+                                  builder: (context) => SingleChildScrollView(
+                                    padding: EdgeInsets.only(
+                                        bottom: MediaQuery.of(context)
+                                            .viewInsets
+                                            .bottom),
+                                    child: EmploymentFilter(),
+                                  ),
+                                );
                               },
                             ),
                             // Spacer(),
@@ -533,7 +528,15 @@ class _NoticeOfEmploymentState extends State<NoticeOfEmployment> {
                                                             .centerLeft,
                                                         decoration:
                                                             ShapeDecoration(
-                                                          color: Colors.white,
+                                                          color: int.parse(dummyData[
+                                                                          index]
+                                                                      [
+                                                                      'deadline']) <=
+                                                                  7
+                                                              ? AppColor
+                                                                  .WarningBackground
+                                                              : AppColor
+                                                                  .BackgroundBiue,
                                                           shape:
                                                               RoundedRectangleBorder(
                                                             borderRadius:
@@ -542,53 +545,100 @@ class _NoticeOfEmploymentState extends State<NoticeOfEmployment> {
                                                                         20),
                                                           ),
                                                         ),
-                                                        child: Text(
-                                                          dummyData[index]
-                                                              ['tag'],
-                                                          style:
-                                                              const TextStyle(
-                                                            fontSize: 10,
-                                                            color: Color(
-                                                                0xff0059ff),
-                                                          ),
-                                                        ),
+                                                        child: dummyData[index][
+                                                                    'deadline'] ==
+                                                                '상시'
+                                                            ? Text(
+                                                                '상시',
+                                                                style:
+                                                                    const TextStyle(
+                                                                  fontSize: 10,
+                                                                  color: AppColor
+                                                                      .Primary100,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w400,
+                                                                ),
+                                                              )
+                                                            : Text(
+                                                                'D-${dummyData[index]['deadline']}',
+                                                                style:
+                                                                    TextStyle(
+                                                                  fontSize: 10,
+                                                                  color: int.parse(dummyData[index]
+                                                                              [
+                                                                              'deadline']) <=
+                                                                          7
+                                                                      ? AppColor
+                                                                          .Warning
+                                                                      : AppColor
+                                                                          .Primary100,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w400,
+                                                                ),
+                                                              ),
                                                       ),
                                                     ),
                                                   ),
                                                   Positioned(
                                                     right: 10,
                                                     top: 10,
-                                                    child: GestureDetector(
-                                                      onTap: () {
-                                                        Get.find<
-                                                                BookmarkController>()
-                                                            .toggleBookmark(
-                                                                index);
-                                                      },
-                                                      child: GetBuilder<
-                                                          BookmarkController>(
-                                                        builder: (controller) =>
-                                                            Container(
-                                                          height: 24,
-                                                          width: 24,
-                                                          padding:
-                                                              const EdgeInsets
-                                                                  .only(
-                                                            top: 4,
-                                                            right: 6,
-                                                            left: 6,
+                                                    child: Column(
+                                                      children: [
+                                                        GestureDetector(
+                                                          onTap: () {
+                                                            Get.find<
+                                                                    BookmarkController>()
+                                                                .toggleBookmark(
+                                                                    index);
+                                                          },
+                                                          child: GetBuilder<
+                                                              BookmarkController>(
+                                                            builder:
+                                                                (controller) =>
+                                                                    Column(
+                                                              children: [
+                                                                Container(
+                                                                  height: 24,
+                                                                  width: 24,
+                                                                  padding:
+                                                                      const EdgeInsets
+                                                                          .only(
+                                                                    top: 4,
+                                                                    right: 6,
+                                                                    left: 6,
+                                                                  ),
+                                                                  child: controller
+                                                                              .bookmarked[
+                                                                          index]
+                                                                      ? SvgPicture
+                                                                          .asset(
+                                                                          'assets/icons/Bookmark_filled.svg',
+                                                                        )
+                                                                      : SvgPicture
+                                                                          .asset(
+                                                                              'assets/icons/Bookmark.svg'),
+                                                                ),
+                                                                Text(
+                                                                  Get.find<
+                                                                          BookmarkController>()
+                                                                      .bookmarkCounter[
+                                                                          index]
+                                                                      .toString(),
+                                                                  style:
+                                                                      TextStyle(
+                                                                    fontSize:
+                                                                        10,
+                                                                    color: AppColor
+                                                                        .Neutral30,
+                                                                  ),
+                                                                ),
+                                                              ],
+                                                            ),
                                                           ),
-                                                          child: controller
-                                                                      .bookmarked[
-                                                                  index]
-                                                              ? SvgPicture
-                                                                  .asset(
-                                                                  'assets/icons/Bookmark_filled.svg',
-                                                                )
-                                                              : SvgPicture.asset(
-                                                                  'assets/icons/Bookmark.svg'),
                                                         ),
-                                                      ),
+                                                      ],
                                                     ),
                                                   ),
                                                 ],
@@ -619,91 +669,12 @@ class _NoticeOfEmploymentState extends State<NoticeOfEmployment> {
                                                           ['company'],
                                                       style: const TextStyle(
                                                         color:
-                                                            Color(0xff999999),
+                                                            AppColor.Primary100,
                                                         fontSize: 10,
                                                         fontWeight:
                                                             FontWeight.w400,
                                                       ),
                                                     ),
-                                                  ),
-                                                  Text(
-                                                    ' • ',
-                                                    style: TextStyle(
-                                                      color: Color(0xff999999),
-                                                      fontSize: 10,
-                                                      height: 1.5,
-                                                    ),
-                                                  ),
-                                                  Container(
-                                                    height: 15,
-                                                    child: Text(
-                                                      dummyData[index]
-                                                          ['location'],
-                                                      style: const TextStyle(
-                                                        color:
-                                                            Color(0xff999999),
-                                                        fontSize: 10,
-                                                        fontWeight:
-                                                            FontWeight.w400,
-                                                      ),
-                                                    ),
-                                                  ),
-                                                  Spacer(),
-                                                  Container(
-                                                    width: 12,
-                                                    child: SvgPicture.asset(
-                                                      'assets/icons/interaction/view.svg',
-                                                    ),
-                                                  ),
-                                                  Container(
-                                                    width: 12,
-                                                    child: Text(
-                                                      clickController
-                                                          .clickCounts[index]
-                                                          .toString(),
-                                                      style: TextStyle(
-                                                        fontSize: 10,
-                                                        fontWeight:
-                                                            FontWeight.w400,
-                                                      ),
-                                                    ),
-                                                  ),
-                                                  Container(
-                                                    width: 12,
-                                                    child: SvgPicture.asset(
-                                                      'assets/icons/interaction/reply.svg',
-                                                    ),
-                                                  ),
-                                                  Container(
-                                                    width: 12,
-                                                    child: Text(
-                                                      '4',
-                                                      style: TextStyle(
-                                                        fontSize: 10,
-                                                        fontWeight:
-                                                            FontWeight.w400,
-                                                      ),
-                                                    ),
-                                                  ),
-                                                  Container(
-                                                    width: 12,
-                                                    child: SvgPicture.asset(
-                                                      'assets/icons/interaction/bookmark.svg',
-                                                    ),
-                                                  ),
-                                                  Container(
-                                                    width: 12,
-                                                    child: Text(
-                                                      '10',
-                                                      style: TextStyle(
-                                                        fontSize: 10,
-                                                        fontWeight:
-                                                            FontWeight.w400,
-                                                      ),
-                                                    ),
-                                                  ),
-                                                  SizedBox(
-                                                    width: 12,
                                                   ),
                                                 ],
                                               ),

@@ -35,4 +35,6 @@ class AppColor {
   static const Color Background5 = Color(0xfff8f8f9);
 
   static const Color Warning = Color(0xffff0000);
+  static const Color WarningBackground = Color(0xffFFE5E5);
+
 }
