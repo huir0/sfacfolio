@@ -2,9 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import 'package:team5/community/view/pagenumber/page_division.dart';
-import 'package:team5/database/data_controller.dart';
-import 'package:team5/screen/postpage.dart';
+import 'package:team5/community/view/appbar/AppBar.dart';
+import 'package:team5/community/view/tabbar/TabBar.dart';
+import '../community/view/pagenumber/page_division.dart';
+import '../database/data_controller.dart';
+import '../screen/bottom_nagivation_bar.dart';
+import '../screen/postpage.dart';
 import '../community/view/banner/community_banner.dart';
 // import '../community/view/appbar/AppBar.dart';
 
@@ -95,6 +98,7 @@ class Notice_Board extends State<Notice_board> {
             child: Text(
           id,
           style: TextStyle(
+            fontFamily: 'Pretendard',
             color: Color(0xFF666666),
             fontSize: 10,
             fontWeight: FontWeight.w400,
@@ -153,6 +157,7 @@ class Notice_Board extends State<Notice_board> {
                     pop_docs[pop_id]['title'],
                     textAlign: TextAlign.start,
                     style: TextStyle(
+                      fontFamily: 'Pretendard',
                       color: Colors.black,
                       fontSize: 14,
                       fontWeight: FontWeight.w700,
@@ -173,6 +178,7 @@ class Notice_Board extends State<Notice_board> {
                   pop_docs[pop_id]['detail'],
                   textAlign: TextAlign.start,
                   style: TextStyle(
+                    fontFamily: 'Pretendard',
                     color: Color(0xFF999999),
                     fontSize: 10,
                     fontWeight: FontWeight.w400,
@@ -208,6 +214,7 @@ class Notice_Board extends State<Notice_board> {
                   child: Text(
                     pop_docs[pop_id]['main_category'],
                     style: TextStyle(
+                      fontFamily: 'Pretendard',
                       color: Color(0xFF0059FF),
                       fontSize: 10,
                       fontWeight: FontWeight.w400,
@@ -273,6 +280,7 @@ class Notice_Board extends State<Notice_board> {
                           docs[doc_id]['writer'],
                           textAlign: TextAlign.start,
                           style: TextStyle(
+                            fontFamily: 'Pretendard',
                             color: Color(0xFF666666),
                             fontSize: 12,
                             fontWeight: FontWeight.w400,
@@ -293,6 +301,7 @@ class Notice_Board extends State<Notice_board> {
                             child: Text(
                           docs[doc_id]['main_category'],
                           style: TextStyle(
+                            fontFamily: 'Pretendard',
                             color: Color(0xFF0059FF),
                             fontSize: 10,
                             fontWeight: FontWeight.w400,
@@ -312,6 +321,7 @@ class Notice_Board extends State<Notice_board> {
                     style: TextStyle(
                       color: Colors.black,
                       fontSize: 14,
+                      fontFamily: 'Pretendard',
                       fontWeight: FontWeight.w600,
                     ),
                   ),
@@ -324,6 +334,7 @@ class Notice_Board extends State<Notice_board> {
                     docs[doc_id]['detail'],
                     textAlign: TextAlign.start,
                     style: TextStyle(
+                      fontFamily: 'Pretendard',
                       color: Color(0xFF999999),
                       overflow: TextOverflow.ellipsis,
                       fontSize: 10,
@@ -366,6 +377,7 @@ class Notice_Board extends State<Notice_board> {
                             Text(
                               '${docs[doc_id]['views']}',
                               style: TextStyle(
+                                fontFamily: 'Pretendard',
                                 color: Color(0xFF4C4C4C),
                                 fontSize: 10,
                               ),
@@ -382,6 +394,7 @@ class Notice_Board extends State<Notice_board> {
                             Text(
                               '${docs[doc_id]['commentnum']}',
                               style: TextStyle(
+                                fontFamily: 'Pretendard',
                                 color: Color(0xFF4C4C4C),
                                 fontSize: 10,
                                 fontWeight: FontWeight.w400,
@@ -399,6 +412,7 @@ class Notice_Board extends State<Notice_board> {
                             Text(
                               '${docs[doc_id]['like']}',
                               style: TextStyle(
+                                fontFamily: 'Pretendard',
                                 color: Color(0xFF4C4C4C),
                                 fontSize: 10,
                                 fontWeight: FontWeight.w400,
@@ -426,6 +440,7 @@ class Notice_Board extends State<Notice_board> {
           child: Text(
             text,
             style: TextStyle(
+              fontFamily: 'Pretendard',
               color: Color(0xFF020202),
               fontSize: 12,
               fontWeight: FontWeight.w400,
@@ -474,6 +489,7 @@ class Notice_Board extends State<Notice_board> {
               child: Text(
             text,
             style: TextStyle(
+              fontFamily: 'Pretendard',
               color: category_button_activate[text]!
                   ? Color(0xFF0059FF)
                   : Color(0xFF000000),
@@ -495,8 +511,7 @@ class Notice_Board extends State<Notice_board> {
           builder: (BuildContext context) {
             return Container(
               width: 360,
-              height: 281,
-              margin: EdgeInsets.only(bottom: 64),
+              height: 345,
               decoration: ShapeDecoration(
                 color: Colors.white,
                 shape: RoundedRectangleBorder(
@@ -533,6 +548,7 @@ class Notice_Board extends State<Notice_board> {
                           child: Text(
                             '필터 검색',
                             style: TextStyle(
+                              fontFamily: 'Pretendard',
                               color: Colors.black,
                               fontSize: 16,
                               fontWeight: FontWeight.w600,
@@ -549,6 +565,7 @@ class Notice_Board extends State<Notice_board> {
                           child: Text(
                             '태그',
                             style: TextStyle(
+                              fontFamily: 'Pretendard',
                               color: Colors.black,
                               fontSize: 14,
                               fontWeight: FontWeight.w600,
@@ -601,6 +618,7 @@ class Notice_Board extends State<Notice_board> {
                             child: Text(
                               '초기화',
                               style: TextStyle(
+                                fontFamily: 'Pretendard',
                                 color: Color(0xFF7F7F7F),
                                 fontSize: 16,
                                 fontWeight: FontWeight.w600,
@@ -623,9 +641,9 @@ class Notice_Board extends State<Notice_board> {
                             child: Text(
                               '적용하기',
                               style: TextStyle(
+                                fontFamily: 'Pretendard',
                                 color: Colors.white,
                                 fontSize: 16,
-                                fontFamily: 'Pretendard',
                                 fontWeight: FontWeight.w600,
                                 height: 0.09,
                               ),
@@ -635,6 +653,7 @@ class Notice_Board extends State<Notice_board> {
                       ],
                     ),
                   ),
+                  BottomNavigationBarComponent(),
                 ],
               ),
             );
@@ -660,204 +679,208 @@ class Notice_Board extends State<Notice_board> {
       statusBarColor: Colors.white,
       statusBarIconBrightness: Brightness.dark,
     ));
-    return Scaffold(
+    return DefaultTabController(
+      length: 4,
+      child: Scaffold(
         body: page_load
             ? Container(
-                child: Stack(
+                child: Column(
                   children: [
-                    Positioned(
-                      top: 28,
-                      left: 0,
-                      child: Container(
-                        height: 48,
-                        width: 360,
-                        decoration: BoxDecoration(
-                          border: Border.all(width: 1, color: Colors.red),
-                        ),
-                      ),
+                    Container(
+                      margin: EdgeInsets.only(
+                          top: MediaQuery.of(context).padding.top),
+                      height: 48,
+                      width: 360,
+                      child: CustomAppBarWidget(),
                     ),
-                    Positioned(
-                      top: 76,
-                      left: 0,
-                      child: Container(
-                        width: 360,
-                        height: 40,
-                        decoration: BoxDecoration(
-                            border: Border.all(width: 1, color: Colors.black)),
-                      ),
+                    Container(
+                      width: 360,
+                      height: 40,
+                      child: CustomTabBar(),
                     ),
-                    Positioned(
-                      top: 116,
-                      left: 0,
-                      child: Container(
-                        width: 360,
-                        height: 564,
-                        child: SingleChildScrollView(
-                          child: Column(
-                            children: [
-                              Custom_Banner(), // 배너 클래스
-                              Container(
-                                margin: EdgeInsets.all(16),
-                                child: Column(
-                                  children: [
-                                    Row(
+                    Container(
+                      width: 360,
+                      height: 564,
+                      child: Stack(
+                        children: [
+                          Container(
+                            child: SingleChildScrollView(
+                              child: Column(
+                                children: [
+                                  Custom_Banner(), // 배너 클래스
+                                  Container(
+                                    margin: EdgeInsets.all(16),
+                                    child: Column(
                                       children: [
-                                        Text(
-                                          '인기 게시글',
-                                          style: TextStyle(
-                                              color: Color(0xFF000000),
-                                              fontSize: 16,
-                                              fontWeight: FontWeight.w600),
+                                        Row(
+                                          children: [
+                                            Text(
+                                              '인기 게시글',
+                                              style: TextStyle(
+                                                  fontFamily: 'Pretendard',
+                                                  color: Color(0xFF000000),
+                                                  fontSize: 16,
+                                                  fontWeight: FontWeight.w600),
+                                            ),
+                                            SizedBox(width: 4),
+                                            Container(
+                                              width: 24,
+                                              height: 24,
+                                              child: Image.asset(
+                                                'assets/images/fire.png',
+                                                fit: BoxFit.fill,
+                                              ),
+                                            )
+                                          ],
                                         ),
-                                        SizedBox(width: 4),
                                         Container(
-                                          width: 24,
-                                          height: 24,
-                                          child: Image.asset(
-                                            'assets/images/fire.png',
-                                            fit: BoxFit.fill,
-                                          ),
-                                        )
-                                      ],
-                                    ),
-                                    Container(
-                                      height: 168,
-                                      width: 316,
-                                      margin: EdgeInsets.only(top: 14),
-                                      child: SingleChildScrollView(
-                                        scrollDirection: Axis.horizontal,
-                                        child: Row(
-                                          children:
-                                              pop_docs_panel.values.toList(),
-                                        ),
-                                      ),
-                                    ),
-                                    Container(
-                                      alignment: Alignment.topLeft,
-                                      height: 40,
-                                      margin: EdgeInsets.only(top: 40),
-                                      child: Text(
-                                        '실시간 게시글',
-                                        style: TextStyle(
-                                            color: Color(0xFF000000),
-                                            fontSize: 16,
-                                            fontWeight: FontWeight.w600),
-                                      ),
-                                    ),
-                                    Container(
-                                      width: 328,
-                                      height: 38,
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          bottom_sheet,
-                                          PopupMenuButton<String>(
-                                            onSelected: (value) {
-                                              setState(() {
-                                                drop_down_initial = value;
-                                              });
-                                              drop_down_list
-                                                  .forEach((key, value) {
-                                                drop_down_list[key] = false;
-                                              });
-                                              drop_down_list[value] = true;
-                                            },
-                                            itemBuilder:
-                                                (BuildContext context) {
-                                              return drop_down_item.values
-                                                  .toList();
-                                            },
-                                            shape: RoundedRectangleBorder(
-                                                borderRadius:
-                                                    BorderRadius.circular(8)),
-                                            elevation: 5,
-                                            child: Container(
-                                              height: 38,
-                                              padding: EdgeInsets.all(10),
-                                              decoration: BoxDecoration(
-                                                borderRadius:
-                                                    BorderRadius.circular(20),
-                                                border: Border.all(
-                                                    color: Color(0xFFF3F3F3),
-                                                    width: 1),
-                                              ),
-                                              child: Center(
-                                                child: Row(
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment
-                                                          .spaceBetween,
-                                                  children: [
-                                                    Text(
-                                                      drop_down_initial,
-                                                      style: TextStyle(
-                                                          fontSize: 12,
-                                                          fontWeight: FontWeight
-                                                              .normal),
-                                                    ),
-                                                    Container(
-                                                      margin: EdgeInsets.only(
-                                                          left: 4),
-                                                      child: SvgPicture.asset(
-                                                        'assets/icons/Dropdown.svg',
-                                                        fit: BoxFit.fill,
-                                                      ),
-                                                    ),
-                                                  ],
-                                                ),
-                                              ),
+                                          height: 168,
+                                          width: 316,
+                                          margin: EdgeInsets.only(top: 14),
+                                          child: SingleChildScrollView(
+                                            scrollDirection: Axis.horizontal,
+                                            child: Row(
+                                              children: pop_docs_panel.values
+                                                  .toList(),
                                             ),
                                           ),
-                                        ],
-                                      ),
+                                        ),
+                                        Container(
+                                          alignment: Alignment.topLeft,
+                                          height: 40,
+                                          margin: EdgeInsets.only(top: 40),
+                                          child: Text(
+                                            '실시간 게시글',
+                                            style: TextStyle(
+                                                fontFamily: 'Pretendard',
+                                                color: Color(0xFF000000),
+                                                fontSize: 16,
+                                                fontWeight: FontWeight.w600),
+                                          ),
+                                        ),
+                                        Container(
+                                          width: 328,
+                                          height: 38,
+                                          child: Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceBetween,
+                                            children: [
+                                              bottom_sheet,
+                                              PopupMenuButton<String>(
+                                                onSelected: (value) {
+                                                  setState(() {
+                                                    drop_down_initial = value;
+                                                  });
+                                                  drop_down_list
+                                                      .forEach((key, value) {
+                                                    drop_down_list[key] = false;
+                                                  });
+                                                  drop_down_list[value] = true;
+                                                },
+                                                itemBuilder:
+                                                    (BuildContext context) {
+                                                  return drop_down_item.values
+                                                      .toList();
+                                                },
+                                                shape: RoundedRectangleBorder(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            8)),
+                                                elevation: 5,
+                                                child: Container(
+                                                  height: 38,
+                                                  padding: EdgeInsets.all(10),
+                                                  decoration: BoxDecoration(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            20),
+                                                    border: Border.all(
+                                                        color:
+                                                            Color(0xFFF3F3F3),
+                                                        width: 1),
+                                                  ),
+                                                  child: Center(
+                                                    child: Row(
+                                                      mainAxisAlignment:
+                                                          MainAxisAlignment
+                                                              .spaceBetween,
+                                                      children: [
+                                                        Text(
+                                                          drop_down_initial,
+                                                          style: TextStyle(
+                                                              fontFamily:
+                                                                  'Pretendard',
+                                                              fontSize: 12,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .normal),
+                                                        ),
+                                                        Container(
+                                                          margin:
+                                                              EdgeInsets.only(
+                                                                  left: 4),
+                                                          child:
+                                                              SvgPicture.asset(
+                                                            'assets/icons/Dropdown.svg',
+                                                            fit: BoxFit.fill,
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                        Page_Division(docs_panel),
+                                      ],
                                     ),
-                                    Page_Division(docs_panel),
-                                  ],
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
-                    Positioned(
-                      bottom: 78,
-                      right: 16,
-                      child: GestureDetector(
-                        onTap: () {
-                          data_control.increase_date();
-                        },
-                        child: Container(
-                          width: 48,
-                          height: 48,
-                          decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            color: Color(0xFF0059FF),
-                          ),
-                          child: Center(
-                            child: Container(
-                              width: 15,
-                              height: 17,
-                              child: SvgPicture.asset(
-                                'assets/icons/Pencil.svg',
-                                fit: BoxFit.fill,
+                                  ),
+                                ],
                               ),
                             ),
                           ),
-                        ),
+                          Positioned(
+                            bottom: 14,
+                            right: 16,
+                            child: GestureDetector(
+                              onTap: () {},
+                              child: Container(
+                                width: 48,
+                                height: 48,
+                                decoration: BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  color: Color(0xFF0059FF),
+                                ),
+                                child: Center(
+                                  child: Container(
+                                    width: 15,
+                                    height: 17,
+                                    child: SvgPicture.asset(
+                                      'assets/icons/Pencil.svg',
+                                      fit: BoxFit.fill,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
                     ),
-                    Positioned(
-                        bottom: 0,
-                        left: 0,
-                        child: Container(
-                          height: 64,
-                          decoration: BoxDecoration(
-                              border: Border.all(width: 1, color: Colors.blue)),
-                        ))
+                    Container(
+                      height: 64,
+                      decoration: BoxDecoration(
+                        color: Color(0xFFFFFFFF),
+                      ),
+                      child: BottomNavigationBarComponent(),
+                    ),
                   ],
                 ),
               )
-            : Container());
+            : Container(),
+      ),
+    );
   }
 }

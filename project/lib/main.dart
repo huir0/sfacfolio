@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
+import '/community/Community.dart';
+
 import 'screen/employment_dummy_data.dart';
+
 import 'screen/noticeboard.dart';
 import 'screen/passwordpage_1.dart';
 import 'screen/join_screen.dart';
@@ -18,7 +22,6 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-
   Get.put(UserController());
   Get.put(ClickController());
   Get.put(BookmarkController());
@@ -29,7 +32,6 @@ void main() async {
       theme: ThemeData(
         textTheme: TextTheme(
           bodyText2: TextStyle(
-            // fontFamily: 'PretendardVariable',
             fontFamily: 'Pretendard',
           ),
         ),
