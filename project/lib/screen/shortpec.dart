@@ -87,10 +87,16 @@ class ShortPec extends State<Shortpec> {
       reaction_button['button_$i'] = GestureDetector(
         onTap: () {
           setState(() {
-            heart = true;
-            reaction_color.forEach((key, value) => reaction_color[key] =
-                Colors.black.withOpacity(0.30000001192092896));
-            reaction_color['button_$i'] = Color(0xFFE5EEFF);
+            if (reaction_color['button_$i'] == Color(0xFFE5EEFF)) {
+              reaction_color.forEach((key, value) => reaction_color[key] =
+                  Colors.black.withOpacity(0.30000001192092896));
+              heart = false;
+            } else {
+              reaction_color.forEach((key, value) => reaction_color[key] =
+                  Colors.black.withOpacity(0.30000001192092896));
+              reaction_color['button_$i'] = Color(0xFFE5EEFF);
+              heart = true;
+            }
             // reaction_active = false;
             build_reaction();
             build_container();
@@ -159,15 +165,7 @@ class ShortPec extends State<Shortpec> {
               onDoubleTap: () {
                 print('화면 더블 클릭');
                 setState(() {
-                  heart = !heart;
-                  if (!heart) {
-                    reaction_color.forEach((key, value) {
-                      reaction_color[key] =
-                          Colors.black.withOpacity(0.30000001192092896);
-                    });
-                    build_reaction();
-                  }
-                  print(heart);
+                  reaction_active = !reaction_active;
                   build_container();
                 });
               },

@@ -22,7 +22,7 @@ void main() async {
   runApp(
     GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Passwordpage_1(),
+      home: Shortpec(),
       theme: ThemeData(
         textTheme: TextTheme(
           bodyText2: TextStyle(
