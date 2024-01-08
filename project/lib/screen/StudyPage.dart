@@ -50,7 +50,8 @@ class _StudyPageState extends State<StudyPage> {
                 child: CustomTabBar(),
               ),
               Container(
-                height: 540,
+                height: 564,
+                color: Colors.white,
                 child: SingleChildScrollView(
                   physics: ClampingScrollPhysics(),
                   child: Column(

@@ -55,7 +55,7 @@ class _NoticeOfEmploymentState extends State<NoticeOfEmployment> {
           Container(
             color: Colors.white,
             width: 360,
-            height: 540,
+            height: 564,
             child: SingleChildScrollView(
               child: Column(
                 children: [
