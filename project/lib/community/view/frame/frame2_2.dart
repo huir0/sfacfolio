@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 
 class Frame2_2 extends StatelessWidget {
   final String title;
@@ -167,12 +168,9 @@ class Frame2_2 extends StatelessWidget {
             ),
             Positioned(
               left: 12,
-              top: 116,
+              top: 110,
               child: Container(
                 child: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
                       '모집현황',
@@ -185,29 +183,80 @@ class Frame2_2 extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(width: 4),
-                    Container(
-                      child: Row(
-                        mainAxisSize: MainAxisSize.min,
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            '1/4',
-                            style: TextStyle(
-                              color: Color(0xFF0059FF),
-                              fontSize: 10,
-                              fontFamily: 'Pretendard',
-                              fontWeight: FontWeight.w400,
-                              height: 0.15,
-                            ),
+                    Row(
+                      children: [
+                        Text(
+                          '2/4',
+                          style: TextStyle(
+                            color: Color(0xFF0059FF),
+                            fontSize: 10,
+                            fontFamily: 'Pretendard',
+                            fontWeight: FontWeight.w400,
+                            height: 0.15,
                           ),
-                        ],
-                      ),
+                        ),
+                        SvgPicture.asset(
+                          'assets/images/dropdown.svg',
+                        ),
+                        SizedBox(
+                          width: 160,
+                        ),
+                        SvgPicture.asset(
+                          'assets/images/view.svg',
+                        ),
+                        Text(
+                          '12',
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 12,
+                            fontFamily: 'Pretendard',
+                            fontWeight: FontWeight.w400,
+                            height: 0.15,
+                          ),
+                        ),
+                        SvgPicture.asset(
+                          'assets/images/reply.svg',
+                        ),
+                        Text(
+                          '6',
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 12,
+                            fontFamily: 'Pretendard',
+                            fontWeight: FontWeight.w400,
+                            height: 0.15,
+                          ),
+                        ),
+                        SvgPicture.asset(
+                          'assets/images/bookmark3.svg',
+                        ),
+                        Text(
+                          '12',
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 12,
+                            fontFamily: 'Pretendard',
+                            fontWeight: FontWeight.w400,
+                            height: 0.15,
+                          ),
+                        ),
+                      ],
                     ),
                   ],
                 ),
               ),
             ),
+            Positioned(
+              right: 10,
+              top: 12,
+              child: Container(
+                width: 24,
+                height: 24,
+                child: SvgPicture.asset(
+                  'assets/images/bookmark.svg',
+                ),
+              ),
+            )
           ],
         ),
       ),

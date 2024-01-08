@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class PeopleJoin extends StatefulWidget {
   const PeopleJoin({super.key});
@@ -90,16 +91,21 @@ class _PeopleJoinState extends State<PeopleJoin> {
                                 ),
                               ),
                               Positioned(
-                                left: 0,
-                                top: -4,
+                                left: 20,
+                                top: 20,
                                 child: Container(
-                                  width: 76,
-                                  height: 80,
+                                  width: 48,
+                                  height: 48,
                                   decoration: BoxDecoration(
-                                    image: DecorationImage(
-                                      image: AssetImage(
-                                          'assets/images/Profile_Big (4).png'),
-                                      fit: BoxFit.fill,
+                                    shape: BoxShape.circle,
+                                    color: Color(0xFF7FACFF),
+                                  ),
+                                  child: ClipOval(
+                                    child: Image.asset(
+                                      'assets/images/Profile_Big (4).png',
+                                      width: 48,
+                                      height: 48,
+                                      fit: BoxFit.contain,
                                     ),
                                   ),
                                 ),
@@ -160,14 +166,13 @@ class _PeopleJoinState extends State<PeopleJoin> {
                                               CrossAxisAlignment.start,
                                           children: [
                                             Container(
-                                              child: Icon(
-                                                Icons.search,
-                                                size: 15,
+                                              child: SvgPicture.asset(
+                                                'assets/images/score.svg',
                                               ),
                                             ),
                                             Container(
                                               child: Text(
-                                                '4.4',
+                                                '75%',
                                                 style: TextStyle(
                                                   color: Colors.black,
                                                   fontSize: 10,
@@ -216,16 +221,25 @@ class _PeopleJoinState extends State<PeopleJoin> {
                                 ),
                               ),
                               Positioned(
-                                left: 0,
-                                top: -4,
-                                child: Container(
-                                  width: 76,
-                                  height: 80,
-                                  decoration: BoxDecoration(
-                                    image: DecorationImage(
-                                      image: AssetImage(
-                                          'assets/images/Profile_Big (2).png'),
-                                      fit: BoxFit.fill,
+                                left: 20,
+                                top: 20,
+                                child: Positioned(
+                                  left: 20,
+                                  top: 20,
+                                  child: Container(
+                                    width: 48,
+                                    height: 48,
+                                    decoration: BoxDecoration(
+                                      shape: BoxShape.circle,
+                                      color: Color(0xFFB2CDFF),
+                                    ),
+                                    child: ClipOval(
+                                      child: Image.asset(
+                                        'assets/images/Profile_Big (2).png',
+                                        width: 48,
+                                        height: 48,
+                                        fit: BoxFit.contain,
+                                      ),
                                     ),
                                   ),
                                 ),
@@ -286,14 +300,13 @@ class _PeopleJoinState extends State<PeopleJoin> {
                                               CrossAxisAlignment.start,
                                           children: [
                                             Container(
-                                              child: Icon(
-                                                Icons.search,
-                                                size: 15,
+                                              child: SvgPicture.asset(
+                                                'assets/images/score.svg',
                                               ),
                                             ),
                                             Container(
                                               child: Text(
-                                                '4.0',
+                                                '72%',
                                                 style: TextStyle(
                                                   color: Colors.black,
                                                   fontSize: 10,
@@ -352,16 +365,25 @@ class _PeopleJoinState extends State<PeopleJoin> {
                                 ),
                               ),
                               Positioned(
-                                left: 0,
-                                top: -4,
-                                child: Container(
-                                  width: 76,
-                                  height: 80,
-                                  decoration: BoxDecoration(
-                                    image: DecorationImage(
-                                      image: AssetImage(
-                                          'assets/images/Profile_Big (1).png'),
-                                      fit: BoxFit.fill,
+                                left: 20,
+                                top: 20,
+                                child: Positioned(
+                                  left: 20,
+                                  top: 20,
+                                  child: Container(
+                                    width: 48,
+                                    height: 48,
+                                    decoration: BoxDecoration(
+                                      shape: BoxShape.circle,
+                                      color: Color(0xFFE5EEFF),
+                                    ),
+                                    child: ClipOval(
+                                      child: Image.asset(
+                                        'assets/images/Profile_Big (1).png',
+                                        width: 48,
+                                        height: 48,
+                                        fit: BoxFit.contain,
+                                      ),
                                     ),
                                   ),
                                 ),
@@ -422,14 +444,13 @@ class _PeopleJoinState extends State<PeopleJoin> {
                                               CrossAxisAlignment.start,
                                           children: [
                                             Container(
-                                              child: Icon(
-                                                Icons.search,
-                                                size: 15,
+                                              child: SvgPicture.asset(
+                                                'assets/images/score.svg',
                                               ),
                                             ),
                                             Container(
                                               child: Text(
-                                                '4.2',
+                                                '78%',
                                                 style: TextStyle(
                                                   color: Colors.black,
                                                   fontSize: 10,
@@ -478,16 +499,25 @@ class _PeopleJoinState extends State<PeopleJoin> {
                                 ),
                               ),
                               Positioned(
-                                left: 0,
-                                top: -4,
-                                child: Container(
-                                  width: 76,
-                                  height: 80,
-                                  decoration: BoxDecoration(
-                                    image: DecorationImage(
-                                      image: AssetImage(
-                                          'assets/images/Profile_Big (3).png'),
-                                      fit: BoxFit.fill,
+                                left: 20,
+                                top: 20,
+                                child: Positioned(
+                                  left: 20,
+                                  top: 20,
+                                  child: Container(
+                                    width: 48,
+                                    height: 48,
+                                    decoration: BoxDecoration(
+                                      shape: BoxShape.circle,
+                                      color: Color(0xFF196AFF),
+                                    ),
+                                    child: ClipOval(
+                                      child: Image.asset(
+                                        'assets/images/Profile_Big (3).png',
+                                        width: 48,
+                                        height: 48,
+                                        fit: BoxFit.contain,
+                                      ),
                                     ),
                                   ),
                                 ),
@@ -548,21 +578,32 @@ class _PeopleJoinState extends State<PeopleJoin> {
                                               CrossAxisAlignment.start,
                                           children: [
                                             Container(
-                                              child: Icon(
-                                                Icons.search,
-                                                size: 15,
+                                              child: Row(
+                                                mainAxisSize: MainAxisSize.min,
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.start,
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
+                                                children: [
+                                                  Container(
+                                                    child: SvgPicture.asset(
+                                                      'assets/images/score.svg',
+                                                    ),
+                                                  ),
+                                                  Container(
+                                                    child: Text(
+                                                      '69%',
+                                                      style: TextStyle(
+                                                        color: Colors.black,
+                                                        fontSize: 10,
+                                                        fontWeight:
+                                                            FontWeight.w400,
+                                                      ),
+                                                    ),
+                                                  )
+                                                ],
                                               ),
                                             ),
-                                            Container(
-                                              child: Text(
-                                                '3.9',
-                                                style: TextStyle(
-                                                  color: Colors.black,
-                                                  fontSize: 10,
-                                                  fontWeight: FontWeight.w400,
-                                                ),
-                                              ),
-                                            )
                                           ],
                                         ),
                                       ),
@@ -603,19 +644,18 @@ class _PeopleJoinState extends State<PeopleJoin> {
                 ),
                 const SizedBox(width: 4),
                 Container(
+                  padding: EdgeInsets.only(top: 2),
                   width: 14,
                   height: 14,
-                  padding: const EdgeInsets.only(
-                    top: 4,
-                    left: 2.98,
-                    right: 3,
-                    bottom: 4,
-                  ),
                   child: Row(
                     mainAxisSize: MainAxisSize.min,
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [],
+                    children: [
+                      SvgPicture.asset(
+                        'assets/images/dropdown.svg',
+                      ),
+                    ],
                   ),
                 ),
               ],

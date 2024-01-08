@@ -131,7 +131,7 @@ class _FrameDesignerState extends State<FrameDesigner> {
                     width: 20,
                     height: 12,
                     child: Text(
-                      '1/2',
+                      '5/8',
                       style: TextStyle(
                         color: Color(0xFF0059FF),
                         fontSize: 10,
