@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:get/route_manager.dart';
-import 'package:team5/community/view/projectscreen/subscree.dart';
 
-class Frame2 extends StatelessWidget {
-  const Frame2({super.key});
+class Frame2_3 extends StatefulWidget {
+  const Frame2_3({super.key});
 
+  @override
+  State<Frame2_3> createState() => _Frame2_3State();
+}
+
+class _Frame2_3State extends State<Frame2_3> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {
-        Get.to(SubScreen());
-      },
+      onTap: () {},
       child: Container(
         width: 328,
         height: 140,
@@ -35,7 +36,7 @@ class Frame2 extends StatelessWidget {
                   borderRadius: BorderRadius.circular(8),
                   image: DecorationImage(
                     image: AssetImage(
-                        'assets/images/Thumbnail_BIg (3).png'), // 이미지의 경로에 맞게 수정해주세요
+                        'assets/images/Thumbnail_BIg (5).png'), // 이미지의 경로에 맞게 수정해주세요
                     fit: BoxFit.cover, // 이미지가 영역을 채우도록 설정합니다.
                   ),
                 ),
@@ -73,7 +74,7 @@ class Frame2 extends StatelessWidget {
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
                                 Text(
-                                  'D-14',
+                                  'D-20',
                                   style: TextStyle(
                                     color: Color(0xFF0059FF),
                                     fontSize: 10,
@@ -87,7 +88,7 @@ class Frame2 extends StatelessWidget {
                           ),
                           const SizedBox(width: 4),
                           Container(
-                            width: 48,
+                            width: 60,
                             height: 20,
                             padding: const EdgeInsets.symmetric(
                                 horizontal: 8, vertical: 4),
@@ -103,7 +104,7 @@ class Frame2 extends StatelessWidget {
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
                                 Text(
-                                  '온라인',
+                                  '오프라인',
                                   style: TextStyle(
                                     color: Color(0xFF0059FF),
                                     fontSize: 10,
@@ -126,7 +127,7 @@ class Frame2 extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            'UX/UI디자이너 모집합니다.',
+                            '그래픽 디자이너 모집합니다!',
                             style: TextStyle(
                               color: Colors.black,
                               fontSize: 14,
@@ -145,7 +146,7 @@ class Frame2 extends StatelessWidget {
                                   left: 0,
                                   top: 10,
                                   child: Text(
-                                    '포트폴리오   직무 역량 강화',
+                                    '포트폴리오 직무 역량 강화',
                                     style: TextStyle(
                                       color: Color(0xFF999999),
                                       fontSize: 12,
@@ -185,7 +186,7 @@ class Frame2 extends StatelessWidget {
                     Row(
                       children: [
                         Text(
-                          '5/8',
+                          '1/2',
                           style: TextStyle(
                             color: Color(0xFF0059FF),
                             fontSize: 10,
@@ -204,7 +205,7 @@ class Frame2 extends StatelessWidget {
                           'assets/images/view.svg',
                         ),
                         Text(
-                          '10',
+                          '18',
                           style: TextStyle(
                             color: Colors.black,
                             fontSize: 12,
@@ -217,7 +218,7 @@ class Frame2 extends StatelessWidget {
                           'assets/images/reply.svg',
                         ),
                         Text(
-                          '4',
+                          '2',
                           style: TextStyle(
                             color: Colors.black,
                             fontSize: 12,
@@ -230,7 +231,7 @@ class Frame2 extends StatelessWidget {
                           'assets/images/bookmark3.svg',
                         ),
                         Text(
-                          '10',
+                          '20',
                           style: TextStyle(
                             color: Colors.black,
                             fontSize: 12,

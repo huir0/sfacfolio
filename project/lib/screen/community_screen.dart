@@ -13,7 +13,6 @@ import '/screen/notice_employment.dart';
 import '/screen/join_screen.dart';
 // import 'collection.dart';
 // import 'myPage.dart';
-import 'shortpec.dart';
 
 const homeIcon = 'assets/icons/Home.svg';
 const communityIcon = 'assets/icons/Community.svg';

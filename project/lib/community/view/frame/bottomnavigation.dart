@@ -1,13 +1,5 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:team5/portfolio/sfaclog.dart';
-import 'package:team5/screen/shortpec.dart';
-
-// import 'collection.dart';
-import 'community_screen.dart';
-// import 'mainPage.dart';
-// import 'myPage.dart';
 
 const homeIcon = 'assets/icons/Home.svg';
 const communityIcon = 'assets/icons/Community.svg';
@@ -30,10 +22,10 @@ class _BottomNavigationBarComponentState
   final _pageOptions = [
     // TODO: 연결될 페이지 설정해주기
     // Home(),
-    Community(),
-    Sfaclog(),
+    // Community(),
+    // Portfolio(),
     // Collection(),
-    // MyPage(),
+    // Mypage(),
   ];
 
   void _onItemTapped(int index) {
@@ -50,7 +42,7 @@ class _BottomNavigationBarComponentState
         SizedBox(
       height: 64,
       child: BottomNavigationBar(
-        backgroundColor: Color(0xFFFFFFFF),
+        backgroundColor: Colors.white,
         type: BottomNavigationBarType.fixed,
         selectedLabelStyle: const TextStyle(
           fontSize: 10,
