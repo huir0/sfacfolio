@@ -34,49 +34,47 @@ class _DropDown extends State<DropDown> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: PopupMenuButton<String>(
-        onSelected: (value) {
-          setState(() {
-            drop_down_initial = value;
-          });
-          drop_down_list.forEach((key, value) {
-            drop_down_list[key] = false;
-          });
-          drop_down_list[value] = true;
-        },
-        itemBuilder: (BuildContext context) {
-          return drop_down_item.values.toList();
-        },
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-        elevation: 5,
-        child: Container(
-          height: 38,
-          padding: EdgeInsets.all(10),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(20),
-            border: Border.all(color: Color(0xFFF3F3F3), width: 1),
-          ),
-          child: Center(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  drop_down_initial,
-                  style: TextStyle(
-                      fontFamily: 'Pretendard',
-                      fontSize: 12,
-                      fontWeight: FontWeight.normal),
+    return PopupMenuButton<String>(
+      onSelected: (value) {
+        setState(() {
+          drop_down_initial = value;
+        });
+        drop_down_list.forEach((key, value) {
+          drop_down_list[key] = false;
+        });
+        drop_down_list[value] = true;
+      },
+      itemBuilder: (BuildContext context) {
+        return drop_down_item.values.toList();
+      },
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+      elevation: 5,
+      child: Container(
+        height: 38,
+        padding: EdgeInsets.symmetric(horizontal: 10),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(20),
+          border: Border.all(color: Color(0xFFF3F3F3), width: 1),
+        ),
+        child: Center(
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                drop_down_initial,
+                style: TextStyle(
+                    fontFamily: 'Pretendard',
+                    fontSize: 12,
+                    fontWeight: FontWeight.normal),
+              ),
+              Container(
+                margin: EdgeInsets.only(left: 4),
+                child: SvgPicture.asset(
+                  'assets/icons/Dropdown.svg',
+                  fit: BoxFit.fill,
                 ),
-                Container(
-                  margin: EdgeInsets.only(left: 4),
-                  child: SvgPicture.asset(
-                    'assets/icons/Dropdown.svg',
-                    fit: BoxFit.fill,
-                  ),
-                ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       ),

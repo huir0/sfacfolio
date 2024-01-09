@@ -1,3 +1,5 @@
+import 'package:carousel_slider/carousel_slider.dart';
+import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 
 import 'package:team5/Widget/StudyCollectWidget.dart';
@@ -16,6 +18,17 @@ class StudyPage extends StatefulWidget {
 }
 
 class _StudyPageState extends State<StudyPage> {
+  final List<String> carouselItems = [
+    'assets/images/community/noticeboard/banner_1.png',
+    'assets/images/community/noticeboard/banner_2.png',
+    'assets/images/community/noticeboard/banner_3.png',
+    'assets/images/community/noticeboard/banner_4.png',
+    'assets/images/community/noticeboard/banner_5.png',
+    'assets/images/community/noticeboard/banner_6.png'
+  ];
+
+  int currentIndex = 0;
+
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -57,10 +70,40 @@ class _StudyPageState extends State<StudyPage> {
                   child: Column(
                     children: [
                       Container(
-                        width: 360,
-                        height: 172,
-                        child: Image.asset('assets/communitystudy/banner.png'),
-                      ),
+                        height: 200,
+                        child: Stack(
+                          children: [
+                            CarouselSlider(
+                              items: carouselItems
+                                  .map((image) => Image.asset(image))
+                                  .toList(),
+                              options: CarouselOptions(
+                                height: 200,
+                                autoPlay: true,
+                                viewportFraction: 1,
+                                onPageChanged: (index, reason) {
+                                  setState(() {
+                                    currentIndex = index;
+                                  });
+                                },
+                              ),
+                            ),
+                            Container(
+                              margin: EdgeInsets.only(bottom: 4),
+                              alignment: Alignment.bottomCenter,
+                              child: DotsIndicator(
+                                dotsCount: carouselItems.length,
+                                position: currentIndex,
+                                decorator: const DotsDecorator(
+                                    size: Size.square(4),
+                                    activeSize: Size.square(4),
+                                    activeColor: Colors.white,
+                                    spacing: EdgeInsets.all(2)),
+                              ),
+                            )
+                          ],
+                        ),
+                      ), // 배너 클래스
                       Padding(
                         padding: const EdgeInsets.all(16.0),
                         child: Row(
@@ -74,8 +117,7 @@ class _StudyPageState extends State<StudyPage> {
                                 fontFamily: 'Pretendard',
                               ),
                             ),
-                            Image.asset(
-                                'assets/communitystudy/Fire_perspective_matte.png'),
+                            Image.asset('assets/images/fire.png'),
                           ],
                         ),
                       ),
