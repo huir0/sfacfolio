@@ -7,7 +7,7 @@ import '../controller/bottom_navigation.dart';
 import 'collection.dart';
 import 'community_screen.dart';
 import 'myPage.dart';
-// import 'mainPage.dart';
+import 'mainPage.dart';
 // import 'myPage.dart';
 
 const homeIcon = 'assets/icons/Home.svg';
