@@ -19,7 +19,7 @@ void main() async {
   Get.put(BookmarkController());
   runApp(
     GetMaterialApp(
-      home: Mainscreen(),
+      home: SplashPage(),
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         textTheme: TextTheme(
@@ -32,7 +32,7 @@ void main() async {
   );
 
   Future.delayed(
-    Duration(seconds: 3),
+    Duration(seconds: 1),
     () {
       Get.off(LoginPage2());
     },

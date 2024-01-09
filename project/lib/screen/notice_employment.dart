@@ -510,6 +510,7 @@ class _NoticeOfEmploymentState extends State<NoticeOfEmployment> {
                                   itemCount: numPages,
                                   itemBuilder: (context, pageIndex) {
                                     return ListView.separated(
+                                      padding: EdgeInsets.zero,
                                       separatorBuilder:
                                           (BuildContext context, int index) =>
                                               const SizedBox(height: 12),

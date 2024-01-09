@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import '../utill/color.dart';
 
 class DropDown extends StatefulWidget {
   const DropDown({super.key});
@@ -54,7 +55,7 @@ class _DropDown extends State<DropDown> {
         padding: EdgeInsets.symmetric(horizontal: 10),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20),
-          border: Border.all(color: Color(0xFFF3F3F3), width: 1),
+          border: Border.all(color: AppColor.Neutral10, width: 1),
         ),
         child: Center(
           child: Row(
@@ -65,7 +66,8 @@ class _DropDown extends State<DropDown> {
                 style: TextStyle(
                     fontFamily: 'Pretendard',
                     fontSize: 12,
-                    fontWeight: FontWeight.normal),
+                    fontWeight: FontWeight.w600,
+                    color: AppColor.Neutral100),
               ),
               Container(
                 margin: EdgeInsets.only(left: 4),
