@@ -447,7 +447,6 @@ class _MainscreenState extends State<Mainscreen> {
                   ),
                 ),
               ),
-              BottomNavigationBarComponent()
             ],
           ),
         )),
