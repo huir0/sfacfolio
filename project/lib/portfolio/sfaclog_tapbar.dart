@@ -16,6 +16,7 @@ class _Sfaclog_Tapbar extends State<Sfaclog_Tapbar> {
     return DefaultTabController(
         length: 4,
         child: Scaffold(
+          backgroundColor: Colors.white,
           appBar: TabBar(
             indicatorColor: AppColor.Primary100,
             labelPadding: EdgeInsets.symmetric(horizontal: 1),

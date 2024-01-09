@@ -97,6 +97,8 @@ flutter:
     - assets/main_resource/icon/
     - assets/main_resource/image/
 
+    - assets/icons/filter/
+    - assets/icons/interaction/
     
   #   - images/a_dot_ham.jpeg
 
