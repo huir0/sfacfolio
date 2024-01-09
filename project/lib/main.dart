@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:team5/community/view/projectscreen/mainscreen.dart';
 
 import '/screen/community_screen.dart';
 
@@ -29,7 +28,6 @@ void main() async {
   runApp(
     GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Mainscreen(),
       theme: ThemeData(
         textTheme: TextTheme(
           bodyText2: TextStyle(

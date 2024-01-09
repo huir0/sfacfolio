@@ -52,7 +52,7 @@ class _Sfaclog_Tapbar extends State<Sfaclog_Tapbar> {
             child: Container(
               width: 80,
               child: Text(
-                '리스펙',
+                '리스팩',
                 textAlign: TextAlign.center,
               ),
             ),
