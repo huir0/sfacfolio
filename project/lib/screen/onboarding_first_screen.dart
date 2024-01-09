@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import '../screen/SecondOnboringPage.dart';
 import '/screen/community_screen.dart';
 import '/database/data_controller.dart';
 import '/screen/user_controller.dart';
@@ -272,7 +273,7 @@ class _OnBoardingFirstPageState extends State<OnBoardingFirstPage> {
                         ]);
                         if (input_state) {
                           Get.to(
-                            OnBoardingFirstPage(), // FIXME: 다음 페이지로 연결
+                            SecondOnboringPage(), // FIXME: 다음 페이지로 연결
                             arguments: OnBoardingController(),
                           );
                         }

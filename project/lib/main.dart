@@ -1,10 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:team5/community/view/projectscreen/mainscreen.dart';
-import 'package:team5/portfolio/sfaclog_custom_recommend.dart';
-import 'screen/employment_dummy_data.dart';
-
-import 'screen/user_controller.dart';
 import 'firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
 
@@ -20,6 +15,7 @@ void main() async {
     GetMaterialApp(
       home: Custom_recommend(),
       debugShowCheckedModeBanner: false,
+      home: SplashPage(),
       theme: ThemeData(
         textTheme: TextTheme(
           bodyText2: TextStyle(
@@ -28,5 +24,11 @@ void main() async {
         ),
       ),
     ),
+  );
+  Future.delayed(
+    Duration(seconds: 3),
+    () {
+      Get.off(LoginPage2());
+    },
   );
 }
