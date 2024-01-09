@@ -49,7 +49,8 @@ class _MainscreenState extends State<Mainscreen> {
             child: SingleChildScrollView(
           child: Column(
             children: [
-              CustomAppBarWidget(),
+              Container(height: 48, width: 360, child: CustomAppBarWidget()),
+              Container(width: 360, height: 40, child: CustomTabBar()),
               Container(
                 height: 200,
                 child: Stack(
@@ -485,7 +486,7 @@ class _MainscreenState extends State<Mainscreen> {
                   ),
                 ),
               ),
-              BottomNavigationBarComponent()
+              Container(height: 64, child: BottomNavigationBarComponent())
             ],
           ),
         )),
