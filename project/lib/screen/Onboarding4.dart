@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import '../screen/welcome_homescreen.dart';
 // import 'package:get/get.dart';
 
 class Onboarding4 extends StatefulWidget {
@@ -385,7 +386,9 @@ class _Onboarding4State extends State<Onboarding4> {
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(8)),
                         ),
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => WelcomeHomePage()));
+                        },
                         child: Center(
                           child: Text(
                             '완료',

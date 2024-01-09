@@ -1,7 +1,7 @@
-import 'dart:html';
 
 import 'package:flutter/material.dart';
-import 'package:team5/utill/color.dart';
+import '../screen/onboarding_3.dart';
+import '../utill/color.dart';
 
 
 class SecondOnboringPage extends StatefulWidget {
@@ -509,11 +509,11 @@ class _MyWidgetState extends State<SecondOnboringPage> {
                             elevation: 0,
                             backgroundColor: AppColor.Primary100),
                         onPressed: () {
-                          // Navigator.push(
-                          //   context,
-                          //   MaterialPageRoute(
-                          //       builder: (context) => FindokLoginPage()),
-                          // );
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => Onboarding_3()),
+                          );
                         },
                         child: Text(
                           '다음',

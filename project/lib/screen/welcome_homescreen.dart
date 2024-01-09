@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../screen/community_screen.dart';
 import '../utill/color.dart';
-import '/screen/onboarding_first_screen.dart';
 import 'mainPage.dart';
 
 const partypopper = 'assets/images/Party_popper.png';
 
-class WelcomePage extends StatelessWidget {
-  const WelcomePage({super.key});
+class WelcomeHomePage extends StatelessWidget {
+  const WelcomeHomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -23,30 +21,23 @@ class WelcomePage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Spacer(),
-                Image.asset(partypopper),
                 SizedBox(
                   height: 34,
                 ),
                 Text(
-                  '회원가입 완료',
+                  '환영합니다',
                   style: TextStyle(
-                      fontSize: 24, fontWeight: FontWeight.w700, height: 1.5),
+                      fontSize: 20, fontWeight: FontWeight.w700, height: 1.5),
                 ),
                 SizedBox(
-                  height: 47,
+                  height: 39,
                 ),
+                Image.asset('assets/images/welcome.png'),
+                SizedBox(height: 40,),
                 Text.rich(
                   TextSpan(
-                    text: '지금 관심사를 설정하고\n',
-                    children: <TextSpan>[
-                      TextSpan(
-                        text: '맞춤추천',
-                        style: TextStyle(
-                          color: AppColor.Primary100,
-                        ),
-                      ),
-                      TextSpan(text: '을 받아보세요!')
-                    ],
+                    text: '님의 취향을 저격할\n',
+                    children: <TextSpan>[TextSpan(text: '스팩폴리오를 즐겨보세요!')],
                   ),
                   style: TextStyle(
                     fontSize: 16,
@@ -55,39 +46,18 @@ class WelcomePage extends StatelessWidget {
                   ),
                 ),
                 SizedBox(
-                  height: 147,
-                ),
-                GestureDetector(
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) =>
-                             Home()), // 다른 웰컴 페이지로 이동시켜줘야 함
-                    );
-                  },
-                  child: Text(
-                    '나중에 설정하기',
-                    style: TextStyle(
-                      fontSize: 12,
-                      fontWeight: FontWeight.normal,
-                      color: AppColor.Neutral60,
-                    ),
-                  ),
-                ),
-                SizedBox(
-                  height: 28,
+                  height: 117,
                 ),
                 ElevatedButton(
                   onPressed: () {
-                    Get.to(() => OnBoardingFirstPage());
+                    Get.to(() => Home());
                   },
                   child: LayoutBuilder(
                     builder:
                         (BuildContext context, BoxConstraints constraints) {
                       return FittedBox(
                         child: Text(
-                          '다음',
+                          '확인',
                           style: TextStyle(
                               fontFamily: 'Pretendard',
                               color: Colors.white,

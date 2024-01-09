@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import '../screen/mainPage.dart';
 
 import '/screen/community_screen.dart';
 
@@ -12,8 +13,8 @@ import 'screen/onboarding_3.dart';
 import 'screen/shortpec.dart';
 import 'screen/onboarding_first_screen.dart';
 import 'screen/user_controller.dart';
-import 'loginscreen/LoginPage2.dart';
-import 'loginscreen/SplashPage.dart';
+import 'screen/LoginPage2.dart';
+import 'screen/SplashPage.dart';
 import 'firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
 
@@ -28,7 +29,7 @@ void main() async {
   runApp(
     GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Shortpec(),
+      home: SplashPage(),
       theme: ThemeData(
         textTheme: TextTheme(
           bodyText2: TextStyle(
@@ -37,5 +38,11 @@ void main() async {
         ),
       ),
     ),
+  );
+  Future.delayed(
+    Duration(seconds: 3),
+    () {
+      Get.off(LoginPage2());
+    },
   );
 }
