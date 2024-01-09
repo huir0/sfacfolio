@@ -50,11 +50,7 @@ class _MainscreenState extends State<Mainscreen> {
           child: Column(
             children: [
               Container(height: 48, width: 360, child: CustomAppBarWidget()),
-              Container(
-                width: 360,
-                height: 40,
-                child: CustomTabBar(),
-              ),
+              Container(width: 360, height: 40, child: CustomTabBar()),
               Container(
                 height: 200,
                 child: Stack(
