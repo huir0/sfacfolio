@@ -6,13 +6,10 @@ import '../community/view/projectscreen/mainscreen.dart';
 
 import '../screen/StudyPage.dart';
 import '../screen/bottom_nagivation_bar.dart';
-import '../screen/mainPage.dart';
 import '../screen/employment_filter.dart';
 import '../screen/noticeboard.dart';
 import '/screen/notice_employment.dart';
 import '/screen/join_screen.dart';
-import 'collection.dart';
-import 'myPage.dart';
 import 'shortpec.dart';
 
 const homeIcon = 'assets/icons/Home.svg';

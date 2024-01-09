@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:team5/screen/shortpec.dart';
+
+import 'community_screen.dart';
 
 const homeIcon = 'assets/icons/Home.svg';
 const communityIcon = 'assets/icons/Community.svg';
@@ -21,11 +24,8 @@ class _BottomNavigationBarComponentState
 
   final _pageOptions = [
     // TODO: 연결될 페이지 설정해주기
-    // Home(),
-    // Community(),
-    // Portfolio(),
-    // Collection(),
-    // Mypage(),
+    Community(),
+    ShortPec(),
   ];
 
   void _onItemTapped(int index) {
