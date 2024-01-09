@@ -1,19 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:get/get.dart';
 
 import '../community/view/projectscreen/mainscreen.dart';
 
 import '../screen/StudyPage.dart';
-import '../screen/bottom_nagivation_bar.dart';
-// import '../screen/mainPage.dart';
-import '../screen/employment_filter.dart';
 import '../screen/noticeboard.dart';
 import '/screen/notice_employment.dart';
-import '/screen/join_screen.dart';
-// import 'collection.dart';
-// import 'myPage.dart';
-import 'shortpec.dart';
 
 const homeIcon = 'assets/icons/Home.svg';
 const communityIcon = 'assets/icons/Community.svg';
@@ -29,13 +20,6 @@ class Community extends StatefulWidget {
 }
 
 class _CommunityState extends State<Community> {
-  int _selectedIndex = 0;
-
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -44,11 +28,10 @@ class _CommunityState extends State<Community> {
       child: Scaffold(
         body: TabBarView(
           children: [
-            Center(child: Notice_board()),
-            Center(child: Mainscreen()),
-            Center(child: StudyPage()),
-            Center(
-              child: NoticeOfEmployment(),
+            const Center(child: Notice_board()),
+            const Center(child: Mainscreen()),
+            const Center(child: StudyPage()),
+            Center(child: NoticeOfEmployment(),
             ),
           ],
         ),

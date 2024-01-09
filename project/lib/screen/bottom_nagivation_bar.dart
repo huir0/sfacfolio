@@ -1,9 +1,13 @@
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
+import 'package:team5/main.dart';
 import 'package:team5/portfolio/sfaclog.dart';
 import 'package:team5/screen/shortpec.dart';
 
-// import 'collection.dart';
+import '../controller/bottom_navigation.dart';
+import 'collection.dart';
 import 'community_screen.dart';
 // import 'mainPage.dart';
 // import 'myPage.dart';
@@ -24,29 +28,12 @@ class BottomNavigationBarComponent extends StatefulWidget {
 
 class _BottomNavigationBarComponentState
     extends State<BottomNavigationBarComponent> {
-  int _selectedIndex = 0;
-
-  final _pageOptions = [
-    // TODO: 연결될 페이지 설정해주기
-    // Home(),
-    Community(),
-    Sfaclog(),
-    // Collection(),
-    // MyPage(),
-  ];
-
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-  }
+  final NavigationController navigationController =
+      Get.put(NavigationController());
 
   @override
   Widget build(BuildContext context) {
-    return
-        // FIXME: _pageOptions 설정해주기
-        // body: _pageOptions.elementAt(_selectedIndex),
-        SizedBox(
+    return SizedBox(
       height: 64,
       child: BottomNavigationBar(
         backgroundColor: Color(0xFFFFFFFF),
@@ -100,10 +87,30 @@ class _BottomNavigationBarComponentState
             label: '마이페이지',
           ),
         ],
-        currentIndex: _selectedIndex,
+        currentIndex: navigationController.selectedIndex.value,
         selectedItemColor: const Color(0xff0059ff),
         unselectedItemColor: const Color(0xffb3b3b3),
-        onTap: _onItemTapped,
+        onTap: (index) {
+          navigationController.updateIndex(index);
+          switch (index) {
+            case 0:
+              Get.to(() => Home());
+              break;
+            case 1:
+              Get.to(() => Community());
+              break;
+            case 2:
+              Get.to(() => Sfaclog());
+              break;
+            case 3:
+              Get.to(() => Collection());
+              break;
+            case 4:
+              Get.to(() => MyPage());
+              break;
+            default:
+          }
+        },
       ),
     );
   }

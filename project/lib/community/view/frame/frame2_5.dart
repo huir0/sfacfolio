@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-class Frame2_2 extends StatelessWidget {
-  final String title;
+class Frame2_5 extends StatefulWidget {
+  const Frame2_5({super.key});
 
-  const Frame2_2({
-    Key? key,
-    required this.title,
-  }) : super(key: key);
+  @override
+  State<Frame2_5> createState() => _Frame2_5State();
+}
 
+class _Frame2_5State extends State<Frame2_5> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -36,7 +36,7 @@ class Frame2_2 extends StatelessWidget {
                   borderRadius: BorderRadius.circular(8),
                   image: DecorationImage(
                     image: AssetImage(
-                        'assets/images/Thumbnail_BIg (1).png'), // 이미지의 경로에 맞게 수정해주세요
+                        'assets/images/Thumbnail_BIg (2).png'), // 이미지의 경로에 맞게 수정해주세요
                     fit: BoxFit.cover, // 이미지가 영역을 채우도록 설정합니다.
                   ),
                 ),
@@ -63,7 +63,7 @@ class Frame2_2 extends StatelessWidget {
                             padding: const EdgeInsets.symmetric(
                                 horizontal: 8, vertical: 4),
                             decoration: ShapeDecoration(
-                              color: Color(0xFFFFE5E5),
+                              color: Color(0xFFE5EEFF),
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(75),
                               ),
@@ -74,9 +74,9 @@ class Frame2_2 extends StatelessWidget {
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
                                 Text(
-                                  'D-4',
+                                  'D-7',
                                   style: TextStyle(
-                                    color: Color(0xFFFF0000),
+                                    color: Color(0xFF0059FF),
                                     fontSize: 10,
                                     fontFamily: 'Pretendard',
                                     fontWeight: FontWeight.w400,
@@ -127,7 +127,7 @@ class Frame2_2 extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            '프론트엔드 개발자 급구!',
+                            '서비스 기획자 급구!',
                             style: TextStyle(
                               color: Colors.black,
                               fontSize: 14,
@@ -186,7 +186,7 @@ class Frame2_2 extends StatelessWidget {
                     Row(
                       children: [
                         Text(
-                          '2/4',
+                          '0/2',
                           style: TextStyle(
                             color: Color(0xFF0059FF),
                             fontSize: 10,
@@ -205,7 +205,7 @@ class Frame2_2 extends StatelessWidget {
                           'assets/images/view.svg',
                         ),
                         Text(
-                          '12',
+                          '14',
                           style: TextStyle(
                             color: Colors.black,
                             fontSize: 12,
@@ -218,7 +218,7 @@ class Frame2_2 extends StatelessWidget {
                           'assets/images/reply.svg',
                         ),
                         Text(
-                          '6',
+                          '2',
                           style: TextStyle(
                             color: Colors.black,
                             fontSize: 12,
@@ -231,7 +231,7 @@ class Frame2_2 extends StatelessWidget {
                           'assets/images/bookmark3.svg',
                         ),
                         Text(
-                          '12',
+                          '10',
                           style: TextStyle(
                             color: Colors.black,
                             fontSize: 12,

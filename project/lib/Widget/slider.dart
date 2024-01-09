@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+
+import 'package:get/get.dart';
 import 'package:team5/utill/color.dart';
 
 class FilterCareerSlider extends StatefulWidget {

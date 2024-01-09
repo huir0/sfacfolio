@@ -180,34 +180,75 @@ class _NoticeOfEmploymentState extends State<NoticeOfEmployment> {
                                                     ['thumbnail']),
                                           ),
                                           Positioned(
-                                            top: 8,
-                                            left: 8,
-                                            child: IntrinsicWidth(
-                                              child: Container(
-                                                height: 19,
-                                                padding:
-                                                    const EdgeInsets.symmetric(
-                                                        horizontal: 8,
-                                                        vertical: 2),
-                                                alignment: Alignment.centerLeft,
-                                                decoration: ShapeDecoration(
-                                                  color: Colors.white,
-                                                  shape: RoundedRectangleBorder(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            20),
-                                                  ),
-                                                ),
-                                                child: Text(
-                                                  dummyData[index]['tag'],
-                                                  style: const TextStyle(
-                                                    fontSize: 10,
-                                                    color: Color(0xff0059ff),
-                                                  ),
-                                                ),
-                                              ),
-                                            ),
-                                          ),
+                                                      top: 8,
+                                                      left: 8,
+                                                      child: IntrinsicWidth(
+                                                        child: Container(
+                                                          height: 19,
+                                                          padding:
+                                                              const EdgeInsets
+                                                                  .symmetric(
+                                                                  horizontal: 8,
+                                                                  vertical: 2),
+                                                          alignment: Alignment
+                                                              .centerLeft,
+                                                          decoration:
+                                                              ShapeDecoration(
+                                                            color: int.parse(dummyData[
+                                                                            index]
+                                                                        [
+                                                                        'deadline']) <=
+                                                                    7
+                                                                ? AppColor
+                                                                    .WarningBackground
+                                                                : AppColor
+                                                                    .BackgroundBiue,
+                                                            shape:
+                                                                RoundedRectangleBorder(
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          20),
+                                                            ),
+                                                          ),
+                                                          child: dummyData[
+                                                                          index]
+                                                                      [
+                                                                      'deadline'] ==
+                                                                  '상시'
+                                                              ? Text(
+                                                                  '상시',
+                                                                  style:
+                                                                      const TextStyle(
+                                                                    fontSize:
+                                                                        10,
+                                                                    color: AppColor
+                                                                        .Primary100,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w400,
+                                                                  ),
+                                                                )
+                                                              : Text(
+                                                                  'D-${dummyData[index]['deadline']}',
+                                                                  style:
+                                                                      TextStyle(
+                                                                    fontSize:
+                                                                        10,
+                                                                    color: int.parse(dummyData[index]['deadline']) <=
+                                                                            7
+                                                                        ? AppColor
+                                                                            .Warning
+                                                                        : AppColor
+                                                                            .Primary100,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w400,
+                                                                  ),
+                                                                ),
+                                                        ),
+                                                      ),
+                                                    ),
                                           Positioned(
                                             right: 4,
                                             top: 4,
@@ -260,7 +301,7 @@ class _NoticeOfEmploymentState extends State<NoticeOfEmployment> {
                                         child: Text(
                                           dummyData[index]['company'],
                                           style: const TextStyle(
-                                            color: Color(0xff999999),
+                                            color: AppColor.Primary100,
                                             fontSize: 10,
                                             fontWeight: FontWeight.w400,
                                           ),

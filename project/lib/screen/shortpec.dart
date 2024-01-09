@@ -7,7 +7,6 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:team5/portfolio/sfaclog.dart';
 import 'package:team5/screen/bottom_nagivation_bar_black.dart';
 import '../database/data_controller.dart';
-import '../screen/bottom_nagivation_bar.dart';
 
 class Shortpec extends StatefulWidget {
   const Shortpec({super.key});

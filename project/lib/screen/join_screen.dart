@@ -69,6 +69,7 @@ class _JoinPageMainState extends State<JoinPage> {
       backgroundColor: Colors.white,
       // x 버튼
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         backgroundColor: Colors.white,
         scrolledUnderElevation: 0,
         elevation: 0,
