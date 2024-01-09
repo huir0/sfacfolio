@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:team5/utill/color.dart';
 
 class FrameFront extends StatefulWidget {
   const FrameFront({super.key});
@@ -187,7 +188,7 @@ class _FrameFrontState extends State<FrameFront> {
               height: 18,
               padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
               decoration: ShapeDecoration(
-                color: Color(0xFFE5EEFF),
+                color: AppColor.WarningBackground,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(100),
                 ),
@@ -199,9 +200,9 @@ class _FrameFrontState extends State<FrameFront> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Text(
-                      'D-14',
+                      'D-3',
                       style: TextStyle(
-                        color: Color(0xFF0059FF),
+                        color: Color(0xFFFF0000),
                         fontSize: 8,
                         fontFamily: 'Pretendard',
                         fontWeight: FontWeight.w400,

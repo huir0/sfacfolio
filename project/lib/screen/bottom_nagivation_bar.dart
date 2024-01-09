@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
@@ -8,8 +9,8 @@ import 'package:team5/screen/shortpec.dart';
 import '../controller/bottom_navigation.dart';
 import 'collection.dart';
 import 'community_screen.dart';
-import 'mainPage.dart';
-import 'myPage.dart';
+// import 'mainPage.dart';
+// import 'myPage.dart';
 
 const homeIcon = 'assets/icons/Home.svg';
 const communityIcon = 'assets/icons/Community.svg';

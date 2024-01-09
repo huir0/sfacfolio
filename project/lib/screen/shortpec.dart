@@ -358,6 +358,14 @@ class ShortPec extends State<Shortpec> {
                                           color: Colors.white,
                                           borderRadius:
                                               BorderRadius.circular(26),
+                                          boxShadow: [
+                                            BoxShadow(
+                                              color: Color(0x4C000000),
+                                              blurRadius: 6,
+                                              offset: Offset(0, 0),
+                                              spreadRadius: 0,
+                                            )
+                                          ],
                                         ),
                                         child: Center(
                                           child: SvgPicture.asset(
@@ -451,8 +459,12 @@ class ShortPec extends State<Shortpec> {
                               scrollDirection: Axis.vertical,
                               itemCount: main_slot.length * 1000,
                               itemBuilder: (BuildContext context, int index) {
-                                String key = main_slot.keys
-                                    .elementAt(index % main_slot.length);
+                                String key;
+                                if (category['category_1']!) {
+                                  key = main_slot.keys.elementAt(index % 6);
+                                } else {
+                                  key = main_slot.keys.elementAt(6 + index % 3);
+                                }
                                 Widget value = main_slot[key]!;
                                 return Column(
                                   children: [value],

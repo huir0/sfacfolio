@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:team5/community/view/frame/bottomnavigation.dart';
 // import 'package:google_maps_flutter/google_maps_flutter.dart';
 // import '/screen/google_map.dart';
 import '/screen/bottom_nagivation_bar.dart';

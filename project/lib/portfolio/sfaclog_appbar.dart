@@ -14,8 +14,8 @@ class _Sfaclog_Appbar extends State<Sfaclog_Appbar> {
     return Container(
       width: 360,
       height: 48,
-      padding: EdgeInsets.symmetric(horizontal: 16),
       child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Container(
             width: 150,
