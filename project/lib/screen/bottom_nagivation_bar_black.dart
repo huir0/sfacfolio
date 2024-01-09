@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+
 import 'package:team5/portfolio/sfaclog.dart';
+
 
 const homeIcon = 'assets/icons/Home.svg';
 const communityIcon = 'assets/icons/Community.svg';
@@ -24,7 +26,10 @@ class _BottomNavigationBarComponentStateBlack
     // TODO: 연결될 페이지 설정해주기
     // Home(),
     // Community(),
+
+    // Portfolio(),
     Sfaclog(),
+
     // Collection(),
     // Mypage(),
   ];

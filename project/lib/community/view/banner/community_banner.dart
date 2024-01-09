@@ -78,6 +78,37 @@ class Custom_Banner extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    return Container(
+      width: 360,
+      height: 200,
+      child: Stack(
+        children: [
+          PageView.builder(
+            controller: page_control,
+            itemCount: image_slot.length,
+            onPageChanged: (index) {
+              if (index == image_slot.length) {
+                page_control.jumpToPage(0);
+              }
+              setState(() {
+                slot_active.forEach((key, value) {
+                  slot_active[key] = false;
+                });
+                slot_active['image_${index + 1}'] = true;
+              });
+              Slot_Active();
+              now_page = index;
+            },
+            itemBuilder: (BuildContext context, int index) {
+              String key =
+                  image_slot.keys.elementAt(index % image_slot.length);
+              Widget value = image_slot[key]!;
+              return Column(
+                children: [value],
+              );
+            },
+
     return GetBuilder<BannerController>(
       builder: (controller) {
         return Container(
@@ -118,6 +149,7 @@ class Custom_Banner extends StatelessWidget {
                 ),
               ),
             ],
+
           ),
         );
       },

@@ -20,6 +20,7 @@ class Community extends StatefulWidget {
 }
 
 class _CommunityState extends State<Community> {
+
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
