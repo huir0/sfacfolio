@@ -11,7 +11,7 @@ import '../community/view/pagenumber/page_division.dart';
 import '../database/data_controller.dart';
 import '../screen/bottom_nagivation_bar.dart';
 import '../screen/postpage.dart';
-import '../community/view/banner/community_banner.dart';
+
 // import '../community/view/appbar/AppBar.dart';
 
 class Notice_board extends StatefulWidget {
