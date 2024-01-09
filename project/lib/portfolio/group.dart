@@ -1,16 +1,13 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import 'package:intl/intl.dart';
-import 'package:team5/database/data_controller.dart';
-import 'package:team5/portfolio/sfaclog_appbar.dart';
-import 'package:team5/portfolio/sfaclog_filter.dart';
-import 'package:team5/portfolio/sfaclog_tapbar.dart';
-import 'package:team5/screen/bottom_nagivation_bar.dart';
-import 'package:team5/screen/shortpec.dart';
-import 'package:team5/utill/color.dart';
+import '../portfolio/group_all_category.dart';
+import '../portfolio/sfaclog_appbar.dart';
+import '../portfolio/sfaclog_filter.dart';
+import '../portfolio/sfaclog_tapbar.dart';
+import '../screen/bottom_nagivation_bar.dart';
+import '../screen/shortpec.dart';
+import '../utill/color.dart';
 
 class GroupPage extends StatefulWidget {
   @override
@@ -18,22 +15,25 @@ class GroupPage extends StatefulWidget {
 }
 
 class Grouppage extends State<GroupPage> {
-  List<Map<String, dynamic>> best_portfolio = [
+
+  List<Map<String, dynamic>> bestPortfolio = [
     {
-      'nickname': 'Golodestkiy',
+      'title': 'Golodestkiy',
       'name': 'Denys El',
       'tag': '디지털아트',
       'view': '20',
       'like': '680',
     },
     {
-      'nickname': 'Lanchonete',
+      'title': 'Lanchonete',
       'name': 'Manoel Michael',
       'tag': '제품/패키지 디자인',
       'view': '12',
       'like': '600',
     },
   ];
+
+  
 
   @override
   Widget build(BuildContext context) {
@@ -92,7 +92,7 @@ class Grouppage extends State<GroupPage> {
                                 (BuildContext context, int index) =>
                                     const SizedBox(width: 12),
                             scrollDirection: Axis.horizontal,
-                            itemCount: best_portfolio.length,
+                            itemCount: bestPortfolio.length,
                             itemBuilder: (context, index) {
                               return Container(
                                 decoration: ShapeDecoration(
@@ -116,10 +116,9 @@ class Grouppage extends State<GroupPage> {
                                                   BorderRadius.circular(8),
                                             ),
                                             image: DecorationImage(
-                                              image: AssetImage(
-                                                  'assets/images/Sfaclog/Group/Best_${index + 1}.png'),
-                                                  fit: BoxFit.fill
-                                            ),
+                                                image: AssetImage(
+                                                    'assets/images/Sfaclog/Group/Best_${index + 1}.png'),
+                                                fit: BoxFit.fill),
                                           ),
                                         ),
                                         Container(
@@ -141,12 +140,72 @@ class Grouppage extends State<GroupPage> {
                                                   BorderRadius.circular(100),
                                             ),
                                           ),
+                                        ),
+                                        Positioned(
+                                          bottom: 15,
+                                          right: 10,
+                                          child: Container(
+                                            width: 75,
+                                            height: 20,
+                                            child: Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.end,
+                                              children: [
+                                                Container(
+                                                  width: 20,
+                                                  height: 20,
+                                                  child: SvgPicture.asset(
+                                                    'assets/icons/Eye.svg',
+                                                    color: Colors.white,
+                                                  ),
+                                                ),
+                                                Container(
+                                                  width: 13,
+                                                  height: 15,
+                                                  child: Text(
+                                                    '${bestPortfolio[index]['view']}',
+                                                    textAlign: TextAlign.left,
+                                                    style: TextStyle(
+                                                      color: Colors.white,
+                                                      fontSize: 10,
+                                                      fontFamily: 'Pretendard',
+                                                      fontWeight:
+                                                          FontWeight.w400,
+                                                    ),
+                                                  ),
+                                                ),
+                                                Container(
+                                                  width: 20,
+                                                  height: 20,
+                                                  child: SvgPicture.asset(
+                                                    'assets/icons/Heart.svg',
+                                                    color: Colors.white,
+                                                  ),
+                                                ),
+                                                Container(
+                                                  width: 19,
+                                                  height: 15,
+                                                  child: Text(
+                                                    '${bestPortfolio[index]['like']}',
+                                                    textAlign: TextAlign.left,
+                                                    style: TextStyle(
+                                                      color: Colors.white,
+                                                      fontSize: 10,
+                                                      fontFamily: 'Pretendard',
+                                                      fontWeight:
+                                                          FontWeight.w400,
+                                                    ),
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
                                         )
                                       ],
                                     ),
                                     Container(
                                       child: Text(
-                                        best_portfolio[index]['nickname'],
+                                        bestPortfolio[index]['title'],
                                         style: const TextStyle(
                                             color: Color(0xff030303),
                                             fontSize: 20,
@@ -158,7 +217,7 @@ class Grouppage extends State<GroupPage> {
                                     ),
                                     Container(
                                       child: Text(
-                                        best_portfolio[index]['name'],
+                                        bestPortfolio[index]['name'],
                                         style: const TextStyle(
                                           color: Colors.black,
                                           fontSize: 14,
@@ -188,7 +247,7 @@ class Grouppage extends State<GroupPage> {
                                             CrossAxisAlignment.center,
                                         children: [
                                           Text(
-                                            best_portfolio[index]['tag'],
+                                            bestPortfolio[index]['tag'],
                                             style: TextStyle(
                                               color: AppColor.Primary100,
                                               fontSize: 12,
@@ -206,6 +265,11 @@ class Grouppage extends State<GroupPage> {
                             },
                           ),
                         ),
+                        SizedBox(
+                          height: 60,
+                        ),
+                        AllCategory(),
+                        
                       ],
                     ),
                   ),
@@ -213,14 +277,14 @@ class Grouppage extends State<GroupPage> {
                     bottom: 20,
                     right: 16,
                     child: Container(
-                      decoration: BoxDecoration(boxShadow: [
-                        BoxShadow(
-                          color: Color(0x4C000000),
-                          blurRadius: 6,
-                          offset: Offset(0, 0),
-                          spreadRadius: 0,
-                        )
-                      ]),
+                      // decoration: BoxDecoration(boxShadow: [
+                      //   BoxShadow(
+                      //     color: Color(0x4C000000),
+                      //     blurRadius: 6,
+                      //     offset: Offset(0, 0),
+                      //     spreadRadius: 0,
+                      //   )
+                      // ]),
                       child: GestureDetector(
                         onTap: () {
                           Get.to(() => Shortpec());

@@ -355,15 +355,6 @@ class _HomeState extends State<Home> {
                               itemCount: rank_docs.length,
                               itemBuilder: (context, index) {
                                 return Container(
-                                  // decoration: ShapeDecoration(
-                                  //   shape: RoundedRectangleBorder(
-                                  //     borderRadius: BorderRadius.circular(8),
-                                  //     side: const BorderSide(
-                                  //       color: Color(0xFFf5f8ff),
-                                  //       width: 1,
-                                  //     ),
-                                  //   ),
-                                  // ),
                                   width: 140,
                                   child: GestureDetector(
                                     onTap: () {},
