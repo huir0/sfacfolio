@@ -3,6 +3,11 @@ import 'package:get/get.dart';
 import 'firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
 
+import 'screen/LoginPage2.dart';
+import 'screen/SplashPage.dart';
+import 'screen/employment_dummy_data.dart';
+import 'screen/user_controller.dart';
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
@@ -11,9 +16,9 @@ void main() async {
   Get.put(UserController());
   Get.put(ClickController());
   Get.put(BookmarkController());
+
   runApp(
     GetMaterialApp(
-      home: Custom_recommend(),
       debugShowCheckedModeBanner: false,
       home: SplashPage(),
       theme: ThemeData(
@@ -26,7 +31,7 @@ void main() async {
     ),
   );
   Future.delayed(
-    Duration(seconds: 3),
+    Duration(seconds: 1),
     () {
       Get.off(LoginPage2());
     },
