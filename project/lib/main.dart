@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:team5/screen/SecondOnboringPage.dart';
+import 'package:team5/screen/StudyPage.dart';
+import 'package:team5/screen/community_study.dart';
 import 'screen/employment_dummy_data.dart';
 import 'screen/noticeboard.dart';
 import 'screen/passwordpage_1.dart';

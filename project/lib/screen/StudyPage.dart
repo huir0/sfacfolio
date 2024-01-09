@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:team5/community/view/appbar/AppBar.dart';
+import 'package:team5/screen/studyfillter.dart';
 
-import 'package:team5/Widget/StudyCollectWidget.dart';
-import 'package:team5/Widget/StudyWidget.dart';
+import 'package:team5/widget/StudyCollectWidget.dart';
+import 'package:team5/widget/StudyWidget.dart';
+import 'package:team5/community/view/banner/community_banner.dart';
 import 'package:team5/community/view/tabbar/TabBar.dart';
+import 'package:team5/screen/bottom_nagivation_bar.dart';
 import 'package:team5/utill/color.dart';
 
 class StudyPage extends StatefulWidget {
@@ -13,117 +18,102 @@ class StudyPage extends StatefulWidget {
 }
 
 class _StudyPageState extends State<StudyPage> {
+  String _rank = '최신순';
+
   @override
   Widget build(BuildContext context) {
-    return DefaultTabController(
-        length: 4,
-        child: Scaffold(
-          appBar: AppBar(
-            elevation: 0,
-            title: AppBar(
-              title: Text(
-                '커뮤니티',
-                style: TextStyle(fontWeight: FontWeight.bold),
-              ),
-              actions: [
-                Image.asset('assets/Send/Search_4.png'),
-                Image.asset('assets/Send/Send.png'),
-                Image.asset('assets/Send/Notification_10.png'),
-              ],
+    return Scaffold(
+        appBar: AppBar(elevation: 0, title: CustomAppBarWidget()),
+        body: NestedScrollView(
+          headerSliverBuilder: (context, innerBoxIsScrolled) => [
+            SliverAppBar(
+              pinned: true,
+              title: CustomTabBar(),
             ),
-          ),
+          ],
           body: SingleChildScrollView(
             physics: ClampingScrollPhysics(),
-            child: Column(
-              children: [
-                CustomTabBar(),
-                Container(
-                  width: 360,
-                  height: 172,
-                  child: Image.asset('assets/communitystudy/banner.png'),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: Row(
-                    children: [
-                      Text(
-                        '참여자 많은 스터디',
-                        style: TextStyle(
-                          color: AppColor.Neutral100,
-                          fontSize: 16,
-                          fontWeight: FontWeight.w600,
-                          fontFamily: 'Pretendard',
-                        ),
-                      ),
-                      Image.asset(
-                          'assets/communitystudy/Fire_perspective_matte.png'),
-                    ],
-                  ),
-                ),
-                StudyWidget(),
-                Row(
+            child: Column(children: [
+              Container(width: 360, height: 200, child: Custom_Banner()),
+              Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Row(
                   children: [
-                    Padding(
-                      padding: const EdgeInsets.all(16.0),
-                      child: Text(
-                        '스터디 모집',
-                        style: TextStyle(
-                          color: AppColor.Neutral100,
-                          fontSize: 16,
-                          fontWeight: FontWeight.w600,
-                          fontFamily: 'Pretendard',
-                        ),
+                    Text(
+                      '참여자 많은 스터디',
+                      style: TextStyle(
+                        color: AppColor.Neutral100,
+                        fontSize: 16,
+                        fontWeight: FontWeight.w600,
+                        fontFamily: 'Pretendard',
                       ),
                     ),
+                    Image.asset('assets/icons/fire.png'),
                   ],
                 ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 20),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Container(
-                        width: 32,
-                        height: 32,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(100),
-                            border: Border.all(color: AppColor.Neutral5)),
-                        child: Icon(Icons.filter_list),
+              ),
+              StudyWidget(),
+              Row(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: Text(
+                      '스터디 모집',
+                      style: TextStyle(
+                        color: AppColor.Neutral100,
+                        fontSize: 16,
+                        fontWeight: FontWeight.w600,
+                        fontFamily: 'Pretendard',
                       ),
-                      Container(
+                    ),
+                  ),
+                ],
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    StudyFilter(),
+                    Container(
                         width: 76,
                         height: 38,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(200),
                           border: Border.all(color: AppColor.Neutral5),
                         ),
-                        child: ListTile(
-                          contentPadding: EdgeInsets.zero,
-                          title: Row(
-                            children: [
-                              Text(
-                                '최신순',
-                                style: TextStyle(
-                                  color: AppColor.Neutral100,
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.w600,
-                                  fontFamily: 'Pretendard',
+                        child: Container(
+                          child: DropdownButton<String>(
+                            underline: SizedBox.shrink(),
+                            value: _rank,
+                            onChanged: (String? newValue) {
+                              setState(() {
+                                _rank = newValue!;
+                              });
+                            },
+                            items: <String>['최신순', '저장순', '좋아요순']
+                                .map<DropdownMenuItem<String>>((String value) {
+                              return DropdownMenuItem<String>(
+                                value: value,
+                                child: Text(
+                                  value == '최신순'
+                                      ? '최신순'
+                                      : value == '저장순'
+                                          ? '저장순'
+                                          : '좋아요순',
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(fontSize: 12),
                                 ),
-                              ),
-                              Icon(Icons.arrow_drop_down),
-                            ],
+                              );
+                            }).toList(),
                           ),
-                        ),
-                      ),
-                    ],
-                  ),
+                        )),
+                  ],
                 ),
-                SizedBox(
-                  height: 8,
-                ),
-                StudyCollectWidget()
-              ],
-            ),
+              ),
+              StudyCollectWidget(),
+              BottomNavigationBarComponent()
+            ]),
           ),
         ));
   }

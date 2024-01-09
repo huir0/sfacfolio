@@ -98,7 +98,8 @@ class Custom_banner extends State<Custom_Banner> {
               now_page = index;
             },
             itemBuilder: (BuildContext context, int index) {
-              String key = image_slot.keys.elementAt(index % image_slot.length);
+              String key =
+                  image_slot.keys.elementAt(index % image_slot.length);
               Widget value = image_slot[key]!;
               return Column(
                 children: [value],
