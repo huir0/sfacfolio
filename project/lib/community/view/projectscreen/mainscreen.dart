@@ -8,6 +8,7 @@ import 'package:team5/community/view/frame/frame2_4.dart';
 import 'package:team5/community/view/frame/frame2_5.dart';
 import 'package:team5/screen/bottom_nagivation_bar.dart';
 import 'package:team5/utill/color.dart';
+import '../../../screen/bottom_nagivation_bar.dart';
 import '../appbar/AppBar.dart';
 import '../frame/backendframe.dart';
 import '../frame/frame2.dart';
@@ -16,6 +17,7 @@ import '../frame/framedesigner.dart';
 import '../frame/framefont.dart';
 import '../frame/graphicfont.dart';
 import '../frame/serviceframe.dart';
+import '../tabbar/TabBar.dart';
 
 class Mainscreen extends StatefulWidget {
   const Mainscreen({super.key});
@@ -28,6 +30,7 @@ class _MainscreenState extends State<Mainscreen> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
         body: SafeArea(
             child: SingleChildScrollView(

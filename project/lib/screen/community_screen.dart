@@ -1,13 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import 'package:team5/community/view/appbar/AppBar.dart';
-import 'package:team5/community/view/tabbar/TabBar.dart';
-import 'package:team5/screen/bottom_nagivation_bar.dart';
-import 'package:team5/screen/employment_filter.dart';
-import 'package:team5/screen/user_controller.dart';
+
+import '../community/view/projectscreen/mainscreen.dart';
+
+import '../screen/StudyPage.dart';
+import '../screen/bottom_nagivation_bar.dart';
+import '../screen/mainPage.dart';
+import '../screen/employment_filter.dart';
+import '../screen/noticeboard.dart';
 import '/screen/notice_employment.dart';
 import '/screen/join_screen.dart';
+import 'collection.dart';
+import 'myPage.dart';
+import 'shortpec.dart';
 
 const homeIcon = 'assets/icons/Home.svg';
 const communityIcon = 'assets/icons/Community.svg';
@@ -26,10 +32,10 @@ class _CommunityState extends State<Community> {
   final _pageOptions = [
     // TODO: 연결될 페이지 설정해주기
     // Home(),
-    Community(),
-    // Portfolio(),
+    // Community(),
+    // Shortpec(),
     // Collection(),
-    // Mypage(),
+    // MyPage(),
   ];
 
   int _selectedIndex = 0;
@@ -46,23 +52,24 @@ class _CommunityState extends State<Community> {
       length: 4,
       child: Scaffold(
         // resizeToAvoidBottomInset: false,
-        appBar: AppBar(
-          toolbarHeight: 48,
-          bottom: CustomTabBar(),
-        ),
+        // appBar: AppBar(
+        //   toolbarHeight: 48,
+        //   // title: CustomAppBarWidget(),
+        //   // bottom: CustomTabBar(),
+        // ),
         // FIXME: body 설정해주기
         // body: _pageOptions.elementAt(_selectedIndex),
         body: TabBarView(
           children: [
-            Center(child: Text('게시판')),
-            Center(child: Text('프로젝트')),
-            Center(child: Text('스터디')),
+            Center(child: Notice_board()),
+            Center(child: Mainscreen()),
+            Center(child: StudyPage()),
             Center(
               child: NoticeOfEmployment(),
             ),
           ],
         ),
-        bottomNavigationBar: BottomNavigationBarComponent(),
+        // bottomNavigationBar: BottomNavigationBarComponent(),
         // bottomNavigationBar: Container(
         //   height: 64,
         //   padding: EdgeInsets.symmetric(horizontal: 20),
