@@ -1,3 +1,5 @@
+import 'package:carousel_slider/carousel_slider.dart';
+import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
@@ -19,12 +21,23 @@ import '../frame/graphicfont.dart';
 import '../frame/serviceframe.dart';
 import '../tabbar/TabBar.dart';
 
+final List<String> carouselItems = [
+  'assets/images/community/noticeboard/banner_1.png',
+  'assets/images/community/noticeboard/banner_2.png',
+  'assets/images/community/noticeboard/banner_3.png',
+  'assets/images/community/noticeboard/banner_4.png',
+  'assets/images/community/noticeboard/banner_5.png',
+  'assets/images/community/noticeboard/banner_6.png',
+];
+
 class Mainscreen extends StatefulWidget {
   const Mainscreen({super.key});
 
   @override
   State<Mainscreen> createState() => _MainscreenState();
 }
+
+int currentIndex = 0;
 
 class _MainscreenState extends State<Mainscreen> {
   @override
@@ -38,13 +51,38 @@ class _MainscreenState extends State<Mainscreen> {
             children: [
               CustomAppBarWidget(),
               Container(
-                width: 360,
-                height: 172,
-                decoration: BoxDecoration(
-                  image: DecorationImage(
-                    image: AssetImage('assets/images/banner.png'),
-                    fit: BoxFit.cover,
-                  ),
+                height: 200,
+                child: Stack(
+                  children: [
+                    CarouselSlider(
+                      items: carouselItems
+                          .map((image) => Image.asset(image))
+                          .toList(),
+                      options: CarouselOptions(
+                        height: 200,
+                        autoPlay: true,
+                        viewportFraction: 1,
+                        onPageChanged: (index, reason) {
+                          setState(() {
+                            currentIndex = index;
+                          });
+                        },
+                      ),
+                    ),
+                    Container(
+                      margin: EdgeInsets.only(bottom: 4),
+                      alignment: Alignment.bottomCenter,
+                      child: DotsIndicator(
+                        dotsCount: carouselItems.length,
+                        position: currentIndex,
+                        decorator: const DotsDecorator(
+                            size: Size.square(4),
+                            activeSize: Size.square(4),
+                            activeColor: Colors.white,
+                            spacing: EdgeInsets.all(2)),
+                      ),
+                    )
+                  ],
                 ),
               ),
               SizedBox(
@@ -447,6 +485,7 @@ class _MainscreenState extends State<Mainscreen> {
                   ),
                 ),
               ),
+              BottomNavigationBarComponent()
             ],
           ),
         )),

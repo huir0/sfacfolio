@@ -5,13 +5,11 @@ import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:team5/community/view/appbar/AppBar.dart';
-import 'package:team5/community/view/frame/bottomnavigation.dart';
 import 'package:team5/community/view/tabbar/TabBar.dart';
 import '../community/view/pagenumber/page_division.dart';
 import '../database/data_controller.dart';
 import '../screen/bottom_nagivation_bar.dart';
 import '../screen/postpage.dart';
-
 // import '../community/view/appbar/AppBar.dart';
 
 class Notice_board extends StatefulWidget {
