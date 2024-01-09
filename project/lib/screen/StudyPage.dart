@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import 'package:team5/Widget/StudyCollectWidget.dart';
 import 'package:team5/Widget/StudyWidget.dart';
-import 'package:team5/community/view/frame/bottomnavigation.dart';
 import 'package:team5/community/view/tabbar/TabBar.dart';
 import 'package:team5/utill/color.dart';
 

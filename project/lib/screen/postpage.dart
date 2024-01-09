@@ -3,7 +3,6 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import 'package:team5/community/view/frame/bottomnavigation.dart';
 import '../database/data_controller.dart';
 import '../screen/bottom_nagivation_bar.dart';
 
