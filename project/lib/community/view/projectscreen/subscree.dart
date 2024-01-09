@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import '../button/bluebutton.dart';
-import '../button/detailbutton.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:team5/community/view/frame/comment.dart';
+import 'package:team5/utill/color.dart';
+
 import '../button/joinbutton.dart';
-import '../frame/comment.dart';
 import '../frame/detail.dart';
 import '../frame/frame3.dart';
 import '../frame/line.dart';
@@ -25,8 +26,34 @@ class SubScreen extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Icon(Icons.chevron_left),
-                    Icon(Icons.calendar_view_month_sharp),
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.pop(context);
+                      },
+                      child: Container(
+                        width: 24,
+                        height: 24,
+                        child: SvgPicture.asset('assets/images/Back.svg'),
+                      ),
+                    ),
+                    Container(
+                      width: 24,
+                      height: 44,
+                      child: Column(
+                        children: [
+                          SvgPicture.asset(
+                            'assets/images/bookmark.svg',
+                            color: AppColor.Neutral40,
+                          ),
+                          Text(
+                            '10',
+                            style: TextStyle(
+                              fontSize: 14,
+                            ),
+                          )
+                        ],
+                      ),
+                    )
                   ],
                 ),
               ),
@@ -59,7 +86,7 @@ class SubScreen extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  Padding(padding: EdgeInsets.only(left: 10)),
+                  Padding(padding: EdgeInsets.only(left: 10, top: 20)),
                   Container(
                     child: Text(
                       '상세내용',
@@ -79,11 +106,11 @@ class SubScreen extends StatelessWidget {
               filterbutton(),
               Container(),
               SizedBox(
-                height: 30,
+                height: 20,
               ),
               Line(),
               SizedBox(
-                height: 30,
+                height: 20,
               ),
               Comment(),
             ],

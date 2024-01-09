@@ -77,6 +77,7 @@ flutter:
     - assets/images/onboarding_3/
     - assets/images/community/noticeboard/
     - assets/images/noticeofemployment/
+
     - assets/pr/
     - assets/pro/
     - assets/icons/
@@ -85,6 +86,17 @@ flutter:
     - assets/Icon/DetailedPage/Bookmark/
     - assets/Icon/detailedpage/Lock/
     - assets/Icon/MainPage/interaction/
+
+    - assets/images/Sfaclog/Icons/
+    - assets/images/Sfaclog/Respect/
+    - assets/images/Sfaclog/
+    - assets/icons/sfaclog/
+    - assets/communitystudy/
+    - assets/Icon/DetailedPage/Bookmark/
+    - assets/images/Sfaclog/Respect/
+    - assets/main_resource/icon/
+    - assets/main_resource/image/
+
     
   #   - images/a_dot_ham.jpeg
 
@@ -100,6 +112,7 @@ flutter:
   # list giving the asset and other descriptors for the font. For
   # example:
   fonts:
+
     - family: PretendardVariable
       fonts:
         - asset: assets/fonts/PretendardVariable.ttf
@@ -123,6 +136,7 @@ flutter:
           weight: 200
         - asset: assets/fonts/Pretendard-Thin.otf
           weight: 100     
+
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro

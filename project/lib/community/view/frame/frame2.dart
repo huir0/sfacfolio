@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:get/route_manager.dart';
+import 'package:team5/community/view/projectscreen/subscree.dart';
 
 class Frame2 extends StatelessWidget {
   const Frame2({super.key});
@@ -6,7 +9,9 @@ class Frame2 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {},
+      onTap: () {
+        Get.to(SubScreen());
+      },
       child: Container(
         width: 328,
         height: 140,
@@ -162,12 +167,9 @@ class Frame2 extends StatelessWidget {
             ),
             Positioned(
               left: 12,
-              top: 116,
+              top: 110,
               child: Container(
                 child: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
                       '모집현황',
@@ -180,29 +182,80 @@ class Frame2 extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(width: 4),
-                    Container(
-                      child: Row(
-                        mainAxisSize: MainAxisSize.min,
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            '2/4',
-                            style: TextStyle(
-                              color: Color(0xFF0059FF),
-                              fontSize: 10,
-                              fontFamily: 'Pretendard',
-                              fontWeight: FontWeight.w400,
-                              height: 0.15,
-                            ),
+                    Row(
+                      children: [
+                        Text(
+                          '5/8',
+                          style: TextStyle(
+                            color: Color(0xFF0059FF),
+                            fontSize: 10,
+                            fontFamily: 'Pretendard',
+                            fontWeight: FontWeight.w400,
+                            height: 0.15,
                           ),
-                        ],
-                      ),
+                        ),
+                        SvgPicture.asset(
+                          'assets/images/dropdown.svg',
+                        ),
+                        SizedBox(
+                          width: 160,
+                        ),
+                        SvgPicture.asset(
+                          'assets/images/view.svg',
+                        ),
+                        Text(
+                          '10',
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 12,
+                            fontFamily: 'Pretendard',
+                            fontWeight: FontWeight.w400,
+                            height: 0.15,
+                          ),
+                        ),
+                        SvgPicture.asset(
+                          'assets/images/reply.svg',
+                        ),
+                        Text(
+                          '4',
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 12,
+                            fontFamily: 'Pretendard',
+                            fontWeight: FontWeight.w400,
+                            height: 0.15,
+                          ),
+                        ),
+                        SvgPicture.asset(
+                          'assets/images/bookmark3.svg',
+                        ),
+                        Text(
+                          '10',
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 12,
+                            fontFamily: 'Pretendard',
+                            fontWeight: FontWeight.w400,
+                            height: 0.15,
+                          ),
+                        ),
+                      ],
                     ),
                   ],
                 ),
               ),
             ),
+            Positioned(
+              right: 10,
+              top: 12,
+              child: Container(
+                width: 24,
+                height: 24,
+                child: SvgPicture.asset(
+                  'assets/images/bookmark.svg',
+                ),
+              ),
+            )
           ],
         ),
       ),

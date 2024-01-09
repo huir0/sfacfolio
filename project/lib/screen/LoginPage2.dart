@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import '../screen/join_screen.dart';
+import '../screen/mainPage.dart';
+import '../screen/passwordpage_1.dart';
 
 class LoginPage2 extends StatefulWidget {
   const LoginPage2({super.key});
@@ -18,6 +21,7 @@ class _LoginPage2State extends State<LoginPage2> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
         resizeToAvoidBottomInset: false,
         body: SingleChildScrollView(
@@ -227,7 +231,10 @@ class _LoginPage2State extends State<LoginPage2> {
                     ),
                     ElevatedButton(
                       onPressed: () {
-                        if (Form.of(context)!.validate()) {}
+                        // if (Form.of(context)!.validate()) {
+                        // }
+                          Navigator.push(context,
+                              MaterialPageRoute(builder: (context) => Home()));
                       },
                       style: ElevatedButton.styleFrom(
                         primary: Color(0xFF0059FF), // 색상을 #337AFF로 지정
@@ -263,7 +270,12 @@ class _LoginPage2State extends State<LoginPage2> {
                                 color: Color(0xFF666666),
                                 fontWeight: FontWeight.w700),
                           ),
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => JoinPage()));
+                          },
                         ),
                         Container(
                           width: 1,
@@ -278,7 +290,9 @@ class _LoginPage2State extends State<LoginPage2> {
                                 color: Color(0xFF666666),
                                 fontWeight: FontWeight.w700),
                           ),
-                          onPressed: () {},
+                          onPressed: () {
+                            // Navigator.push(context, MaterialPageRoute(builder: (context) => findlogin()));
+                          },
                         ),
                         Container(
                           width: 1,
@@ -293,7 +307,12 @@ class _LoginPage2State extends State<LoginPage2> {
                                 color: Color(0xFF666666),
                                 fontWeight: FontWeight.w700),
                           ),
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => Passwordpage_1()));
+                          },
                         )
                       ],
                     ),

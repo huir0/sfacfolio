@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import '/screen/noticeboard.dart';
 
-import 'package:team5/utill/color.dart';
+import '../../../utill/color.dart';
 
-class CustomTabBar extends StatelessWidget implements PreferredSizeWidget{
+class CustomTabBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -60,6 +62,7 @@ class CustomTabBar extends StatelessWidget implements PreferredSizeWidget{
       ),
     );
   }
+
   @override
   Size get preferredSize => Size.fromHeight(kTextTabBarHeight);
 }

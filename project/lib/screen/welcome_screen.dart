@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import '../screen/community_screen.dart';
 import '../utill/color.dart';
 import '/screen/onboarding_first_screen.dart';
+import 'mainPage.dart';
 
 const partypopper = 'assets/images/Party_popper.png';
 
@@ -62,7 +63,7 @@ class WelcomePage extends StatelessWidget {
                       context,
                       MaterialPageRoute(
                           builder: (context) =>
-                             Community()), // 다른 웰컴 페이지로 이동시켜줘야 함
+                             Home()), // 다른 웰컴 페이지로 이동시켜줘야 함
                     );
                   },
                   child: Text(
