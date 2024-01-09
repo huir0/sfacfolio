@@ -80,10 +80,14 @@ flutter:
     - assets/icons/interaction/
     - assets/icons/filter/
     - assets/images/noticeofemployment/
-    - assets/images/Sfaclog/Respect/icons/
+    - assets/images/Sfaclog/Icons/
     - assets/images/Sfaclog/Respect/
     - assets/images/Sfaclog/
     - assets/icons/sfaclog/
+    - assets/communitystudy/
+    - assets/Icon/DetailedPage/Bookmark/
+    - assets/images/Sfaclog/Respect/
+    
     
   #   - images/a_dot_ham.jpeg
 

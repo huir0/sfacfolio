@@ -63,7 +63,7 @@ class StudyCollectWidget extends StatelessWidget {
                                       fontFamily: 'Pretendard',
                                     ))),
                             SizedBox(
-                              width: 190,
+                              width: 178,
                             ),
                             SvgPicture.asset(
                                 'assets/Icon/DetailedPage/Bookmark/blue.svg')

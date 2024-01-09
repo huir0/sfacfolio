@@ -1,8 +1,10 @@
 // import 'package:get/get.dart';
+import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:team5/portfolio/sfaclog.dart';
 import 'package:team5/screen/bottom_nagivation_bar_black.dart';
 import '../database/data_controller.dart';
 import '../screen/bottom_nagivation_bar.dart';
@@ -352,7 +354,11 @@ class ShortPec extends State<Shortpec> {
                                     SizedBox(
                                       height: 20,
                                     ),
-                                    Container(
+                                    GestureDetector(
+                                      onTap: () {
+                                        Get.to(() => Sfaclog());
+                                      },
+                                      child: Container(
                                         width: 116,
                                         height: 46,
                                         decoration: BoxDecoration(
@@ -371,7 +377,9 @@ class ShortPec extends State<Shortpec> {
                                         child: Center(
                                           child: SvgPicture.asset(
                                               'assets/icons/Sfacfolio_switch.svg'),
-                                        ))
+                                        ),
+                                      ),
+                                    )
                                   ],
                                 ),
                               ),
@@ -393,9 +401,8 @@ class ShortPec extends State<Shortpec> {
         category.keys.toList()[category.keys.toList().length - 1];
     for (String name in category.keys) {
       category_slot[name] = Container(
-        width: 80,
         height: 48,
-        margin: EdgeInsets.only(right: name != last_name ? 8 : 0),
+        margin: EdgeInsets.only(right: name != last_name ? 20 : 0),
         decoration: BoxDecoration(
             border: Border(
                 bottom: BorderSide(
@@ -479,7 +486,7 @@ class ShortPec extends State<Shortpec> {
                           left: 0,
                           child: Container(
                             width: 360,
-                            height: 48,
+                            height: 60,
                             decoration: BoxDecoration(
                               gradient: LinearGradient(
                                   colors: [
@@ -495,6 +502,11 @@ class ShortPec extends State<Shortpec> {
                             ),
                           ),
                         ),
+                        Positioned(
+                            top: 18,
+                            right: 16,
+                            child: SvgPicture.asset(
+                                'assets/icons/sfaclog/Shortfac_Add.svg'))
                       ],
                     ),
                   ),
