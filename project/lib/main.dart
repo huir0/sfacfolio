@@ -17,11 +17,10 @@ void main() async {
   Get.put(UserController());
   Get.put(ClickController());
   Get.put(BookmarkController());
-
   runApp(
     GetMaterialApp(
+      home: Mainscreen(),
       debugShowCheckedModeBanner: false,
-      home: SplashPage(),
       theme: ThemeData(
         textTheme: TextTheme(
           bodyText2: TextStyle(
@@ -33,7 +32,7 @@ void main() async {
   );
 
   Future.delayed(
-    Duration(seconds: 1),
+    Duration(seconds: 3),
     () {
       Get.off(LoginPage2());
     },
