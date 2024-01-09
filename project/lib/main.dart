@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:team5/community/view/projectscreen/mainscreen.dart';
-import 'package:team5/portfolio/sfaclog_custom_recommend.dart';
-import 'package:team5/screen/LoginPage2.dart';
-import 'package:team5/screen/SplashPage.dart';
-import 'package:team5/screen/employment_dummy_data.dart';
-import 'package:team5/screen/user_controller.dart';
+
+import 'screen/employment_dummy_data.dart';
+import 'screen/user_controller.dart';
 import 'firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
+
+import 'screen/LoginPage2.dart';
+import 'screen/SplashPage.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -30,6 +30,7 @@ void main() async {
       ),
     ),
   );
+
   Future.delayed(
     Duration(seconds: 3),
     () {

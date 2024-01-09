@@ -194,6 +194,7 @@ class _HomeState extends State<Home> {
         child: Column(
           children: [
             Container(
+              color: Colors.white,
               width: 360,
               height: 48,
               padding: EdgeInsets.symmetric(horizontal: 16),
