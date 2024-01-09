@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:team5/community/view/appbar/AppBar.dart';
-import 'package:team5/community/view/frame/bottomnavigation.dart';
 import 'package:team5/screen/bottom_nagivation_bar.dart';
 import '../community/view/tabbar/TabBar.dart';
 import '../screen/employment_filter.dart';

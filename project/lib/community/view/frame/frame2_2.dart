@@ -63,7 +63,7 @@ class Frame2_2 extends StatelessWidget {
                             padding: const EdgeInsets.symmetric(
                                 horizontal: 8, vertical: 4),
                             decoration: ShapeDecoration(
-                              color: Color(0xFFE5EEFF),
+                              color: Color(0xFFFFE5E5),
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(75),
                               ),
@@ -74,9 +74,9 @@ class Frame2_2 extends StatelessWidget {
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
                                 Text(
-                                  'D-3',
+                                  'D-4',
                                   style: TextStyle(
-                                    color: Color(0xFF0059FF),
+                                    color: Color(0xFFFF0000),
                                     fontSize: 10,
                                     fontFamily: 'Pretendard',
                                     fontWeight: FontWeight.w400,
