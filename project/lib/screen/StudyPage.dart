@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
-import '../community/view/appbar/AppBar.dart';
-import '../community/view/banner/community_banner.dart';
-import '../screen/bottom_nagivation_bar.dart';
-import '../screen/studyfillter.dart';
 
-import '../widget/StudyCollectWidget.dart';
-import '../widget/StudyWidget.dart';
+import '/community/view/appbar/AppBar.dart';
+import '/community/view/banner/community_banner.dart';
+import '/screen/bottom_nagivation_bar.dart';
+import '/screen/studyfillter.dart';
+
+import '/widget/StudyCollectWidget.dart';
+import '/widget/StudyWidget.dart';
 
 import '../community/view/tabbar/TabBar.dart';
 import '../utill/color.dart';

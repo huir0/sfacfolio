@@ -4,13 +4,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import 'package:team5/community/view/appbar/AppBar.dart';
-import 'package:team5/community/view/tabbar/TabBar.dart';
+import '/screen/filter_categortbutton.dart';
+import '/community/view/appbar/AppBar.dart';
+import '/community/view/tabbar/TabBar.dart';
+import '/utill/color.dart';
 import '../community/view/pagenumber/page_division.dart';
 import '../database/data_controller.dart';
 import '../screen/bottom_nagivation_bar.dart';
 import '../screen/postpage.dart';
-// import '../community/view/appbar/AppBar.dart';
 
 class Notice_board extends StatefulWidget {
   const Notice_board({super.key});
@@ -25,22 +26,13 @@ class Notice_Board extends State<Notice_board> {
   Map<String, dynamic> pop_docs = {};
   Map<String, Widget> pop_docs_panel = {};
   Map<String, Widget> docs_panel = {};
-  Map<String, Widget> num_but = {};
-  Map<int, Map<String, Widget>> division_panel = {};
   Map<String, Map<String, Widget>> sub_category = {};
   List<String> big_image_urls = [];
   List<String> small_image_urls = [];
   int increase_num = 0;
-  int page_num = 1;
   bool page_load = false;
-  Map<String, Color> num_active = {};
   String drop_down_initial = '최신순';
-  Map<String, bool> drop_down_list = {'최신순': true, '저장순': false, '댓글순': false};
-  Map<String, PopupMenuItem<String>> drop_down_item = {};
-  late Widget bottom_sheet;
-  Map<String, Widget> category_button = {};
   List<String> category_text = ['전체', '자유', '취업/이직', '수강후기', '포트폴리오 '];
-  Map<String, bool> category_button_activate = {};
 
   final List<String> carouselItems = [
     'assets/images/community/noticeboard/banner_1.png',
@@ -50,6 +42,7 @@ class Notice_Board extends State<Notice_board> {
     'assets/images/community/noticeboard/banner_5.png',
     'assets/images/community/noticeboard/banner_6.png'
   ];
+
   int currentIndex = 0;
 
   @override
@@ -61,12 +54,6 @@ class Notice_Board extends State<Notice_board> {
   void init_page() async {
     await get_data();
     bulid_post_panel();
-    popup_items();
-    for (String text in category_text) {
-      category_button_activate[text] = false;
-    }
-    sheet_category();
-    build_bottom_sheet();
     setState(() {
       page_load = true;
     });
@@ -75,11 +62,13 @@ class Notice_Board extends State<Notice_board> {
   Future<void> get_data() async {
     pop_docs = {};
     docs = await data_control.get_post('Notice');
-    docs.forEach((key, value) {
-      if (value['like'] >= 1) {
-        pop_docs[key] = value;
-      }
-    });
+    docs.forEach(
+      (key, value) {
+        if (value['like'] >= 1) {
+          pop_docs[key] = value;
+        }
+      },
+    );
     for (int i = 1; i < 6; i++) {
       String url_1 =
           await data_control.get_image('Notice/Profile_Big ($i).png');
@@ -443,260 +432,13 @@ class Notice_Board extends State<Notice_board> {
     }
   }
 
-  void popup_items() {
-    for (String text in drop_down_list.keys.toList()) {
-      drop_down_item[text] = PopupMenuItem<String>(
-        value: text,
-        child: Center(
-          child: Text(
-            text,
-            style: TextStyle(
-              fontFamily: 'Pretendard',
-              color: Color(0xFF020202),
-              fontSize: 12,
-              fontWeight: FontWeight.w400,
-              height: 0.12,
-            ),
-          ),
-        ),
-      );
-    }
-  }
-
-  void category_color_change(String input_text) {
-    setState(() {
-      category_button_activate.forEach((key, value) {
-        category_button_activate[key] = false;
-      });
-      category_button_activate[input_text] = true;
-      print(category_button_activate);
-      sheet_category();
-    });
-  }
-
-  void sheet_category() {
-    for (String text in category_text) {
-      category_button[text] = GestureDetector(
-        onTap: () {
-          print('클릭');
-          category_color_change(text);
-          print('클릭2');
-        },
-        child: Container(
-          width: text.length * 12.0 + 16,
-          height: 36,
-          margin: EdgeInsets.only(right: 8),
-          decoration: BoxDecoration(
-            color: category_button_activate[text]!
-                ? Color(0xFFF5F8FF)
-                : Color(0xFFFFFFFF),
-            borderRadius: BorderRadius.circular(25),
-            border: Border.all(
-              width: 1,
-              color: category_button_activate[text]!
-                  ? Color(0xFF0059FF)
-                  : Color(0xFFE6E6E6),
-            ),
-          ),
-          child: Center(
-              child: Text(
-            text,
-            style: TextStyle(
-              fontFamily: 'Pretendard',
-              color: category_button_activate[text]!
-                  ? Color(0xFF0059FF)
-                  : Color(0xFF000000),
-              fontSize: 12,
-              fontWeight: FontWeight.w400,
-              height: 0.12,
-            ),
-          )),
-        ),
-      );
-    }
-  }
-
-  void build_bottom_sheet() {
-    bottom_sheet = GestureDetector(
-      onTap: () {
-        showModalBottomSheet(
-          context: context,
-          builder: (BuildContext context) {
-            return Container(
-              width: 360,
-              height: 345,
-              decoration: ShapeDecoration(
-                color: Colors.white,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(20),
-                    topRight: Radius.circular(20),
-                  ),
-                ),
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Container(
-                    width: 38,
-                    height: 4,
-                    margin: EdgeInsets.only(top: 10),
-                    decoration: ShapeDecoration(
-                      color: Color(0xFFE6E6E6),
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(4)),
-                    ),
-                  ),
-                  Container(
-                    width: 336,
-                    height: 153,
-                    margin: EdgeInsets.only(top: 10, left: 24),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Container(
-                          width: 266,
-                          height: 24,
-                          child: Text(
-                            '필터 검색',
-                            style: TextStyle(
-                              fontFamily: 'Pretendard',
-                              color: Colors.black,
-                              fontSize: 16,
-                              fontWeight: FontWeight.w600,
-                              height: 0.09,
-                            ),
-                          ),
-                        ),
-                        SizedBox(
-                          height: 16,
-                        ),
-                        Container(
-                          width: 266,
-                          height: 21,
-                          child: Text(
-                            '태그',
-                            style: TextStyle(
-                              fontFamily: 'Pretendard',
-                              color: Colors.black,
-                              fontSize: 14,
-                              fontWeight: FontWeight.w600,
-                              height: 0.11,
-                            ),
-                          ),
-                        ),
-                        SizedBox(
-                          height: 12,
-                        ),
-                        Container(
-                            width: 266,
-                            height: 80,
-                            child: Column(
-                              children: [
-                                Row(
-                                  children: category_button.values
-                                      .toList()
-                                      .sublist(0, 4),
-                                ),
-                                SizedBox(
-                                  height: 8,
-                                ),
-                                Row(
-                                  children: category_button.values
-                                      .toList()
-                                      .sublist(4, 5),
-                                )
-                              ],
-                            )),
-                      ],
-                    ),
-                  ),
-                  Container(
-                    width: 328,
-                    height: 48,
-                    margin: EdgeInsets.only(
-                        top: 40, left: 16, right: 16, bottom: 16),
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Container(
-                          width: 102,
-                          height: 48,
-                          decoration: BoxDecoration(
-                            color: Color(0xFFE6E6E6),
-                            borderRadius: BorderRadius.circular(8),
-                          ),
-                          child: Center(
-                            child: Text(
-                              '초기화',
-                              style: TextStyle(
-                                fontFamily: 'Pretendard',
-                                color: Color(0xFF7F7F7F),
-                                fontSize: 16,
-                                fontWeight: FontWeight.w600,
-                                height: 0.09,
-                              ),
-                            ),
-                          ),
-                        ),
-                        SizedBox(
-                          width: 8,
-                        ),
-                        Container(
-                          width: 218,
-                          height: 48,
-                          decoration: BoxDecoration(
-                            color: Color(0xFF0059FF),
-                            borderRadius: BorderRadius.circular(8),
-                          ),
-                          child: Center(
-                            child: Text(
-                              '적용하기',
-                              style: TextStyle(
-                                fontFamily: 'Pretendard',
-                                color: Colors.white,
-                                fontSize: 16,
-                                fontWeight: FontWeight.w600,
-                                height: 0.09,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  BottomNavigationBarComponent(),
-                ],
-              ),
-            );
-          },
-        );
-      },
-      child: Container(
-        width: 32,
-        height: 32,
-        decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(20),
-            border: Border.all(color: Color(0xFFF3F3F3), width: 1)),
-        child: SvgPicture.asset(
-          'assets/icons/Filter.svg',
-        ),
-      ),
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
       statusBarColor: Colors.white,
       statusBarIconBrightness: Brightness.dark,
     ));
-    return
-        // DefaultTabController(
-        //   length: 4,
-        //   child:
-        Scaffold(
+    return Scaffold(
       body: page_load
           ? Container(
               child: Column(
@@ -815,64 +557,376 @@ class Notice_Board extends State<Notice_board> {
                                           mainAxisAlignment:
                                               MainAxisAlignment.spaceBetween,
                                           children: [
-                                            bottom_sheet,
-                                            PopupMenuButton<String>(
-                                              onSelected: (value) {
-                                                setState(() {
-                                                  drop_down_initial = value;
-                                                });
-                                                drop_down_list
-                                                    .forEach((key, value) {
-                                                  drop_down_list[key] = false;
-                                                });
-                                                drop_down_list[value] = true;
-                                              },
-                                              itemBuilder:
-                                                  (BuildContext context) {
-                                                return drop_down_item.values
-                                                    .toList();
-                                              },
-                                              shape: RoundedRectangleBorder(
-                                                  borderRadius:
-                                                      BorderRadius.circular(8)),
-                                              elevation: 5,
-                                              child: Container(
-                                                height: 38,
-                                                padding: EdgeInsets.all(10),
-                                                decoration: BoxDecoration(
-                                                  borderRadius:
-                                                      BorderRadius.circular(20),
-                                                  border: Border.all(
-                                                      color: Color(0xFFF3F3F3),
-                                                      width: 1),
-                                                ),
-                                                child: Center(
-                                                  child: Row(
-                                                    mainAxisAlignment:
-                                                        MainAxisAlignment
-                                                            .spaceBetween,
-                                                    children: [
-                                                      Text(
-                                                        drop_down_initial,
-                                                        style: TextStyle(
-                                                            fontFamily:
-                                                                'Pretendard',
-                                                            fontSize: 12,
-                                                            fontWeight:
-                                                                FontWeight
-                                                                    .normal),
-                                                      ),
-                                                      Container(
-                                                        margin: EdgeInsets.only(
-                                                            left: 4),
-                                                        child: SvgPicture.asset(
-                                                          'assets/icons/Dropdown.svg',
-                                                          fit: BoxFit.fill,
+                                            GestureDetector(
+                                              onTap: () {
+                                                showModalBottomSheet(
+                                                  context: context,
+                                                  builder:
+                                                      (BuildContext context) {
+                                                    return Container(
+                                                      width: 360,
+                                                      height: 345,
+                                                      decoration:
+                                                          ShapeDecoration(
+                                                        color: Colors.white,
+                                                        shape:
+                                                            RoundedRectangleBorder(
+                                                          borderRadius:
+                                                              BorderRadius.only(
+                                                            topLeft:
+                                                                Radius.circular(
+                                                                    20),
+                                                            topRight:
+                                                                Radius.circular(
+                                                                    20),
+                                                          ),
                                                         ),
                                                       ),
-                                                    ],
-                                                  ),
+                                                      child: Column(
+                                                        crossAxisAlignment:
+                                                            CrossAxisAlignment
+                                                                .center,
+                                                        children: [
+                                                          Container(
+                                                            width: 38,
+                                                            height: 4,
+                                                            margin:
+                                                                EdgeInsets.only(
+                                                                    top: 10),
+                                                            decoration:
+                                                                ShapeDecoration(
+                                                              color: Color(
+                                                                  0xFFE6E6E6),
+                                                              shape: RoundedRectangleBorder(
+                                                                  borderRadius:
+                                                                      BorderRadius
+                                                                          .circular(
+                                                                              4)),
+                                                            ),
+                                                          ),
+                                                          Container(
+                                                            width: 336,
+                                                            height: 153,
+                                                            margin:
+                                                                EdgeInsets.only(
+                                                                    top: 10,
+                                                                    left: 24),
+                                                            child: Column(
+                                                              mainAxisAlignment:
+                                                                  MainAxisAlignment
+                                                                      .start,
+                                                              crossAxisAlignment:
+                                                                  CrossAxisAlignment
+                                                                      .start,
+                                                              children: [
+                                                                Container(
+                                                                  width: 266,
+                                                                  height: 24,
+                                                                  child: Text(
+                                                                    '필터 검색',
+                                                                    style:
+                                                                        TextStyle(
+                                                                      fontFamily:
+                                                                          'Pretendard',
+                                                                      color: Colors
+                                                                          .black,
+                                                                      fontSize:
+                                                                          16,
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .w600,
+                                                                      height:
+                                                                          0.09,
+                                                                    ),
+                                                                  ),
+                                                                ),
+                                                                SizedBox(
+                                                                  height: 16,
+                                                                ),
+                                                                Container(
+                                                                  width: 266,
+                                                                  height: 21,
+                                                                  child: Text(
+                                                                    '태그',
+                                                                    style:
+                                                                        TextStyle(
+                                                                      fontFamily:
+                                                                          'Pretendard',
+                                                                      color: Colors
+                                                                          .black,
+                                                                      fontSize:
+                                                                          14,
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .w600,
+                                                                      height:
+                                                                          0.11,
+                                                                    ),
+                                                                  ),
+                                                                ),
+                                                                SizedBox(
+                                                                  height: 12,
+                                                                ),
+                                                                Container(
+                                                                  width: 266,
+                                                                  height: 80,
+                                                                  child: Column(
+                                                                    children: [
+                                                                      Row(
+                                                                        children: [
+                                                                          Filter_Catagorybutton(
+                                                                              category_text[0]),
+                                                                          Filter_Catagorybutton(
+                                                                              category_text[1]),
+                                                                          Filter_Catagorybutton(
+                                                                              category_text[2]),
+                                                                          Filter_Catagorybutton(
+                                                                              category_text[3]),
+                                                                        ],
+                                                                      ),
+                                                                      SizedBox(
+                                                                        height:
+                                                                            8,
+                                                                      ),
+                                                                      Row(
+                                                                        children: [
+                                                                          Filter_Catagorybutton(
+                                                                            category_text[4],
+                                                                          ),
+                                                                        ],
+                                                                      ),
+                                                                    ],
+                                                                  ),
+                                                                ),
+                                                              ],
+                                                            ),
+                                                          ),
+                                                          Container(
+                                                            width: 328,
+                                                            height: 48,
+                                                            margin:
+                                                                EdgeInsets.only(
+                                                                    top: 40,
+                                                                    left: 16,
+                                                                    right: 16,
+                                                                    bottom: 16),
+                                                            child: Row(
+                                                              crossAxisAlignment:
+                                                                  CrossAxisAlignment
+                                                                      .start,
+                                                              children: [
+                                                                Container(
+                                                                  width: 102,
+                                                                  height: 48,
+                                                                  decoration:
+                                                                      BoxDecoration(
+                                                                    color: Color(
+                                                                        0xFFE6E6E6),
+                                                                    borderRadius:
+                                                                        BorderRadius
+                                                                            .circular(8),
+                                                                  ),
+                                                                  child: Center(
+                                                                    child: Text(
+                                                                      '초기화',
+                                                                      style:
+                                                                          TextStyle(
+                                                                        fontFamily:
+                                                                            'Pretendard',
+                                                                        color: Color(
+                                                                            0xFF7F7F7F),
+                                                                        fontSize:
+                                                                            16,
+                                                                        fontWeight:
+                                                                            FontWeight.w600,
+                                                                        height:
+                                                                            0.09,
+                                                                      ),
+                                                                    ),
+                                                                  ),
+                                                                ),
+                                                                SizedBox(
+                                                                  width: 8,
+                                                                ),
+                                                                Container(
+                                                                  width: 218,
+                                                                  height: 48,
+                                                                  decoration:
+                                                                      BoxDecoration(
+                                                                    color: Color(
+                                                                        0xFF0059FF),
+                                                                    borderRadius:
+                                                                        BorderRadius
+                                                                            .circular(8),
+                                                                  ),
+                                                                  child: Center(
+                                                                    child: Text(
+                                                                      '적용하기',
+                                                                      style:
+                                                                          TextStyle(
+                                                                        fontFamily:
+                                                                            'Pretendard',
+                                                                        color: Colors
+                                                                            .white,
+                                                                        fontSize:
+                                                                            16,
+                                                                        fontWeight:
+                                                                            FontWeight.w600,
+                                                                        height:
+                                                                            0.09,
+                                                                      ),
+                                                                    ),
+                                                                  ),
+                                                                ),
+                                                              ],
+                                                            ),
+                                                          ),
+                                                          BottomNavigationBarComponent(),
+                                                        ],
+                                                      ),
+                                                    );
+                                                  },
+                                                );
+                                              },
+                                              child: Container(
+                                                width: 32,
+                                                height: 32,
+                                                decoration: BoxDecoration(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            20),
+                                                    border: Border.all(
+                                                        color:
+                                                            Color(0xFFF3F3F3),
+                                                        width: 1)),
+                                                child: SvgPicture.asset(
+                                                  'assets/icons/Filter.svg',
                                                 ),
+                                              ),
+                                            ),
+                                            Container(
+                                              padding:
+                                                  const EdgeInsets.symmetric(
+                                                      vertical: 10,
+                                                      horizontal: 14),
+                                              decoration: BoxDecoration(
+                                                borderRadius:
+                                                    BorderRadius.circular(20),
+                                                border: Border.all(
+                                                    color: AppColor.Neutral5,
+                                                    width: 1),
+                                              ),
+                                              height: 38,
+                                              width: 76,
+                                              child: PopupMenuButton(
+                                                constraints: BoxConstraints(
+                                                    maxWidth: 76),
+                                                shape: RoundedRectangleBorder(
+                                                  borderRadius:
+                                                      BorderRadius.circular(8),
+                                                  side: BorderSide.none,
+                                                ),
+                                                offset: Offset(16, 26),
+                                                color: Colors.white,
+                                                padding: EdgeInsets.zero,
+                                                elevation: 0.3,
+                                                child: Stack(
+                                                  children: [
+                                                    Container(
+                                                      alignment:
+                                                          Alignment.centerLeft,
+                                                      child: Text(
+                                                        drop_down_initial,
+                                                        style: TextStyle(
+                                                            fontSize: 12,
+                                                            fontWeight:
+                                                                FontWeight.w400,
+                                                            height: 0.8),
+                                                      ),
+                                                    ),
+                                                    Positioned(
+                                                      right: 0,
+                                                      child: SvgPicture.asset(
+                                                          'assets/icons/filter/dropdown.svg'),
+                                                    ),
+                                                  ],
+                                                ),
+                                                onSelected: (value) {
+                                                  setState(() {
+                                                    drop_down_initial = value;
+                                                  });
+                                                },
+                                                itemBuilder: (BuildContext) => [
+                                                  PopupMenuItem(
+                                                    value: '최신순',
+                                                    child: Center(
+                                                      child: Container(
+                                                        width: 46,
+                                                        height: 40,
+                                                        alignment:
+                                                            Alignment.center,
+                                                        child: Text(
+                                                          '최신순',
+                                                          style: TextStyle(
+                                                            fontFamily:
+                                                                'Pretendard',
+                                                            color: drop_down_initial ==
+                                                                    '최신순'
+                                                                ? Colors.black
+                                                                : AppColor
+                                                                    .Neutral50,
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  PopupMenuItem(
+                                                    value: '저장순',
+                                                    child: Center(
+                                                      child: Container(
+                                                        width: 46,
+                                                        height: 40,
+                                                        alignment:
+                                                            Alignment.center,
+                                                        child: Text(
+                                                          '저장순',
+                                                          style: TextStyle(
+                                                            fontFamily:
+                                                                'Pretendard',
+                                                            color: drop_down_initial ==
+                                                                    '저장순'
+                                                                ? Colors.black
+                                                                : AppColor
+                                                                    .Neutral50,
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  PopupMenuItem(
+                                                    value: '댓글순',
+                                                    child: Center(
+                                                      child: Container(
+                                                        width: 46,
+                                                        height: 40,
+                                                        alignment:
+                                                            Alignment.center,
+                                                        child: Text(
+                                                          '댓글순',
+                                                          style: TextStyle(
+                                                            fontFamily:
+                                                                'Pretendard',
+                                                            color: drop_down_initial ==
+                                                                    '댓글순'
+                                                                ? Colors.black
+                                                                : AppColor
+                                                                    .Neutral50,
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ],
                                               ),
                                             ),
                                           ],
