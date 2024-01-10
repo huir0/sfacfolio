@@ -384,9 +384,6 @@ class Grouppage extends State<GroupPage> {
                             ],
                           ),
                         ),
-                        SizedBox(
-                          height: 20,
-                        ),
                         BestPortfolioPage(),
                         Container(
                           child: showAllCategory
