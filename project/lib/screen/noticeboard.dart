@@ -470,6 +470,7 @@ class Notice_Board extends State<Notice_board> {
       });
       category_button_activate[input_text] = true;
       print(category_button_activate);
+      sheet_category();
     });
   }
 
@@ -479,6 +480,7 @@ class Notice_Board extends State<Notice_board> {
         onTap: () {
           print('클릭');
           category_color_change(text);
+          print('클릭2');
         },
         child: Container(
           width: text.length * 12.0 + 16,

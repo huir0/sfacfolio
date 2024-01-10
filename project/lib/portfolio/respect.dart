@@ -552,10 +552,8 @@ class Respectpage extends State<RespectPage> {
               height: 48,
               child: Sfaclog_Tapbar(),
             ),
-            SfaclogFilter(),
             Container(
               height: 500,
-              margin: EdgeInsets.only(top: 8),
               child: Stack(
                 children: [
                   Positioned(
@@ -568,6 +566,10 @@ class Respectpage extends State<RespectPage> {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
+                            SfaclogFilter(),
+                            SizedBox(
+                              height: 8,
+                            ),
                             Container(
                               margin: EdgeInsets.only(left: 0.25),
                               child: SingleChildScrollView(
@@ -781,7 +783,7 @@ class Respectpage extends State<RespectPage> {
                           color: Color(0x4C000000),
                           blurRadius: 6,
                           offset: Offset(0, 0),
-                          spreadRadius: 0,
+                          spreadRadius: -6,
                         )
                       ]),
                       child: GestureDetector(
