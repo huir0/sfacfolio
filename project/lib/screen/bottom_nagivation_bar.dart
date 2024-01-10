@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import '../portfolio/sfaclog.dart';
+import 'package:team5/main.dart';
+import 'package:team5/portfolio/sfaclog.dart';
+import 'package:team5/screen/mainPage.dart';
+import 'package:team5/screen/myPage.dart';
+import 'package:team5/screen/shortpec.dart';
+
 
 import '../controller/bottom_navigation.dart';
 import 'collection.dart';
