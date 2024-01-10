@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import '/screen/employment_dummy_data.dart';
+import '/screen/user_controller.dart';
 import '/screen/SplashPage.dart';
 import 'loginscreen/LoginPage2.dart';
 import 'firebase_options.dart';
@@ -33,6 +35,7 @@ void main() async {
     Duration(seconds: 1),
     () {
       Get.off(LoginPage2());
+      // Get.off(Shortpec());
     },
   );
 }
