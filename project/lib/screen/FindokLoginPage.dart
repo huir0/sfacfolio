@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:team5/utill/color.dart';
+import '../screen/passwordpage_1.dart';
+import '../utill/color.dart';
 
+import 'LoginPage2.dart';
 
 class FindokLoginPage extends StatefulWidget {
   const FindokLoginPage({super.key});
@@ -13,10 +15,17 @@ class _FindokLoginPageState extends State<FindokLoginPage> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
           appBar: AppBar(
             elevation: 0,
-            actions: [IconButton(onPressed: () {}, icon: Icon(Icons.close))],
+            actions: [
+              IconButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  icon: Icon(Icons.close))
+            ],
           ),
           body: SafeArea(
               child: Column(
@@ -69,7 +78,12 @@ class _FindokLoginPageState extends State<FindokLoginPage> {
                     width: 160,
                     height: 48,
                     child: OutlinedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => Passwordpage_1()));
+                      },
                       child: Text(
                         '비밀번호 찾기',
                         style: TextStyle(
@@ -96,7 +110,12 @@ class _FindokLoginPageState extends State<FindokLoginPage> {
                                 borderRadius: BorderRadius.circular(5.0)),
                             elevation: 0,
                             backgroundColor: AppColor.Primary100),
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => LoginPage2()));
+                        },
                         child: Text(
                           '로그인',
                           style: TextStyle(
