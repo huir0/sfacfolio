@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:team5/screen/FindokLoginPage.dart';
 import 'package:team5/utill/color.dart';
@@ -86,10 +84,13 @@ class _FindLoginPageState extends State<FindLoginPage> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(
             elevation: 0,
-            actions: [IconButton(onPressed: () {}, icon: Icon(Icons.close))]),
+            actions: [IconButton(onPressed: () {
+              Navigator.pop(context);
+            }, icon: Icon(Icons.close))]),
         body: SafeArea(
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 14.0),
