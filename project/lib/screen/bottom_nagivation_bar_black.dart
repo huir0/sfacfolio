@@ -8,6 +8,8 @@ import '/screen/mainPage.dart';
 import '/controller/bottom_navigation.dart';
 import '/portfolio/sfaclog.dart';
 
+
+
 const homeIcon = 'assets/icons/Home.svg';
 const communityIcon = 'assets/icons/Community.svg';
 const portfolioIcon = 'assets/icons/Portfolio.svg';
@@ -24,8 +26,10 @@ class BottomNavigationBarComponentBlack extends StatefulWidget {
 
 class _BottomNavigationBarComponentStateBlack
     extends State<BottomNavigationBarComponentBlack> {
+
   final NavigationController navigationController =
       Get.put(NavigationController());
+
 
   @override
   Widget build(BuildContext context) {

@@ -14,6 +14,7 @@ class _CustomAppBarWidgetState extends State<CustomAppBarWidget> {
     return Container(
       width: 360,
       height: 48,
+      color: Colors.white,
       padding: EdgeInsets.symmetric(horizontal: 16),
       child: Row(
         mainAxisSize: MainAxisSize.min,

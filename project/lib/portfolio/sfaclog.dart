@@ -9,6 +9,8 @@ import 'package:team5/portfolio/sfaclog_tapbar.dart';
 import 'package:team5/screen/bottom_nagivation_bar.dart';
 import 'package:team5/screen/shortpec.dart';
 
+import 'group.dart';
+
 class Sfaclog extends StatefulWidget {
   @override
   _Sfaclog createState() => _Sfaclog();
@@ -34,9 +36,7 @@ class _Sfaclog extends State<Sfaclog> {
               child: Text('맞춤추천'),
             ),
             Center(child: RespectPage()),
-            Center(
-              child: Text('맞춤추천'),
-            ),
+            Center(child: GroupPage()),
           ],
         ),
       ),
