@@ -161,6 +161,10 @@ class ShortPec extends State<Shortpec> {
       if (image_size[0] > image_size[1] * 1.5) {
         fitsize = BoxFit.fitWidth;
       }
+
+      if (image_size[0] > image_size[1] * 1.8) {
+        fitsize = BoxFit.fitHeight;
+      }
       print(fitsize);
       main_slot[key] = Container(
         width: 360,
@@ -214,7 +218,7 @@ class ShortPec extends State<Shortpec> {
             tap_bool
                 ? Container()
                 : Positioned(
-                    bottom: 35,
+                    bottom: 16,
                     child: Container(
                       width: 360,
                       padding: EdgeInsets.only(left: 16, right: 16),
