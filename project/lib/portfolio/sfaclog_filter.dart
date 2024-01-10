@@ -13,6 +13,7 @@ class _SfaclogFilter extends State<SfaclogFilter> {
   @override
   Widget build(BuildContext context) {
     return Container(
+      color: Colors.white,
       width: 360,
       height: 48,
       padding: EdgeInsets.symmetric(horizontal: 16),

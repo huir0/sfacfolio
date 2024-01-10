@@ -22,7 +22,7 @@ void main() async {
   Get.put(BookmarkController());
   runApp(
     GetMaterialApp(
-      home: Mainscreen(),
+      home: SplashPage(),
       debugShowCheckedModeBanner: false,
       // home: Passwordpage_1(),
       home: StudyPage(),
@@ -36,5 +36,12 @@ void main() async {
         ),
       ),
     ),
+  );
+
+  Future.delayed(
+    Duration(seconds: 1),
+    () {
+      Get.off(LoginPage2());
+    },
   );
 }
