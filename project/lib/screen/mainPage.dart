@@ -6,15 +6,18 @@ import 'package:get/get.dart';
 import '../community/view/projectscreen/subscree.dart';
 import '../utill/color.dart';
 
+import '../widget/StudyWidget.dart';
 import 'bottom_nagivation_bar.dart';
+import 'employment_dummy_data.dart';
+import 'specific_page.dart';
 
 final List<String> carouselItems = [
-  'assets/main_resource/image/1_메인배너.png',
-  'assets/main_resource/image/1_메인배너.png',
-  'assets/main_resource/image/1_메인배너.png',
-  'assets/main_resource/image/1_메인배너.png',
-  'assets/main_resource/image/1_메인배너.png',
-  'assets/main_resource/image/1_메인배너.png',
+  'assets/main_resource/image/main_banner.png',
+  'assets/main_resource/image/main_banner.png',
+  'assets/main_resource/image/main_banner.png',
+  'assets/main_resource/image/main_banner.png',
+  'assets/main_resource/image/main_banner.png',
+  'assets/main_resource/image/main_banner.png',
 ];
 
 class Home extends StatefulWidget {
@@ -138,6 +141,7 @@ class _HomeState extends State<Home> {
                       height: 14,
                       child: SvgPicture.asset(
                         'assets/icons/Eye.svg',
+                        color: Colors.white,
                       ),
                     ),
                     Container(
@@ -159,6 +163,7 @@ class _HomeState extends State<Home> {
                       height: 14,
                       child: SvgPicture.asset(
                         'assets/icons/Heart.svg',
+                        color: Colors.white,
                       ),
                     ),
                     Container(
@@ -189,42 +194,28 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: [
-          Container(
-            color: Colors.white,
-            width: 360,
-            height: 48,
-            margin: EdgeInsets.only(top: MediaQuery.of(context).padding.top),
-            padding: EdgeInsets.symmetric(horizontal: 16),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Container(
-                  height: 16,
-                  child: SvgPicture.asset('assets/icons/sfaclog/Sfaclog.svg'),
-                ),
-                SizedBox(
-                  width: 12.6,
-                ),
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      '스팩로그',
-                      style: TextStyle(
-                        color: AppColor.Neutral30,
-                        fontSize: 16,
-                        fontFamily: 'Pretendard',
-                        fontWeight: FontWeight.w700,
-                      ),
-                    ),
-                  ],
-                ),
-                Spacer(),
-                Container(
-                  child: Row(
+      body: DefaultTextStyle(
+        style: TextStyle(fontFamily: 'Pretendard', color: Colors.black),
+        child: Column(
+          children: [
+            Container(
+              margin: EdgeInsets.only(top: MediaQuery.of(context).padding.top),
+              color: Colors.white,
+              width: 360,
+              height: 48,
+              padding: EdgeInsets.symmetric(horizontal: 16),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Container(
+                    height: 16,
+                    child: SvgPicture.asset('assets/icons/sfaclog/Sfaclog.svg'),
+                  ),
+                  SizedBox(
+                    width: 12.6,
+                  ),
+                  Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Column(
@@ -302,25 +293,51 @@ class _HomeState extends State<Home> {
                         )
                       ],
                     ),
-                  ),
-                  SizedBox(
-                    height: 4,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(16),
-                    child: Column(
-                      children: [
-                        Stack(
-                          children: [
-                            Align(
-                              alignment: Alignment.centerLeft,
-                              child: Text(
-                                '오늘의 포트폴리오',
-                                style: TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w700,
-                                ),
-                              ),
+                  )
+                ],
+              ),
+            ),
+            Container(
+              width: 360,
+              height: 604,
+              color: Colors.white,
+              child: SingleChildScrollView(
+                scrollDirection: Axis.vertical,
+                child: Column(
+                  children: [
+                    Container(
+                      height: 200,
+                      child: Stack(
+                        children: [
+                          CarouselSlider(
+                            items: carouselItems
+                                .map((image) => Image.asset(
+                                      image,
+                                      fit: BoxFit.fill,
+                                    ))
+                                .toList(),
+                            options: CarouselOptions(
+                              height: 200,
+                              autoPlay: true,
+                              viewportFraction: 1,
+                              onPageChanged: (index, reason) {
+                                setState(() {
+                                  currentIndex = index;
+                                });
+                              },
+                            ),
+                          ),
+                          Container(
+                            margin: EdgeInsets.only(bottom: 4),
+                            alignment: Alignment.bottomCenter,
+                            child: DotsIndicator(
+                              dotsCount: carouselItems.length,
+                              position: currentIndex,
+                              decorator: DotsDecorator(
+                                  size: Size.square(4),
+                                  activeSize: Size.square(4),
+                                  activeColor: Colors.white,
+                                  spacing: EdgeInsets.all(2)),
                             ),
                             Container(
                               alignment: Alignment.centerRight,
@@ -362,35 +379,20 @@ class _HomeState extends State<Home> {
                               );
                             },
                           ),
-                        ),
-                        SizedBox(
-                          height: 40,
-                        ),
-                        Stack(
-                          children: [
-                            Align(
-                              alignment: Alignment.centerLeft,
-                              child: Text(
-                                '인기 포트폴리오',
-                                style: TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w700,
-                                ),
-                              ),
-                            ),
-                            Container(
-                              alignment: Alignment.centerRight,
-                              padding: EdgeInsets.only(
-                                top: 15,
-                              ),
-                              child: GestureDetector(
-                                onTap: () {},
-                                child: Text(
-                                  '더보기 >',
-                                  style: TextStyle(
-                                    fontSize: 10,
-                                    fontWeight: FontWeight.w400,
-                                    color: Color(0x60000000),
+                          SizedBox(
+                            height: 156,
+                            child: ListView.separated(
+                              separatorBuilder:
+                                  (BuildContext context, int index) =>
+                                      const SizedBox(width: 12),
+                              scrollDirection: Axis.horizontal,
+                              itemCount: rank_docs.length,
+                              itemBuilder: (context, index) {
+                                return Container(
+                                  width: 140,
+                                  child: GestureDetector(
+                                    onTap: () {},
+                                    child: ranking_widget['${index + 1}'],
                                   ),
                                 ),
                               ),
@@ -457,9 +459,26 @@ class _HomeState extends State<Home> {
                                     )
                                   ],
                                 ),
-                                margin: EdgeInsets.only(
-                                  top: 68,
-                                  left: 52,
+                                Container(
+                                  margin: EdgeInsets.only(top: 20, left: 292),
+                                  child: SvgPicture.asset(
+                                      'assets/main_resource/icon/main_uparrow.svg'),
+                                ),
+                                Container(
+                                  margin: EdgeInsets.only(top: 276),
+                                  height: 124,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(8),
+                                    color: Colors.white,
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: Color(0x3F000000),
+                                        blurRadius: 10,
+                                        offset: Offset(0, -4),
+                                        spreadRadius: 0,
+                                      )
+                                    ],
+                                  ),
                                 ),
                                 width: 224,
                                 height: 224,
@@ -554,9 +573,67 @@ class _HomeState extends State<Home> {
                                                 color: AppColor.Primary100,
                                               ),
                                             ),
-                                          ),
-                                          Spacer(),
-                                        ],
+                                            Spacer(),
+                                          ],
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          SizedBox(
+                            height: 12,
+                          ),
+                          Container(
+                            height: 60,
+                            child: Stack(children: [
+                              Image.asset('assets/images/Home_portfolio.png'),
+                              Container(
+                                margin: EdgeInsets.only(top: 20, left: 292),
+                                child: SvgPicture.asset(
+                                    'assets/main_resource/icon/main_downarrow.svg'),
+                              ),
+                              Container(
+                                margin: EdgeInsets.only(top: 24, left: 96),
+                                width: 144,
+                                height: 36,
+                                child: Column(
+                                  mainAxisSize: MainAxisSize.min,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    SizedBox(
+                                      width: 144,
+                                      height: 12,
+                                      child: Text(
+                                        'Waranya Portfolio',
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 16,
+                                          fontFamily: 'Pretendard',
+                                          fontWeight: FontWeight.w600,
+                                          height: 0.09,
+                                        ),
+                                      ),
+                                    ),
+                                    const SizedBox(height: 8),
+                                    SizedBox(
+                                      width: 40,
+                                      height: 16,
+                                      child: Text(
+                                        '설담비',
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(
+                                          color: Color(0xFFF3F3F3),
+                                          fontSize: 12,
+                                          fontFamily: 'Pretendard',
+                                          fontWeight: FontWeight.w400,
+                                          height: 0.09,
+                                          letterSpacing: 0.01,
+                                        ),
                                       ),
                                     ),
                                   ],
@@ -564,35 +641,54 @@ class _HomeState extends State<Home> {
                               ),
                             ],
                           ),
-                        ),
-                        SizedBox(
-                          height: 12,
-                        ),
-                        Container(
-                          height: 60,
-                          child: Stack(children: [
-                            Image.asset('assets/images/Home_portfolio.png'),
-                            Container(
-                              margin: EdgeInsets.only(top: 20, left: 96),
-                              width: 144,
-                              height: 36,
-                              child: Column(
-                                mainAxisSize: MainAxisSize.min,
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  SizedBox(
-                                    width: 144,
-                                    height: 12,
-                                    child: Text(
-                                      'Waranya Portfolio',
-                                      textAlign: TextAlign.center,
-                                      style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 16,
-                                        fontFamily: 'Pretendard',
-                                        fontWeight: FontWeight.w600,
-                                        height: 0.09,
+                          Container(
+                            height: 60,
+                            child: Stack(children: [
+                              Image.asset('assets/images/Home_security.png'),
+                              Container(
+                                  margin: EdgeInsets.only(top: 20, left: 292),
+                                  child: SvgPicture.asset(
+                                      'assets/main_resource/icon/main_downarrow.svg'),
+                                ),
+                              Container(
+                                margin: EdgeInsets.only(top: 24, left: 69),
+                                width: 190,
+                                height: 36,
+                                child: Column(
+                                  mainAxisSize: MainAxisSize.min,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    SizedBox(
+                                      width: 300,
+                                      height: 12,
+                                      child: Text(
+                                        '데이터 보안 생활을 위한 똑똑',
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 16,
+                                          fontFamily: 'Pretendard',
+                                          fontWeight: FontWeight.w600,
+                                          height: 0.09,
+                                        ),
+                                      ),
+                                    ),
+                                    const SizedBox(height: 8),
+                                    SizedBox(
+                                      width: 40,
+                                      height: 16,
+                                      child: Text(
+                                        '송구슬',
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(
+                                          color: Color(0xFFF3F3F3),
+                                          fontSize: 12,
+                                          fontFamily: 'Pretendard',
+                                          fontWeight: FontWeight.w400,
+                                          height: 0.09,
+                                          letterSpacing: 0.01,
+                                        ),
                                       ),
                                     ),
                                   ),
@@ -957,19 +1053,266 @@ class _HomeState extends State<Home> {
                               ],
                             ),
                           ),
-                        ),
-                        SizedBox(
-                          height: 12,
-                        ),
-                        Container(
-                          width: 328,
-                          height: 140,
-                          decoration: ShapeDecoration(
-                            shape: RoundedRectangleBorder(
-                              side: BorderSide(
-                                width: 1,
-                                color: AppColor.Primary5,
+                          SizedBox(
+                            height: 40,
+                          ),
+                          SingleChildScrollView(
+                            physics: ClampingScrollPhysics(),
+                            child: Column(
+                              children: [
+                                Stack(
+                                  children: [
+                                    Align(
+                                      alignment: Alignment.centerLeft,
+                                      child: Text(
+                                        '참여자 많은 스터디',
+                                        style: TextStyle(
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.w700,
+                                        ),
+                                      ),
+                                    ),
+                                    Container(
+                                      alignment: Alignment.centerRight,
+                                      padding: EdgeInsets.only(
+                                        top: 15,
+                                      ),
+                                      child: GestureDetector(
+                                        onTap: () {},
+                                        child: Text(
+                                          '더보기 >',
+                                          style: TextStyle(
+                                            fontSize: 10,
+                                            fontWeight: FontWeight.w400,
+                                            color: Color(0x60000000),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                SizedBox(
+                                  height: 16,
+                                ),
+                                StudyWidget(),
+                              ],
+                            ),
+                          ),
+                          SizedBox(
+                            height: 16,
+                          ),
+                          Stack(
+                            children: [
+                              Align(
+                                alignment: Alignment.centerLeft,
+                                child: Text(
+                                  '지원자 많은 채용공고',
+                                  style: TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w700,
+                                  ),
+                                ),
                               ),
+                              Container(
+                                alignment: Alignment.centerRight,
+                                padding: EdgeInsets.only(
+                                  top: 15,
+                                ),
+                                child: GestureDetector(
+                                  onTap: () {},
+                                  child: Text(
+                                    '더보기 >',
+                                    style: TextStyle(
+                                      fontSize: 10,
+                                      fontWeight: FontWeight.w400,
+                                      color: Color(0x60000000),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                          Container(
+                            height: 460,
+                            width: 332,
+                            child: GridView.builder(
+                              physics: NeverScrollableScrollPhysics(),
+                              itemCount: 4,
+                              gridDelegate:
+                                  SliverGridDelegateWithFixedCrossAxisCount(
+                                crossAxisCount: 2,
+                                crossAxisSpacing: 12,
+                                mainAxisSpacing: 12,
+                                childAspectRatio: 160 / 212,
+                              ),
+                              itemBuilder: (context, index) {
+                                return Container(
+                                  width: 160,
+                                  height: 212,
+                                  decoration: ShapeDecoration(
+                                    color: Colors.white,
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(8),
+                                      side: const BorderSide(
+                                        color: Color(0xFFf5f8ff),
+                                        width: 1,
+                                      ),
+                                    ),
+                                  ),
+                                  child: GestureDetector(
+                                    onTap: () {
+                                      Get.find<ClickController>()
+                                          .clickCounts[index]++;
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                SpecificPage(index: index)),
+                                      );
+                                    },
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Stack(
+                                          children: [
+                                            Container(
+                                              width: 160,
+                                              height: 156,
+                                              decoration: BoxDecoration(
+                                                border: Border.all(
+                                                    color: Colors.transparent),
+                                                borderRadius:
+                                                    BorderRadius.circular(9),
+                                              ),
+                                              child: Image.asset(
+                                                dummyData[index]['thumbnail'],
+                                                fit: BoxFit.fill,
+                                              ),
+                                            ),
+                                            Positioned(
+                                              top: 8,
+                                              left: 8,
+                                              child: IntrinsicWidth(
+                                                child: Container(
+                                                  height: 19,
+                                                  padding: const EdgeInsets
+                                                      .symmetric(
+                                                      horizontal: 8,
+                                                      vertical: 2),
+                                                  alignment:
+                                                      Alignment.centerLeft,
+                                                  decoration: ShapeDecoration(
+                                                    color:
+                                                        AppColor.BackgroundBiue,
+                                                    shape:
+                                                        RoundedRectangleBorder(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              20),
+                                                    ),
+                                                  ),
+                                                  child: Text(
+                                                    dummyData[index]['tag'],
+                                                    style: const TextStyle(
+                                                      fontSize: 10,
+                                                      color:
+                                                          AppColor.Primary100,
+                                                      fontWeight:
+                                                          FontWeight.w400,
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                            Positioned(
+                                              right: 4,
+                                              top: 4,
+                                              child: GestureDetector(
+                                                onTap: () {
+                                                  Get.find<BookmarkController>()
+                                                      .toggleBookmark(index);
+                                                },
+                                                child: GetBuilder<
+                                                    BookmarkController>(
+                                                  builder: (controller) =>
+                                                      Container(
+                                                    height: 24,
+                                                    width: 24,
+                                                    padding:
+                                                        const EdgeInsets.only(
+                                                      top: 4,
+                                                      right: 6,
+                                                      left: 6,
+                                                    ),
+                                                    child: controller
+                                                            .bookmarked[index]
+                                                        ? SvgPicture.asset(
+                                                            'assets/icons/Bookmark_filled.svg',
+                                                          )
+                                                        : SvgPicture.asset(
+                                                            'assets/icons/Bookmark.svg'),
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                        Container(
+                                          margin: const EdgeInsets.only(
+                                              left: 8, right: 8, top: 12),
+                                          child: Text(
+                                            dummyData[index]['title'],
+                                            style: const TextStyle(
+                                                color: Color(0xff030303),
+                                                fontSize: 14,
+                                                fontWeight: FontWeight.w600),
+                                          ),
+                                        ),
+                                        SizedBox(
+                                          height: 4,
+                                        ),
+                                        Container(
+                                          height: 15,
+                                          margin: const EdgeInsets.symmetric(
+                                              horizontal: 8),
+                                          child: Text(
+                                            dummyData[index]['company'],
+                                            style: const TextStyle(
+                                              color: AppColor.Neutral40,
+                                              fontSize: 10,
+                                              fontWeight: FontWeight.w400,
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                );
+                              },
+                            ),
+                          ),
+                          SizedBox(
+                            height: 24,
+                          ),
+                        ],
+                      ),
+                    ),
+                    Container(
+                      width: 360,
+                      height: 250,
+                      clipBehavior: Clip.antiAlias,
+                      decoration: BoxDecoration(color: Colors.white),
+                      child: Stack(
+                        children: [
+                          Positioned(
+                            left: 0,
+                            top: 0,
+                            child: Container(
+                              width: 360,
+                              height: 250,
+                              decoration:
+                                  BoxDecoration(color: Color(0xFF1C1D1F)),
                             ),
                           ),
                           child: Stack(

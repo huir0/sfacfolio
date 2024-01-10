@@ -189,7 +189,7 @@ class _PortfolioFilterState extends State<PortfolioFilter> {
                       ),
                       Container(
                         child: Wrap(
-                          spacing: 22,
+                          spacing: 15,
                           runSpacing: 11,
                           children: [
                             ColorButton(
@@ -223,7 +223,7 @@ class _PortfolioFilterState extends State<PortfolioFilter> {
                       ),
                       Container(
                         child: Wrap(
-                          spacing: 22,
+                          spacing: 15,
                           runSpacing: 11,
                           children: [
                             ColorButton(
@@ -239,6 +239,12 @@ class _PortfolioFilterState extends State<PortfolioFilter> {
                               colorCode: Color(0xff37CA3D),
                             ),
                             ColorButton(colorCode: AppColor.Primary100),
+                            ColorButton(
+                              colorCode: Color(0xff1100D0),
+                            ),
+                            ColorButton(
+                              colorCode: Color(0xFFB404D1),
+                            ),
                           ],
                         ),
                       ),
@@ -260,9 +266,9 @@ class _PortfolioFilterState extends State<PortfolioFilter> {
                                       _subCategory.length, (index) => false);
                                   _colorSelection =
                                       List.generate(11, (index) => false);
-                                      _interestSelection[0] = true;
-                                      _subSelection[0] = true;
-                                      _colorSelection[0] = true;
+                                  _interestSelection[0] = true;
+                                  _subSelection[0] = true;
+                                  _colorSelection[0] = true;
                                 });
                               },
                               style: ElevatedButton.styleFrom(
