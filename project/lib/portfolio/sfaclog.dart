@@ -9,7 +9,7 @@ import 'package:team5/portfolio/sfaclog_tapbar.dart';
 import 'package:team5/screen/bottom_nagivation_bar.dart';
 import 'package:team5/screen/shortpec.dart';
 
-import 'group.dart';
+import 'group/group.dart';
 
 class Sfaclog extends StatefulWidget {
   @override
