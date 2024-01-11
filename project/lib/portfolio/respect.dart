@@ -37,7 +37,7 @@ class Respectpage extends State<RespectPage> {
   Map<String, BoxFit> image_size = {
     'size_1': BoxFit.fitWidth,
     'size_2': BoxFit.fitHeight,
-    'size_3': BoxFit.fitHeight,
+    'size_3': BoxFit.fill,
   };
 
   bool information = false;
