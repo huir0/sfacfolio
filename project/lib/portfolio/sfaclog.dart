@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:team5/portfolio/respect.dart';
+import '/portfolio/respect.dart';
+import '/portfolio/sfaclog_custom_recommend.dart';
 
 import 'group/group.dart';
 
@@ -24,7 +25,7 @@ class _Sfaclog extends State<Sfaclog> {
       child: Scaffold(
         body: TabBarView(
           children: [
-            Center(child: RespectPage()),
+            Center(child: Custom_recommend()),
             Center(
               child: Text('맞춤추천'),
             ),

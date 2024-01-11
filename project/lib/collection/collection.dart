@@ -69,8 +69,10 @@ class _Collection extends State<Collection> {
                               borderRadius: BorderRadius.circular(8)),
                           child: ClipRRect(
                             borderRadius: BorderRadius.circular(8),
-                            child:
-                                Image.asset(collection_docs[text]!['image'][2]),
+                            child: Image.asset(
+                              collection_docs[text]!['image'][2],
+                              fit: BoxFit.fill,
+                            ),
                           ),
                         ),
                       ),
@@ -87,8 +89,10 @@ class _Collection extends State<Collection> {
                                       width: 2, color: Colors.white))),
                           child: ClipRRect(
                             borderRadius: BorderRadius.circular(8),
-                            child:
-                                Image.asset(collection_docs[text]!['image'][1]),
+                            child: Image.asset(
+                              collection_docs[text]!['image'][1],
+                              fit: BoxFit.fill,
+                            ),
                           ),
                         ),
                       ),
@@ -105,8 +109,10 @@ class _Collection extends State<Collection> {
                                       width: 2, color: Colors.white))),
                           child: ClipRRect(
                             borderRadius: BorderRadius.circular(8),
-                            child:
-                                Image.asset(collection_docs[text]!['image'][0]),
+                            child: Image.asset(
+                              collection_docs[text]!['image'][0],
+                              fit: BoxFit.fill,
+                            ),
                           ),
                         ),
                       ),
@@ -123,10 +129,12 @@ class _Collection extends State<Collection> {
                           top: 0,
                           left: 0,
                           child: Container(
-                            width: 108,
-                            height: 108,
-                            child:
-                                Image.asset(collection_docs[text]!['image'][0]),
+                            width: 106,
+                            height: 106,
+                            child: Image.asset(
+                              collection_docs[text]!['image'][0],
+                              fit: BoxFit.fill,
+                            ),
                           ),
                         ),
                         Positioned(
@@ -135,8 +143,9 @@ class _Collection extends State<Collection> {
                           child: Container(
                             width: 52,
                             height: 52,
-                            child:
-                                Image.asset(collection_docs[text]!['image'][1]),
+                            child: Image.asset(
+                              collection_docs[text]!['image'][1],
+                            ),
                           ),
                         ),
                         Positioned(
