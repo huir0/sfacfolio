@@ -106,6 +106,24 @@ class Respectpage extends State<Custom_recommend> {
               ),
             ),
             Positioned(
+                top: 180,
+                left: 0,
+                child: Container(
+                  width: 360,
+                  height: 180,
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                      colors: [
+                        Color(0xFF000000).withOpacity(1.0),
+                        Color(0xFF000000).withOpacity(0.0)
+                      ],
+                      begin: Alignment.bottomCenter,
+                      end: Alignment.center,
+                    ),
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                )),
+            Positioned(
               top: 328,
               right: 16,
               child: Row(
@@ -130,8 +148,6 @@ class Respectpage extends State<Custom_recommend> {
                     height: 20,
                     child: Center(
                       child: Container(
-                        width: 10,
-                        height: 9.17,
                         child: SvgPicture.asset(
                             'assets/images/Sfaclog/Icons/Heart.svg'),
                       ),
@@ -210,7 +226,7 @@ class Respectpage extends State<Custom_recommend> {
   void Image_build() {
     for (int i = 1; i < 4; i++) {
       image_widget['slot_$i'] = Container(
-        margin: EdgeInsets.only(right: 8, left: i == 1 ? 16 : 0),
+        margin: EdgeInsets.only(right: i == 3 ? 16 : 8, left: i == 1 ? 16 : 0),
         width: 143,
         height: 254,
         decoration: BoxDecoration(
@@ -442,8 +458,6 @@ class Respectpage extends State<Custom_recommend> {
                                                 height: 20,
                                                 child: Center(
                                                   child: Container(
-                                                    width: 10,
-                                                    height: 9.17,
                                                     child: SvgPicture.asset(
                                                         'assets/images/Sfaclog/Icons/Heart.svg'),
                                                   ),
@@ -569,8 +583,6 @@ class Respectpage extends State<Custom_recommend> {
                                                 height: 20,
                                                 child: Center(
                                                   child: Container(
-                                                    width: 10,
-                                                    height: 9.17,
                                                     child: SvgPicture.asset(
                                                         'assets/images/Sfaclog/Icons/Heart.svg'),
                                                   ),
@@ -659,7 +671,7 @@ class Respectpage extends State<Custom_recommend> {
                                   children: [
                                     Container(
                                       margin:
-                                          EdgeInsets.only(left: 8, right: 8),
+                                          EdgeInsets.only(left: 16, right: 8),
                                       padding: EdgeInsets.only(
                                           top: 8,
                                           left: 11,
@@ -1037,7 +1049,7 @@ class Respectpage extends State<Custom_recommend> {
                                     ),
                                     Container(
                                       margin:
-                                          EdgeInsets.only(left: 8, right: 8),
+                                          EdgeInsets.only(left: 8, right: 16),
                                       padding: EdgeInsets.only(
                                           top: 8,
                                           left: 11,
@@ -1248,6 +1260,27 @@ class Respectpage extends State<Custom_recommend> {
                                           ),
                                         ),
                                         Positioned(
+                                            top: 180,
+                                            left: 0,
+                                            child: Container(
+                                              width: 360,
+                                              height: 180,
+                                              decoration: BoxDecoration(
+                                                gradient: LinearGradient(
+                                                  colors: [
+                                                    Color(0xFF000000)
+                                                        .withOpacity(1.0),
+                                                    Color(0xFF000000)
+                                                        .withOpacity(0.0)
+                                                  ],
+                                                  begin: Alignment.bottomCenter,
+                                                  end: Alignment.center,
+                                                ),
+                                                borderRadius:
+                                                    BorderRadius.circular(8),
+                                              ),
+                                            )),
+                                        Positioned(
                                           top: 328,
                                           right: 16,
                                           child: Row(
@@ -1272,8 +1305,6 @@ class Respectpage extends State<Custom_recommend> {
                                                 height: 20,
                                                 child: Center(
                                                   child: Container(
-                                                    width: 10,
-                                                    height: 9.17,
                                                     child: SvgPicture.asset(
                                                         'assets/images/Sfaclog/Icons/Heart.svg'),
                                                   ),
@@ -1367,9 +1398,9 @@ class Respectpage extends State<Custom_recommend> {
                       decoration: BoxDecoration(boxShadow: [
                         BoxShadow(
                           color: Color(0x4C000000),
-                          blurRadius: 6,
+                          blurRadius: 10,
                           offset: Offset(0, 0),
-                          spreadRadius: 0,
+                          spreadRadius: -6,
                         )
                       ]),
                       child: GestureDetector(

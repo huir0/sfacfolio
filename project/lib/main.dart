@@ -32,7 +32,7 @@ void main() async {
   );
 
   Future.delayed(
-    Duration(seconds: 1),
+    Duration(seconds: 5),
     () {
       Get.off(LoginPage2());
     },
