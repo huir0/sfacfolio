@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
+import '../Widget/message.dart';
+import '../Widget/notification.dart';
 import '../utill/color.dart';
 
 class Mypage_Appbar extends StatefulWidget {
@@ -46,17 +48,27 @@ class _Mypage_Appbar extends State<Mypage_Appbar> {
                 const SizedBox(
                   width: 8,
                 ),
-                Container(
-                    width: 24,
-                    height: 24,
-                    child: SvgPicture.asset('assets/images/Chat.svg')),
-                const SizedBox(
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => MessageNotification()));
+                  },
+                  child: Container(
+                      width: 24,
+                      height: 24,
+                      child: SvgPicture.asset('assets/images/Chat.svg')),
+                ),
+                SizedBox(
                   width: 8,
                 ),
-                Container(
-                    width: 24,
-                    height: 24,
-                    child: SvgPicture.asset('assets/images/Alarm.svg')),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => NotificationComponent()));
+                  },
+                  child: Container(
+                      width: 24,
+                      height: 24,
+                      child: SvgPicture.asset('assets/images/Alarm.svg')),
+                ),
               ],
             ),
           )
