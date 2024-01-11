@@ -175,7 +175,6 @@ class ShortPec extends State<Shortpec> {
           children: [
             GestureDetector(
               onTap: () {
-
                 print('화면 한번 클릭');
 
                 if (reaction_active) {
@@ -191,7 +190,6 @@ class ShortPec extends State<Shortpec> {
                 }
               },
               onDoubleTap: () {
-
                 print('화면 더블 클릭');
 
                 setState(() {
@@ -379,34 +377,6 @@ class ShortPec extends State<Shortpec> {
                                     SizedBox(
                                       height: 20,
                                     ),
-
-                                    GestureDetector(
-                                      onTap: () {
-                                        Get.to(() => Sfaclog());
-                                      },
-                                      child: Container(
-                                        width: 116,
-                                        height: 46,
-                                        decoration: BoxDecoration(
-                                          color: Colors.white,
-                                          borderRadius:
-                                              BorderRadius.circular(26),
-                                          boxShadow: [
-                                            BoxShadow(
-                                              color: Color(0x4C000000),
-                                              blurRadius: 6,
-                                              offset: Offset(0, 0),
-                                              spreadRadius: 0,
-                                            )
-                                          ],
-                                        ),
-                                        child: Center(
-                                          child: SvgPicture.asset(
-                                              'assets/icons/Sfacfolio_switch.svg'),
-                                        ),
-                                      ),
-                                    )
-
                                   ],
                                 ),
                               ),
@@ -535,8 +505,34 @@ class ShortPec extends State<Shortpec> {
                           child: SvgPicture.asset(
                               'assets/icons/sfaclog/Shortfac_Add.svg'),
                         ),
-
-
+                        Positioned(
+                            bottom: 16,
+                            right: 16,
+                            child: GestureDetector(
+                              onTap: () {
+                                Get.to(() => Sfaclog());
+                              },
+                              child: Container(
+                                width: 116,
+                                height: 46,
+                                decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.circular(26),
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: Color(0x4C000000),
+                                      blurRadius: 6,
+                                      offset: Offset(0, 0),
+                                      spreadRadius: 0,
+                                    )
+                                  ],
+                                ),
+                                child: Center(
+                                  child: SvgPicture.asset(
+                                      'assets/icons/Sfacfolio_switch.svg'),
+                                ),
+                              ),
+                            ))
                       ],
                     ),
                   ),

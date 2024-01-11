@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:team5/screen/LoginPage2.dart';
 import '/database/data_controller.dart';
 
 class Passwordpage_2 extends StatefulWidget {
@@ -281,7 +282,7 @@ class PasswordPage_2 extends State<Passwordpage_2> {
                       if (result) {
                         print('성공');
                       }
-                      // Get.to();
+                      Get.to(LoginPage2());
                     }
                   },
                   child: Center(
