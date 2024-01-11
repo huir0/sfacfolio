@@ -293,7 +293,7 @@ class Post_page extends State<Post_Page> {
                                       child: Text(
                                         widget.docs['title'],
                                         style: const TextStyle(
-                                          fontFamily: 'PretendardVariable',
+                                          fontFamily: 'Pretendard',
                                           decoration: TextDecoration.none,
                                           color: Colors.black,
                                           fontSize: 20,
