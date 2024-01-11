@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
+
 import '../screen/bottom_nagivation_bar.dart';
 import '../utill/color.dart';
 
@@ -49,17 +51,32 @@ class MessageNotification extends StatelessWidget {
                   height: 652,
                   child: Column(
                     children: [
-                      Container(
-                        width: 360,
-                        margin: EdgeInsets.only(top: 12, bottom: 20),
-                        alignment: Alignment.center,
-                        child: Text(
-                          '쪽지',
-                          style: TextStyle(
-                            fontWeight: FontWeight.w700,
-                            fontSize: 20,
+                      Stack(
+                        children: [
+                          Container(
+                            width: 360,
+                            height: 30,
+                            margin: EdgeInsets.only(top: 12, bottom: 20),
+                            alignment: Alignment.center,
+                            child: Text(
+                              '쪽지',
+                              style: TextStyle(
+                                fontWeight: FontWeight.w700,
+                                fontSize: 20,
+                              ),
+                            ),
                           ),
-                        ),
+                          GestureDetector(
+                            onTap: () => Navigator.pop(context),
+                            child: Container(
+                              margin: EdgeInsets.only(top: 16, left: 16),
+                              height: 24,
+                              width: 24,
+                              child: SvgPicture.asset(
+                                  'assets/icons/Back.svg'),
+                            ),
+                          ),
+                        ],
                       ),
                       SizedBox(
                         height: 20,
