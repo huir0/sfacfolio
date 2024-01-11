@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+import '../screen/following.dart';
 import '/portfolio/respect.dart';
 import '/portfolio/sfaclog_custom_recommend.dart';
 
@@ -30,7 +31,7 @@ class _Sfaclog extends State<Sfaclog> {
           children: [
             Center(child: Custom_recommend()),
             Center(
-              child: Text('맞춤추천'),
+              child: FollowingPage(),
             ),
             Center(child: RespectPage()),
             Center(child: GroupPage()),

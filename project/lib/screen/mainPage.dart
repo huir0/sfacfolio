@@ -32,6 +32,7 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   int currentIndex = 0;
+  bool portfolioClosed = false;
   List<bool> bookmarked = List.filled(3, false);
 
   // 오늘의 포트폴리오 부분 respect에서 코드 가져옴
@@ -286,6 +287,7 @@ class _HomeState extends State<Home> {
                 ],
               ),
             ),
+            // carousel
             Container(
               width: 360,
               height: 604,
@@ -325,8 +327,9 @@ class _HomeState extends State<Home> {
                               decorator: DotsDecorator(
                                   size: Size.square(4),
                                   activeSize: Size.square(4),
-                                  activeColor: Colors.white,
-                                  spacing: EdgeInsets.all(2)),
+                                  color: Colors.white,
+                                  activeColor: AppColor.Primary100,
+                                  spacing: EdgeInsets.all(5)),
                             ),
                           )
                         ],
@@ -429,177 +432,286 @@ class _HomeState extends State<Home> {
                           SizedBox(
                             height: 7,
                           ),
-                          Container(
-                            width: 328,
-                            height: 400,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(8),
-                              gradient: LinearGradient(
-                                begin: Alignment.topLeft,
-                                end: Alignment.bottomRight,
-                                colors: [
-                                  Color(0xffB2CDFF),
-                                  AppColor.Primary100,
-                                ],
-                              ),
-                            ),
-                            child: Stack(
-                              children: [
-                                Container(
-                                  margin: EdgeInsets.only(
-                                    left: 20,
-                                    top: 20,
-                                  ),
-                                  child: Text(
-                                    '2023트렌드가 모두 담긴 포트폴리오',
-                                    style: TextStyle(
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.w600,
-                                      color: Color(0xFF002B7B),
+                          portfolioClosed
+                              ? Container(
+                                  child: Stack(children: [
+                                    Container(
+                                      height: 60,
+                                      width: 360,
+                                      padding: EdgeInsets.zero,
+                                      decoration: BoxDecoration(
+                                        gradient: LinearGradient(
+                                          begin: Alignment.topLeft,
+                                          end: Alignment.bottomRight,
+                                          colors: [
+                                            Color(0xffB2CDFF),
+                                            AppColor.Primary100,
+                                          ],
+                                        ),
+                                        borderRadius: BorderRadius.circular(8),
+                                        image: DecorationImage(
+                                            colorFilter: ColorFilter.mode(
+                                                Colors.black.withOpacity(0.3),
+                                                BlendMode.darken),
+                                            image: AssetImage(
+                                                'assets/main_resource/image/인기포트폴리오_이미지.png'),
+                                            fit: BoxFit.cover),
+                                      ),
                                     ),
-                                  ),
-                                ),
-                                Container(
-                                  margin: EdgeInsets.only(top: 20, left: 292),
-                                  child: SvgPicture.asset(
-                                      'assets/main_resource/icon/main_uparrow.svg'),
-                                ),
-                                Container(
-                                  margin: EdgeInsets.only(top: 276),
-                                  height: 124,
+                                    GestureDetector(
+                                      onTap: () {
+                                        setState(() {
+                                          portfolioClosed = !portfolioClosed;
+                                        });
+                                      },
+                                      child: Container(
+                                        margin:
+                                            EdgeInsets.only(top: 20, left: 292),
+                                        child: SvgPicture.asset(
+                                            'assets/main_resource/icon/main_downarrow.svg'),
+                                      ),
+                                    ),
+                                    Container(
+                                      alignment: Alignment.center,
+                                      width: 300,
+                                      height: 41,
+                                      margin:
+                                          EdgeInsets.only(top: 10, left: 11),
+                                      child: Column(
+                                        mainAxisSize: MainAxisSize.min,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.center,
+                                        children: [
+                                          SizedBox(
+                                            width: 300,
+                                            child: Text(
+                                              'My세브란스 UX/UI리뉴얼 프로젝트',
+                                              textAlign: TextAlign.center,
+                                              style: TextStyle(
+                                                color: Colors.white,
+                                                fontSize: 16,
+                                                fontFamily: 'Pretendard',
+                                                fontWeight: FontWeight.w600,
+                                              ),
+                                            ),
+                                          ),
+                                          const SizedBox(height: 8),
+                                          SizedBox(
+                                            width: 40,
+                                            child: Text(
+                                              '고믿음',
+                                              textAlign: TextAlign.center,
+                                              style: TextStyle(
+                                                color: Color(0xFFF3F3F3),
+                                                fontSize: 12,
+                                                fontFamily: 'Pretendard',
+                                                fontWeight: FontWeight.w400,
+                                                letterSpacing: 0.01,
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ]),
+                                )
+                              : Container(
+                                  width: 328,
+                                  height: 400,
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(8),
-                                    color: Colors.white,
-                                    boxShadow: [
-                                      BoxShadow(
-                                        color: Color(0x3F000000),
-                                        blurRadius: 10,
-                                        offset: Offset(0, -4),
-                                        spreadRadius: 0,
-                                      )
-                                    ],
+                                    gradient: LinearGradient(
+                                      begin: Alignment.topLeft,
+                                      end: Alignment.bottomRight,
+                                      colors: [
+                                        Color(0xffB2CDFF),
+                                        AppColor.Primary100,
+                                      ],
+                                    ),
                                   ),
-                                ),
-                                Container(
-                                  decoration: BoxDecoration(
-                                    boxShadow: [
-                                      BoxShadow(
-                                        color: Color(0x3F000000),
-                                        blurRadius: 6,
-                                        offset: Offset(0, 2),
-                                        spreadRadius: 0,
-                                      )
-                                    ],
-                                  ),
-                                  margin: EdgeInsets.only(
-                                    top: 68,
-                                    left: 52,
-                                  ),
-                                  width: 224,
-                                  height: 224,
-                                  child: Image.asset(
-                                      'assets/main_resource/image/인기포트폴리오_이미지.png'),
-                                ),
-                                Container(
-                                  margin: EdgeInsets.only(
-                                    top: 308,
-                                  ),
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.center,
+                                  child: Stack(
                                     children: [
-                                      Text(
-                                        'My세브란스 UX/UI리뉴얼 프로젝트',
-                                        style: TextStyle(
-                                          fontSize: 16,
-                                          fontWeight: FontWeight.w600,
+                                      Container(
+                                        margin: EdgeInsets.only(
+                                          left: 20,
+                                          top: 20,
+                                        ),
+                                        child: Text(
+                                          '2023트렌드가 모두 담긴 포트폴리오',
+                                          style: TextStyle(
+                                            fontSize: 16,
+                                            fontWeight: FontWeight.w600,
+                                            color: Color(0xFF002B7B),
+                                          ),
                                         ),
                                       ),
-                                      SizedBox(
-                                        height: 8,
-                                      ),
-                                      Text(
-                                        '고믿음',
-                                        style: TextStyle(
-                                          fontSize: 14,
-                                          fontWeight: FontWeight.w400,
-                                          color: AppColor.Neutral60,
+                                      GestureDetector(
+                                        onTap: () {
+                                          setState(() {
+                                            portfolioClosed = !portfolioClosed;
+                                          });
+                                        },
+                                        child: Container(
+                                          margin: EdgeInsets.only(
+                                              top: 20, left: 292),
+                                          child: SvgPicture.asset(
+                                              'assets/main_resource/icon/main_uparrow.svg'),
                                         ),
-                                      ),
-                                      SizedBox(
-                                        height: 8,
                                       ),
                                       Container(
-                                        child: Row(
+                                        margin: EdgeInsets.only(top: 276),
+                                        height: 124,
+                                        decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(8),
+                                          color: Colors.white,
+                                          boxShadow: [
+                                            BoxShadow(
+                                              color: Color(0x3F000000),
+                                              blurRadius: 10,
+                                              offset: Offset(0, -4),
+                                              spreadRadius: 0,
+                                            )
+                                          ],
+                                        ),
+                                      ),
+                                      Container(
+                                        decoration: BoxDecoration(
+                                          boxShadow: [
+                                            BoxShadow(
+                                              color: Color(0x3F000000),
+                                              blurRadius: 6,
+                                              offset: Offset(0, 2),
+                                              spreadRadius: 0,
+                                            )
+                                          ],
+                                        ),
+                                        margin: EdgeInsets.only(
+                                          top: 68,
+                                          left: 52,
+                                        ),
+                                        width: 224,
+                                        height: 224,
+                                        child: Image.asset(
+                                            'assets/main_resource/image/인기포트폴리오_이미지.png'),
+                                      ),
+                                      Container(
+                                        margin: EdgeInsets.only(
+                                          top: 308,
+                                        ),
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.center,
                                           children: [
-                                            Spacer(),
-                                            Container(
-                                              padding: EdgeInsets.symmetric(
-                                                  vertical: 6, horizontal: 10),
-                                              decoration: BoxDecoration(
-                                                borderRadius:
-                                                    BorderRadius.circular(20),
-                                                color: AppColor.Primary10,
-                                              ),
-                                              child: Text(
-                                                'UXUI',
-                                                style: TextStyle(
-                                                  fontSize: 12,
-                                                  fontWeight: FontWeight.w400,
-                                                  color: AppColor.Primary100,
-                                                ),
+                                            Text(
+                                              'My세브란스 UX/UI리뉴얼 프로젝트',
+                                              style: TextStyle(
+                                                fontSize: 16,
+                                                fontWeight: FontWeight.w600,
                                               ),
                                             ),
                                             SizedBox(
-                                              width: 4,
+                                              height: 8,
                                             ),
-                                            Container(
-                                              padding: EdgeInsets.symmetric(
-                                                  vertical: 6, horizontal: 10),
-                                              decoration: BoxDecoration(
-                                                borderRadius:
-                                                    BorderRadius.circular(20),
-                                                color: AppColor.Primary10,
-                                              ),
-                                              child: Text(
-                                                '디자인',
-                                                style: TextStyle(
-                                                  fontSize: 12,
-                                                  fontWeight: FontWeight.w400,
-                                                  color: AppColor.Primary100,
-                                                ),
+                                            Text(
+                                              '고믿음',
+                                              style: TextStyle(
+                                                fontSize: 14,
+                                                fontWeight: FontWeight.w400,
+                                                color: AppColor.Neutral60,
                                               ),
                                             ),
                                             SizedBox(
-                                              width: 4,
+                                              height: 8,
                                             ),
                                             Container(
-                                              padding: EdgeInsets.symmetric(
-                                                  vertical: 6, horizontal: 10),
-                                              decoration: BoxDecoration(
-                                                borderRadius:
-                                                    BorderRadius.circular(20),
-                                                color: AppColor.Primary10,
-                                              ),
-                                              child: Text(
-                                                '리뉴얼',
-                                                style: TextStyle(
-                                                  fontSize: 12,
-                                                  fontWeight: FontWeight.w400,
-                                                  color: AppColor.Primary100,
-                                                ),
+                                              child: Row(
+                                                children: [
+                                                  Spacer(),
+                                                  Container(
+                                                    padding:
+                                                        EdgeInsets.symmetric(
+                                                            vertical: 6,
+                                                            horizontal: 10),
+                                                    decoration: BoxDecoration(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              20),
+                                                      color: AppColor.Primary10,
+                                                    ),
+                                                    child: Text(
+                                                      'UXUI',
+                                                      style: TextStyle(
+                                                        fontSize: 12,
+                                                        fontWeight:
+                                                            FontWeight.w400,
+                                                        color:
+                                                            AppColor.Primary100,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  SizedBox(
+                                                    width: 4,
+                                                  ),
+                                                  Container(
+                                                    padding:
+                                                        EdgeInsets.symmetric(
+                                                            vertical: 6,
+                                                            horizontal: 10),
+                                                    decoration: BoxDecoration(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              20),
+                                                      color: AppColor.Primary10,
+                                                    ),
+                                                    child: Text(
+                                                      '디자인',
+                                                      style: TextStyle(
+                                                        fontSize: 12,
+                                                        fontWeight:
+                                                            FontWeight.w400,
+                                                        color:
+                                                            AppColor.Primary100,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  SizedBox(
+                                                    width: 4,
+                                                  ),
+                                                  Container(
+                                                    padding:
+                                                        EdgeInsets.symmetric(
+                                                            vertical: 6,
+                                                            horizontal: 10),
+                                                    decoration: BoxDecoration(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              20),
+                                                      color: AppColor.Primary10,
+                                                    ),
+                                                    child: Text(
+                                                      '리뉴얼',
+                                                      style: TextStyle(
+                                                        fontSize: 12,
+                                                        fontWeight:
+                                                            FontWeight.w400,
+                                                        color:
+                                                            AppColor.Primary100,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  Spacer(),
+                                                ],
                                               ),
                                             ),
-                                            Spacer(),
                                           ],
                                         ),
                                       ),
                                     ],
                                   ),
                                 ),
-                              ],
-                            ),
-                          ),
                           SizedBox(
                             height: 12,
                           ),

@@ -105,7 +105,15 @@ flutter:
 
     - assets/images/mypage/
 
+    - assets/portfolioimage/portfolio/following/
+    - assets/portfolioimage/portfolio/following2/
+    - assets/portfolioimage/portfolio/ioconsbutton/
+    - assets/portfolioimage/shortpack/
+    - assets/portfolioimage/portfolio/followingselect/
+
+
     - assets/images/collection/
+
     
   #   - images/a_dot_ham.jpeg
 
