@@ -131,7 +131,7 @@ class StudyWidget extends StatelessWidget {
                         width: 80,
                         height: 80,
                         decoration: BoxDecoration(
-                            color: Color(0xFFFFECD0),
+                            color: AppColor.Primary10,
                             borderRadius: BorderRadius.circular(100)),
                       ),
                     ),
@@ -237,7 +237,7 @@ class StudyWidget extends StatelessWidget {
                         width: 80,
                         height: 80,
                         decoration: BoxDecoration(
-                            color: Color(0xFFFFDFDF),
+                            color: AppColor.Primary10,
                             borderRadius: BorderRadius.circular(100)),
                       ),
                     ),
@@ -342,7 +342,7 @@ class StudyWidget extends StatelessWidget {
                         width: 80,
                         height: 80,
                         decoration: BoxDecoration(
-                            color: Color(0xFFD8F9D0),
+                            color: AppColor.Primary10,
                             borderRadius: BorderRadius.circular(100)),
                       ),
                     ),
@@ -446,7 +446,7 @@ class StudyWidget extends StatelessWidget {
                         width: 80,
                         height: 80,
                         decoration: BoxDecoration(
-                            color: Color(0xFFF6DBFF),
+                            color: AppColor.Primary10,
                             borderRadius: BorderRadius.circular(100)),
                       ),
                     ),

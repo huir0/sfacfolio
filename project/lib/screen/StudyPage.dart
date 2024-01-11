@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:team5/screen/community_study.dart';
 
 import '/community/view/appbar/AppBar.dart';
 import '/community/view/banner/community_banner.dart';
@@ -124,6 +125,25 @@ class _StudyPageState extends State<StudyPage> {
                   ),
                 ),
                 StudyCollectWidget(),
+                Container(
+                  width: 199,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Text('1', style: TextStyle(color: AppColor.Primary100)),
+                      Text('2', style: TextStyle(color: AppColor.Neutral40)),
+                      Text('3', style: TextStyle(color: AppColor.Neutral40)),
+                      Text('4', style: TextStyle(color: AppColor.Neutral40)),
+                      Text('5', style: TextStyle(color: AppColor.Neutral40)),
+                      Text('>', style: TextStyle(color: AppColor.Neutral40)),
+                    ],
+                  ),
+                ),
+                SizedBox(
+                  height: 10,
+                )
+
               ]),
             ),
           ),

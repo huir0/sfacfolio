@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:team5/screen/bottom_nagivation_bar.dart';
+
 import 'package:team5/utill/color.dart';
 
 class StudyFilter extends StatefulWidget {
@@ -299,19 +300,31 @@ class _StudyFilterState extends State<StudyFilter> {
                     Container(
                       width: 312,
                       height: 36,
-                      child: DropdownButton(
-                        value: selectedStudy,
-                        items: studyList.map((String item) {
-                          return DropdownMenuItem<String>(
-                            child: Text('$item'),
-                            value: item,
-                          );
-                        }).toList(),
-                        onChanged: (dynamic value) {
-                          setState(() {
-                            selectedStudy = value;
-                          });
-                        },
+
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20),
+                          border: Border.all(color: Color(0xFFE6E6E6)),
+                          color: Color(0xFFF8F8F9)),
+                      child: Row(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 10),
+                            child: Text('분야',
+                                style: TextStyle(
+                                  color: Color(0xFF999999),
+                                  fontSize: 12,
+                                  fontFamily: 'Pretendard',
+                                  fontWeight: FontWeight.w400,
+                                )),
+                          ),
+                          SizedBox(
+                            width: 220,
+                          ),
+                          IconButton(
+                              onPressed: () {},
+                              icon: Icon(Icons.arrow_drop_down))
+                        ],
+
                       ),
                     ),
                     SizedBox(
@@ -327,13 +340,22 @@ class _StudyFilterState extends State<StudyFilter> {
                               border: Border.all(
                                   width: 1, color: AppColor.Neutral10)),
                           child: Center(
-                            child: Text('UX/UI',
-                                style: TextStyle(
-                                  color: Colors.black,
-                                  fontSize: 12,
-                                  fontFamily: 'Pretendard',
-                                  fontWeight: FontWeight.w400,
-                                )),
+
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                Text('UX/UI',
+                                    style: TextStyle(
+                                      color: Colors.black,
+                                      fontSize: 12,
+                                      fontFamily: 'Pretendard',
+                                      fontWeight: FontWeight.w400,
+                                    )),
+                                SvgPicture.asset(
+                                    'assets/icons/filter/delete.svg')
+                              ],
+                            ),
+
                           ),
                         ),
                         SizedBox(
@@ -347,13 +369,22 @@ class _StudyFilterState extends State<StudyFilter> {
                               border: Border.all(
                                   width: 1, color: AppColor.Neutral10)),
                           child: Center(
-                            child: Text('BX/BI',
-                                style: TextStyle(
-                                  color: Colors.black,
-                                  fontSize: 12,
-                                  fontFamily: 'Pretendard',
-                                  fontWeight: FontWeight.w400,
-                                )),
+
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                Text('BX/BI',
+                                    style: TextStyle(
+                                      color: Colors.black,
+                                      fontSize: 12,
+                                      fontFamily: 'Pretendard',
+                                      fontWeight: FontWeight.w400,
+                                    )),
+                                SvgPicture.asset(
+                                    'assets/icons/filter/delete.svg')
+                              ],
+                            ),
+
                           ),
                         ),
                         SizedBox(
@@ -367,13 +398,22 @@ class _StudyFilterState extends State<StudyFilter> {
                               border: Border.all(
                                   width: 1, color: AppColor.Neutral10)),
                           child: Center(
-                            child: Text('GUI',
-                                style: TextStyle(
-                                  color: Colors.black,
-                                  fontSize: 12,
-                                  fontFamily: 'Pretendard',
-                                  fontWeight: FontWeight.w400,
-                                )),
+
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                Text('GUI',
+                                    style: TextStyle(
+                                      color: Colors.black,
+                                      fontSize: 12,
+                                      fontFamily: 'Pretendard',
+                                      fontWeight: FontWeight.w400,
+                                    )),
+                                SvgPicture.asset(
+                                    'assets/icons/filter/delete.svg')
+                              ],
+                            ),
+
                           ),
                         ),
                         SizedBox(
@@ -411,27 +451,36 @@ class _StudyFilterState extends State<StudyFilter> {
                     SizedBox(
                       height: 10,
                     ),
-                    DropdownButton<String>(
-                      value: selectedStudy,
-                      onChanged: (String? newValue) {
-                        setState(() {
-                          selectedStudy = newValue!;
-                        });
-                      },
-                      items: studyList.map((String program) {
-                        return DropdownMenuItem<String>(
-                          value: program,
-                          child: Text(
-                            program,
-                            style: TextStyle(
-                              color: Colors.black,
-                              fontSize: 12,
-                              fontFamily: 'Pretendard',
-                              fontWeight: FontWeight.w400,
-                            ),
+
+                    Container(
+                      width: 312,
+                      height: 36,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20),
+                          border: Border.all(color: Color(0xFFE6E6E6)),
+                          color: Color(0xFFF8F8F9)),
+                      child: Row(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 10),
+                            child: Text('검색어를 입력해주세요.',
+                                style: TextStyle(
+                                  color: Color(0xFF999999),
+                                  fontSize: 12,
+                                  fontFamily: 'Pretendard',
+                                  fontWeight: FontWeight.w400,
+                                )),
                           ),
-                        );
-                      }).toList(),
+                          SizedBox(
+                            width: 140,
+                          ),
+                          SvgPicture.asset('assets/icons/filter/search.svg'),
+                        ],
+                      ),
+                    ),
+                    SizedBox(
+                      height: 10,
+
                     ),
                     Row(
                       children: [
@@ -443,13 +492,22 @@ class _StudyFilterState extends State<StudyFilter> {
                               border: Border.all(
                                   width: 1, color: AppColor.Neutral10)),
                           child: Center(
-                            child: Text('Figma',
-                                style: TextStyle(
-                                  color: Colors.black,
-                                  fontSize: 12,
-                                  fontFamily: 'Pretendard',
-                                  fontWeight: FontWeight.w400,
-                                )),
+
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                Text('Figma',
+                                    style: TextStyle(
+                                      color: Colors.black,
+                                      fontSize: 12,
+                                      fontFamily: 'Pretendard',
+                                      fontWeight: FontWeight.w400,
+                                    )),
+                                SvgPicture.asset(
+                                    'assets/icons/filter/delete.svg')
+                              ],
+                            ),
+
                           ),
                         ),
                         SizedBox(
@@ -463,13 +521,23 @@ class _StudyFilterState extends State<StudyFilter> {
                               border: Border.all(
                                   width: 1, color: AppColor.Neutral10)),
                           child: Center(
-                            child: Text('photoshop',
-                                style: TextStyle(
-                                  color: Colors.black,
-                                  fontSize: 12,
-                                  fontFamily: 'Pretendard',
-                                  fontWeight: FontWeight.w400,
-                                )),
+
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                Text('photoshop',
+                                    style: TextStyle(
+                                      color: Colors.black,
+                                      fontSize: 12,
+                                      fontFamily: 'Pretendard',
+                                      fontWeight: FontWeight.w400,
+                                    )),
+                                SvgPicture.asset(
+                                    'assets/icons/filter/delete.svg')
+                              ],
+                            ),
+
+
                           ),
                         ),
                         SizedBox(

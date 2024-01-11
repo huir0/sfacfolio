@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:team5/screen/community_study.dart';
 
 import 'package:team5/utill/color.dart';
 
@@ -15,187 +16,198 @@ class StudyCollectWidget extends StatelessWidget {
           children: [
             Row(
               children: [
-                Container(
-                  width: 328,
-                  height: 144,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20),
-                    border: Border.all(color: AppColor.Neutral5),
-                  ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.all(12.0),
-                        child: Row(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Container(
-                              width: 48,
-                              height: 20,
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(20),
-                                  color: AppColor.Primary10),
-                              child: Center(
-                                child: Text('모집중',
-                                    style: TextStyle(
-                                      color: AppColor.Primary100,
-                                      fontSize: 10,
-                                      fontWeight: FontWeight.w600,
-                                      fontFamily: 'Pretendard',
-                                    )),
-                              ),
-                            ),
-                            SizedBox(
-                              width: 3,
-                            ),
-                            Container(
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => CommunityStudyPage()),
+                    );
+                  },
+                  child: Container(
+                    width: 328,
+                    height: 144,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      border: Border.all(color: AppColor.Neutral5),
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.all(12.0),
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Container(
                                 width: 48,
                                 height: 20,
                                 decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(20),
                                     color: AppColor.Primary10),
                                 child: Center(
-                                  child: Text('온라인',
+                                  child: Text('모집중',
                                       style: TextStyle(
                                         color: AppColor.Primary100,
                                         fontSize: 10,
                                         fontWeight: FontWeight.w600,
                                         fontFamily: 'Pretendard',
                                       )),
-                                )),
-                            SizedBox(
-                              width: 178,
+                                ),
+                              ),
+                              SizedBox(
+                                width: 3,
+                              ),
+                              Container(
+                                  width: 48,
+                                  height: 20,
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(20),
+                                      color: AppColor.Primary10),
+                                  child: Center(
+                                    child: Text('온라인',
+                                        style: TextStyle(
+                                          color: AppColor.Primary100,
+                                          fontSize: 10,
+                                          fontWeight: FontWeight.w600,
+                                          fontFamily: 'Pretendard',
+                                        )),
+                                  )),
+                              SizedBox(
+                                width: 178,
+                              ),
+                              SvgPicture.asset(
+                                  'assets/Icon/detailedpage/bookmark/blue.svg')
+                            ],
+                          ),
+                        ),
+                        Row(
+                          children: [
+                            Stack(
+                              clipBehavior: Clip.none,
+                              children: [
+                                Container(
+                                  width: 72,
+                                  height: 72,
+                                ),
+                                Positioned(
+                                  left: 15,
+                                  child: Image.asset('assets/pro/pr1.png'),
+                                ),
+                                Positioned(
+                                  left: 100,
+                                  child: Text(
+                                    'UI/UX 마스터',
+                                    style: TextStyle(
+                                        color: AppColor.Neutral100,
+                                        fontSize: 14,
+                                        fontFamily: 'Pretendard',
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                ),
+                                Positioned(
+                                  left: 100,
+                                  top: 25,
+                                  child: Text(
+                                    '함께 다자인 공부할 분들을 모집합니다.',
+                                    style: TextStyle(
+                                        color: AppColor.Neutral100,
+                                        fontSize: 10,
+                                        fontFamily: 'Pretendard',
+                                        fontWeight: FontWeight.w400),
+                                  ),
+                                ),
+                                Positioned(
+                                  left: 100,
+                                  top: 42,
+                                  child: Text(
+                                    '전공무관 | 취준생 | 타이트하게',
+                                    style: TextStyle(
+                                        color: AppColor.Neutral40,
+                                        fontSize: 10,
+                                        fontFamily: 'Pretendard',
+                                        fontWeight: FontWeight.w400),
+                                  ),
+                                ),
+                                Positioned(
+                                    left: 100,
+                                    top: 60,
+                                    child: Container(
+                                      width: 188,
+                                      height: 12,
+                                      decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(20),
+                                          color: Color(0xFFF0F4FB)),
+                                    )),
+                                Positioned(
+                                    left: 101,
+                                    top: 60,
+                                    child: Container(
+                                      width: 108,
+                                      height: 12,
+                                      decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(20),
+                                          color: AppColor.Primary60),
+                                    )),
+                                Positioned(
+                                  left: 294,
+                                  top: 60,
+                                  child: Text('5/10 명',
+                                      style: TextStyle(
+                                          color: AppColor.Primary100,
+                                          fontSize: 7.65)),
+                                )
+                              ],
                             ),
-                            SvgPicture.asset(
-                                'assets/Icon/detailedpage/bookmark/blue.svg')
                           ],
                         ),
-                      ),
-                      Row(
-                        children: [
-                          Stack(
-                            clipBehavior: Clip.none,
+                        Padding(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 15, vertical: 2),
+                          child: Row(
                             children: [
-                              Container(
-                                width: 72,
-                                height: 72,
-                              ),
-                              Positioned(
-                                left: 15,
-                                child: Image.asset('assets/pro/pr1.png'),
-                              ),
-                              Positioned(
-                                left: 100,
-                                child: Text(
-                                  'UI/UX 마스터',
+                              Text('12.27',
                                   style: TextStyle(
-                                      color: AppColor.Neutral100,
-                                      fontSize: 14,
-                                      fontFamily: 'Pretendard',
-                                      fontWeight: FontWeight.bold),
-                                ),
-                              ),
-                              Positioned(
-                                left: 100,
-                                top: 25,
-                                child: Text(
-                                  '함께 다자인 공부할 분들을 모집합니다.',
-                                  style: TextStyle(
-                                      color: AppColor.Neutral100,
-                                      fontSize: 10,
-                                      fontFamily: 'Pretendard',
-                                      fontWeight: FontWeight.w400),
-                                ),
-                              ),
-                              Positioned(
-                                left: 100,
-                                top: 42,
-                                child: Text(
-                                  '전공무관 | 취준생 | 타이트하게',
-                                  style: TextStyle(
-                                      color: AppColor.Neutral40,
-                                      fontSize: 10,
-                                      fontFamily: 'Pretendard',
-                                      fontWeight: FontWeight.w400),
-                                ),
-                              ),
-                              Positioned(
-                                  left: 100,
-                                  top: 60,
-                                  child: Container(
-                                    width: 188,
-                                    height: 12,
-                                    decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(20),
-                                        color: Color(0xFFF0F4FB)),
+                                    color: AppColor.Neutral40,
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.w600,
+                                    fontFamily: 'Pretendard',
                                   )),
-                              Positioned(
-                                  left: 101,
-                                  top: 60,
-                                  child: Container(
-                                    width: 108,
-                                    height: 12,
-                                    decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(20),
-                                        color: AppColor.Primary60),
-                                  )),
-                              Positioned(
-                                left: 294,
-                                top: 60,
-                                child: Text('5/10 명',
-                                    style: TextStyle(
-                                        color: AppColor.Primary100,
-                                        fontSize: 7.65)),
+                              SizedBox(
+                                width: 190,
+                              ),
+                              SvgPicture.asset('assets/icons/Eye.svg'),
+                              Text(
+                                '10',
+                                style: TextStyle(
+                                    fontSize: 10, color: AppColor.Neutral100),
+                              ),
+                              SizedBox(
+                                width: 5,
+                              ),
+                              SvgPicture.asset('assets/icons/Bubble.svg'),
+                              Text(
+                                '4',
+                                style: TextStyle(
+                                    fontSize: 10, color: AppColor.Neutral100),
+                              ),
+                              SizedBox(
+                                width: 5,
+                              ),
+                              SvgPicture.asset(
+                                  'assets/Icon/MainPage/interaction/bookmark.svg'),
+                              Text(
+                                '10',
+                                style: TextStyle(
+                                    fontSize: 10, color: AppColor.Neutral100),
                               )
                             ],
                           ),
-                        ],
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 15, vertical: 2),
-                        child: Row(
-                          children: [
-                            Text('12.27',
-                                style: TextStyle(
-                                  color: AppColor.Neutral40,
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.w600,
-                                  fontFamily: 'Pretendard',
-                                )),
-                            SizedBox(
-                              width: 190,
-                            ),
-                            SvgPicture.asset('assets/icons/Eye.svg'),
-                            Text(
-                              '10',
-                              style: TextStyle(
-                                  fontSize: 10, color: AppColor.Neutral100),
-                            ),
-                            SizedBox(
-                              width: 5,
-                            ),
-                            SvgPicture.asset('assets/icons/Bubble.svg'),
-                            Text(
-                              '4',
-                              style: TextStyle(
-                                  fontSize: 10, color: AppColor.Neutral100),
-                            ),
-                            SizedBox(
-                              width: 5,
-                            ),
-                            SvgPicture.asset(
-                                'assets/Icon/MainPage/interaction/bookmark.svg'),
-                            Text(
-                              '10',
-                              style: TextStyle(
-                                  fontSize: 10, color: AppColor.Neutral100),
-                            )
-                          ],
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
               ],

@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import '/screen/StudyPage.dart';
-import '/utill/color.dart';
-import '/widget/StudyCollectWidget.dart';
+
+import 'package:team5/screen/StudyPage.dart';
+import 'package:team5/utill/color.dart';
+import 'package:team5/widget/StudyCollectWidget.dart';
+
 
 import 'bottom_nagivation_bar.dart';
 
@@ -19,8 +21,11 @@ class _CommunityStudyPageState extends State<CommunityStudyPage> {
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
-        leading:
-            IconButton(onPressed: () {}, icon: Icon(Icons.navigate_before)),
+        leading: IconButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            icon: Icon(Icons.navigate_before)),
         actions: [
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 15),
@@ -481,7 +486,7 @@ class _CommunityStudyPageState extends State<CommunityStudyPage> {
                         color: AppColor.Neutral100),
                   ),
                   SizedBox(
-                    height: 16,
+                    height: 16.0,
                   ),
                   Row(
                     children: [
