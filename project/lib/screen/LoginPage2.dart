@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import '../screen/join_screen.dart';
 import '../screen/mainPage.dart';
 import '../screen/passwordpage_1.dart';
@@ -21,6 +22,13 @@ class _LoginPage2State extends State<LoginPage2> {
   bool _obscureText = true;
   @override
   Widget build(BuildContext context) {
+    // 상단 상태표시줄 색상 계속 바껴서 고정해놧습니다 =================>
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.light.copyWith(
+        statusBarColor: Colors.white,
+        statusBarIconBrightness: Brightness.dark,
+        systemNavigationBarColor: Colors.white,
+        systemNavigationBarIconBrightness: Brightness.dark));
+    // <============================================================
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
@@ -234,8 +242,8 @@ class _LoginPage2State extends State<LoginPage2> {
                       onPressed: () {
                         // if (Form.of(context)!.validate()) {
                         // }
-                          Navigator.push(context,
-                              MaterialPageRoute(builder: (context) => Home()));
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) => Home()));
                       },
                       style: ElevatedButton.styleFrom(
                         primary: Color(0xFF0059FF), // 색상을 #337AFF로 지정
@@ -292,7 +300,10 @@ class _LoginPage2State extends State<LoginPage2> {
                                 fontWeight: FontWeight.w700),
                           ),
                           onPressed: () {
-                            Navigator.push(context, MaterialPageRoute(builder: (context) => FindLoginPage()));
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => FindLoginPage()));
                           },
                         ),
                         Container(

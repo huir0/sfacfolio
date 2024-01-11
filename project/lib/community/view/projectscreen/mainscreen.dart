@@ -3,13 +3,14 @@ import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import '../../../Widget/slider.dart';
-import '../../../community/view/button/filterfindbutton.dart';
-import '../../../community/view/frame/frame2_3.dart';
-import '../../../community/view/frame/frame2_4.dart';
-import '../../../community/view/frame/frame2_5.dart';
+import 'package:team5/Widget/slider.dart';
+import 'package:team5/community/view/button/filterfindbutton.dart';
+import 'package:team5/community/view/frame/frame2_3.dart';
+import 'package:team5/community/view/frame/frame2_4.dart';
+import 'package:team5/community/view/frame/frame2_5.dart';
+import 'package:team5/screen/bottom_nagivation_bar.dart';
+import 'package:team5/utill/color.dart';
 import '../../../screen/bottom_nagivation_bar.dart';
-import '../../../utill/color.dart';
 import '../appbar/AppBar.dart';
 import '../frame/backendframe.dart';
 import '../frame/frame2.dart';
@@ -45,16 +46,17 @@ class _MainscreenState extends State<Mainscreen> {
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         body: SafeArea(
-            child: Column(
-          children: [
-            Container(height: 48, width: 360, child: CustomAppBarWidget()),
-            Container(width: 360, height: 40, child: CustomTabBar()),
-            Container(
-              height: 564,
-              color: Colors.white,
-              child: SingleChildScrollView(
-                child: Column(
-                  children: [
+            child: SingleChildScrollView(
+          child: Column(
+            children: [
+              Container(height: 48, width: 360, child: CustomAppBarWidget()),
+              Container(width: 360, height: 40, child: CustomTabBar()),
+              Container(
+                  color: Colors.white,
+                  width: 360,
+                  height: 564,
+                  child: SingleChildScrollView(
+                      child: Column(children: [
                     Container(
                       height: 200,
                       child: Stack(
@@ -452,9 +454,7 @@ class _MainscreenState extends State<Mainscreen> {
                       ),
                     ),
                     Frame2(),
-                    Frame2_2(
-                      title: '',
-                    ),
+                    Frame2_2(),
                     Frame2_3(),
                     Frame2_4(),
                     Frame2_5(),
@@ -501,12 +501,10 @@ class _MainscreenState extends State<Mainscreen> {
                         ),
                       ),
                     ),
-                  ],
-                ),
-              ),
-            ),
-            Container(height: 64, child: BottomNavigationBarComponent())
-          ],
+                  ]))),
+              Container(height: 64, child: BottomNavigationBarComponent())
+            ],
+          ),
         )),
       ),
     );

@@ -2,13 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 class Frame2_2 extends StatelessWidget {
-  final String title;
-
-  const Frame2_2({
-    Key? key,
-    required this.title,
-  }) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return GestureDetector(

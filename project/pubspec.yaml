@@ -89,7 +89,9 @@ flutter:
 
     - assets/images/Sfaclog/Icons/
     - assets/images/Sfaclog/Respect/
+    - assets/images/Sfaclog/custom/
     - assets/images/Sfaclog/
+    - assets/images/Sfaclog/custom/
     - assets/icons/sfaclog/
     - assets/communitystudy/
     - assets/Icon/DetailedPage/Bookmark/
@@ -102,11 +104,16 @@ flutter:
     - assets/icons/interaction/
 
     - assets/images/mypage/
+
     - assets/portfolioimage/portfolio/following/
     - assets/portfolioimage/portfolio/following2/
     - assets/portfolioimage/portfolio/ioconsbutton/
     - assets/portfolioimage/shortpack/
     - assets/portfolioimage/portfolio/followingselect/
+
+
+    - assets/images/collection/
+
     
   #   - images/a_dot_ham.jpeg
 

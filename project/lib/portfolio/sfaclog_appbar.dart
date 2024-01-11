@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
+import '../Widget/message.dart';
+import '../Widget/notification.dart';
 import '../controller/bottom_navigation.dart';
 import '../screen/mainPage.dart';
 import '../utill/color.dart';
@@ -70,17 +72,27 @@ class _Sfaclog_Appbar extends State<Sfaclog_Appbar> {
                 const SizedBox(
                   width: 8,
                 ),
-                Container(
-                    width: 24,
-                    height: 24,
-                    child: SvgPicture.asset('assets/images/Chat.svg')),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => MessageNotification()));
+                  },
+                  child: Container(
+                      width: 24,
+                      height: 24,
+                      child: SvgPicture.asset('assets/images/Chat.svg')),
+                ),
                 const SizedBox(
                   width: 8,
                 ),
-                Container(
-                    width: 24,
-                    height: 24,
-                    child: SvgPicture.asset('assets/images/Alarm.svg')),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => NotificationComponent()));
+                  },
+                  child: Container(
+                      width: 24,
+                      height: 24,
+                      child: SvgPicture.asset('assets/images/Alarm.svg')),
+                ),
               ],
             ),
           )

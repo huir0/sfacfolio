@@ -3,7 +3,6 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:team5/portfolio/group/filter.dart';
 import 'best_portfolio.dart';
-import '../group_all_category.dart';
 import '../sfaclog_appbar.dart';
 import '../sfaclog_tapbar.dart';
 import '../../screen/bottom_nagivation_bar.dart';
@@ -186,8 +185,11 @@ class Grouppage extends State<GroupPage> {
                                 child: GestureDetector(
                                   onTap: () async {
                                     // 필터 오픈
-                                    final result =
-                                        await _showBottomSheet(context, showAllCategory ? 0 :selectedCategory+1);
+                                    final result = await _showBottomSheet(
+                                        context,
+                                        showAllCategory
+                                            ? 0
+                                            : selectedCategory + 1);
                                     if (result != -1 && result != null) {
                                       setState(() {
                                         if (result == 0) {
@@ -201,7 +203,7 @@ class Grouppage extends State<GroupPage> {
                                           showAllCategory = false;
 
                                           _scrollController.animateTo(
-                                            500.0,
+                                            470.0,
                                             duration: Duration(seconds: 1),
                                             curve: Curves.easeInOut,
                                           );
@@ -415,7 +417,7 @@ class Grouppage extends State<GroupPage> {
                                                       selectedCategory = i;
                                                       _scrollController
                                                           .animateTo(
-                                                        500.0,
+                                                        470.0,
                                                         duration: Duration(
                                                             seconds: 1),
                                                         curve: Curves.easeInOut,
@@ -1077,7 +1079,10 @@ class Grouppage extends State<GroupPage> {
                 ],
               ),
             ),
-            BottomNavigationBarComponent()
+            Container(
+              height: 64,
+              child: BottomNavigationBarComponent(),
+            ),
           ],
         ),
       ),

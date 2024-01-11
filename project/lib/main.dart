@@ -24,7 +24,6 @@ void main() async {
       theme: ThemeData(
         textTheme: TextTheme(
           bodyText2: TextStyle(
-            // fontFamily: 'PretendardVariable',
             fontFamily: 'Pretendard',
           ),
         ),
@@ -35,7 +34,7 @@ void main() async {
   Future.delayed(
     Duration(seconds: 1),
     () {
-      Get.off(FollowingPage());
+      Get.off(LoginPage2());
     },
   );
 }
