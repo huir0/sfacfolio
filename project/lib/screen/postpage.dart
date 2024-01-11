@@ -116,6 +116,7 @@ class Post_page extends State<Post_Page> {
                           thiscomment.keys.first,
                           style: TextStyle(
                             color: Color(0xFF666666),
+                            fontFamily: 'Pretendard',
                             fontSize: 12,
                             fontWeight: FontWeight.w400,
                           ),
@@ -127,6 +128,7 @@ class Post_page extends State<Post_Page> {
                                   '작성자',
                                   style: TextStyle(
                                     color: Color(0xFF0059FF),
+                                    fontFamily: 'Pretendard',
                                     fontSize: 10,
                                     fontWeight: FontWeight.w400,
                                   ),
@@ -143,6 +145,7 @@ class Post_page extends State<Post_Page> {
                   child: Text(
                     thiscomment.values.first,
                     style: TextStyle(
+                      fontFamily: 'Pretendard',
                       color: Color(0xFF666666),
                       fontSize: 12,
                       fontWeight: FontWeight.w400,
@@ -276,6 +279,7 @@ class Post_page extends State<Post_Page> {
                                         child: Text(
                                           widget.docs['main_category'],
                                           style: const TextStyle(
+                                            fontFamily: 'Pretendard',
                                             decoration: TextDecoration.none,
                                             color: Color(0xFF0059FF),
                                             fontSize: 10,
@@ -293,7 +297,7 @@ class Post_page extends State<Post_Page> {
                                       child: Text(
                                         widget.docs['title'],
                                         style: const TextStyle(
-                                          fontFamily: 'PretendardVariable',
+                                          fontFamily: 'Pretendard',
                                           decoration: TextDecoration.none,
                                           color: Colors.black,
                                           fontSize: 20,
@@ -330,6 +334,7 @@ class Post_page extends State<Post_Page> {
                                           Text(
                                             widget.docs['writer'],
                                             style: const TextStyle(
+                                              fontFamily: 'Pretendard',
                                               decoration: TextDecoration.none,
                                               color: Color(0xFF666666),
                                               fontSize: 12,
@@ -388,6 +393,8 @@ class Post_page extends State<Post_Page> {
                                                       textAlign:
                                                           TextAlign.center,
                                                       style: const TextStyle(
+                                                        fontFamily:
+                                                            'Pretendard',
                                                         decoration:
                                                             TextDecoration.none,
                                                         color:
@@ -413,6 +420,8 @@ class Post_page extends State<Post_Page> {
                                                       style: const TextStyle(
                                                         decoration:
                                                             TextDecoration.none,
+                                                        fontFamily:
+                                                            'Pretendard',
                                                         color:
                                                             Color(0xFF020202),
                                                         fontSize: 10,
@@ -449,6 +458,7 @@ class Post_page extends State<Post_Page> {
                                         widget.docs['detail'],
                                         style: TextStyle(
                                           decoration: TextDecoration.none,
+                                          fontFamily: 'Pretendard',
                                           color: Color(0xFF020202),
                                           fontSize: 14,
                                           fontWeight: FontWeight.w400,
@@ -609,6 +619,7 @@ class Post_page extends State<Post_Page> {
                                                   style: TextStyle(
                                                     color: Color(0xFF666666),
                                                     fontSize: 10,
+                                                    fontFamily: 'Pretendard',
                                                     fontWeight: FontWeight.w400,
                                                   ),
                                                 ),
@@ -625,6 +636,7 @@ class Post_page extends State<Post_Page> {
                                                   style: TextStyle(
                                                     color: Colors.black,
                                                     fontSize: 12,
+                                                    fontFamily: 'Pretendard',
                                                     fontWeight: FontWeight.w500,
                                                   ),
                                                 ),
@@ -683,6 +695,7 @@ class Post_page extends State<Post_Page> {
                                                   style: TextStyle(
                                                     color: Colors.black,
                                                     fontSize: 12,
+                                                    fontFamily: 'Pretendard',
                                                     fontWeight: FontWeight.w500,
                                                   ),
                                                 ),
