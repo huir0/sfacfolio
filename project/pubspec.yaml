@@ -102,6 +102,11 @@ flutter:
     - assets/icons/interaction/
 
     - assets/images/mypage/
+    - assets/portfolioimage/portfolio/following/
+    - assets/portfolioimage/portfolio/following2/
+    - assets/portfolioimage/portfolio/ioconsbutton/
+    - assets/portfolioimage/shortpack/
+    - assets/portfolioimage/portfolio/followingselect/
     
   #   - images/a_dot_ham.jpeg
 

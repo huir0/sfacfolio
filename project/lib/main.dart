@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:team5/screen/following.dart';
 import '../screen/employment_dummy_data.dart';
 import '../screen/user_controller.dart';
 import '/screen/SplashPage.dart';
@@ -34,8 +35,7 @@ void main() async {
   Future.delayed(
     Duration(seconds: 1),
     () {
-      Get.off(LoginPage2());
-      // Get.off(Shortpec());
+      Get.off(FollowingPage());
     },
   );
 }
