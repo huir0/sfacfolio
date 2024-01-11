@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import '../screen/welcome_homescreen.dart';
 // import 'package:get/get.dart';
 
 class Onboarding4 extends StatefulWidget {
@@ -15,6 +16,7 @@ class _Onboarding4State extends State<Onboarding4> {
   bool _isPressed3 = false;
   bool _isPressed4 = false;
   bool _isPressed5 = false;
+  bool _isPressed6 = false;
 
   @override
   Widget build(BuildContext context) {
@@ -379,19 +381,43 @@ class _Onboarding4State extends State<Onboarding4> {
                       width: 328,
                       height: 48,
                       child: ElevatedButton(
+                        onPressed: () {
+                          setState(() {
+                            _isPressed6 = !_isPressed6;
+                          });
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => WelcomeHomePage()));
+                        },
                         style: ElevatedButton.styleFrom(
                           padding: EdgeInsets.zero,
-                          backgroundColor: Color(0xFFE6E6E6),
+                          primary: _isPressed6
+                              ? Color(0xFF0059FF)
+                              : Color(0xFFE6E6E6),
                           shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(8)),
-                        ),
-                        onPressed: () {},
-                        child: Center(
-                          child: Text(
-                            '완료',
-                            style: TextStyle(
-                                color: Color(0xFF999999), fontSize: 18),
+                            side: BorderSide(
+                              width: 1,
+                              color: _isPressed6
+                                  ? Color(0xFF0059FF)
+                                  : Colors.transparent,
+                            ),
+                            borderRadius: BorderRadius.circular(10),
                           ),
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              '완료',
+                              style: TextStyle(
+                                  color: _isPressed6
+                                      ? Color(0xFFFFFFFF)
+                                      : Color(0xFF999999),
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w600),
+                            ),
+                          ],
                         ),
                       ),
                     ),

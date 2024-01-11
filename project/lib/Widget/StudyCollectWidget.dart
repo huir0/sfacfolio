@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:team5/screen/community_study.dart';
 
 import 'package:team5/utill/color.dart';
 
@@ -15,213 +16,204 @@ class StudyCollectWidget extends StatelessWidget {
           children: [
             Row(
               children: [
-                Container(
-                  width: 328,
-                  height: 144,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20),
-                    border: Border.all(color: AppColor.Neutral5),
-                  ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.all(12.0),
-                        child: Row(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Container(
-                              width: 48,
-                              height: 20,
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(20),
-                                  color: AppColor.Primary10),
-                              child: Text('모집중',
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(
-                                    color: AppColor.Primary100,
-                                    fontSize: 12,
-                                    fontWeight: FontWeight.w600,
-                                    fontFamily: 'Pretendard',
-                                  )),
-                            ),
-                            SizedBox(
-                              width: 3,
-                            ),
-                            Container(
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => CommunityStudyPage()),
+                    );
+                  },
+                  child: Container(
+                    width: 328,
+                    height: 144,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      border: Border.all(color: AppColor.Neutral5),
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.all(12.0),
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Container(
                                 width: 48,
                                 height: 20,
                                 decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(20),
                                     color: AppColor.Primary10),
-                                child: Text('온라인',
-                                    textAlign: TextAlign.center,
-                                    style: TextStyle(
-                                      color: AppColor.Primary100,
-                                      fontSize: 12,
-                                      fontWeight: FontWeight.w600,
-                                      fontFamily: 'Pretendard',
-                                    ))),
-                            SizedBox(
-                              width: 190,
-                            ),
-                            SvgPicture.asset(
-                                'assets/Icon/DetailedPage/Bookmark/blue.svg')
-                          ],
-                        ),
-                      ),
-                      Row(
-                        children: [
-                          Stack(
-                            clipBehavior: Clip.none,
-                            children: [
+                                child: Center(
+                                  child: Text('모집중',
+                                      style: TextStyle(
+                                        color: AppColor.Primary100,
+                                        fontSize: 10,
+                                        fontWeight: FontWeight.w600,
+                                        fontFamily: 'Pretendard',
+                                      )),
+                                ),
+                              ),
+                              SizedBox(
+                                width: 3,
+                              ),
                               Container(
-                                width: 72,
-                                height: 72,
-                              ),
-                              Positioned(
-                                left: 10,
-                                top: 30,
-                                child: Container(
-                                  width: 40,
-                                  height: 40,
-                                  child: Image.asset(
-                                      'assets/communitystudy/Profile_Small (3).png'),
-                                ),
-                              ),
-                              Positioned(
-                                left: 10,
-                                child: Container(
-                                  width: 40,
-                                  height: 40,
-                                  child: Image.asset(
-                                      'assets/communitystudy/Profile_BIg (3).png'),
-                                ),
-                              ),
-                              Positioned(
-                                left: 40,
-                                child: Container(
-                                  width: 40,
-                                  height: 40,
-                                  child: Image.asset(
-                                      'assets/communitystudy/Profile_BIg (1).png'),
-                                ),
-                              ),
-                              Positioned(
-                                left: 40,
-                                top: 30,
-                                child: Container(
-                                    width: 40,
-                                    height: 40,
-                                    decoration: BoxDecoration(
-                                        borderRadius:
-                                            BorderRadius.circular(100),
-                                        color: Colors.black87),
-                                    child: Center(
-                                      child: Text(
-                                        '+2',
+                                  width: 48,
+                                  height: 20,
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(20),
+                                      color: AppColor.Primary10),
+                                  child: Center(
+                                    child: Text('온라인',
                                         style: TextStyle(
-                                            color: AppColor.White,
-                                            fontSize: 12),
-                                      ),
-                                    )),
-                              ),
-                              Positioned(
-                                left: 100,
-                                child: Text(
-                                  'UI/UX 마스터',
-                                  style: TextStyle(
-                                      color: AppColor.Neutral100,
-                                      fontSize: 14,
-                                      fontFamily: 'Pretendard',
-                                      fontWeight: FontWeight.bold),
-                                ),
-                              ),
-                              Positioned(
-                                left: 100,
-                                top: 25,
-                                child: Text(
-                                  '함께 다자인 공부할 분들을 모집합니다.',
-                                  style: TextStyle(
-                                      color: AppColor.Neutral100,
-                                      fontSize: 10,
-                                      fontFamily: 'Pretendard',
-                                      fontWeight: FontWeight.w400),
-                                ),
-                              ),
-                              Positioned(
-                                left: 100,
-                                top: 42,
-                                child: Text(
-                                  '전공무관 | 취준생 | 타이트하게',
-                                  style: TextStyle(
-                                      color: AppColor.Neutral40,
-                                      fontSize: 10,
-                                      fontFamily: 'Pretendard',
-                                      fontWeight: FontWeight.w400),
-                                ),
-                              ),
-                              Positioned(
-                                  left: 100,
-                                  top: 60,
-                                  child: Container(
-                                    width: 220,
-                                    height: 12,
-                                    decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(20),
-                                        color: Color(0xFFF0F4FB)),
+                                          color: AppColor.Primary100,
+                                          fontSize: 10,
+                                          fontWeight: FontWeight.w600,
+                                          fontFamily: 'Pretendard',
+                                        )),
                                   )),
-                              Positioned(
-                                  left: 100,
-                                  top: 60,
-                                  child: Container(
-                                    width: 108,
-                                    height: 12,
-                                    decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(20),
-                                        color: AppColor.Primary60),
-                                  )),
-                              Positioned(
-                                  left: 199,
-                                  top: 60,
-                                  child: Text.rich(
-                                    TextSpan(
-                                      children: [
-                                        TextSpan(
-                                            text: '5/',
-                                            style: TextStyle(
-                                                color: AppColor.White,
-                                                fontSize: 7.65)),
-                                        const TextSpan(
-                                            text: '10',
-                                            style: TextStyle(
-                                                color: AppColor.Primary100,
-                                                fontSize: 7.65)),
-                                      ],
-                                    ),
-                                  )),
+                              SizedBox(
+                                width: 178,
+                              ),
+                              SvgPicture.asset(
+                                  'assets/Icon/detailedpage/bookmark/blue.svg')
                             ],
                           ),
-                        ],
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 15, vertical: 2),
-                        child: Text('12.27',
-                            style: TextStyle(
-                              color: AppColor.Neutral40,
-                              fontSize: 12,
-                              fontWeight: FontWeight.w600,
-                              fontFamily: 'Pretendard',
-                            )),
-                      )
-                    ],
+                        ),
+                        Row(
+                          children: [
+                            Stack(
+                              clipBehavior: Clip.none,
+                              children: [
+                                Container(
+                                  width: 72,
+                                  height: 72,
+                                ),
+                                Positioned(
+                                  left: 15,
+                                  child: Image.asset('assets/pro/pr1.png'),
+                                ),
+                                Positioned(
+                                  left: 100,
+                                  child: Text(
+                                    'UI/UX 마스터',
+                                    style: TextStyle(
+                                        color: AppColor.Neutral100,
+                                        fontSize: 14,
+                                        fontFamily: 'Pretendard',
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                ),
+                                Positioned(
+                                  left: 100,
+                                  top: 25,
+                                  child: Text(
+                                    '함께 다자인 공부할 분들을 모집합니다.',
+                                    style: TextStyle(
+                                        color: AppColor.Neutral100,
+                                        fontSize: 10,
+                                        fontFamily: 'Pretendard',
+                                        fontWeight: FontWeight.w400),
+                                  ),
+                                ),
+                                Positioned(
+                                  left: 100,
+                                  top: 42,
+                                  child: Text(
+                                    '전공무관 | 취준생 | 타이트하게',
+                                    style: TextStyle(
+                                        color: AppColor.Neutral40,
+                                        fontSize: 10,
+                                        fontFamily: 'Pretendard',
+                                        fontWeight: FontWeight.w400),
+                                  ),
+                                ),
+                                Positioned(
+                                    left: 100,
+                                    top: 60,
+                                    child: Container(
+                                      width: 188,
+                                      height: 12,
+                                      decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(20),
+                                          color: Color(0xFFF0F4FB)),
+                                    )),
+                                Positioned(
+                                    left: 101,
+                                    top: 60,
+                                    child: Container(
+                                      width: 108,
+                                      height: 12,
+                                      decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(20),
+                                          color: AppColor.Primary60),
+                                    )),
+                                Positioned(
+                                  left: 294,
+                                  top: 60,
+                                  child: Text('5/10 명',
+                                      style: TextStyle(
+                                          color: AppColor.Primary100,
+                                          fontSize: 7.65)),
+                                )
+                              ],
+                            ),
+                          ],
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 15, vertical: 2),
+                          child: Row(
+                            children: [
+                              Text('12.27',
+                                  style: TextStyle(
+                                    color: AppColor.Neutral40,
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.w600,
+                                    fontFamily: 'Pretendard',
+                                  )),
+                              SizedBox(
+                                width: 190,
+                              ),
+                              SvgPicture.asset('assets/icons/Eye.svg'),
+                              Text(
+                                '10',
+                                style: TextStyle(
+                                    fontSize: 10, color: AppColor.Neutral100),
+                              ),
+                              SizedBox(
+                                width: 5,
+                              ),
+                              SvgPicture.asset('assets/icons/Bubble.svg'),
+                              Text(
+                                '4',
+                                style: TextStyle(
+                                    fontSize: 10, color: AppColor.Neutral100),
+                              ),
+                              SizedBox(
+                                width: 5,
+                              ),
+                              SvgPicture.asset(
+                                  'assets/Icon/MainPage/interaction/bookmark.svg'),
+                              Text(
+                                '10',
+                                style: TextStyle(
+                                    fontSize: 10, color: AppColor.Neutral100),
+                              )
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ],
             ),
             SizedBox(
-              height: 8,
+              height: 12,
             ),
             Row(
               children: [
@@ -246,14 +238,16 @@ class StudyCollectWidget extends StatelessWidget {
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(20),
                                   color: AppColor.Primary10),
-                              child: Text('모집중',
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(
-                                    color: AppColor.Primary100,
-                                    fontSize: 12,
-                                    fontWeight: FontWeight.w600,
-                                    fontFamily: 'Pretendard',
-                                  )),
+                              child: Center(
+                                child: Text('모집중',
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                      color: AppColor.Primary100,
+                                      fontSize: 10,
+                                      fontWeight: FontWeight.w600,
+                                      fontFamily: 'Pretendard',
+                                    )),
+                              ),
                             ),
                             SizedBox(
                               width: 3,
@@ -264,14 +258,22 @@ class StudyCollectWidget extends StatelessWidget {
                                 decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(20),
                                     color: AppColor.Primary10),
-                                child: Text('온라인',
-                                    textAlign: TextAlign.center,
-                                    style: TextStyle(
-                                      color: AppColor.Primary100,
-                                      fontSize: 12,
-                                      fontWeight: FontWeight.w600,
-                                      fontFamily: 'Pretendard',
-                                    ))),
+                                child: Center(
+                                  child: Text('온라인',
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(
+                                        color: AppColor.Primary100,
+                                        fontSize: 10,
+                                        fontWeight: FontWeight.w600,
+                                        fontFamily: 'Pretendard',
+                                      )),
+                                )),
+                            SizedBox(
+                              width: 178,
+                            ),
+                            SvgPicture.asset(
+                              'assets/Icon/detailedpage/bookmark/gray.svg',
+                            )
                           ],
                         ),
                       ),
@@ -285,51 +287,8 @@ class StudyCollectWidget extends StatelessWidget {
                                 height: 72,
                               ),
                               Positioned(
-                                left: 10,
-                                top: 30,
-                                child: Container(
-                                  width: 40,
-                                  height: 40,
-                                  child: Image.asset(
-                                      'assets/communitystudy/Profile_Small (15).png'),
-                                ),
-                              ),
-                              Positioned(
-                                left: 10,
-                                child: Container(
-                                  width: 40,
-                                  height: 40,
-                                  child: Image.asset(
-                                      'assets/communitystudy/Profile_Small (23).png'),
-                                ),
-                              ),
-                              Positioned(
-                                left: 40,
-                                child: Container(
-                                  width: 40,
-                                  height: 40,
-                                  child: Image.asset(
-                                      'assets/communitystudy/Profile_Small (16).png'),
-                                ),
-                              ),
-                              Positioned(
-                                left: 40,
-                                top: 30,
-                                child: Container(
-                                    width: 40,
-                                    height: 40,
-                                    decoration: BoxDecoration(
-                                        borderRadius:
-                                            BorderRadius.circular(100),
-                                        color: Colors.black87),
-                                    child: Center(
-                                      child: Text(
-                                        '+3',
-                                        style: TextStyle(
-                                            color: AppColor.White,
-                                            fontSize: 12),
-                                      ),
-                                    )),
+                                left: 15,
+                                child: Image.asset('assets/pro/pr2.png'),
                               ),
                               Positioned(
                                 left: 100,
@@ -370,14 +329,14 @@ class StudyCollectWidget extends StatelessWidget {
                                   left: 100,
                                   top: 60,
                                   child: Container(
-                                    width: 220,
+                                    width: 188,
                                     height: 12,
                                     decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(20),
                                         color: Color(0xFFF0F4FB)),
                                   )),
                               Positioned(
-                                  left: 100,
+                                  left: 101,
                                   top: 60,
                                   child: Container(
                                     width: 44,
@@ -387,24 +346,13 @@ class StudyCollectWidget extends StatelessWidget {
                                         color: AppColor.Primary60),
                                   )),
                               Positioned(
-                                  left: 199,
-                                  top: 60,
-                                  child: Text.rich(
-                                    TextSpan(
-                                      children: [
-                                        TextSpan(
-                                            text: '6/',
-                                            style: TextStyle(
-                                                color: AppColor.Primary100,
-                                                fontSize: 7.65)),
-                                        const TextSpan(
-                                            text: '30',
-                                            style: TextStyle(
-                                                color: AppColor.Primary100,
-                                                fontSize: 7.65)),
-                                      ],
-                                    ),
-                                  )),
+                                left: 294,
+                                top: 60,
+                                child: Text('6/30 명',
+                                    style: TextStyle(
+                                        color: AppColor.Primary100,
+                                        fontSize: 7.65)),
+                              )
                             ],
                           ),
                         ],
@@ -412,13 +360,45 @@ class StudyCollectWidget extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.symmetric(
                             horizontal: 15, vertical: 2),
-                        child: Text('12.27',
-                            style: TextStyle(
-                              color: AppColor.Neutral40,
-                              fontSize: 12,
-                              fontWeight: FontWeight.w600,
-                              fontFamily: 'Pretendard',
-                            )),
+                        child: Row(
+                          children: [
+                            Text('12.27',
+                                style: TextStyle(
+                                  color: AppColor.Neutral40,
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w600,
+                                  fontFamily: 'Pretendard',
+                                )),
+                            SizedBox(
+                              width: 190,
+                            ),
+                            SvgPicture.asset('assets/icons/Eye.svg'),
+                            Text(
+                              '12',
+                              style: TextStyle(
+                                  fontSize: 10, color: AppColor.Neutral100),
+                            ),
+                            SizedBox(
+                              width: 5,
+                            ),
+                            SvgPicture.asset('assets/icons/Bubble.svg'),
+                            Text(
+                              '8',
+                              style: TextStyle(
+                                  fontSize: 10, color: AppColor.Neutral100),
+                            ),
+                            SizedBox(
+                              width: 5,
+                            ),
+                            SvgPicture.asset(
+                                'assets/Icon/MainPage/interaction/bookmark.svg'),
+                            Text(
+                              '14',
+                              style: TextStyle(
+                                  fontSize: 10, color: AppColor.Neutral100),
+                            )
+                          ],
+                        ),
                       )
                     ],
                   ),
@@ -426,7 +406,7 @@ class StudyCollectWidget extends StatelessWidget {
               ],
             ),
             SizedBox(
-              height: 8,
+              height: 12,
             ),
             Row(
               children: [
@@ -451,14 +431,16 @@ class StudyCollectWidget extends StatelessWidget {
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(20),
                                   color: AppColor.Primary10),
-                              child: Text('모집중',
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(
-                                    color: AppColor.Primary100,
-                                    fontSize: 12,
-                                    fontWeight: FontWeight.w600,
-                                    fontFamily: 'Pretendard',
-                                  )),
+                              child: Center(
+                                child: Text('모집중',
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                      color: AppColor.Primary100,
+                                      fontSize: 10,
+                                      fontWeight: FontWeight.w600,
+                                      fontFamily: 'Pretendard',
+                                    )),
+                              ),
                             ),
                             SizedBox(
                               width: 3,
@@ -469,14 +451,21 @@ class StudyCollectWidget extends StatelessWidget {
                                 decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(20),
                                     color: AppColor.Primary10),
-                                child: Text('온라인',
-                                    textAlign: TextAlign.center,
-                                    style: TextStyle(
-                                      color: AppColor.Primary100,
-                                      fontSize: 12,
-                                      fontWeight: FontWeight.w600,
-                                      fontFamily: 'Pretendard',
-                                    ))),
+                                child: Center(
+                                  child: Text('온라인',
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(
+                                        color: AppColor.Primary100,
+                                        fontSize: 10,
+                                        fontWeight: FontWeight.w600,
+                                        fontFamily: 'Pretendard',
+                                      )),
+                                )),
+                            SizedBox(
+                              width: 178,
+                            ),
+                            SvgPicture.asset(
+                                'assets/Icon/detailedpage/bookmark/gray.svg')
                           ],
                         ),
                       ),
@@ -491,50 +480,7 @@ class StudyCollectWidget extends StatelessWidget {
                               ),
                               Positioned(
                                 left: 10,
-                                top: 30,
-                                child: Container(
-                                  width: 40,
-                                  height: 40,
-                                  child: Image.asset(
-                                      'assets/communitystudy/Profile_Small (1).png'),
-                                ),
-                              ),
-                              Positioned(
-                                left: 10,
-                                child: Container(
-                                  width: 40,
-                                  height: 40,
-                                  child: Image.asset(
-                                      'assets/communitystudy/Profile_Small (24).png'),
-                                ),
-                              ),
-                              Positioned(
-                                left: 40,
-                                child: Container(
-                                  width: 40,
-                                  height: 40,
-                                  child: Image.asset(
-                                      'assets/communitystudy/Profile_Small (21).png'),
-                                ),
-                              ),
-                              Positioned(
-                                left: 40,
-                                top: 30,
-                                child: Container(
-                                    width: 40,
-                                    height: 40,
-                                    decoration: BoxDecoration(
-                                        borderRadius:
-                                            BorderRadius.circular(100),
-                                        color: Colors.black87),
-                                    child: Center(
-                                      child: Text(
-                                        '+5',
-                                        style: TextStyle(
-                                            color: AppColor.White,
-                                            fontSize: 12),
-                                      ),
-                                    )),
+                                child: Image.asset('assets/pro/pr3.png'),
                               ),
                               Positioned(
                                 left: 100,
@@ -575,41 +521,30 @@ class StudyCollectWidget extends StatelessWidget {
                                   left: 100,
                                   top: 60,
                                   child: Container(
-                                    width: 220,
+                                    width: 188,
                                     height: 12,
                                     decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(20),
                                         color: Color(0xFFF0F4FB)),
                                   )),
                               Positioned(
-                                  left: 100,
+                                  left: 101,
                                   top: 60,
                                   child: Container(
-                                    width: 158,
+                                    width: 138,
                                     height: 12,
                                     decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(20),
                                         color: AppColor.Primary60),
                                   )),
                               Positioned(
-                                  left: 199,
-                                  top: 60,
-                                  child: Text.rich(
-                                    TextSpan(
-                                      children: [
-                                        TextSpan(
-                                            text: '8/',
-                                            style: TextStyle(
-                                                color: AppColor.White,
-                                                fontSize: 7.65)),
-                                        const TextSpan(
-                                            text: '12',
-                                            style: TextStyle(
-                                                color: AppColor.White,
-                                                fontSize: 7.65)),
-                                      ],
-                                    ),
-                                  )),
+                                left: 294,
+                                top: 60,
+                                child: Text('8/12 명',
+                                    style: TextStyle(
+                                        color: AppColor.Primary100,
+                                        fontSize: 7.65)),
+                              )
                             ],
                           ),
                         ],
@@ -617,13 +552,45 @@ class StudyCollectWidget extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.symmetric(
                             horizontal: 15, vertical: 2),
-                        child: Text('12.26',
-                            style: TextStyle(
-                              color: AppColor.Neutral40,
-                              fontSize: 12,
-                              fontWeight: FontWeight.w600,
-                              fontFamily: 'Pretendard',
-                            )),
+                        child: Row(
+                          children: [
+                            Text('12.26',
+                                style: TextStyle(
+                                  color: AppColor.Neutral40,
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w600,
+                                  fontFamily: 'Pretendard',
+                                )),
+                            SizedBox(
+                              width: 185,
+                            ),
+                            SvgPicture.asset('assets/icons/Eye.svg'),
+                            Text(
+                              '24',
+                              style: TextStyle(
+                                  fontSize: 10, color: AppColor.Neutral100),
+                            ),
+                            SizedBox(
+                              width: 5,
+                            ),
+                            SvgPicture.asset('assets/icons/Bubble.svg'),
+                            Text(
+                              '6',
+                              style: TextStyle(
+                                  fontSize: 10, color: AppColor.Neutral100),
+                            ),
+                            SizedBox(
+                              width: 5,
+                            ),
+                            SvgPicture.asset(
+                                'assets/Icon/MainPage/interaction/bookmark.svg'),
+                            Text(
+                              '20',
+                              style: TextStyle(
+                                  fontSize: 10, color: AppColor.Neutral100),
+                            )
+                          ],
+                        ),
                       )
                     ],
                   ),
@@ -631,7 +598,7 @@ class StudyCollectWidget extends StatelessWidget {
               ],
             ),
             SizedBox(
-              height: 8,
+              height: 12,
             ),
             Row(
               children: [
@@ -656,14 +623,16 @@ class StudyCollectWidget extends StatelessWidget {
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(20),
                                   color: AppColor.Primary10),
-                              child: Text('모집중',
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(
-                                    color: AppColor.Primary100,
-                                    fontSize: 12,
-                                    fontWeight: FontWeight.w600,
-                                    fontFamily: 'Pretendard',
-                                  )),
+                              child: Center(
+                                child: Text('모집중',
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                      color: AppColor.Primary100,
+                                      fontSize: 10,
+                                      fontWeight: FontWeight.w600,
+                                      fontFamily: 'Pretendard',
+                                    )),
+                              ),
                             ),
                             SizedBox(
                               width: 3,
@@ -674,14 +643,21 @@ class StudyCollectWidget extends StatelessWidget {
                                 decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(20),
                                     color: AppColor.Primary10),
-                                child: Text('온라인',
-                                    textAlign: TextAlign.center,
-                                    style: TextStyle(
-                                      color: AppColor.Primary100,
-                                      fontSize: 12,
-                                      fontWeight: FontWeight.w600,
-                                      fontFamily: 'Pretendard',
-                                    ))),
+                                child: Center(
+                                  child: Text('온라인',
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(
+                                        color: AppColor.Primary100,
+                                        fontSize: 10,
+                                        fontWeight: FontWeight.w600,
+                                        fontFamily: 'Pretendard',
+                                      )),
+                                )),
+                            SizedBox(
+                              width: 178,
+                            ),
+                            SvgPicture.asset(
+                                'assets/Icon/detailedpage/bookmark/gray.svg')
                           ],
                         ),
                       ),
@@ -695,52 +671,8 @@ class StudyCollectWidget extends StatelessWidget {
                                 height: 72,
                               ),
                               Positioned(
-                                left: 10,
-                                top: 30,
-                                child: Container(
-                                  width: 40,
-                                  height: 40,
-                                  child: Image.asset(
-                                      'assets/communitystudy/Profile_Small (6).png'),
-                                ),
-                              ),
-                              Positioned(
-                                left: 10,
-                                child: Container(
-                                  width: 40,
-                                  height: 40,
-                                  child: Image.asset(
-                                      'assets/communitystudy/Profile_Small (4).png'),
-                                ),
-                              ),
-                              Positioned(
-                                left: 40,
-                                child: Container(
-                                  width: 40,
-                                  height: 40,
-                                  child: Image.asset(
-                                      'assets/communitystudy/Profile_Small (5).png'),
-                                ),
-                              ),
-                              Positioned(
-                                left: 40,
-                                top: 30,
-                                child: Container(
-                                    width: 40,
-                                    height: 40,
-                                    decoration: BoxDecoration(
-                                        borderRadius:
-                                            BorderRadius.circular(100),
-                                        color: Colors.black87),
-                                    child: Center(
-                                      child: Text(
-                                        '+3',
-                                        style: TextStyle(
-                                            color: AppColor.White,
-                                            fontSize: 12),
-                                      ),
-                                    )),
-                              ),
+                                  left: 10,
+                                  child: Image.asset('assets/pro/pr4.png')),
                               Positioned(
                                 left: 100,
                                 child: Text(
@@ -768,7 +700,7 @@ class StudyCollectWidget extends StatelessWidget {
                                 left: 100,
                                 top: 42,
                                 child: Text(
-                                  '디자인 | 취준생 | 주니아 | 유연하게 ',
+                                  '디자인 | 취준생 | 주니어 | 유연하게 ',
                                   style: TextStyle(
                                       color: AppColor.Neutral40,
                                       fontSize: 10,
@@ -780,41 +712,30 @@ class StudyCollectWidget extends StatelessWidget {
                                   left: 100,
                                   top: 60,
                                   child: Container(
-                                    width: 220,
+                                    width: 188,
                                     height: 12,
                                     decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(20),
                                         color: Color(0xFFF0F4FB)),
                                   )),
                               Positioned(
-                                  left: 100,
+                                  left: 101,
                                   top: 60,
                                   child: Container(
-                                    width: 132,
+                                    width: 108,
                                     height: 12,
                                     decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(20),
                                         color: AppColor.Primary60),
                                   )),
                               Positioned(
-                                  left: 199,
-                                  top: 60,
-                                  child: Text.rich(
-                                    TextSpan(
-                                      children: [
-                                        TextSpan(
-                                            text: '6/',
-                                            style: TextStyle(
-                                                color: AppColor.White,
-                                                fontSize: 7.65)),
-                                        const TextSpan(
-                                            text: '10',
-                                            style: TextStyle(
-                                                color: AppColor.White,
-                                                fontSize: 7.65)),
-                                      ],
-                                    ),
-                                  )),
+                                left: 294,
+                                top: 60,
+                                child: Text('6/10 명',
+                                    style: TextStyle(
+                                        color: AppColor.Primary100,
+                                        fontSize: 7.65)),
+                              )
                             ],
                           ),
                         ],
@@ -822,13 +743,45 @@ class StudyCollectWidget extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.symmetric(
                             horizontal: 15, vertical: 2),
-                        child: Text('12.26',
-                            style: TextStyle(
-                              color: AppColor.Neutral40,
-                              fontSize: 12,
-                              fontWeight: FontWeight.w600,
-                              fontFamily: 'Pretendard',
-                            )),
+                        child: Row(
+                          children: [
+                            Text('12.26',
+                                style: TextStyle(
+                                  color: AppColor.Neutral40,
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w600,
+                                  fontFamily: 'Pretendard',
+                                )),
+                            SizedBox(
+                              width: 190,
+                            ),
+                            SvgPicture.asset('assets/icons/Eye.svg'),
+                            Text(
+                              '10',
+                              style: TextStyle(
+                                  fontSize: 10, color: AppColor.Neutral100),
+                            ),
+                            SizedBox(
+                              width: 5,
+                            ),
+                            SvgPicture.asset('assets/icons/Bubble.svg'),
+                            Text(
+                              '4',
+                              style: TextStyle(
+                                  fontSize: 10, color: AppColor.Neutral100),
+                            ),
+                            SizedBox(
+                              width: 5,
+                            ),
+                            SvgPicture.asset(
+                                'assets/Icon/MainPage/interaction/bookmark.svg'),
+                            Text(
+                              '10',
+                              style: TextStyle(
+                                  fontSize: 10, color: AppColor.Neutral100),
+                            )
+                          ],
+                        ),
                       )
                     ],
                   ),
@@ -836,7 +789,7 @@ class StudyCollectWidget extends StatelessWidget {
               ],
             ),
             SizedBox(
-              height: 8,
+              height: 12,
             ),
             Row(
               children: [
@@ -861,14 +814,16 @@ class StudyCollectWidget extends StatelessWidget {
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(20),
                                   color: AppColor.Primary10),
-                              child: Text('모집중',
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(
-                                    color: AppColor.Primary100,
-                                    fontSize: 12,
-                                    fontWeight: FontWeight.w600,
-                                    fontFamily: 'Pretendard',
-                                  )),
+                              child: Center(
+                                child: Text('모집중',
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                      color: AppColor.Primary100,
+                                      fontSize: 10,
+                                      fontWeight: FontWeight.w600,
+                                      fontFamily: 'Pretendard',
+                                    )),
+                              ),
                             ),
                             SizedBox(
                               width: 3,
@@ -879,14 +834,21 @@ class StudyCollectWidget extends StatelessWidget {
                                 decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(20),
                                     color: AppColor.Primary10),
-                                child: Text('온라인',
-                                    textAlign: TextAlign.center,
-                                    style: TextStyle(
-                                      color: AppColor.Primary100,
-                                      fontSize: 12,
-                                      fontWeight: FontWeight.w600,
-                                      fontFamily: 'Pretendard',
-                                    ))),
+                                child: Center(
+                                  child: Text('온라인',
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(
+                                        color: AppColor.Primary100,
+                                        fontSize: 10,
+                                        fontWeight: FontWeight.w600,
+                                        fontFamily: 'Pretendard',
+                                      )),
+                                )),
+                            SizedBox(
+                              width: 178,
+                            ),
+                            SvgPicture.asset(
+                                'assets/Icon/detailedpage/bookmark/gray.svg')
                           ],
                         ),
                       ),
@@ -901,50 +863,7 @@ class StudyCollectWidget extends StatelessWidget {
                               ),
                               Positioned(
                                 left: 10,
-                                top: 30,
-                                child: Container(
-                                  width: 40,
-                                  height: 40,
-                                  child: Image.asset(
-                                      'assets/communitystudy/Profile_Small (11).png'),
-                                ),
-                              ),
-                              Positioned(
-                                left: 10,
-                                child: Container(
-                                  width: 40,
-                                  height: 40,
-                                  child: Image.asset(
-                                      'assets/communitystudy/Profile_Small (9).png'),
-                                ),
-                              ),
-                              Positioned(
-                                left: 40,
-                                child: Container(
-                                  width: 40,
-                                  height: 40,
-                                  child: Image.asset(
-                                      'assets/communitystudy/Profile_Small (10).png'),
-                                ),
-                              ),
-                              Positioned(
-                                left: 40,
-                                top: 30,
-                                child: Container(
-                                    width: 40,
-                                    height: 40,
-                                    decoration: BoxDecoration(
-                                        borderRadius:
-                                            BorderRadius.circular(100),
-                                        color: Colors.black87),
-                                    child: Center(
-                                      child: Text(
-                                        '+17',
-                                        style: TextStyle(
-                                            color: AppColor.White,
-                                            fontSize: 12),
-                                      ),
-                                    )),
+                                child: Image.asset('assets/pro/pr5.png'),
                               ),
                               Positioned(
                                 left: 100,
@@ -982,44 +901,23 @@ class StudyCollectWidget extends StatelessWidget {
                                 ),
                               ),
                               Positioned(
-                                  left: 100,
+                                  left: 101,
                                   top: 60,
                                   child: Container(
-                                    width: 220,
-                                    height: 12,
-                                    decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(20),
-                                        color: Color(0xFFF0F4FB)),
-                                  )),
-                              Positioned(
-                                  left: 100,
-                                  top: 60,
-                                  child: Container(
-                                    width: 220,
+                                    width: 188,
                                     height: 12,
                                     decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(20),
                                         color: AppColor.Primary60),
                                   )),
                               Positioned(
-                                  left: 199,
-                                  top: 60,
-                                  child: Text.rich(
-                                    TextSpan(
-                                      children: [
-                                        TextSpan(
-                                            text: '20/',
-                                            style: TextStyle(
-                                                color: AppColor.White,
-                                                fontSize: 7.65)),
-                                        const TextSpan(
-                                            text: '20',
-                                            style: TextStyle(
-                                                color: AppColor.White,
-                                                fontSize: 7.65)),
-                                      ],
-                                    ),
-                                  )),
+                                left: 294,
+                                top: 60,
+                                child: Text('20/20 명',
+                                    style: TextStyle(
+                                        color: AppColor.Primary100,
+                                        fontSize: 7.65)),
+                              )
                             ],
                           ),
                         ],
@@ -1027,13 +925,45 @@ class StudyCollectWidget extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.symmetric(
                             horizontal: 15, vertical: 2),
-                        child: Text('12.25',
-                            style: TextStyle(
-                              color: AppColor.Neutral40,
-                              fontSize: 12,
-                              fontWeight: FontWeight.w600,
-                              fontFamily: 'Pretendard',
-                            )),
+                        child: Row(
+                          children: [
+                            Text('12.25',
+                                style: TextStyle(
+                                  color: AppColor.Neutral40,
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w600,
+                                  fontFamily: 'Pretendard',
+                                )),
+                            SizedBox(
+                              width: 180,
+                            ),
+                            SvgPicture.asset('assets/icons/Eye.svg'),
+                            Text(
+                              '44',
+                              style: TextStyle(
+                                  fontSize: 10, color: AppColor.Neutral100),
+                            ),
+                            SizedBox(
+                              width: 5,
+                            ),
+                            SvgPicture.asset('assets/icons/Bubble.svg'),
+                            Text(
+                              '24',
+                              style: TextStyle(
+                                  fontSize: 10, color: AppColor.Neutral100),
+                            ),
+                            SizedBox(
+                              width: 5,
+                            ),
+                            SvgPicture.asset(
+                                'assets/Icon/MainPage/interaction/bookmark.svg'),
+                            Text(
+                              '36',
+                              style: TextStyle(
+                                  fontSize: 10, color: AppColor.Neutral100),
+                            )
+                          ],
+                        ),
                       )
                     ],
                   ),
