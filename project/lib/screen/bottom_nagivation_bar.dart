@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import '/collection/collection.dart';
 import '/mypage/mypage.dart';
 import '/portfolio/sfaclog.dart';
 import '/screen/mainPage.dart';
 
 import '../controller/bottom_navigation.dart';
-import 'collection.dart';
 import 'community_screen.dart';
-import 'mainPage.dart';
 // import 'myPage.dart';
 
 const homeIcon = 'assets/icons/Home.svg';

@@ -102,6 +102,8 @@ flutter:
     - assets/icons/interaction/
 
     - assets/images/mypage/
+
+    - assets/images/collection/
     
   #   - images/a_dot_ham.jpeg
 

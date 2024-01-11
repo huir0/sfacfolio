@@ -65,7 +65,7 @@ class StudyWidget extends StatelessWidget {
                         child: Container(
                           width: 40,
                           height: 40,
-                          child: Image.asset('assets/pr/디자인3_프로필.png'),
+                          child: Image.asset('assets/pr/design3_propile.png'),
                         )),
                     Positioned(
                         right: -1,
@@ -73,7 +73,7 @@ class StudyWidget extends StatelessWidget {
                         child: Container(
                           width: 40,
                           height: 40,
-                          child: Image.asset('assets/pr/디자인1_프로필.png'),
+                          child: Image.asset('assets/pr/design1_propile.png'),
                         )),
                     Positioned(
                         left: 30,
@@ -457,7 +457,7 @@ class StudyWidget extends StatelessWidget {
                           width: 40,
                           height: 40,
                           child: Image.asset(
-                            'assets/pr/기타1_프로필.png',
+                            'assets/pr/etc1_propile.png',
                           ),
                         )),
                     Positioned(

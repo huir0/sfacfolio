@@ -1,6 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import '../community/view/projectscreen/subscree.dart';
@@ -193,6 +194,13 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
+    // 상단 상태표시줄 색상 계속 바껴서 고정해놧습니다 =================>
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.light.copyWith(
+        statusBarColor: Colors.white,
+        statusBarIconBrightness: Brightness.dark,
+        systemNavigationBarColor: Colors.white,
+        systemNavigationBarIconBrightness: Brightness.dark));
+    // <============================================================
     return Scaffold(
       body: DefaultTextStyle(
         style: TextStyle(fontFamily: 'Pretendard', color: Colors.black),
@@ -644,10 +652,10 @@ class _HomeState extends State<Home> {
                             child: Stack(children: [
                               Image.asset('assets/images/Home_security.png'),
                               Container(
-                                  margin: EdgeInsets.only(top: 20, left: 292),
-                                  child: SvgPicture.asset(
-                                      'assets/main_resource/icon/main_downarrow.svg'),
-                                ),
+                                margin: EdgeInsets.only(top: 20, left: 292),
+                                child: SvgPicture.asset(
+                                    'assets/main_resource/icon/main_downarrow.svg'),
+                              ),
                               Container(
                                 margin: EdgeInsets.only(top: 24, left: 69),
                                 width: 190,

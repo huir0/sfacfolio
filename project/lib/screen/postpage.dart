@@ -377,15 +377,16 @@ class Post_page extends State<Post_Page> {
                                                     height: 14,
                                                     child: SvgPicture.asset(
                                                       'assets/icons/Eye.svg',
-                                                      width: 10,
-                                                      height: 14,
+                                                      alignment:
+                                                          Alignment.center,
                                                     ),
                                                   ),
                                                   Container(
-                                                    padding:
-                                                        EdgeInsets.only(top: 1),
+                                                    height: 14,
                                                     child: Text(
                                                       '${widget.docs['views']}',
+                                                      textAlign:
+                                                          TextAlign.center,
                                                       style: const TextStyle(
                                                         decoration:
                                                             TextDecoration.none,
@@ -402,13 +403,9 @@ class Post_page extends State<Post_Page> {
                                                     height: 14,
                                                     child: SvgPicture.asset(
                                                       'assets/icons/Bubble.svg',
-                                                      width: 10,
-                                                      height: 14,
                                                     ),
                                                   ),
                                                   Container(
-                                                    padding:
-                                                        EdgeInsets.only(top: 1),
                                                     child: Text(
                                                       '${widget.docs['commentnum']}',
                                                       textAlign:
