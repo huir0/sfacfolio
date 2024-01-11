@@ -143,6 +143,7 @@ class _StudyPageState extends State<StudyPage> {
                 SizedBox(
                   height: 10,
                 )
+
               ]),
             ),
           ),

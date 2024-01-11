@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:team5/screen/bottom_nagivation_bar.dart';
-import 'package:team5/screen/studychoice.dart';
+
 import 'package:team5/utill/color.dart';
 
 class StudyFilter extends StatefulWidget {
@@ -300,6 +300,7 @@ class _StudyFilterState extends State<StudyFilter> {
                     Container(
                       width: 312,
                       height: 36,
+
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(20),
                           border: Border.all(color: Color(0xFFE6E6E6)),
@@ -323,6 +324,7 @@ class _StudyFilterState extends State<StudyFilter> {
                               onPressed: () {},
                               icon: Icon(Icons.arrow_drop_down))
                         ],
+
                       ),
                     ),
                     SizedBox(
@@ -338,6 +340,7 @@ class _StudyFilterState extends State<StudyFilter> {
                               border: Border.all(
                                   width: 1, color: AppColor.Neutral10)),
                           child: Center(
+
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
@@ -352,6 +355,7 @@ class _StudyFilterState extends State<StudyFilter> {
                                     'assets/icons/filter/delete.svg')
                               ],
                             ),
+
                           ),
                         ),
                         SizedBox(
@@ -365,6 +369,7 @@ class _StudyFilterState extends State<StudyFilter> {
                               border: Border.all(
                                   width: 1, color: AppColor.Neutral10)),
                           child: Center(
+
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
@@ -379,6 +384,7 @@ class _StudyFilterState extends State<StudyFilter> {
                                     'assets/icons/filter/delete.svg')
                               ],
                             ),
+
                           ),
                         ),
                         SizedBox(
@@ -392,6 +398,7 @@ class _StudyFilterState extends State<StudyFilter> {
                               border: Border.all(
                                   width: 1, color: AppColor.Neutral10)),
                           child: Center(
+
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
@@ -406,6 +413,7 @@ class _StudyFilterState extends State<StudyFilter> {
                                     'assets/icons/filter/delete.svg')
                               ],
                             ),
+
                           ),
                         ),
                         SizedBox(
@@ -443,6 +451,7 @@ class _StudyFilterState extends State<StudyFilter> {
                     SizedBox(
                       height: 10,
                     ),
+
                     Container(
                       width: 312,
                       height: 36,
@@ -471,6 +480,7 @@ class _StudyFilterState extends State<StudyFilter> {
                     ),
                     SizedBox(
                       height: 10,
+
                     ),
                     Row(
                       children: [
@@ -482,6 +492,7 @@ class _StudyFilterState extends State<StudyFilter> {
                               border: Border.all(
                                   width: 1, color: AppColor.Neutral10)),
                           child: Center(
+
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
@@ -496,6 +507,7 @@ class _StudyFilterState extends State<StudyFilter> {
                                     'assets/icons/filter/delete.svg')
                               ],
                             ),
+
                           ),
                         ),
                         SizedBox(
@@ -509,6 +521,7 @@ class _StudyFilterState extends State<StudyFilter> {
                               border: Border.all(
                                   width: 1, color: AppColor.Neutral10)),
                           child: Center(
+
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
@@ -523,6 +536,8 @@ class _StudyFilterState extends State<StudyFilter> {
                                     'assets/icons/filter/delete.svg')
                               ],
                             ),
+
+
                           ),
                         ),
                         SizedBox(

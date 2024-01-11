@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import '../screen/bottom_nagivation_bar.dart';
 import '../utill/color.dart';
 

@@ -6,7 +6,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import '../Widget/message.dart';
 import '../Widget/notification.dart';
-import '../community/view/projectscreen/subscree.dart';
+
 import '../utill/color.dart';
 
 import '../widget/StudyWidget.dart';
@@ -360,7 +360,9 @@ class _HomeState extends State<Home> {
                                   top: 15,
                                 ),
                                 child: GestureDetector(
+
                                   onTap: () {},
+
                                   child: Text(
                                     '더보기 >',
                                     style: TextStyle(
@@ -416,7 +418,10 @@ class _HomeState extends State<Home> {
                                   top: 15,
                                 ),
                                 child: GestureDetector(
+
                                   onTap: () {},
+
+                                 
                                   child: Text(
                                     '더보기 >',
                                     style: TextStyle(
@@ -867,7 +872,10 @@ class _HomeState extends State<Home> {
                                   top: 15,
                                 ),
                                 child: GestureDetector(
+
                                   onTap: () {},
+
+
                                   child: Text(
                                     '더보기 >',
                                     style: TextStyle(
@@ -1728,6 +1736,7 @@ class _HomeState extends State<Home> {
                                                   alignment:
                                                       Alignment.centerLeft,
                                                   decoration: ShapeDecoration(
+
                                                     color:
                                                         AppColor.BackgroundBiue,
                                                     shape:
@@ -1747,6 +1756,7 @@ class _HomeState extends State<Home> {
                                                           FontWeight.w400,
                                                     ),
                                                   ),
+
                                                 ),
                                               ),
                                             ),
@@ -1804,7 +1814,9 @@ class _HomeState extends State<Home> {
                                           child: Text(
                                             dummyData[index]['company'],
                                             style: const TextStyle(
+
                                               color: AppColor.Neutral40,
+
                                               fontSize: 10,
                                               fontWeight: FontWeight.w400,
                                             ),

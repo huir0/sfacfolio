@@ -902,9 +902,11 @@ class _FollowingPageState extends State<FollowingPage> {
                                 children: [
                                   Image.asset(
                                       'assets/portfolioimage/portfolio/ioconsbutton/shortfac.png'),
+
                                   SizedBox(
                                     width: 12,
                                   ),
+
                                   Text('숏팩',
                                       style: TextStyle(
                                         color: Color(0xFF0059FF),
@@ -912,6 +914,7 @@ class _FollowingPageState extends State<FollowingPage> {
                                         fontFamily: 'Pretendard',
                                         fontWeight: FontWeight.w700,
                                       )),
+
                                   SizedBox(
                                     width: 6,
                                   ),
@@ -1449,6 +1452,7 @@ class _FollowingPageState extends State<FollowingPage> {
                                       ),
                                     ),
                                   ],
+
                                 ),
                               ],
                             ),
