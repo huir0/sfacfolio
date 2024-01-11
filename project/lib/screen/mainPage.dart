@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import '../Widget/message.dart';
+import '../Widget/notification.dart';
 import '../community/view/projectscreen/subscree.dart';
 import '../utill/color.dart';
 
@@ -255,17 +257,29 @@ class _HomeState extends State<Home> {
                         SizedBox(
                           width: 8,
                         ),
-                        Container(
-                            width: 24,
-                            height: 24,
-                            child: SvgPicture.asset('assets/images/Chat.svg')),
+                        GestureDetector(
+                          onTap: () {
+                            Get.to(() => MessageNotification());
+                          },
+                          child: Container(
+                              width: 24,
+                              height: 24,
+                              child:
+                                  SvgPicture.asset('assets/images/Chat.svg')),
+                        ),
                         SizedBox(
                           width: 8,
                         ),
-                        Container(
-                            width: 24,
-                            height: 24,
-                            child: SvgPicture.asset('assets/images/Alarm.svg')),
+                        GestureDetector(
+                          onTap: () {
+                            Get.to(() => NotificationComponent());
+                          },
+                          child: Container(
+                              width: 24,
+                              height: 24,
+                              child:
+                                  SvgPicture.asset('assets/images/Alarm.svg')),
+                        ),
                       ],
                     ),
                   )
