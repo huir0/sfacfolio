@@ -165,7 +165,6 @@ class ShortPec extends State<Shortpec> {
       if (image_size[0] > image_size[1] * 1.8) {
         fitsize = BoxFit.fitHeight;
       }
-      print(fitsize);
       main_slot[key] = Container(
         width: 360,
         height: 641,
@@ -173,7 +172,6 @@ class ShortPec extends State<Shortpec> {
           children: [
             GestureDetector(
               onTap: () {
-                print('화면 한번 클릭');
                 if (reaction_active) {
                   setState(() {
                     reaction_active = false;
@@ -187,7 +185,6 @@ class ShortPec extends State<Shortpec> {
                 }
               },
               onDoubleTap: () {
-                print('화면 더블 클릭');
                 setState(() {
                   reaction_active = !reaction_active;
                   build_container();
@@ -373,32 +370,36 @@ class ShortPec extends State<Shortpec> {
                                     SizedBox(
                                       height: 20,
                                     ),
-                                    GestureDetector(
-                                      onTap: () {
-                                        Get.to(() => Sfaclog());
-                                      },
-                                      child: Container(
-                                        width: 116,
-                                        height: 46,
-                                        decoration: BoxDecoration(
-                                          color: Colors.white,
-                                          borderRadius:
-                                              BorderRadius.circular(26),
-                                          boxShadow: [
-                                            BoxShadow(
-                                              color: Color(0x4C000000),
-                                              blurRadius: 6,
-                                              offset: Offset(0, 0),
-                                              spreadRadius: 0,
-                                            )
-                                          ],
-                                        ),
-                                        child: Center(
-                                          child: SvgPicture.asset(
-                                              'assets/icons/Sfacfolio_switch.svg'),
-                                        ),
-                                      ),
+                                    Container(
+                                      width: 116,
+                                      height: 46,
                                     )
+                                    // GestureDetector(
+                                    //   onTap: () {
+                                    //     Get.to(() => Sfaclog());
+                                    //   },
+                                    //   child: Container(
+                                    //     width: 116,
+                                    //     height: 46,
+                                    //     decoration: BoxDecoration(
+                                    //       color: Colors.white,
+                                    //       borderRadius:
+                                    //           BorderRadius.circular(26),
+                                    //       boxShadow: [
+                                    //         BoxShadow(
+                                    //           color: Color(0x4C000000),
+                                    //           blurRadius: 6,
+                                    //           offset: Offset(0, 0),
+                                    //           spreadRadius: 0,
+                                    //         )
+                                    //       ],
+                                    //     ),
+                                    //     child: Center(
+                                    //       child: SvgPicture.asset(
+                                    //           'assets/icons/Sfacfolio_switch.svg'),
+                                    //     ),
+                                    //   ),
+                                    // )
                                   ],
                                 ),
                               ),
@@ -526,6 +527,35 @@ class ShortPec extends State<Shortpec> {
                           right: 16,
                           child: SvgPicture.asset(
                               'assets/icons/sfaclog/Shortfac_Add.svg'),
+                        ),
+                        Positioned(
+                          bottom: 16,
+                          right: 16,
+                          child: GestureDetector(
+                            onTap: () {
+                              Get.to(() => Sfaclog());
+                            },
+                            child: Container(
+                              width: 116,
+                              height: 46,
+                              decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(26),
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Color(0x4C000000),
+                                    blurRadius: 6,
+                                    offset: Offset(0, 0),
+                                    spreadRadius: 0,
+                                  )
+                                ],
+                              ),
+                              child: Center(
+                                child: SvgPicture.asset(
+                                    'assets/icons/Sfacfolio_switch.svg'),
+                              ),
+                            ),
+                          ),
                         ),
                       ],
                     ),

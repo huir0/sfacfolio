@@ -37,7 +37,7 @@ class Respectpage extends State<RespectPage> {
   Map<String, BoxFit> image_size = {
     'size_1': BoxFit.fitWidth,
     'size_2': BoxFit.fitHeight,
-    'size_3': BoxFit.fitHeight,
+    'size_3': BoxFit.fill,
   };
 
   bool information = false;
@@ -108,7 +108,7 @@ class Respectpage extends State<RespectPage> {
   void Best_build() {
     for (int i = 1; i < 3; i++) {
       best_widget['best_$i'] = Container(
-        margin: EdgeInsets.only(left: i == 1 ? 16 : 0, right: 8),
+        margin: EdgeInsets.only(left: i == 1 ? 16 : 0, right: i == 2 ? 16 : 8),
         padding: EdgeInsets.only(top: 8, left: 11, right: 11, bottom: 12),
         width: 212,
         height: 210,
@@ -270,8 +270,12 @@ class Respectpage extends State<RespectPage> {
         width: 140,
         height: 156,
         margin: rank_docs.keys.toList().indexOf(rank) < 3
-            ? EdgeInsets.only(right: 16)
-            : EdgeInsets.only(left: 16),
+            ? EdgeInsets.only(
+                left: 16,
+                right: rank_docs.keys.toList().indexOf(rank) == 2 ? 32 : 0)
+            : EdgeInsets.only(
+                right: 16,
+                left: rank_docs.keys.toList().indexOf(rank) == 3 ? 32 : 0),
         child: Stack(
           children: [
             Positioned(
@@ -527,7 +531,7 @@ class Respectpage extends State<RespectPage> {
   void Image_build() async {
     for (int i = 1; i < 4; i++) {
       image_widget['slot_$i'] = Container(
-        margin: EdgeInsets.only(right: 8, left: i == 1 ? 16 : 0),
+        margin: EdgeInsets.only(left: i == 1 ? 16 : 0, right: i == 3 ? 16 : 8),
         width: 143,
         height: 254,
         padding: EdgeInsets.zero,
@@ -586,7 +590,6 @@ class Respectpage extends State<RespectPage> {
                             height: 8,
                           ),
                           Container(
-                            margin: EdgeInsets.only(left: 0.25),
                             child: SingleChildScrollView(
                               scrollDirection: Axis.horizontal,
                               child: Column(
