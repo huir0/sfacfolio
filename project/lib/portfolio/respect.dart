@@ -27,11 +27,13 @@ class Respectpage extends State<RespectPage> {
   Random random = Random();
   List<String> nickname = ['채채유', '정과', '햄마니', '하이 타이거'];
   List<String> category_name = ['UXUI', '그래픽', '영상'];
+
   List<String> image_path = [
     'assets/images/Sfaclog/Respect/Shortpec_image_1.gif',
     'assets/images/Sfaclog/Respect/Shortpec_image_2.gif',
     'assets/images/Sfaclog/Respect/Shortpec_image_3.gif'
   ];
+
   Map<String, BoxFit> image_size = {
     'size_1': BoxFit.fitWidth,
     'size_2': BoxFit.fitHeight,
@@ -353,6 +355,7 @@ class Respectpage extends State<RespectPage> {
                       height: 14,
                       child: SvgPicture.asset(
                         'assets/icons/Eye.svg',
+                        color: Colors.white,
                       ),
                     ),
                     Container(
@@ -374,6 +377,7 @@ class Respectpage extends State<RespectPage> {
                       height: 14,
                       child: SvgPicture.asset(
                         'assets/icons/Heart.svg',
+                        color: Colors.white,
                       ),
                     ),
                     Container(
@@ -443,8 +447,8 @@ class Respectpage extends State<RespectPage> {
                     height: 20,
                     child: Center(
                       child: Container(
-                        width: 10,
-                        height: 9.17,
+                        width: 20,
+                        height: 20,
                         child: SvgPicture.asset(
                             'assets/images/Sfaclog/Icons/Heart.svg'),
                       ),
