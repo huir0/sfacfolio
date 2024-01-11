@@ -3,6 +3,8 @@ import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import '../Widget/message.dart';
+import '../Widget/notification.dart';
 import '../community/view/projectscreen/subscree.dart';
 import '../utill/color.dart';
 
@@ -247,17 +249,29 @@ class _HomeState extends State<Home> {
                         SizedBox(
                           width: 8,
                         ),
-                        Container(
-                            width: 24,
-                            height: 24,
-                            child: SvgPicture.asset('assets/images/Chat.svg')),
+                        GestureDetector(
+                          onTap: () {
+                            Get.to(() => MessageNotification());
+                          },
+                          child: Container(
+                              width: 24,
+                              height: 24,
+                              child:
+                                  SvgPicture.asset('assets/images/Chat.svg')),
+                        ),
                         SizedBox(
                           width: 8,
                         ),
-                        Container(
-                            width: 24,
-                            height: 24,
-                            child: SvgPicture.asset('assets/images/Alarm.svg')),
+                        GestureDetector(
+                          onTap: () {
+                            Get.to(() => NotificationComponent());
+                          },
+                          child: Container(
+                              width: 24,
+                              height: 24,
+                              child:
+                                  SvgPicture.asset('assets/images/Alarm.svg')),
+                        ),
                       ],
                     ),
                   )
@@ -644,10 +658,10 @@ class _HomeState extends State<Home> {
                             child: Stack(children: [
                               Image.asset('assets/images/Home_security.png'),
                               Container(
-                                  margin: EdgeInsets.only(top: 20, left: 292),
-                                  child: SvgPicture.asset(
-                                      'assets/main_resource/icon/main_downarrow.svg'),
-                                ),
+                                margin: EdgeInsets.only(top: 20, left: 292),
+                                child: SvgPicture.asset(
+                                    'assets/main_resource/icon/main_downarrow.svg'),
+                              ),
                               Container(
                                 margin: EdgeInsets.only(top: 24, left: 69),
                                 width: 190,
