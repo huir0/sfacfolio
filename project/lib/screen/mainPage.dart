@@ -6,7 +6,10 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import '../Widget/message.dart';
 import '../Widget/notification.dart';
+import '../community/view/projectscreen/mainscreen.dart';
 import '../community/view/projectscreen/subscree.dart';
+import '../portfolio/respect.dart';
+import '../portfolio/sfaclog.dart';
 import '../utill/color.dart';
 
 import '../widget/StudyWidget.dart';
@@ -360,7 +363,9 @@ class _HomeState extends State<Home> {
                                   top: 15,
                                 ),
                                 child: GestureDetector(
-                                  onTap: () {},
+                                  onTap: () {
+                                    // Get.to(()=> RespectPage());
+                                  },
                                   child: Text(
                                     '더보기 >',
                                     style: TextStyle(
@@ -416,7 +421,9 @@ class _HomeState extends State<Home> {
                                   top: 15,
                                 ),
                                 child: GestureDetector(
-                                  onTap: () {},
+                                  onTap: () {
+                                    // Get.to(()=> Sfaclog());
+                                  },
                                   child: Text(
                                     '더보기 >',
                                     style: TextStyle(
@@ -867,7 +874,9 @@ class _HomeState extends State<Home> {
                                   top: 15,
                                 ),
                                 child: GestureDetector(
-                                  onTap: () {},
+                                  onTap: () {
+                                    // Get.to(()=> Mainscreen());
+                                  },
                                   child: Text(
                                     '더보기 >',
                                     style: TextStyle(
@@ -1728,25 +1737,58 @@ class _HomeState extends State<Home> {
                                                   alignment:
                                                       Alignment.centerLeft,
                                                   decoration: ShapeDecoration(
-                                                    color:
-                                                        AppColor.BackgroundBiue,
-                                                    shape:
-                                                        RoundedRectangleBorder(
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              20),
-                                                    ),
-                                                  ),
-                                                  child: Text(
-                                                    dummyData[index]['tag'],
-                                                    style: const TextStyle(
-                                                      fontSize: 10,
-                                                      color:
-                                                          AppColor.Primary100,
-                                                      fontWeight:
-                                                          FontWeight.w400,
-                                                    ),
-                                                  ),
+                                                    color: int.parse(dummyData[
+                                                                            index]
+                                                                        [
+                                                                        'deadline']) <=
+                                                                    7
+                                                                ? AppColor
+                                                                    .WarningBackground
+                                                                : AppColor
+                                                                    .BackgroundBiue,
+                                                            shape:
+                                                                RoundedRectangleBorder(
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          20),
+                                                            ),
+                                                          ),
+                                                          child: dummyData[
+                                                                          index]
+                                                                      [
+                                                                      'deadline'] ==
+                                                                  '상시'
+                                                              ? Text(
+                                                                  '상시',
+                                                                  style:
+                                                                      const TextStyle(
+                                                                    fontSize:
+                                                                        10,
+                                                                    color: AppColor
+                                                                        .Primary100,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w400,
+                                                                  ),
+                                                                )
+                                                              : Text(
+                                                                  'D-${dummyData[index]['deadline']}',
+                                                                  style:
+                                                                      TextStyle(
+                                                                    fontSize:
+                                                                        10,
+                                                                    color: int.parse(dummyData[index]['deadline']) <=
+                                                                            7
+                                                                        ? AppColor
+                                                                            .Warning
+                                                                        : AppColor
+                                                                            .Primary100,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w400,
+                                                                  ),
+                                                                ),
                                                 ),
                                               ),
                                             ),
@@ -1804,7 +1846,7 @@ class _HomeState extends State<Home> {
                                           child: Text(
                                             dummyData[index]['company'],
                                             style: const TextStyle(
-                                              color: AppColor.Neutral40,
+                                              color: AppColor.Primary100,
                                               fontSize: 10,
                                               fontWeight: FontWeight.w400,
                                             ),
