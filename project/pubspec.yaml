@@ -83,7 +83,6 @@ flutter:
     - assets/icons/
     - assets/communitystudy/
     - assets/Icon/detailedpage/
-    - assets/Icon/DetailedPage/Bookmark/
     - assets/Icon/detailedpage/Lock/
     - assets/Icon/MainPage/interaction/
 
@@ -94,7 +93,7 @@ flutter:
     - assets/images/Sfaclog/custom/
     - assets/icons/sfaclog/
     - assets/communitystudy/
-    - assets/Icon/DetailedPage/Bookmark/
+    - assets/Icon/detailedpage/bookmark/
     - assets/images/Sfaclog/Respect/
     - assets/images/Sfaclog/Group/
     - assets/main_resource/icon/
