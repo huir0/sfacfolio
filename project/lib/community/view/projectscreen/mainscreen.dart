@@ -104,6 +104,7 @@ class _MainscreenState extends State<Mainscreen> {
                           child: Text(
                             '핫한 프로젝트🔥',
                             style: TextStyle(
+                              fontFamily: 'Pretendard',
                               color: Colors.black,
                               fontSize: 16,
                               fontWeight: FontWeight.w600,
