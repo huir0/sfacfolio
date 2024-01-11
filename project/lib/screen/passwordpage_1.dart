@@ -95,7 +95,9 @@ class PasswordPage_1 extends State<Passwordpage_1> {
                   alignment: Alignment.centerRight,
                   child: IconButton(
                     icon: Icon(Icons.close),
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
                   ),
                 ),
               ),

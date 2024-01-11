@@ -6,16 +6,18 @@ import 'package:get/get.dart';
 import '../community/view/projectscreen/subscree.dart';
 import '../utill/color.dart';
 
+import '../widget/StudyWidget.dart';
 import 'bottom_nagivation_bar.dart';
-
+import 'employment_dummy_data.dart';
+import 'specific_page.dart';
 
 final List<String> carouselItems = [
-  'assets/main_resource/image/1_메인배너.png',
-  'assets/main_resource/image/1_메인배너.png',
-  'assets/main_resource/image/1_메인배너.png',
-  'assets/main_resource/image/1_메인배너.png',
-  'assets/main_resource/image/1_메인배너.png',
-  'assets/main_resource/image/1_메인배너.png',
+  'assets/main_resource/image/main_banner.png',
+  'assets/main_resource/image/main_banner.png',
+  'assets/main_resource/image/main_banner.png',
+  'assets/main_resource/image/main_banner.png',
+  'assets/main_resource/image/main_banner.png',
+  'assets/main_resource/image/main_banner.png',
 ];
 
 class Home extends StatefulWidget {
@@ -139,6 +141,7 @@ class _HomeState extends State<Home> {
                       height: 14,
                       child: SvgPicture.asset(
                         'assets/icons/Eye.svg',
+                        color: Colors.white,
                       ),
                     ),
                     Container(
@@ -160,6 +163,7 @@ class _HomeState extends State<Home> {
                       height: 14,
                       child: SvgPicture.asset(
                         'assets/icons/Heart.svg',
+                        color: Colors.white,
                       ),
                     ),
                     Container(
@@ -190,10 +194,12 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
+      body: DefaultTextStyle(
+        style: TextStyle(fontFamily: 'Pretendard', color: Colors.black),
         child: Column(
           children: [
             Container(
+              margin: EdgeInsets.only(top: MediaQuery.of(context).padding.top),
               color: Colors.white,
               width: 360,
               height: 48,
@@ -267,7 +273,7 @@ class _HomeState extends State<Home> {
                 child: Column(
                   children: [
                     Container(
-                      height: 220,
+                      height: 200,
                       child: Stack(
                         children: [
                           CarouselSlider(
@@ -278,7 +284,7 @@ class _HomeState extends State<Home> {
                                     ))
                                 .toList(),
                             options: CarouselOptions(
-                              height: 220,
+                              height: 200,
                               autoPlay: true,
                               viewportFraction: 1,
                               onPageChanged: (index, reason) {
@@ -358,7 +364,7 @@ class _HomeState extends State<Home> {
                                   width: 140,
                                   child: GestureDetector(
                                     onTap: () {},
-                                    child: ranking_widget['${index+1}'],
+                                    child: ranking_widget['${index + 1}'],
                                   ),
                                 );
                               },
@@ -430,6 +436,11 @@ class _HomeState extends State<Home> {
                                       color: Color(0xFF002B7B),
                                     ),
                                   ),
+                                ),
+                                Container(
+                                  margin: EdgeInsets.only(top: 20, left: 292),
+                                  child: SvgPicture.asset(
+                                      'assets/main_resource/icon/main_uparrow.svg'),
                                 ),
                                 Container(
                                   margin: EdgeInsets.only(top: 276),
@@ -575,7 +586,12 @@ class _HomeState extends State<Home> {
                             child: Stack(children: [
                               Image.asset('assets/images/Home_portfolio.png'),
                               Container(
-                                margin: EdgeInsets.only(top: 20, left: 96),
+                                margin: EdgeInsets.only(top: 20, left: 292),
+                                child: SvgPicture.asset(
+                                    'assets/main_resource/icon/main_downarrow.svg'),
+                              ),
+                              Container(
+                                margin: EdgeInsets.only(top: 24, left: 96),
                                 width: 144,
                                 height: 36,
                                 child: Column(
@@ -628,7 +644,12 @@ class _HomeState extends State<Home> {
                             child: Stack(children: [
                               Image.asset('assets/images/Home_security.png'),
                               Container(
-                                margin: EdgeInsets.only(top: 20, left: 69),
+                                  margin: EdgeInsets.only(top: 20, left: 292),
+                                  child: SvgPicture.asset(
+                                      'assets/main_resource/icon/main_downarrow.svg'),
+                                ),
+                              Container(
+                                margin: EdgeInsets.only(top: 24, left: 69),
                                 width: 190,
                                 height: 36,
                                 child: Column(
@@ -1425,6 +1446,245 @@ class _HomeState extends State<Home> {
                           ),
                           SizedBox(
                             height: 40,
+                          ),
+                          SingleChildScrollView(
+                            physics: ClampingScrollPhysics(),
+                            child: Column(
+                              children: [
+                                Stack(
+                                  children: [
+                                    Align(
+                                      alignment: Alignment.centerLeft,
+                                      child: Text(
+                                        '참여자 많은 스터디',
+                                        style: TextStyle(
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.w700,
+                                        ),
+                                      ),
+                                    ),
+                                    Container(
+                                      alignment: Alignment.centerRight,
+                                      padding: EdgeInsets.only(
+                                        top: 15,
+                                      ),
+                                      child: GestureDetector(
+                                        onTap: () {},
+                                        child: Text(
+                                          '더보기 >',
+                                          style: TextStyle(
+                                            fontSize: 10,
+                                            fontWeight: FontWeight.w400,
+                                            color: Color(0x60000000),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                SizedBox(
+                                  height: 16,
+                                ),
+                                StudyWidget(),
+                              ],
+                            ),
+                          ),
+                          SizedBox(
+                            height: 16,
+                          ),
+                          Stack(
+                            children: [
+                              Align(
+                                alignment: Alignment.centerLeft,
+                                child: Text(
+                                  '지원자 많은 채용공고',
+                                  style: TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w700,
+                                  ),
+                                ),
+                              ),
+                              Container(
+                                alignment: Alignment.centerRight,
+                                padding: EdgeInsets.only(
+                                  top: 15,
+                                ),
+                                child: GestureDetector(
+                                  onTap: () {},
+                                  child: Text(
+                                    '더보기 >',
+                                    style: TextStyle(
+                                      fontSize: 10,
+                                      fontWeight: FontWeight.w400,
+                                      color: Color(0x60000000),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                          Container(
+                            height: 460,
+                            width: 332,
+                            child: GridView.builder(
+                              physics: NeverScrollableScrollPhysics(),
+                              itemCount: 4,
+                              gridDelegate:
+                                  SliverGridDelegateWithFixedCrossAxisCount(
+                                crossAxisCount: 2,
+                                crossAxisSpacing: 12,
+                                mainAxisSpacing: 12,
+                                childAspectRatio: 160 / 212,
+                              ),
+                              itemBuilder: (context, index) {
+                                return Container(
+                                  width: 160,
+                                  height: 212,
+                                  decoration: ShapeDecoration(
+                                    color: Colors.white,
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(8),
+                                      side: const BorderSide(
+                                        color: Color(0xFFf5f8ff),
+                                        width: 1,
+                                      ),
+                                    ),
+                                  ),
+                                  child: GestureDetector(
+                                    onTap: () {
+                                      Get.find<ClickController>()
+                                          .clickCounts[index]++;
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                SpecificPage(index: index)),
+                                      );
+                                    },
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Stack(
+                                          children: [
+                                            Container(
+                                              width: 160,
+                                              height: 156,
+                                              decoration: BoxDecoration(
+                                                border: Border.all(
+                                                    color: Colors.transparent),
+                                                borderRadius:
+                                                    BorderRadius.circular(9),
+                                              ),
+                                              child: Image.asset(
+                                                dummyData[index]['thumbnail'],
+                                                fit: BoxFit.fill,
+                                              ),
+                                            ),
+                                            Positioned(
+                                              top: 8,
+                                              left: 8,
+                                              child: IntrinsicWidth(
+                                                child: Container(
+                                                  height: 19,
+                                                  padding: const EdgeInsets
+                                                      .symmetric(
+                                                      horizontal: 8,
+                                                      vertical: 2),
+                                                  alignment:
+                                                      Alignment.centerLeft,
+                                                  decoration: ShapeDecoration(
+                                                    color:
+                                                        AppColor.BackgroundBiue,
+                                                    shape:
+                                                        RoundedRectangleBorder(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              20),
+                                                    ),
+                                                  ),
+                                                  child: Text(
+                                                    dummyData[index]['tag'],
+                                                    style: const TextStyle(
+                                                      fontSize: 10,
+                                                      color:
+                                                          AppColor.Primary100,
+                                                      fontWeight:
+                                                          FontWeight.w400,
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                            Positioned(
+                                              right: 4,
+                                              top: 4,
+                                              child: GestureDetector(
+                                                onTap: () {
+                                                  Get.find<BookmarkController>()
+                                                      .toggleBookmark(index);
+                                                },
+                                                child: GetBuilder<
+                                                    BookmarkController>(
+                                                  builder: (controller) =>
+                                                      Container(
+                                                    height: 24,
+                                                    width: 24,
+                                                    padding:
+                                                        const EdgeInsets.only(
+                                                      top: 4,
+                                                      right: 6,
+                                                      left: 6,
+                                                    ),
+                                                    child: controller
+                                                            .bookmarked[index]
+                                                        ? SvgPicture.asset(
+                                                            'assets/icons/Bookmark_filled.svg',
+                                                          )
+                                                        : SvgPicture.asset(
+                                                            'assets/icons/Bookmark.svg'),
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                        Container(
+                                          margin: const EdgeInsets.only(
+                                              left: 8, right: 8, top: 12),
+                                          child: Text(
+                                            dummyData[index]['title'],
+                                            style: const TextStyle(
+                                                color: Color(0xff030303),
+                                                fontSize: 14,
+                                                fontWeight: FontWeight.w600),
+                                          ),
+                                        ),
+                                        SizedBox(
+                                          height: 4,
+                                        ),
+                                        Container(
+                                          height: 15,
+                                          margin: const EdgeInsets.symmetric(
+                                              horizontal: 8),
+                                          child: Text(
+                                            dummyData[index]['company'],
+                                            style: const TextStyle(
+                                              color: AppColor.Neutral40,
+                                              fontSize: 10,
+                                              fontWeight: FontWeight.w400,
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                );
+                              },
+                            ),
+                          ),
+                          SizedBox(
+                            height: 24,
                           ),
                         ],
                       ),

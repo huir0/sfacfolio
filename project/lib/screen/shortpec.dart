@@ -1,4 +1,6 @@
 // import 'package:get/get.dart';
+import 'dart:async';
+
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
@@ -32,6 +34,7 @@ class ShortPec extends State<Shortpec> {
   Map<String, Widget> reaction_button = {};
   Map<String, Color> reaction_color = {};
   bool reaction_active = false;
+  Map<String, BoxFit> fit_type = {};
 
   @override
   void initState() {
@@ -43,7 +46,6 @@ class ShortPec extends State<Shortpec> {
     await get_data();
     await get_image();
     build_container();
-
     button_color_build();
     build_reaction();
     Category();
@@ -140,8 +142,30 @@ class ShortPec extends State<Shortpec> {
     );
   }
 
+  List<int> image_size_checker(String key) {
+    String image_name = docs[key]['image'];
+    RegExp regExp = RegExp(r'\{([0-9]+),([0-9]+)\}');
+    RegExpMatch match = regExp.firstMatch(image_name)!;
+
+    int width = int.parse(match.group(1)!);
+    int height = int.parse(match.group(2)!);
+
+    return [width, height];
+  }
+
   void build_container() {
     for (String key in docs.keys) {
+      List<int> image_size = image_size_checker(key);
+      print('이미지 크기 : $image_size');
+      BoxFit fitsize = BoxFit.fitHeight;
+      if (image_size[0] > image_size[1] * 1.5) {
+        fitsize = BoxFit.fitWidth;
+      }
+
+      if (image_size[0] > image_size[1] * 1.8) {
+        fitsize = BoxFit.fitHeight;
+      }
+      print(fitsize);
       main_slot[key] = Container(
         width: 360,
         height: 641,
@@ -165,17 +189,13 @@ class ShortPec extends State<Shortpec> {
               onDoubleTap: () {
                 print('화면 더블 클릭');
                 setState(() {
-                  // build_reaction();
                   reaction_active = !reaction_active;
                   build_container();
                 });
               },
               child: Container(
                 height: 641,
-                child: Image.network(
-                  image_list[key] ?? '',
-                  fit: BoxFit.fitHeight,
-                ),
+                child: Image.network(image_list[key] ?? '', fit: fitsize),
               ),
             ),
             tap_bool
@@ -198,7 +218,7 @@ class ShortPec extends State<Shortpec> {
             tap_bool
                 ? Container()
                 : Positioned(
-                    bottom: 35,
+                    bottom: 16,
                     child: Container(
                       width: 360,
                       padding: EdgeInsets.only(left: 16, right: 16),
@@ -502,10 +522,11 @@ class ShortPec extends State<Shortpec> {
                           ),
                         ),
                         Positioned(
-                            top: 18,
-                            right: 16,
-                            child: SvgPicture.asset(
-                                'assets/icons/sfaclog/Shortfac_Add.svg'))
+                          top: 18,
+                          right: 16,
+                          child: SvgPicture.asset(
+                              'assets/icons/sfaclog/Shortfac_Add.svg'),
+                        ),
                       ],
                     ),
                   ),

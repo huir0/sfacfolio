@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import '../screen/welcome_homescreen.dart';
 // import 'package:get/get.dart';
 
 class Onboarding4 extends StatefulWidget {
@@ -384,6 +385,10 @@ class _Onboarding4State extends State<Onboarding4> {
                           setState(() {
                             _isPressed6 = !_isPressed6;
                           });
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => WelcomeHomePage()));
                         },
                         style: ElevatedButton.styleFrom(
                           padding: EdgeInsets.zero,

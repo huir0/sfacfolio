@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../screen/join_screen.dart';
 import '../screen/mainPage.dart';
 import '../screen/passwordpage_1.dart';
+import 'FindLoginPage.dart';
 
 class LoginPage2 extends StatefulWidget {
   const LoginPage2({super.key});
@@ -291,7 +292,7 @@ class _LoginPage2State extends State<LoginPage2> {
                                 fontWeight: FontWeight.w700),
                           ),
                           onPressed: () {
-                            // Navigator.push(context, MaterialPageRoute(builder: (context) => findlogin()));
+                            Navigator.push(context, MaterialPageRoute(builder: (context) => FindLoginPage()));
                           },
                         ),
                         Container(

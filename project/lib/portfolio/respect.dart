@@ -4,12 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
-import 'package:team5/database/data_controller.dart';
-import 'package:team5/portfolio/sfaclog_appbar.dart';
-import 'package:team5/portfolio/sfaclog_filter.dart';
-import 'package:team5/portfolio/sfaclog_tapbar.dart';
-import 'package:team5/screen/bottom_nagivation_bar.dart';
-import 'package:team5/screen/shortpec.dart';
+import '/portfolio/sfaclog_appbar.dart';
+import '/portfolio/sfaclog_filter.dart';
+import '/portfolio/sfaclog_tapbar.dart';
+import '/screen/bottom_nagivation_bar.dart';
+import '/screen/shortpec.dart';
 
 class RespectPage extends StatefulWidget {
   @override
@@ -28,6 +27,16 @@ class Respectpage extends State<RespectPage> {
   Random random = Random();
   List<String> nickname = ['채채유', '정과', '햄마니', '하이 타이거'];
   List<String> category_name = ['UXUI', '그래픽', '영상'];
+  List<String> image_path = [
+    'assets/images/Sfaclog/Respect/Shortpec_image_1.gif',
+    'assets/images/Sfaclog/Respect/Shortpec_image_2.gif',
+    'assets/images/Sfaclog/Respect/Shortpec_image_3.gif'
+  ];
+  Map<String, BoxFit> image_size = {
+    'size_1': BoxFit.fitWidth,
+    'size_2': BoxFit.fitHeight,
+    'size_3': BoxFit.fitHeight,
+  };
 
   bool information = false;
 
@@ -132,12 +141,6 @@ class Respectpage extends State<RespectPage> {
                         color: Color(0xFF99BCFF),
                       ),
                     ),
-                    // child: ClipOval(
-                    //   child: Image.asset(
-                    //     'assets/images/Sfaclog/Respect/BestSfac_Propile_$i.png',
-                    //     fit: BoxFit.cover,
-                    //   ),
-                    // ),
                   ),
                   SizedBox(
                     width: 12,
@@ -517,17 +520,25 @@ class Respectpage extends State<RespectPage> {
     }
   }
 
-  void Image_build() {
+  void Image_build() async {
     for (int i = 1; i < 4; i++) {
       image_widget['slot_$i'] = Container(
         margin: EdgeInsets.only(right: 8, left: i == 1 ? 16 : 0),
         width: 143,
         height: 254,
+        padding: EdgeInsets.zero,
         decoration: BoxDecoration(
-            image: DecorationImage(
-                image: AssetImage(
-                    'assets/images/Sfaclog/Respect/Shortpec_$i.png')),
-            borderRadius: BorderRadius.circular(12)),
+          borderRadius: BorderRadius.circular(20),
+          color: Colors.black,
+        ),
+        child: ClipRRect(
+          child: Image.asset(
+            'assets/images/Sfaclog/Respect/Shortpec_image_$i.gif',
+            fit: image_size['size_$i'],
+            gaplessPlayback: false,
+          ),
+          borderRadius: BorderRadius.circular(20),
+        ),
       );
     }
   }
@@ -535,275 +546,278 @@ class Respectpage extends State<RespectPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        margin: EdgeInsets.only(top: MediaQuery.of(context).padding.top),
-        width: 360,
-        height: MediaQuery.of(context).size.height,
-        child: Column(
-          children: [
-            Container(
-              width: 360,
-              height: 48,
-              padding: EdgeInsets.symmetric(horizontal: 16),
-              child: Sfaclog_Appbar(),
-            ),
-            Container(
-              width: 360,
-              height: 48,
-              child: Sfaclog_Tapbar(),
-            ),
-            SfaclogFilter(),
-            Container(
-              height: 500,
-              margin: EdgeInsets.only(top: 8),
-              child: Stack(
-                children: [
-                  Positioned(
-                    top: 0,
-                    left: 0,
-                    child: Container(
-                      width: 360,
-                      height: 550,
-                      child: SingleChildScrollView(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Container(
-                              margin: EdgeInsets.only(left: 0.25),
-                              child: SingleChildScrollView(
-                                scrollDirection: Axis.horizontal,
-                                child: Column(
-                                  children: [
-                                    Row(
-                                      children: [
-                                        ranking_widget['1']!,
-                                        ranking_widget['2']!,
-                                        ranking_widget['3']!,
-                                      ],
-                                    ),
-                                    SizedBox(
-                                      height: 12,
-                                    ),
-                                    Row(
-                                      children: [
-                                        ranking_widget['4']!,
-                                        ranking_widget['5']!,
-                                        ranking_widget['6']!,
-                                      ],
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                            SizedBox(
-                              height: 60,
-                            ),
-                            Container(
-                              margin: EdgeInsets.only(left: 16),
-                              width: 120,
-                              height: 30,
-                              child: Text(
-                                '베스트 스팩러',
-                                style: TextStyle(
-                                  color: Color(0xFF0059FF),
-                                  fontSize: 20,
-                                  fontFamily: 'Pretendard',
-                                  fontWeight: FontWeight.w700,
-                                ),
-                              ),
-                            ),
-                            SizedBox(
-                              height: 12,
-                            ),
-                            Container(
-                              height: 210,
-                              child: SingleChildScrollView(
-                                scrollDirection: Axis.horizontal,
-                                child: Row(
-                                  children: best_widget.values.toList(),
-                                ),
-                              ),
-                            ),
-                            SizedBox(
-                              height: 60,
-                            ),
-                            Container(
-                              width: 360,
+        body: Container(
+      margin: EdgeInsets.only(top: MediaQuery.of(context).padding.top),
+      width: 360,
+      height: MediaQuery.of(context).size.height,
+      child: Column(
+        children: [
+          Container(
+            width: 360,
+            height: 48,
+            padding: EdgeInsets.symmetric(horizontal: 16),
+            child: Sfaclog_Appbar(),
+          ),
+          Container(
+            width: 360,
+            height: 48,
+            child: Sfaclog_Tapbar(),
+          ),
+          Container(
+            height: 556,
+            child: Stack(
+              children: [
+                Positioned(
+                  top: 0,
+                  left: 0,
+                  child: Container(
+                    width: 360,
+                    height: 556,
+                    child: SingleChildScrollView(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          SfaclogFilter(),
+                          SizedBox(
+                            height: 8,
+                          ),
+                          Container(
+                            margin: EdgeInsets.only(left: 0.25),
+                            child: SingleChildScrollView(
+                              scrollDirection: Axis.horizontal,
                               child: Column(
-                                children: respect_widget.values.toList(),
+                                children: [
+                                  Row(
+                                    children: [
+                                      ranking_widget['1']!,
+                                      ranking_widget['2']!,
+                                      ranking_widget['3']!,
+                                    ],
+                                  ),
+                                  SizedBox(
+                                    height: 12,
+                                  ),
+                                  Row(
+                                    children: [
+                                      ranking_widget['4']!,
+                                      ranking_widget['5']!,
+                                      ranking_widget['6']!,
+                                    ],
+                                  ),
+                                ],
                               ),
                             ),
-                            SizedBox(
-                              height: 60,
+                          ),
+                          SizedBox(
+                            height: 60,
+                          ),
+                          Container(
+                            margin: EdgeInsets.only(left: 16),
+                            width: 120,
+                            height: 30,
+                            child: Text(
+                              '베스트 스팩러',
+                              style: TextStyle(
+                                color: Color(0xFF0059FF),
+                                fontSize: 20,
+                                fontFamily: 'Pretendard',
+                                fontWeight: FontWeight.w700,
+                              ),
                             ),
-                            Container(
-                              height: 300,
-                              child: Stack(
-                                children: [
-                                  Container(
-                                    height: 300,
-                                    child: Column(
-                                      children: [
-                                        Container(
-                                          margin: EdgeInsets.only(left: 16),
-                                          height: 30,
-                                          child: Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.start,
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.center,
-                                            children: [
-                                              Container(
-                                                width: 30,
-                                                height: 30,
-                                                child: SvgPicture.asset(
-                                                    'assets/images/Sfaclog/Icons/Shortfac_icon.svg'),
-                                              ),
-                                              SizedBox(
-                                                width: 10,
-                                              ),
-                                              Container(
-                                                height: 30,
-                                                child: Text(
-                                                  '숏팩',
-                                                  style: TextStyle(
-                                                    color: Color(0xFF0059FF),
-                                                    fontSize: 20,
-                                                    fontFamily: 'Pretendard',
-                                                    fontWeight: FontWeight.w700,
-                                                  ),
-                                                ),
-                                              ),
-                                              SizedBox(
-                                                width: 8,
-                                              ),
-                                              GestureDetector(
-                                                onTap: () {
-                                                  setState(() {
-                                                    information = !information;
-                                                  });
-                                                },
-                                                child: Container(
-                                                  width: 20,
-                                                  height: 20,
-                                                  child: SvgPicture.asset(
-                                                      'assets/images/Sfaclog/Icons/Vector.svg'),
-                                                ),
-                                              )
-                                            ],
-                                          ),
-                                        ),
-                                        SizedBox(
-                                          height: 12,
-                                        ),
-                                        Container(
-                                          height: 254,
-                                          child: SingleChildScrollView(
-                                            scrollDirection: Axis.horizontal,
-                                            child: Row(
-                                              children:
-                                                  image_widget.values.toList(),
+                          ),
+                          SizedBox(
+                            height: 12,
+                          ),
+                          Container(
+                            height: 210,
+                            child: SingleChildScrollView(
+                              scrollDirection: Axis.horizontal,
+                              child: Row(
+                                children: best_widget.values.toList(),
+                              ),
+                            ),
+                          ),
+                          SizedBox(
+                            height: 60,
+                          ),
+                          Container(
+                            width: 360,
+                            child: Column(
+                              children: respect_widget.values.toList(),
+                            ),
+                          ),
+                          SizedBox(
+                            height: 60,
+                          ),
+                          Container(
+                            height: 300,
+                            child: Stack(
+                              children: [
+                                Container(
+                                  height: 300,
+                                  child: Column(
+                                    children: [
+                                      Container(
+                                        margin: EdgeInsets.only(left: 16),
+                                        height: 30,
+                                        child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.start,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.center,
+                                          children: [
+                                            Container(
+                                              width: 30,
+                                              height: 30,
+                                              child: SvgPicture.asset(
+                                                  'assets/images/Sfaclog/Icons/Shortfac_icon.svg'),
                                             ),
+                                            SizedBox(
+                                              width: 10,
+                                            ),
+                                            Container(
+                                              height: 30,
+                                              child: Text(
+                                                '숏팩',
+                                                style: TextStyle(
+                                                  color: Color(0xFF0059FF),
+                                                  fontSize: 20,
+                                                  fontFamily: 'Pretendard',
+                                                  fontWeight: FontWeight.w700,
+                                                ),
+                                              ),
+                                            ),
+                                            SizedBox(
+                                              width: 8,
+                                            ),
+                                            GestureDetector(
+                                              onTap: () {
+                                                setState(() {
+                                                  information = !information;
+                                                });
+                                              },
+                                              child: Container(
+                                                width: 20,
+                                                height: 20,
+                                                child: SvgPicture.asset(
+                                                    'assets/images/Sfaclog/Icons/Vector.svg'),
+                                              ),
+                                            )
+                                          ],
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        height: 12,
+                                      ),
+                                      Container(
+                                        height: 254,
+                                        child: SingleChildScrollView(
+                                          scrollDirection: Axis.horizontal,
+                                          child: Row(
+                                            children:
+                                                image_widget.values.toList(),
                                           ),
-                                        )
-                                      ],
-                                    ),
+                                        ),
+                                      )
+                                    ],
                                   ),
-                                  information
-                                      ? Positioned(
-                                          left: 83.5,
-                                          top: 25.6,
-                                          child: Container(
-                                            width: 223,
-                                            height: 42,
-                                            child: Stack(
-                                              children: [
-                                                Positioned(
-                                                  bottom: 0,
-                                                  left: 0,
-                                                  child: Container(
-                                                    width: 223,
-                                                    height: 34,
-                                                    decoration: BoxDecoration(
+                                ),
+                                information
+                                    ? Positioned(
+                                        left: 83.5,
+                                        top: 25.6,
+                                        child: Container(
+                                          width: 223,
+                                          height: 42,
+                                          child: Stack(
+                                            children: [
+                                              Positioned(
+                                                bottom: 0,
+                                                left: 0,
+                                                child: Container(
+                                                  width: 223,
+                                                  height: 34,
+                                                  decoration: BoxDecoration(
+                                                      color: Color(0xFFE6E6E6),
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              8)),
+                                                  child: Center(
+                                                    child: Text(
+                                                      '스팩폴리오의 숏폼 콘텐츠를 경험해보세요!',
+                                                      style: TextStyle(
                                                         color:
-                                                            Color(0xFFE6E6E6),
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(8)),
-                                                    child: Center(
-                                                      child: Text(
-                                                        '스팩폴리오의 숏폼 콘텐츠를 경험해보세요!',
-                                                        style: TextStyle(
-                                                          color:
-                                                              Color(0xFF020202),
-                                                          fontSize: 12,
-                                                          fontFamily:
-                                                              'Pretendard',
-                                                          fontWeight:
-                                                              FontWeight.w400,
-                                                        ),
+                                                            Color(0xFF020202),
+                                                        fontSize: 12,
+                                                        fontFamily:
+                                                            'Pretendard',
+                                                        fontWeight:
+                                                            FontWeight.w400,
                                                       ),
                                                     ),
                                                   ),
                                                 ),
-                                                Positioned(
-                                                  top: 0,
-                                                  left: 19,
-                                                  child: Container(
-                                                    width: 12,
-                                                    height: 12,
-                                                    child: SvgPicture.asset(
-                                                        'assets/images/Sfaclog/Respect/Triangle.svg'),
-                                                  ),
+                                              ),
+                                              Positioned(
+                                                top: 0,
+                                                left: 19,
+                                                child: Container(
+                                                  width: 12,
+                                                  height: 12,
+                                                  child: SvgPicture.asset(
+                                                      'assets/images/Sfaclog/Respect/Triangle.svg'),
                                                 ),
-                                              ],
-                                            ),
+                                              ),
+                                            ],
                                           ),
-                                        )
-                                      : Container()
-                                ],
-                              ),
+                                        ),
+                                      )
+                                    : Container()
+                              ],
                             ),
-                            SizedBox(
-                              height: 50,
-                            )
-                          ],
-                        ),
+                          ),
+                          SizedBox(
+                            height: 50,
+                          )
+                        ],
                       ),
                     ),
                   ),
-                  Positioned(
-                    bottom: 20,
-                    right: 16,
-                    child: Container(
-                      decoration: BoxDecoration(boxShadow: [
+                ),
+                Positioned(
+                  bottom: 20,
+                  right: 16,
+                  child: Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(26),
+                      boxShadow: [
                         BoxShadow(
                           color: Color(0x4C000000),
-                          blurRadius: 6,
+                          blurRadius: 10,
                           offset: Offset(0, 0),
-                          spreadRadius: 0,
+                          spreadRadius: -6,
                         )
-                      ]),
-                      child: GestureDetector(
-                        onTap: () {
-                          Get.to(() => Shortpec());
-                        },
-                        child: Container(
-                          width: 116,
-                          height: 46,
-                          child: SvgPicture.asset(
-                              'assets/images/Sfaclog/Icons/Shortfac_switch.svg'),
-                        ),
+                      ],
+                    ),
+                    child: GestureDetector(
+                      onTap: () {
+                        Get.to(() => Shortpec());
+                      },
+                      child: Container(
+                        width: 116,
+                        height: 46,
+                        child: SvgPicture.asset(
+                            'assets/images/Sfaclog/Icons/Shortfac_switch.svg'),
                       ),
                     ),
-                  )
-                ],
-              ),
+                  ),
+                )
+              ],
             ),
-            BottomNavigationBarComponent()
-          ],
-        ),
+          ),
+          BottomNavigationBarComponent()
+        ],
       ),
-    );
+    ));
   }
 }

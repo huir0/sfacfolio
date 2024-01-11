@@ -37,4 +37,5 @@ class AppColor {
   static const Color Warning = Color(0xffff0000);
   static const Color WarningBackground = Color(0xffFFE5E5);
 
+  static const Color StrokeBlue = Color(0xff99bdff);
 }

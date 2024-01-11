@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import '../portfolio/sfaclog.dart';
+import '/mypage/mypage.dart';
+import '/portfolio/sfaclog.dart';
+import '/screen/mainPage.dart';
 
 import '../controller/bottom_navigation.dart';
 import 'collection.dart';
 import 'community_screen.dart';
-import 'myPage.dart';
 import 'mainPage.dart';
 // import 'myPage.dart';
 
@@ -104,7 +105,7 @@ class _BottomNavigationBarComponentState
               Get.to(() => Collection());
               break;
             case 4:
-              Get.to(() => MyPage());
+              Get.to(() => Mypage());
               break;
             default:
           }

@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
 
+import '../controller/bottom_navigation.dart';
+import '../screen/mainPage.dart';
 import '../utill/color.dart';
 
 class Sfaclog_Appbar extends StatefulWidget {
@@ -11,6 +14,8 @@ class Sfaclog_Appbar extends StatefulWidget {
 }
 
 class _Sfaclog_Appbar extends State<Sfaclog_Appbar> {
+  final NavigationController navigationController =
+      Get.put(NavigationController());
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -21,9 +26,15 @@ class _Sfaclog_Appbar extends State<Sfaclog_Appbar> {
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Container(
-            height: 16,
-            child: SvgPicture.asset('assets/icons/sfaclog/Sfaclog.svg'),
+          GestureDetector(
+            onTap: () {
+              navigationController.updateIndex(0);
+              Get.to(() => Home());
+            },
+            child: Container(
+              height: 16,
+              child: SvgPicture.asset('assets/icons/sfaclog/Sfaclog.svg'),
+            ),
           ),
           const SizedBox(
             width: 12.6,
